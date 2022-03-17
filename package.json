@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/stack0801/Icon_DB#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "mysql": "^2.18.1"
   }
 }
