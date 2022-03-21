@@ -1,32 +1,15 @@
-const mysql = require('mysql');
-var test = {
-    host: 'localhost',
-    port: '3306',
-    user: 'root',
-    password: '20172517',
-    database: 'javateam'
+const mysql = require('mysql')      // mysql 모듈 사용
+require('dotenv').config()          // dotenv 모듈 사용
+
+const options = {
+    host                : process.env.DB_HOST,      // 데이터베이스 연결을 위한 호스트 이름
+    port                : process.env.DB_PORT,      // 데이터베이스 연결을 위한 포트 번호
+    user                : process.env.DB_USER,      // 데이터베이스 사용자
+    password            : process.env.DB_PASS,      // 위 데이터베이스 사용자의 비밀번호
+    database            : process.env.DB_NAME       // 데이터베이스 이름
 }
 
-var connection = mysql.createConnection(test); // DB 커넥션 생성
-connection.connect();   // DB 접속
+const connection = mysql.createConnection(options)
+connection.connect()
 
-var testQuery = "insert into user (id, password, name, nickname) values('test', '1234', 'test', 'tester1');";
-
-connection.query(testQuery, function (err, results, fields){
-    if(err)
-    {
-        console.log(err);
-    }   
-    console.log(results);
-});
-
-testQuery = "SELECT * FROM user";
-
-connection.query(testQuery, function (err, results, fields) { // testQuery 실행
-    if (err) {
-        console.log(err);
-    }
-    console.log(results);
-});
- 
-connection.end(); // DB 접속 종료
+module.exports = connection
