@@ -11,6 +11,35 @@ app.get('/', function (req, res) {
 
 app.use(express.urlencoded({extended:false}));
 
+app.post('/login', function(request, response) {
+    const mysql = require('mysql');
+    var test = {
+        host: 'localhost',
+        port: '3306',
+        user: 'root',
+        password: '20172517',
+        database: 'javateam'
+    }
+    var username = request.body.id;
+    var password = request.body.password;
+
+    if (username && password) {
+        connection.query('SELECT * FROM user WHERE id = ? AND password = ?', [username, password], function(error, results, fields) {
+            if (error) throw error;
+            if (results.length > 0) {
+                response.redirect('/');
+                response.end();
+            } else {              
+                response.send('<script type="text/javascript">alert("로그인 정보가 일치하지 않습니다."); document.location.href="/login";</script>');    
+            }            
+        });
+    } else {        
+        response.send('<script type="text/javascript">alert("username과 password를 입력하세요!"); document.location.href="/login";</script>');    
+        response.end();
+    }
+});
+
+/*
 app.post('/login', function(req, res, next){
     console.log(req.body);
     console.log(req.body.user_id);
@@ -41,6 +70,7 @@ app.post('/login', function(req, res, next){
 
     connection.end();
 })
+*/
 
 //var x, y, c, d;
 app.listen(3000)
