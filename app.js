@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const connection = require('./Sqlconnection')
 //const router = express.Router();
 
 //static 으로
@@ -12,20 +13,9 @@ app.get('/', function (req, res) {
 app.use(express.urlencoded({extended:false}));
 
 app.post('/login', function(request, response) {
-    const mysql = require('mysql');
-    var test = {
-        host: 'localhost',
-        port: '3306',
-        user: 'root',
-        password: '20172517',
-        database: 'javateam'
-    }
-
-    var connection = mysql.createConnection(test); 
-    connection.connect();
-
     var username = request.body.id;
-    var password = request.body.password;
+    var password = request.body.password; 
+    connection.connect(); 
 
     if (username && password) {
         connection.query('SELECT * FROM user WHERE id = ? AND password = ?', [username, password], function(error, results, fields) {
