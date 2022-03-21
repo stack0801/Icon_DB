@@ -23,25 +23,22 @@ app.post('/login', function(request, response) {
 
     var connection = mysql.createConnection(test); 
     connection.connect();
-    
+
     var username = request.body.id;
     var password = request.body.password;
-
-    console.log(request.body.id + "/" + request.body.password);
 
     if (username && password) {
         connection.query('SELECT * FROM user WHERE id = ? AND password = ?', [username, password], function(error, results, fields) {
             if (error) throw error;
             if (results.length > 0) {
-                response.redirect('/');
-                console.log(results);
+                response.send('<script type="text/javascript">alert("로그인 성공!"); document.location.href="/";</script>');
                 response.end();
             } else {              
-                response.send('<script type="text/javascript">alert("로그인 정보가 일치하지 않습니다."); document.location.href="/login";</script>');    
+                response.send('<script type="text/javascript">alert("로그인 정보가 일치하지 않습니다."); document.location.href="/";</script>');    
             }            
         });
     } else {        
-        response.send('<script type="text/javascript">alert("username과 password를 입력하세요!"); document.location.href="/login";</script>');    
+        response.send('<script type="text/javascript">alert("username과 password를 입력하세요!"); document.location.href="/";</script>');    
         response.end();
     }
     connection.end();
