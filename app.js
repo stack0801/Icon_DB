@@ -42,4 +42,5 @@ app.post('/login', function(req, res, next){
     connection.end();
 })
 
+//var x, y, c, d;
 app.listen(3000)

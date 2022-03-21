@@ -3,16 +3,29 @@
 
 <head>
     <meta charset="UTF-8">
-	<title>TITLE</title>
+	<title>Icon DB : login</title>
     <link rel = "stylesheet" href = "/css/index.css">
+    <style>
+        div{
+            padding: 15px;
+        }
+    </style>
 </head>
 <body>
-    <h1>hi</h1>
-    <form action="/login" method="post">
-        아이디 : <input name="user_id" type="text" /><br />
-        비밀번호 : <input name="user_pwd" type="password" /><br />
-        <input value="로그인" type="submit" />
-      </form>
+    <section class ="login-input-section-wrap">
+        <div class="login-input-wrap">
+        <input placeholder="아이디" type="text"></input>
+    </div>
+    <div class="login-input-wrap password-wrap">
+        <input placeholder="비밀번호" type="password"></input>
+    </div>
+    <div class="login-button-wrap">
+        <button>로그인</button>
+    </div>
+    <div class="login-stay-sign-in">
+        <i class = "far fa-check-circle"></i>
+        <span>Stay Signed in</span>
+    </div>
+    </section>
 </body>
-
 </html>
