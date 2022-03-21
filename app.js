@@ -23,6 +23,8 @@ app.post('/login', function(request, response) {
     var username = request.body.id;
     var password = request.body.password;
 
+    console.log(request.body.id + "/" + request.body.password);
+
     if (username && password) {
         connection.query('SELECT * FROM user WHERE id = ? AND password = ?', [username, password], function(error, results, fields) {
             if (error) throw error;
