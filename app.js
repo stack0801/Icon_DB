@@ -20,6 +20,10 @@ app.post('/login', function(request, response) {
         password: '20172517',
         database: 'javateam'
     }
+
+    var connection = mysql.createConnection(test); 
+    connection.connect();
+    
     var username = request.body.id;
     var password = request.body.password;
 
@@ -28,6 +32,7 @@ app.post('/login', function(request, response) {
             if (error) throw error;
             if (results.length > 0) {
                 response.redirect('/');
+                console.log(results);
                 response.end();
             } else {              
                 response.send('<script type="text/javascript">alert("로그인 정보가 일치하지 않습니다."); document.location.href="/login";</script>');    
@@ -37,6 +42,7 @@ app.post('/login', function(request, response) {
         response.send('<script type="text/javascript">alert("username과 password를 입력하세요!"); document.location.href="/login";</script>');    
         response.end();
     }
+    connection.end();
 });
 
 /*
