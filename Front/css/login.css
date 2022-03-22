@@ -10,7 +10,12 @@
     margin: 0;
     padding: 0;
 }
-
+.head-icon{
+    margin-top: 30px;
+    margin-left: 40px;
+    font-size: 40px;
+    font-weight: bold;
+}
 body{
     background: var(--body-background-color);
 }
@@ -38,14 +43,71 @@ body{
     margin-left: 10px;
     height: 30px;
 }
-.login-button-wrap{
+.login-button{
     padding-top: 13px;
 }
-.login-button-wrap button{
+.login-button button{
     width: 480px;
     height: 60px;
-    font-size: 18px;
+    font-size: 20px;
     background: var(--IconDB-color);
     color: white;
     border:solid 1px var(--IconDB-border-color);
+}
+.login-stay-sign-in{
+    width: 465px;
+	height: 52px;
+	
+	display: flex;
+	font-size: 20px;
+	color: #4e4e4e;
+	align-items: center;
+	justify-content: flex-start;
+}
+.login-stay-sign-in i{
+	font-size: 25px;
+	color: #9ba1a3;
+}
+.login-stay-sign-in span{
+	padding-left: 5px;
+	line-height: 25px;
+}
+.not-memeber-msg{
+    margin-top: 25px;
+    font-size: 20px;
+    display: flex;
+}
+.Easier-sign-in-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Easier-sign-in-wrap .sign-button-naver{
+    padding-top: 150px;
+    width: 465px;
+    display: flex;
+    padding-bottom: 50px;
+}
+.Easier-sign-in-wrap .sign-button-kakao{
+    width: 465px;
+    display: flex;
+}
+
+.Easier-sign-in-wrap .sign-button-naver button{
+    width: 465px;
+    height: 48px;
+    border: rgb(11, 150, 73);
+    text-align: center;
+    background: rgb(11, 150, 73);
+    font-size: 20px;
+    color: white;
+}
+.Easier-sign-in-wrap .sign-button-kakao button{
+    width: 465px;
+    height: 48px;
+    border:rgb(212, 212, 13);
+    text-align: center;
+    background: rgb(212, 212, 13);
+    font-size: 20px;
 }
