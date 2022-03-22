@@ -5,34 +5,39 @@
     <meta charset="UTF-8">
 	<title>Icon DB : login</title>
     <link rel = "stylesheet" href = "/css/login.css">
-    <p class="head-icon">IconDB</p>
+    <!--자바스크립트-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/login.js" defer></script>
 </head>
 <body>
-    <form action = "/login" method = "POST">
-        <section class ="login-input-section-wrap">
-            <div class="login-input-wrap">
-            <input placeholder="ID" name="id" type="text"></input>
+    <p class="head-icon">IconDB</p>
+    <section class ="login-input-section-wrap">
+        <div class="login-input-wrap">
+            <input id = "id_ipt" placeholder="ID" name="id" type="text"></input>
         </div>
         <div class="login-input-wrap password-wrap">
-            <input placeholder="Password" name="password" type="password"></input>
+            <input id = "pw_ipt" placeholder="Password" name="password" type="password"></input>
         </div>
         <div class="login-stay-sign-in">
             <i class = "far fa-check-circle"></i>
         </div>
         <div class="login-button">
-            <button>Sign in</button>
+            <button id = "login_btn">Sign in</button>
         </div>
         <p class="not-memeber-msg">Not a Member? Sign up now</p>
-        </section>
-        <section class="Easier-sign-in-wrap">
-            <ul class="sign-button-naver">
-                <button><i class="fas fa-naver"></i>
-                    <span>Sign in with NAVER</span></button>
-            </ul>
-                    <ul class="sign-button-kakao">
-                        <button><i class="fas fa-kakao"></i>
-                            <span>Sign in with NAVER</span></button>
-            </ul>
-    </form>
+    </section>
+    <section class="Easier-sign-in-wrap">
+        <ul class="sign-button-naver">
+            <button>
+                <i class="fas fa-naver"></i>
+                <span>Sign in with NAVER</span>
+            </button>
+        </ul>
+        <ul class="sign-button-kakao">
+            <button>
+                <i class="fas fa-kakao"></i>
+                <span>Sign in with NAVER</span>
+            </button>
+        </ul>
 </body>
 </html>
