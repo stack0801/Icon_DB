@@ -10,34 +10,43 @@
     <script src="/js/login.js" defer></script>
 </head>
 <body>
-    <p class="head-icon">IconDB</p>
-    <section class ="login-input-section-wrap">
+    
+    <div class="page-container">
+        <div id="head-icon">IconDB</div>
+        <div class="sign-section-wrap">
+            <ul class="sign-button-list">
+                <li><button><i class="fas sign-up"></i><span>Sign up</span>
+                </button></li>
+                <li><button><i class="fas sign-in"></i><span>Sign in</span>
+                </button></li>
+            </ul>
+        </div>
+    <div class="login-form-container">
+    <div id ="login-input-section-wrap">
         <div class="login-input-wrap">
-            <input id = "id_ipt" placeholder="ID" name="id" type="text"></input>
+            <input id = "id_ipt" placeholder="Username" name="id" type="text"></input>
         </div>
         <div class="login-input-wrap password-wrap">
             <input id = "pw_ipt" placeholder="Password" name="password" type="password"></input>
         </div>
-        <div class="login-stay-sign-in">
-            <i class = "far fa-check-circle"></i>
-        </div>
         <div class="login-button">
             <button id = "login_btn">Sign in</button>
         </div>
-        <p class="not-memeber-msg">Not a Member? Sign up now</p>
-    </section>
-    <section class="Easier-sign-in-wrap">
-        <ul class="sign-button-naver">
-            <button>
-                <i class="fas fa-naver"></i>
+        <div class="not-member-msg">
+        <span>Not a Member?</span><a href="#">Sign up now</a>
+        </div>
+        <div id="sign-button-naver">
+            <button id="fas fa-naver">
                 <span>Sign in with NAVER</span>
             </button>
-        </ul>
-        <ul class="sign-button-kakao">
-            <button>
-                <i class="fas fa-kakao"></i>
-                <span>Sign in with NAVER</span>
+        </div>
+        <div id="sign-button-kakao">
+            <button id="fas fa-kakao">
+                <span>Sign in with KAKAO</span>
             </button>
-        </ul>
+        </div>
+    </div>
+    </div>
+    </div>
 </body>
 </html>

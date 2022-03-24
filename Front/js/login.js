@@ -1,4 +1,4 @@
-window.onload = () => {
+npwindow.onload = () => {
 	console.log("!!!")
 }
 
