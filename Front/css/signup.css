@@ -45,35 +45,33 @@ body{
     font-size: 30px;
     display: flex;
 }
-.sign-section-wrap #sign-up-button a{
+.sign-section-wrap #sign-up-button button{
     width: 270px;
     height: 60px;
-    padding-top: 5px;
     text-align: center;
-    text-decoration: none;
+    background:white;
     font-size: 30px;
-    color: gray;
     border-style: none;
+    color: gray;
     border-radius: 5px 0px 0px 0px;
     transition-duration: 0.3s;
 }
-.sign-section-wrap #sign-in-button a{
+.sign-section-wrap #sign-in-button button{
     width: 270px;
     height: 60px;
-    padding-top: 5px;
     text-align: center;
-    text-decoration: none;
+    background:white;
     font-size: 30px;
-    color: gray;
     border-style: none;
+    color: gray;
     border-radius: 0px 5px 0px 0px;
     transition-duration: 0.3s;
 }
-.sign-section-wrap #sign-up-button a:active{
+.sign-section-wrap #sign-up-button button:active{
     background:gray;
     color: darkgray;
 }
-.sign-section-wrap #sign-in-button a:active{
+.sign-section-wrap #sign-in-button button:active{
     background:gray;
     color: darkgray;
 }
@@ -85,23 +83,24 @@ body{
     align-items: center;
     justify-content: center;
 }
-.login-form-container{
+.signup-form-container{
     background: white;
     width: 540px;
     height: 460px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 10px black;
     border-radius: 0px 0px 5px 5px;
 }
-#login-input-section-wrap{
+#signup-input-section-wrap{
     padding-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.login-input-wrap{
+.signup-input-wrap{
     width: 465px;
     height: 48px;
     border: solid 1px var(--border-gray-color);
@@ -112,7 +111,7 @@ body{
 .password-wrap{
     margin-top:20px;
 }
-.login-input-wrap input{
+.signup-input-wrap input{
     border: none;
     width: 430px;
     margin-top: 10px;
@@ -120,42 +119,22 @@ body{
     margin-left: 10px;
     height: 30px;
 }
-#login-button{
+#signup-button{
     padding-top: 13px;
     padding-bottom: 17px;
-    text-align: center;
 }
-#login-button button{
+#signup-button button{
     width: 465px;
     height: 60px;
-    padding-top: 5px;
-    text-align: center;
     font-size: 20px;
-    background:var(--IconDB-color);
+    background: var(--IconDB-color);
     color: white;
-    border-style: none;
+    border:solid 1px var(--IconDB-border-color);
     border-radius: 5px;
     transition-duration: 0.2s;
-    cursor: pointer;
 }
-#login-button button:active{
+#signup-button button:active{
     background:#470942b0;
-}
-#not-memeber-msg{
-    
-    display: flex;
-}
-#not-member-msg span{
-    font-size: 20px;
-    padding-right: 20px;
-}
-#not-member-msg a{
-    font-size: 20px;
-    text-decoration: none;
-    color:#831379b0
-}
-#not-member-msg a:active{
-    color: #470942b0;
 }
 .Easier-sign-in-wrap{
     display: flex;
@@ -179,14 +158,13 @@ body{
 #sign-button-naver button{
     width: 465px;
     height: 48px;
+    border: #2db400;
     text-align: center;
+    background: #2db400;
     font-size: 20px;
     color: white;
-    border: #2db400;
     border-radius: 5px;
-    background: #2db400;
     transition-duration: 0.2s;
-    cursor: pointer;
 }
 #sign-button-naver button:active{
     background: #228301;
@@ -194,13 +172,12 @@ body{
 #sign-button-kakao button{
     width: 465px;
     height: 48px;
-    text-align: center;
-    font-size: 20px;
     border:#f9e000;
-    border-radius: 5px;
+    text-align: center;
     background:#f9e000;
+    font-size: 20px;
+    border-radius: 5px;
     transition-duration: 0.2s;
-    cursor: pointer;
 }
 #sign-button-kakao button:active{
     background: #a09000;

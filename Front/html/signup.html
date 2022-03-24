@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Icon DB : Sign in</title>
-    <link rel="stylesheet" href="/css/login.css">
+    <title>Icon DB : Sign up</title>
+    <link rel="stylesheet" href="/css/signup.css">
     <!--자바스크립트-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/js/login.js" defer></script>
@@ -18,31 +18,27 @@
             </div>
         <div class="sign-section-wrap">
             <div id="sign-up-button">
-                <a href ="/html/signup.html" datarole="button">Sign up</a>
+                <button id="fas sign-up"><span>Sign up</span>
+                </button>
             </div>
             <div id="sign-in-button">
-                <a href="#">Sign in</a>
+                <button id="fas sign-in"><span>Sign in</span>
+                </button>
             </div>
         </div>
-        <div class="login-form-container">
-            <div id="login-input-section-wrap">
-                <div class="login-input-wrap">
+        <div class="signup-form-container">
+            <div id="signup-input-section-wrap">
+                <div class="signup-input-wrap">
                     <input id="id_ipt" placeholder="Username" name="id" type="text"></input>
                 </div>
-                <div class="login-input-wrap password-wrap">
+                <div class="signup-input-wrap password-wrap">
                     <input id="pw_ipt" placeholder="Password" name="password" type="password"></input>
                 </div>
-                <div id="login-button">
-                    <button>Sign in</button>
+                <div id="signup-button">
+                    <button id="signup_btn">Sign up</button>
                 </div>
                 <div id="not-member-msg">
                     <span>Not a Member?</span><a href="#">Sign up now</a>
-                </div>
-                <div id="sign-button-naver">
-                    <button>Sign in with NAVER</button>
-                </div>
-                <div id="sign-button-kakao">
-                    <button>Sign in with KAKAO</button>
                 </div>
             </div>
         </div>
