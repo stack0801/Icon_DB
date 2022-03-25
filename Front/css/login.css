@@ -70,9 +70,9 @@ body{
     border-radius: 0px 5px 0px 0px;
     transition-duration: 0.3s;
 }
-.sign-section-wrap #sign-up-button a:active{
-    background:gray;
-    color: darkgray;
+.sign-section-wrap #sign-up-button a:hover{
+    color:gray;
+    background: white;
 }
 .sign-section-wrap #sign-in-button a:active{
     background:gray;

@@ -74,9 +74,9 @@ body{
     background:gray;
     color: darkgray;
 }
-.sign-section-wrap #sign-in-button a:active{
-    background:gray;
-    color: darkgray;
+.sign-section-wrap #sign-in-button a:hover{
+    color:gray;
+    background: white;
 }
 .page-container{
     width: 100vw;
@@ -113,6 +113,7 @@ body{
 .password-wrap{
     margin-top:20px;
 }
+
 .login-input-wrap input{
     border: none;
     width: 430px;
