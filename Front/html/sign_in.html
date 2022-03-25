@@ -4,40 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Icon DB : Sign in</title>
-    <link rel="stylesheet" href="/css/login.css">
-    <!--자바스크립트-->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/js/login.js" defer></script>
+    <!--css-->
     <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/sign_in.css">
+    <!--javascript-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/sign_in.js" defer></script>
 </head>
 
 <body>
-
     <div class="page-container">
         <div id="head-icon">
-            <a href="#">IconDB</a>
+            <a href="/">IconDB</a>
         </div>
         <div class="sign-section-wrap">
             <div id="sign-up-button">
-                <a href="/html/signup.html" datarole="button">Sign up</a>
+                <a href="/sign_up" datarole="button">Sign up</a>
             </div>
             <div id="sign-in-button">
-                <a href="/html/login.html">Sign in</a>
+                <a href="/sign_in">Sign in</a>
             </div>
         </div>
-        <div class="login-form-container">
-            <div id="login-input-section-wrap">
-                <div class="login-input-wrap">
+        <div class="sign_up-form-container">
+            <div id="sign_up-input-section-wrap">
+                <div class="sign_up-input-wrap">
                     <input id="id_ipt" placeholder="Username" name="id" type="text"></input>
                 </div>
-                <div class="login-input-wrap password-wrap">
+                <div class="sign_up-input-wrap password-wrap">
                     <input id="pw_ipt" placeholder="Password" name="password" type="password"></input>
                 </div>
-                <div id="login-button">
-                    <button id = "login_btn">Sign in</button>
+                <div id="sign_up-button">
+                    <button id = "sign_up_btn">Sign in</button>
                 </div>
                 <div id="not-member-msg">
-                    <span>Not a Member?</span><a href="/html/signup.html">Sign up</a>
+                    <span>Not a Member?</span><a href="/signup">Sign up</a>
                 </div>
                 <div id="sign-button-naver">
                     <button>Sign in with NAVER</button>
