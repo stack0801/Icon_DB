@@ -17,6 +17,24 @@ app.get('/sign_up', (req, res) => {
     res.sendFile(__dirname + '/Front/html/sign_up.html')
 })
 
+app.post('/sign_up', (req, res) => {
+    const id = req.body.id
+    const password = req.body.pw
+    const nickmane = req.body.nickmane
+
+    if (id && password && nickmane) {
+        const sql = 'INSERT INTO user VALUES(?, ?, ?)'
+        sql_pool.query(sql, [id, password, nickmane], (err, result) => {
+            if (err)
+                res.send("fail")
+            else          
+                res.send("success")
+        })
+    }
+    else
+        res.send("void")
+})
+
 app.get('/sign_in', (req, res) => {
     res.sendFile(__dirname + '/Front/html/sign_in.html')
 })
