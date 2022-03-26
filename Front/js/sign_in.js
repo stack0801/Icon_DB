@@ -14,7 +14,7 @@ sign_up_btn.onclick = () => {
 	//axios 비동기 통신
 	axios({
 		method: 'post',
-		url: '/sign_up',
+		url: '/sign_in',
 		data: {
 		  	id: id,
 		  	pw: pw

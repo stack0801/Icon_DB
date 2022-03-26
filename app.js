@@ -17,7 +17,11 @@ app.get('/sign_up', (req, res) => {
     res.sendFile(__dirname + '/Front/html/sign_up.html')
 })
 
-app.post('/sign_up', (req, res) => {
+app.get('/sign_in', (req, res) => {
+    res.sendFile(__dirname + '/Front/html/sign_in.html')
+})
+
+app.post('/sign_in', (req, res) => {
     const id = req.body.id
     const password = req.body.pw
 
@@ -36,10 +40,6 @@ app.post('/sign_up', (req, res) => {
     }
     else
         res.send("void")
-})
-
-app.get('/sign_in', (req, res) => {
-    res.sendFile(__dirname + '/Front/html/sign_in.html')
 })
 
 app.listen(3000)
