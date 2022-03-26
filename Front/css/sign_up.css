@@ -89,14 +89,13 @@ body{
 .sign_up-form-container{
     background: white;
     width: 540px;
-    height: 400px;
+    height: 460px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 0px 0px 5px 5px;
 }
 #sign_up-input-section-wrap{
-    padding-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -105,6 +104,7 @@ body{
 .sign_up-input-wrap{
     width: 465px;
     height: 60px;
+    margin-top: 10px;
     border: solid 1px var(--border-gray-color);
     background: white;
     border-radius: 5px;
@@ -113,7 +113,9 @@ body{
 .password-wrap{
     margin-top:20px;
 }
-
+.nickname-wrap{
+    margin-top:20px;
+}
 .sign_up-input-wrap input{
     border: none;
     width: 430px;
@@ -124,7 +126,7 @@ body{
 }
 #sign_up-button{
     padding-top: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
     text-align: center;
 }
 #sign_up-button button{
