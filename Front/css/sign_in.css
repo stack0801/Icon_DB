@@ -86,7 +86,7 @@ body{
     align-items: center;
     justify-content: center;
 }
-.sign_up-form-container{
+.sign_in-form-container{
     background: white;
     width: 540px;
     height: 460px;
@@ -95,14 +95,14 @@ body{
     justify-content: center;
     border-radius: 0px 0px 5px 5px;
 }
-#sign_up-input-section-wrap{
+#sign_in-input-section-wrap{
     padding-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.sign_up-input-wrap{
+.sign_in-input-wrap{
     width: 465px;
     height: 60px;
     border: solid 1px var(--border-gray-color);
@@ -113,7 +113,7 @@ body{
 .password-wrap{
     margin-top:20px;
 }
-.sign_up-input-wrap input{
+.sign_in-input-wrap input{
     margin-top: 10px;
     margin-left: 10px;
     width: 430px;
@@ -121,12 +121,12 @@ body{
     font-size: 14px;
     border: none;
 }
-#sign_up-button{
+#sign_in-button{
     padding-top: 13px;
     padding-bottom: 17px;
     text-align: center;
 }
-#sign_up-button button{
+#sign_in-button button{
     width: 465px;
     height: 60px;
     text-align: center;
@@ -138,7 +138,7 @@ body{
     transition-duration: 0.2s;
     cursor: pointer;
 }
-#sign_up-button button:active{
+#sign_in-button button:active{
     background:#470942b0;
 }
 #not-memeber-msg{
