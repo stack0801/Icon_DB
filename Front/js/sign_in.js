@@ -11,6 +11,9 @@ sign_up_btn.onclick = () => {
 	const id = id_ipt.value
 	const pw = pw_ipt.value
 
+	function empty(){
+		id_ipt.style.borderColor="red";
+	}
 	//axios 비동기 통신
 	axios({
 		method: 'post',
