@@ -18,13 +18,13 @@ sign_up_btn.onclick = () => {
 	const id = id_ipt.value
 	const pw = pw_ipt.value
 
-	if(id == "")
+	if (id == "")
 		id_ipt.parentNode.style.border = '1px solid red';
-	
-	if(pw == "")
+
+	if (pw == "")
 		pw_ipt.parentNode.style.border = '1px solid red';
 
-	if(id != "" && pw != "") {
+	if (id != "" && pw != "") {
 		//axios 비동기 통신
 		axios({
 			method: 'post',
@@ -34,12 +34,12 @@ sign_up_btn.onclick = () => {
 				pw: pw
 			}
 		})
-		.then((res) => {
-			alert(res.data)
+			.then((res) => {
+				alert(res.data)
 
-			if(res.data == 'success') {
-				window.location.href='/'
-			}
-		})
+				if (res.data == 'success') {
+					window.location.href = '/'
+				}
+			})
 	}
 }

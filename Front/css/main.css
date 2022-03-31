@@ -79,7 +79,23 @@ a {
     font-size: 14px;
     border: none;
 }
+ul{
+    padding: 0;
+}
 
+ul li{
+    background-color: aquamarine;
+    margin-bottom: 20px;
+    list-style: none;
+    text-align: center;
+    color:#fff;
+    font-size: 100px;
+    padding: 100px 0;
+}
+
+li:nth-child(2n){
+    background-color: skyblue;
+}
 #content {
     background-color: aliceblue;
 
