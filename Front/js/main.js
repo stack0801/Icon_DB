@@ -17,4 +17,4 @@ const add_items = () => {
     var addContent = document.createElement("div");
     addContent.classList.add("post")
     content.appendChild(addContent);
-} 
+}
