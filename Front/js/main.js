@@ -1,17 +1,17 @@
 window.onload = () => {
 
 }
+    /* 무한스크롤 */
+    (() => {
+        const $ul = document.querySelector('ul');
+        let $li;
 
-(() => {
-    const $ul = document.querySelector('ul');
-    let $li;
-
-    document.addEventListener('scroll',()=>{
-        if((window.innerHeight+window.scrollY) >= document.body.offsetHeight){
-            $li=$ul.appendChild(document.createElement('li'));
-        }
-    })
-})();
+        document.addEventListener('scroll', () => {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                $li = $ul.appendChild(document.createElement('li'));
+            }
+        })
+    })();
 
 const content = document.getElementById("content")
 
