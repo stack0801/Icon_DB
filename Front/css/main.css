@@ -6,6 +6,9 @@
 a {
     text-decoration : none; /*링크의 밑줄을 없애기*/
     color: white;
+
+    font-size: large;
+    font-weight: bold;
 }
 
 #header {

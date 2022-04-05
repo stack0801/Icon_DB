@@ -3,7 +3,8 @@ const app = express()                                   //express()를 app로 �
 const sql_pool = require('./mysql')                     //mysql.js 파일 로드
 const session_stream = require('./session')             //session.js 파일 로드
 
-app.use(express.static('Front/'))                       //Front 폴더를 클라이언트가 요청가능 (static)
+app.use(express.static('Icon/'))
+app.use(express.static('Front/'))                       //폴더를 클라이언트가 요청가능 (static)
 
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))           //post 로 받은 값에서 req.body를 읽을 수 있게함 //근데 솔직히 뭔뜻인지 모르겠음
@@ -58,6 +59,13 @@ app.post('/sign_in', (req, res) => {
     }
     else
         res.send("void")
+})
+
+app.post('/get_auth', (req, res) => {
+    if (req.session.sign) 
+        res.send("auth")
+    else
+        res.send("null")
 })
 
 app.listen(3000)
