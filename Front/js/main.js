@@ -13,26 +13,30 @@ window.onload = () => {
             sign_up_btn.innerText="Sign out"; 
         }
     })
+
+    
 }
 
-/* 무한스크롤 */
-(() => {
-    const $ul = document.querySelector('ul');
-    let $li; 
+// 무한스크롤 
 
-    document.addEventListener('scroll', () => {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            $li = $ul.appendChild(document.createElement('li'));
-        }
-    })
-})();
+document.addEventListener('scroll', () => {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        console.log("!!!")
+        add_items()
+        add_items()
+        add_items()
+        add_items()
+        add_items()
+        add_items()
+        add_items()
+        add_items()
+    }
+})
 
-const content = document.getElementById("content")
+const content = document.getElementById("content_box")
 
 const add_items = () => {
     var addContent = document.createElement("div");
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
-    addContent.classList.add("post")
+    addContent.classList.add("content")
     content.appendChild(addContent);
-    }
 }
