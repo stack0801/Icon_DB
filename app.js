@@ -68,7 +68,7 @@ app.post('/get_auth', (req, res) => {
         res.send("null")
 })
 
-app.post('/get_content', (req, res) => {
+app.post('/get_contents', (req, res) => {
 
     const id = req.body.id
     const count = req.body.count
@@ -77,7 +77,24 @@ app.post('/get_content', (req, res) => {
     sql_pool.query(sql, [id, count], (err, result) => {
         if (err)
             throw err
-        else          
+        else
+            res.send(result)
+    })
+})
+
+app.get('/content/:id', (req, res) => {
+    res.sendFile(__dirname + '/Front/html/content.html')
+})
+
+app.post('/get_content', (req, res) => {
+
+    const id = req.body.id
+
+    const sql = 'SELECT * FROM content where content_id = ?'
+    sql_pool.query(sql, [id], (err, result) => {
+        if (err)
+            throw err
+        else
             res.send(result)
     })
 })

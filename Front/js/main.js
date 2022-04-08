@@ -35,17 +35,17 @@ const add_items = (count) => {
 
     axios({
         method: 'post',
-        url: '/get_content',
+        url: '/get_contents',
         data: {
-            id: scroll_id,
+            id : scroll_id,
             count : count
         }
     })
     .then((res) => {
         for(let o of res.data) {
 
-            var content = document.createElement('div')
-            content.setAttribute("id", o.content_id)
+            var content = document.createElement('a')
+            content.setAttribute("href", `/content/${o.content_id}`)
             content.setAttribute("class", "content")
 
             var img = document.createElement('img')
