@@ -68,4 +68,18 @@ app.post('/get_auth', (req, res) => {
         res.send("null")
 })
 
+app.post('/get_content', (req, res) => {
+
+    const id = req.body.id
+    const count = req.body.count
+
+    const sql = 'SELECT * FROM content order by content_id desc limit ?, ?'
+    sql_pool.query(sql, [id, count], (err, result) => {
+        if (err)
+            throw err
+        else          
+            res.send(result)
+    })
+})
+
 app.listen(3000)
