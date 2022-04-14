@@ -59,9 +59,4 @@ const add_items = (count) => {
         scrollable = true
         scroll_id += count
     })
-
-
-
-
-    
 }
