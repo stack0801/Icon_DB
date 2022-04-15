@@ -105,19 +105,17 @@ var fs = require('fs')
 var ejs = require('ejs')
 var bodyParser = require('body-parser');
 
-app.use(bodyParser.urlencoded({ extended: false }))
-
-app.get('/sign_up', (req, res) => {
-    res.sendFile(__dirname + 'boardtest_insert.html')
+app.get('/boardtest', (req, res) => {
+    res.sendFile(__dirname + '/Front/html/boardtest.html')
 })
 
-app.post('/boardtest_insert', (req, res) => {
+app.post('/boardtest', (req, res) => {
 
     const id = req.body.id
     const message = req.body.message
 
     const sql = 'insert into content(user_id,message) values (?,?)'
-    sql_pool.query(sql, [id, message], (err, result) => {
+    sql_pool.query(sql, ["Soosung", message], (err, result) => {
         if (err)
             throw err
         else
