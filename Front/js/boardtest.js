@@ -5,7 +5,8 @@ window.onload = () => {
 const board_in = document.getElementById("board_in")
 
 board_in.onclick = () => {
-    const message = document.getElementById("message")
+    const messageElement = document.getElementById("message")
+    const message = messageElement.value
 
     axios({
         method: 'post',
@@ -17,7 +18,5 @@ board_in.onclick = () => {
         .then((res) => {
             alert(res.data)
             window.location.href = '/'
-
         })
 }
-
