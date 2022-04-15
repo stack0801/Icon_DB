@@ -107,7 +107,7 @@ app.post('/boardtest', (req, res) => {
     const id = req.session.sign
     const message = req.body.message
 
-    const sql = 'insert into content(user_id,message) values (?,?)'
+    const sql = 'insert into content(user_id, message) values (?,?)'
     sql_pool.query(sql, [id, message], (err, result) => {
         if (err)
             throw err
