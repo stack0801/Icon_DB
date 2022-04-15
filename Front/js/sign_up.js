@@ -18,7 +18,6 @@ pw_ipt.addEventListener('keydown', function (e) {
 		nickname_ipt.click();
 })
 
-
 id_ipt.onclick = () => {
 	id_ipt.parentNode.style.border = '1px solid #dadada';
 }

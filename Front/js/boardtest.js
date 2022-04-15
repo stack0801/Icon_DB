@@ -1,20 +1,23 @@
 window.onload = () => {
+
+}
+
+const board_in = document.getElementById("board_in")
+
+board_in.onclick = () => {
     const message = document.getElementById("message")
 
     axios({
         method: 'post',
         url: '/boardtest',
         data: {
-            id: "Soosung",
-            message: message,
+            message: message
         }
     })
-    .then((res) => {
-        alert(res.data)
+        .then((res) => {
+            alert(res.data)
+            window.location.href = '/'
 
-        if (res.data == 'success') {
-            window.location.href = '/sign_in'
-        }
-    })
-
+        })
 }
+

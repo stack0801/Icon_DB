@@ -9,7 +9,6 @@ app.use(express.static('Front/'))                       //폴더를 클라이언
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))           //post 로 받은 값에서 req.body를 읽을 수 있게함 //근데 솔직히 뭔뜻인지 모르겠음
 app.use(session_stream) 
-var router = express.Router();                                //session 사용
 
 app.get('/', (req, res) => {                            // '/'주소로 요청받았을때
     res.sendFile(__dirname + '/Front/html/main.html')   // __dirname + '/Front/html/main.html' 주소의 파일을 넘겨줌
@@ -51,7 +50,7 @@ app.post('/sign_in', (req, res) => {
             if (err)
                 throw err
             if (result.length > 0) {
-                req.session.sign = true
+                req.session.sign = id
                 res.send("success")
             }
             else          
@@ -100,26 +99,20 @@ app.post('/get_content', (req, res) => {
     })
 })
 
-// 게시물 삽입 테스트 
-var fs = require('fs')
-var ejs = require('ejs')
-var bodyParser = require('body-parser');
-
 app.get('/boardtest', (req, res) => {
     res.sendFile(__dirname + '/Front/html/boardtest.html')
 })
 
 app.post('/boardtest', (req, res) => {
-
-    const id = req.body.id
+    const id = req.session.sign
     const message = req.body.message
 
     const sql = 'insert into content(user_id,message) values (?,?)'
-    sql_pool.query(sql, ["Soosung", message], (err, result) => {
+    sql_pool.query(sql, [id, message], (err, result) => {
         if (err)
             throw err
         else
-            res.send(result)
+            res.send("success")
     })
 })
 
