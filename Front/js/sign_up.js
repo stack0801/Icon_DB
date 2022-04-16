@@ -19,13 +19,13 @@ pw_ipt.addEventListener('keydown', function (e) {
 })
 
 id_ipt.onclick = () => {
-	id_ipt.parentNode.style.border = '1px solid #dadada';
+	id_ipt.parentNode.style.border = '2px solid #9ed1d9';
 }
 pw_ipt.onclick = () => {
-	pw_ipt.parentNode.style.border = '1px solid #dadada';
+	pw_ipt.parentNode.style.border = '2px solid #9ed1d9';
 }
 nickname_ipt.onclick = () => {
-	nickname_ipt.parentNode.style.border = '1px solid #dadada';
+	nickname_ipt.parentNode.style.border = '2px solid #9ed1d9';
 }
 
 sign_up_btn.onclick = () => {
@@ -34,15 +34,15 @@ sign_up_btn.onclick = () => {
 	const nickname = nickname_ipt.value
 
 	if (id == "") {
-		id_ipt.parentNode.style.border = '3px solid red';
+		id_ipt.parentNode.style.border = '2px solid #f5a282';
 		id_ipt.placeholder = '아이디를 입력하세요';
 	}
 	if (pw == "") {
-		pw_ipt.parentNode.style.border = '3px solid red';
+		pw_ipt.parentNode.style.border = '2px solid #f5a282';
 		pw_ipt.placeholder = '비밀번호를 입력하세요';
 	}
 	if (nickname == "") {
-		nickname_ipt.parentNode.style.border = '3px solid red';
+		nickname_ipt.parentNode.style.border = '2px solid #f5a282';
 		nickname_ipt.placeholder = '닉네임을 입력하세요';
 	}
 

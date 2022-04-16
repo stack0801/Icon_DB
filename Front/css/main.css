@@ -12,7 +12,7 @@ a {
 }
 
 #header {
-    background: #042b52;
+    background: #9ed1d9;
     color: white;
 
     position: fixed;
@@ -45,10 +45,10 @@ a {
 #search_box {
     background: white;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 20px;
 
-    width: 450px;
-    height: 40px;
+    width: 500px;
+    height: 60px;
 
     display: grid;
     grid-template-columns: 400px 50px;
@@ -59,18 +59,35 @@ a {
 
 #search_box input{
     font-size: 14px;
+    border-radius: 25px;
     border: none;
 }
 
 #search_box button{
     font-size: 14px;
     border: none;
+    cursor: pointer;
+    border-radius: 20px;
 }
+#navbar_search_box {
+    background: white;
+    padding: 5px;
+    border-radius: 20px;
 
+    width: 450px;
+    height: 40px;
+
+    display: grid;
+    grid-template-columns: 400px 50px;
+    font-size: 14px;
+    border: none;
+
+    position:fixed;
+}
 #search_box {
     background: white;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 20px;
 
     width: 450px;
     height: 40px;
