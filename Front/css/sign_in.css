@@ -107,7 +107,7 @@ body{
 .sign_in-input-wrap{
     width: 465px;
     height: 60px;
-    border: solid 2px #dee2e6;
+    border: solid 2px gray;
     background: #f7ecdc;
     border-radius: 5px;
     align-items: center;
