@@ -1,3 +1,4 @@
+const { response } = require('express')
 const express = require('express')                      //express 모듈 사용
 const app = express()                                   //express()를 app로 정의
 const sql_pool = require('./mysql')                     //mysql.js 파일 로드
@@ -100,7 +101,11 @@ app.post('/get_content', (req, res) => {
 })
 
 app.get('/boardtest', (req, res) => {
-    res.sendFile(__dirname + '/Front/html/boardtest.html')
+    const id = req.session.sign
+    if(id == null)
+        res.sendFile(__dirname + '/Front/html/sign_in.html')
+    else
+        res.sendFile(__dirname + '/Front/html/boardtest.html')
 })
 
 app.post('/boardtest', (req, res) => {
