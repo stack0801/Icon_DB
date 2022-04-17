@@ -1,18 +1,15 @@
 window.onload = () => {
 
     const sign_in_btn = document.getElementById("sign_in_btn")
-    const sign_up_btn = document.getElementById("sign_up_btn")
 
     axios({
         method: 'post',
         url: '/get_auth'
     })
-        .then((res) => {
-            if (res.data == "auth") {
-                sign_in_btn.style.display = 'none';
-                sign_up_btn.innerText = "Sign out";
-            }
-        })
+    .then((res) => {
+        if (res.data != "null")
+            sign_in_btn.innerText = "Sign out";
+    })
 }
 
 //무한스크롤
@@ -21,9 +18,7 @@ let scrollable = true       //데이터를 받기전에 서버에 포스트 요�
 
 document.addEventListener('scroll', () => {
     if (((window.innerHeight + window.scrollY) >= document.body.offsetHeight) && scrollable) {
-        
         scrollable = false
-
         add_items(4)
     }
 })
@@ -40,22 +35,22 @@ const add_items = (count) => {
             count: count
         }
     })
-        .then((res) => {
-            for (let o of res.data) {
+    .then((res) => {
+        for (let o of res.data) {
 
-                var content = document.createElement('a')
-                content.setAttribute("href", `/content/${o.content_id}`)
-                content.setAttribute("class", "content")
+            var content = document.createElement('a')
+            content.setAttribute("href", `/content/${o.content_id}`)
+            content.setAttribute("class", "content")
 
-                var img = document.createElement('img')
-                img.setAttribute("src", `/${o.content_id}.svg`)
+            var img = document.createElement('img')
+            img.setAttribute("src", `/${o.content_id}.svg`)
 
-                content.appendChild(img)
+            content.appendChild(img)
 
-                content_box.appendChild(content)
-            }
+            content_box.appendChild(content)
+        }
 
-            scrollable = true
-            scroll_id += count
-        })
+        scrollable = true
+        scroll_id += count
+    })
 }
