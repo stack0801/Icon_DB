@@ -50,10 +50,9 @@ const add_items = (count) => {
             content_box.appendChild(content)
         }
 
-<<<<<<< HEAD
-            scrollable = true
-            scroll_id += count
-        })
+        scrollable = true
+        scroll_id += count
+    })
 }
 
 
@@ -91,9 +90,4 @@ function hasScrolled(){
         }
     }
     lastScrollTop = nowScrollTop;
-=======
-        scrollable = true
-        scroll_id += count
-    })
->>>>>>> 87ed0240ea4ba3893fda17a792ed2fd0ac409d46
 }
