@@ -14,7 +14,8 @@ a {
 #header {
     background: #9ed1d9;
     color: white;
-
+    top:0;
+    left:0;
     position: fixed;
     height: 60px;
     width: 100%;
@@ -22,6 +23,14 @@ a {
     display: grid;
     place-items: center;
     grid-template-columns: 250px 1fr 100px 100px 100px 100px;
+    transition:0.2s;
+}
+#header.hide{
+    top:-60px;
+}
+#header.show{
+    top:0;
+    background: #9ed1d9;
 }
 #top {
     height: 100vh;
@@ -55,8 +64,8 @@ a {
 
     font-size: 14px;
     border: none;
-}
 
+}
 #search_box input{
     font-size: 14px;
     border-radius: 25px;
