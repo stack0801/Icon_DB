@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <!--자바스크립트-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/js/main.js" defer></script>
     <link rel="stylesheet" href="path/css/font-awesome.min.css">
 </head>
@@ -18,7 +19,10 @@
         <div>
             <a href="/"><img src="/test_icon.svg"></a>
         </div>
-        <input id="search_box" placeholder="Search" name="id" type="text"></input>
+        <div id="search_box">
+            <input id="search_ipt" placeholder="keyword" type="text"></input>
+            <button>search</button>
+        </div>
         <h3>menu1</h3>
         <h3>menu2</h3>
         <a href="/boardtest" id = "board_insert_btn">
@@ -39,8 +43,8 @@
         </div>
     </div>
     <div id="content_box">
-
     </div>
+    <nav class="search_box">ssss</nav>
 </body>
 
 </html>
