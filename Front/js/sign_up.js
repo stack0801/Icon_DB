@@ -57,12 +57,12 @@ sign_up_btn.onclick = () => {
 				nickname: nickname
 			}
 		})
-			.then((res) => {
-				alert(res.data)
+		.then((res) => {
+			alert(res.data)
 
-				if (res.data == 'success') {
-					window.location.href = '/sign_in'
-				}
-			})
+			if (res.data == 'success') {
+				window.location.href = '/sign_in'
+			}
+		})
 	}
 }

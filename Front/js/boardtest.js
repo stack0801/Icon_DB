@@ -17,6 +17,8 @@ board_in.onclick = () => {
     })
         .then((res) => {
             alert(res.data)
-            window.location.href = '/'
+
+			if (res.data == 'success') 
+				window.location.href = '/'
         })
 }

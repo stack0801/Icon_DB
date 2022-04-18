@@ -3,10 +3,10 @@ const app = express()                                   //express()를 app로 �
 const sql_pool = require('./mysql')                     //mysql.js 파일 로드
 const session_stream = require('./session')             //session.js 파일 로드
 
-app.use(express.static('Icon/'))
-app.use(express.static('Front/'))                       //폴더를 클라이언트가 요청가능 (static)
+app.use(express.static('Icon/'))                        //폴더를 클라이언트가 요청가능 (static)
+app.use(express.static('Front/'))
 
-app.use(express.json())
+app.use(express.json())                                 //json 방식으로 통신
 app.use(express.urlencoded({extended:false}))           //post 로 받은 값에서 req.body를 읽을 수 있게함 //근데 솔직히 뭔뜻인지 모르겠음
 app.use(session_stream) 
 
@@ -63,13 +63,12 @@ app.post('/sign_in', (req, res) => {
 
 app.post('/get_auth', (req, res) => {
     if (req.session.sign) 
-        res.send("auth")
+        res.send(req.session.sign)
     else
         res.send("null")
 })
 
 app.post('/get_contents', (req, res) => {
-
     const id = req.body.id
     const count = req.body.count
 
@@ -87,7 +86,6 @@ app.get('/content/:id', (req, res) => {
 })
 
 app.post('/get_content', (req, res) => {
-
     const id = req.body.id
 
     const sql = 'SELECT * FROM content where content_id = ?'
@@ -100,7 +98,10 @@ app.post('/get_content', (req, res) => {
 })
 
 app.get('/boardtest', (req, res) => {
-    res.sendFile(__dirname + '/Front/html/boardtest.html')
+    if(req.session.sign)
+        res.sendFile(__dirname + '/Front/html/sign_in.html')
+    else
+        res.sendFile(__dirname + '/Front/html/boardtest.html')
 })
 
 app.post('/boardtest', (req, res) => {

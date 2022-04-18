@@ -51,12 +51,12 @@ sign_up_btn.onclick = () => {
 				pw: pw
 			}
 		})
-			.then((res) => {
-				alert(res.data)
+		.then((res) => {
+			alert(res.data)
 
-				if (res.data == 'success') {
-					window.location.href = '/'
-				}
-			})
+			if (res.data == 'success') {
+				window.location.href = '/'
+			}
+		})
 	}
 }
