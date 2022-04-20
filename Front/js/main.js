@@ -55,9 +55,15 @@ const add_items = (count) => {
                 content_box.appendChild(content)
             }
 
+<<<<<<< HEAD
             scrollable = true
             scroll_id += count
         })
+=======
+        scrollable = true
+        scroll_id += count
+    })
+>>>>>>> dcb77c05e14a3275406b902ed4b715d4e49a0fa1
 }
 
 

@@ -14,12 +14,13 @@
     <div class="container">
         <h2>게시물</h2>
         <p>.</p>
-        <form action="/boardtest" method="POST">
-            <div class="form-group">
-                <label for="message">삽입내용:</label>
-                <input type="text" class="form-control" id="message" name="message">
-            <button type="submit" id = "board_in" class="btn btn-success">삽입하기</button>
-        </form>
+        <div class="form-group">
+
+        <input type="file" name="upload_icon" id="upload_icon"/>
+
+        <label for="message">삽입내용:</label>
+        <input type="text" id="message" name="message">
+        <button id = "board_in">삽입하기</button>
     </div>
 </body>
 </html>

@@ -1,10 +1,11 @@
 const express = require('express')                      //express 모듈 사용
 const app = express()                                   //express()를 app로 정의
+var path = require('path')
 const sql_pool = require('./mysql')                     //mysql.js 파일 로드
 const session_stream = require('./session')             //session.js 파일 로드
 
-app.use(express.static('Icon/'))                        //폴더를 클라이언트가 요청가능 (static)
-app.use(express.static('Front/'))
+app.use(express.static('Icon/'))
+app.use(express.static('Front/'))                       //폴더를 클라이언트가 요청가능 (static)
 
 app.use(express.json())                                 //json 방식으로 통신
 app.use(express.urlencoded({extended:false}))           //post 로 받은 값에서 req.body를 읽을 수 있게함 //근데 솔직히 뭔뜻인지 모르겠음
@@ -99,12 +100,32 @@ app.post('/get_content', (req, res) => {
 
 app.get('/boardtest', (req, res) => {
     if(req.session.sign)
-        res.sendFile(__dirname + '/Front/html/sign_in.html')
-    else
         res.sendFile(__dirname + '/Front/html/boardtest.html')
+    else
+        res.redirect('/')
 })
 
-app.post('/boardtest', (req, res) => {
+//multer 모듈 사용
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'Icon/');
+    },
+    filename: (req, file, cb) => {
+        const sql = 'select * from content order by content_id desc limit 1'
+        sql_pool.query(sql, (err, results) => {
+            if (err)
+                console.log(err);
+            else
+                cb(null, "" + (results[0].content_id + 1) + path.extname(file.originalname));    //강제 jpg 형변환 추후 고려
+        })
+    }
+})
+const upload = multer({storage: storage })
+//
+
+app.post('/boardtest', upload.single('img'), (req, res) => {
+
     const id = req.session.sign
     const message = req.body.message
 
@@ -112,9 +133,9 @@ app.post('/boardtest', (req, res) => {
     sql_pool.query(sql, [id, message], (err, result) => {
         if (err)
             throw err
-        else
-            res.send("success")
     })
+
+    res.send("success")
 })
 
 app.listen(3000)
