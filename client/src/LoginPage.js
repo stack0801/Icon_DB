@@ -17,24 +17,15 @@ export default function LoginPage() {
         event.preventDefault();
     }
 
-const onClick=(event)=>{    
-
-}
-
-    const pressEnter=(event)=>{
-        if(event.key==='Enter'){
-            onClick();
-        }
-    }
     return (
         <>
             <div className="page">
                 <div className="main_icon"><a href="/">Home</a></div>
 
                 <div className="container">
-                    <div><input name="id" type="text" placeholder="아이디" value={id} onChange={onIdHandler} class="loginregister__input" /></div>
-                    <div><input pressEnter={pressEnter} name="password" type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler} class="loginregister__input" /></div>
-                    <div><button type="submit" onSubmit={onSubmit} class="loginregister__button">로그인</button></div>
+                    <div><input name="id" type="text" placeholder="아이디" value={id} onChange={onIdHandler} className="loginregister__input" /></div>
+                    <div><input name="password" type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler} className="loginregister__input" /></div>
+                    <div><button type="submit" onSubmit={onSubmit} className="loginregister__button">로그인</button></div>
                     <div className="link_msg">
                         <span>Not a Member?</span><a href="/sign_up">Register</a>
                     </div>
