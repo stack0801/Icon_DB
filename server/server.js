@@ -67,6 +67,7 @@ app.post('/sign_in', (req, res) => {
 })
 
 app.post('/get_auth', (req, res) => {
+    console.log(req.session.sign)
     if (req.session.sign) 
         res.send(req.session.sign)
     else
