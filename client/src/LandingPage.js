@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"
 import { Link } from "react-router-dom";
-import './Landing.css'
+import './LandingPage.css'
 import { FaSearch } from 'react-icons/fa';
 import { FaArrowUp } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
@@ -58,8 +58,7 @@ export default function Main() {
         });
     };
 
-    
-    return (
+{/* return (
         <>
             {scrollPosition < 900 ? (
                 <div className="navbar">
@@ -86,7 +85,7 @@ export default function Main() {
                         ) : (
                             <li><Link to="/sign_up"><a onClick={onClick}>회원가입</a></Link></li>
                         )}
-                        </ul>*/}
+                        </ul>
                 </div>
             ) : (
                 <div className="navbar">
@@ -106,7 +105,7 @@ export default function Main() {
                         ) : (
                             <li><Link to="/sign_up"><a onClick={onClick}>회원가입</a></Link></li>
                         )}
-                        </ul>*/}
+                        </ul>
                     </div>
             )}
 
@@ -132,12 +131,15 @@ export default function Main() {
                 <button onClick={scrollTop}><FaArrowUp className="back_top" size="26" color="white" />
                 </button>
             )}
+    
         </>
+            )*/}
+
     //search_box 변수화
     const search_box = (
         <div id = "search_box">
             <input placeholder = "keyword" type = "text"></input>
-            <button><FaSearch size = "26" color = "white"/></button>
+            <button><FaSearch size = "26" color = "#9ed1d9"/></button>
         </div>
     )
 
@@ -148,7 +150,7 @@ export default function Main() {
             <Link to = "/"><div>menu</div></Link>:
             search_box}
             {sign === null ?
-            <Link to = "/sign_in"><div>sign in(null)</div></Link> :
+            <Link to = "/sign_in"><FaUser className="user_icon" size="26" color="white" /></Link> :
             <Link to = "/sign_up"><div>sign up</div></Link>}
         </div>
         <div id="top">

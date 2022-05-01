@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 import "./LoginRegister.css"
-
+import logo from './logo.svg'
 function RegisterPage() {
     const [name, setName] = useState("")
     const [id, setId] = useState("");
@@ -24,7 +25,7 @@ function RegisterPage() {
     return (
         <>
             <div className='page'>
-            <div className="main_icon"><a href="/">Home</a></div>
+            <Link to = "/"><img src = {logo} alt = "logo"/></Link>
 
                 <div className='container'>
                     <div><input name="name" type="text" placeholder="이름" value={name} onChange={onNameHandler} className="loginregister__input" /></div>
