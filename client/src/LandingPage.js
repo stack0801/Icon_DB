@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './Landing.css'
 import { FaSearch } from 'react-icons/fa';
 import { FaArrowUp } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 export default function Main() {
 
     //Button 1개로 두가지 기능
@@ -64,14 +65,15 @@ export default function Main() {
                             <a href="#!">menu3</a>
                         </li>
                     </ul>
-
-                    <ul className="navbar_icons">
+                    
+                    <a href="/sign_in"><FaUser className="user_icon" size="26" color="white" /></a>
+                    {/*<ul className="navbar_icons">
                         {sign ? (
                             <li><Link to="/sign_in"><a onClick={onClick}>로그인</a></Link></li>
                         ) : (
                             <li><Link to="/sign_up"><a onClick={onClick}>회원가입</a></Link></li>
                         )}
-                    </ul>
+                        </ul>*/}
                 </div>
             ) : (
                 <div className="navbar">
@@ -84,14 +86,15 @@ export default function Main() {
                         <button><FaSearch className="search_icon" size="26" color="white" /></button>
                     </div>
 
-                    <ul className="navbar_icons">
+                    <a href="/sign_in"><FaUser className="user_icon" size="26" color="white" /></a>
+                    {/*<ul className="navbar_icons">
                         {sign ? (
                             <li><Link to="/sign_in"><a onClick={onClick}>로그인</a></Link></li>
                         ) : (
                             <li><Link to="/sign_up"><a onClick={onClick}>회원가입</a></Link></li>
                         )}
-                    </ul>
-                </div>
+                        </ul>*/}
+                    </div>
             )}
 
             <div className="outer">
