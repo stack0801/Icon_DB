@@ -1,10 +1,15 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import './LandingPage.css'
 import { FaSearch } from 'react-icons/fa';
 import { FaArrowUp } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
+=======
+import { FaArrowUp, FaSearch, FaUser } from 'react-icons/fa';
+>>>>>>> 55d5659926b8e1c7d5fecc5c045a1b194d8c3ee3
 import axios from 'axios'
+import './LandingPage.css'
 import logo from './logo.svg'
 import top_image from "./watercolor.jpg"
 
@@ -58,6 +63,7 @@ export default function Main() {
         });
     };
 
+<<<<<<< HEAD
 {/* return (
         <>
             {scrollPosition < 900 ? (
@@ -135,6 +141,8 @@ export default function Main() {
         </>
             )*/}
 
+=======
+>>>>>>> 55d5659926b8e1c7d5fecc5c045a1b194d8c3ee3
     //search_box 변수화
     const search_box = (
         <div id = "search_box">
@@ -149,8 +157,13 @@ export default function Main() {
             {scrollPosition < 500 ? 
             <Link to = "/"><div>menu</div></Link>:
             search_box}
+            <FaUser className="user_icon" size="26" color="white" />
             {sign === null ?
+<<<<<<< HEAD
             <Link to = "/sign_in"><FaUser className="user_icon" size="26" color="white" /></Link> :
+=======
+            <Link to = "/sign_in"><div>sign in (null)</div></Link> :
+>>>>>>> 55d5659926b8e1c7d5fecc5c045a1b194d8c3ee3
             <Link to = "/sign_up"><div>sign up</div></Link>}
         </div>
         <div id="top">
