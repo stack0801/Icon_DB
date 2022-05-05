@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import './LandingPage.css';
 import { FaSearch } from 'react-icons/fa';
 import { FaArrowUp } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
-=======
 import { FaBars } from 'react-icons/fa';
->>>>>>> 55d5659926b8e1c7d5fecc5c045a1b194d8c3ee3
+import { FaTimes } from 'react-icons/fa';
 import axios from 'axios';
 import './LandingPage.css';
 import logo from './logo.svg';
@@ -56,6 +54,7 @@ export default function Main() {
         });
     });
 
+    
     //맨 위로 올라가게 함
     const scrollTop = () => {
         window.scrollTo({
@@ -65,9 +64,11 @@ export default function Main() {
     };
 
     //반응형 헤더
-    const [isToggled,setIsToggled]=useState(false);
+    const [HambergerBar,setHambergerBar]=useState(false);
 
-<<<<<<< HEAD
+    const showBar = () => setHambergerBar(!HambergerBar);
+
+
 {/* return (
         <>
             {scrollPosition < 900 ? (
@@ -144,8 +145,6 @@ export default function Main() {
     
         </>
             )*/}
-=======
->>>>>>> 55d5659926b8e1c7d5fecc5c045a1b194d8c3ee3
 
     //search_box 변수화
     const search_box = (
@@ -156,26 +155,30 @@ export default function Main() {
     )
 
     return (<>
-        <Header isToggled={isToggled}>
-            <div className="toggle"><FaBars size="26" color="white"/></div>
+        <Header>
+            <Link to="#" className="toggle"><FaBars size="26" color="white" onClick={showBar}/></Link>
             <Link to = "/" className="logo" onClick = {scrollTop}><img src = {logo} alt = "logo"/></Link>
             {scrollPosition < 500 ? 
-            
             <Link to = "/" className="menu_list"><div>menu</div></Link>:
             search_box}
             {sign === null ?
-<<<<<<< HEAD
             <Link to = "/sign_in"><FaUser className="user_icon" size="26" color="white" /></Link> :
-=======
             <Link to = "/sign_up"><div>sign up</div></Link>}
->>>>>>> 55d5659926b8e1c7d5fecc5c045a1b194d8c3ee3
         </Header>
         <div id="top">
+        
             <img id = "top_img" src = {top_image} alt = "top_img"/>
             <div></div>
             <h1>GET FREE ICONS</h1>
             {search_box}
         </div>
+        <nav className={HambergerBar ? 'nav-menu active' : 'nav-menu'}>
+            <ul className="menu-list-items" onClick={showBar}>
+                <li className="navbar-toggle">
+                    <FaTimes className="menu-bars" size="30" color="white"/>
+                </li>
+            </ul>
+        </nav>
         <div id = "content">
             <div className="test">1</div>
             <div className="test">2</div>
@@ -196,7 +199,7 @@ const Header=styled.div`
     font-size: 30px;
     display: grid;
     place-items: center;
-    grid-template-columns: 250px 1fr 200px;
+    grid-template-columns: 230px 1fr 200px;
 
     .toggle{
         display:none;
@@ -205,9 +208,15 @@ const Header=styled.div`
         .toggle{
             display:block;
         }
+
         .menu_list{
-            display:none;
+            display:${(props)=>(props.isToggled ? "flex" : "none")};
+            flex-direction:column;
+            width:100%;
+            background-color:black;
         }
+
+       
         #search_box{
             display:none;
         }
