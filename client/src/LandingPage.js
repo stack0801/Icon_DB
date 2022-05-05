@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 <<<<<<< HEAD
-import './LandingPage.css'
+import './LandingPage.css';
 import { FaSearch } from 'react-icons/fa';
 import { FaArrowUp } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
 =======
-import { FaArrowUp, FaSearch, FaUser } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 >>>>>>> 55d5659926b8e1c7d5fecc5c045a1b194d8c3ee3
-import axios from 'axios'
-import './LandingPage.css'
-import logo from './logo.svg'
-import top_image from "./watercolor.jpg"
+import axios from 'axios';
+import './LandingPage.css';
+import logo from './logo.svg';
+import top_image from "./watercolor.jpg";
 
 export default function Main() {
 
@@ -62,6 +63,9 @@ export default function Main() {
             behavior: 'smooth'
         });
     };
+
+    //반응형 헤더
+    const [isToggled,setIsToggled]=useState(false);
 
 <<<<<<< HEAD
 {/* return (
@@ -140,9 +144,9 @@ export default function Main() {
     
         </>
             )*/}
-
 =======
 >>>>>>> 55d5659926b8e1c7d5fecc5c045a1b194d8c3ee3
+
     //search_box 변수화
     const search_box = (
         <div id = "search_box">
@@ -152,20 +156,20 @@ export default function Main() {
     )
 
     return (<>
-        <div id = "navbar">
-            <Link to = "/" onClick = {scrollTop}><img src = {logo} alt = "logo"/></Link>
+        <Header isToggled={isToggled}>
+            <div className="toggle"><FaBars size="26" color="white"/></div>
+            <Link to = "/" className="logo" onClick = {scrollTop}><img src = {logo} alt = "logo"/></Link>
             {scrollPosition < 500 ? 
-            <Link to = "/"><div>menu</div></Link>:
+            
+            <Link to = "/" className="menu_list"><div>menu</div></Link>:
             search_box}
-            <FaUser className="user_icon" size="26" color="white" />
             {sign === null ?
 <<<<<<< HEAD
             <Link to = "/sign_in"><FaUser className="user_icon" size="26" color="white" /></Link> :
 =======
-            <Link to = "/sign_in"><div>sign in (null)</div></Link> :
->>>>>>> 55d5659926b8e1c7d5fecc5c045a1b194d8c3ee3
             <Link to = "/sign_up"><div>sign up</div></Link>}
-        </div>
+>>>>>>> 55d5659926b8e1c7d5fecc5c045a1b194d8c3ee3
+        </Header>
         <div id="top">
             <img id = "top_img" src = {top_image} alt = "top_img"/>
             <div></div>
@@ -180,6 +184,32 @@ export default function Main() {
             <div className="test">5</div>
         </div>
         {ShowBtn &&
-        <button id = "top_btn" onClick = {scrollTop}><FaArrowUp size="26" color="white" /></button>}
+        <button id = "top_btn" onClick = {scrollTop} behavior='smooth'><FaArrowUp size="26" color="white" /></button>}
     </>)
 }
+
+const Header=styled.div`
+    background:#9ed1d9;
+    position: fixed;
+    width:100%;
+    height:60px;
+    font-size: 30px;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 250px 1fr 200px;
+
+    .toggle{
+        display:none;
+    }
+    @media screen and (max-width:840px){
+        .toggle{
+            display:block;
+        }
+        .menu_list{
+            display:none;
+        }
+        #search_box{
+            display:none;
+        }
+    }
+`;
