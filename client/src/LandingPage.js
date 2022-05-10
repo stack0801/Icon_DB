@@ -54,7 +54,7 @@ export default function Main() {
     const scrollTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior:'smooth'
         });
     };
 
@@ -103,7 +103,7 @@ export default function Main() {
             <div className="test">5</div>
         </div>
         {ShowBtn &&
-        <button id = "top_btn" onClick = {scrollTop} behavior='smooth'><FaArrowUp size="26" color="white" /></button>}
+        <button id = "top_btn" onClick = {scrollTop}><FaArrowUp size="26" color="white" /></button>}
     </>)
 }
 

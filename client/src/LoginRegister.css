@@ -14,7 +14,7 @@ body{
     padding-bottom: 30px;
 }
 .container{
-    background: #f7ecdc;
+    background: white;
     width: 540px;
     height: 50%;
     display: flex;
@@ -37,14 +37,13 @@ body{
     height: 60px;
     display: flex;
     font-size: 16px;
-    background: #f7ecdc;
     border-radius: 5px;
     border: solid 2px gray;
 }
 .loginregister__button {
     margin-top: 13px;
     background: #f5a282;
-    color: #f7ecdc;
+    color: white;
     font-size: 16px;
     width: 465px;
     border-radius: 40px;
