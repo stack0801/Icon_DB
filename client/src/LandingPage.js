@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import './LandingPage.css';
@@ -10,6 +10,38 @@ import top_image from "./watercolor.jpg";
 
 export default function Main() {
 
+    //무한 스크롤
+    const [loading, setLoading] = useState(false);
+    const [icons, setIcons] = useState([]);
+    const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        setLoading(true);
+        fetch(`https://picsum.photos/v2/list?page=${page}&limit=20`)
+        //picsum 랜덤 사진 사이트를 통해 무한스크롤이 되는지 테스트
+            .then((res) => res.json())
+            .then((data) => {
+                setIcons((prevIcons) => [...prevIcons, ...data]);
+                setLoading(false);
+            });
+    }, [page]);
+
+    //Instersection Observer 사용
+    const observer = useRef();
+    const lastElRef = useCallback(
+        (event) => {
+            if (loading) return;
+            if (observer.current) observer.current.disconnect();
+            observer.current = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    setPage((prevPage) => prevPage + 1);
+                }
+            });
+            if (event) observer.current.observe(event);
+        },
+        [loading]
+    );
+
     //Button 1개로 두가지 기능
     const [sign, setSign] = useState(null)
 
@@ -18,12 +50,12 @@ export default function Main() {
             method: 'post',
             url: '/get_auth'
         })
-        .then((res) => {
-            if (res.data !== null) {
-                setSign(res.data)
-                console.log(res.data)
-            }
-        })
+            .then((res) => {
+                if (res.data !== null) {
+                    setSign(res.data)
+                    console.log(res.data)
+                }
+            })
     }, []);
 
     //Hide Header
@@ -54,36 +86,38 @@ export default function Main() {
     const scrollTop = () => {
         window.scrollTo({
             top: 0,
-            behavior:'smooth'
+            behavior: 'smooth'
         });
     };
 
     //반응형 헤더
-    const [HambergerBar,setHambergerBar]=useState(false);
+    const [HambergerBar, setHambergerBar] = useState(false);
 
     const showBar = () => setHambergerBar(!HambergerBar);
 
     //search_box 변수화
     const search_box = (
-        <div id = "search_box">
-            <input placeholder = "keyword" type = "text"></input>
-            <button><FaSearch size = "26" color = "#9ed1d9"/></button>
+        <div id="search_box">
+            <input placeholder="keyword" type="text"></input>
+            <button><FaSearch size="26" color="#9ed1d9" /></button>
         </div>
     )
 
+
+
     return (<>
         <Header>
-            <Link to="#" className="toggle"><FaBars size="26" color="white" onClick={showBar}/></Link>
-            <Link to = "/" className="logo" onClick = {scrollTop}><img src = {logo} alt = "logo"/></Link>
-            {scrollPosition < 500 ? 
-            <Link to = "/" className="menu_list"><div>menu</div></Link>:
-            search_box}
+            <Link to="#" className="toggle"><FaBars size="26" color="white" onClick={showBar} /></Link>
+            <Link to="/" className="logo" onClick={scrollTop}><img src={logo} alt="logo" /></Link>
+            {scrollPosition < 500 ?
+                <Link to="/" className="menu_list"><div>menu</div></Link> :
+                search_box}
             {sign === null ?
-            <Link to = "/sign_in"><FaUser className="user_icon" size="26" color="white" /></Link> :
-            <Link to = "/sign_up"><div>sign up</div></Link>}
+                <Link to="/sign_in"><FaUser className="user_icon" size="26" color="white" /></Link> :
+                <Link to="/sign_up"><div>sign up</div></Link>}
         </Header>
         <div id="top">
-            <img id = "top_img" src = {top_image} alt = "top_img"/>
+            <img id="top_img" src={top_image} alt="top_img" />
             <div></div>
             <h1>GET FREE ICONS</h1>
             {search_box}
@@ -91,23 +125,27 @@ export default function Main() {
         <nav className={HambergerBar ? 'nav-menu active' : 'nav-menu'}>
             <ul className="menu-list-items" onClick={showBar}>
                 <li className="navbar-toggle">
-                    <FaTimes className="menu-bars" size="30" color="white"/>
+                    <FaTimes className="menu-bars" size="30" color="white" />
                 </li>
             </ul>
         </nav>
-        <div id = "content">
-            <div className="test">1</div>
-            <div className="test">2</div>
-            <div className="test">3</div>
-            <div className="test">4</div>
-            <div className="test">5</div>
+        <div className="image-grid">
+            {icons.map((lists,idx) => (
+                <div key={idx}>
+                    {idx + 1 === icons.length ? (
+                        <div className="icon-list" ref={lastElRef}/>
+                    ) : (
+                        <div className="icon-list"/>
+                    )}
+                </div>
+            ))}
+            {loading && <p>Loading...</p>}
         </div>
         {ShowBtn &&
-        <button id = "top_btn" onClick = {scrollTop}><FaArrowUp size="26" color="white" /></button>}
+            <button id="top_btn" onClick={scrollTop}><FaArrowUp size="26" color="white" /></button>}
     </>)
 }
-
-const Header=styled.div`
+const Header = styled.div`
     background:#9ed1d9;
     position: fixed;
     width:100%;
@@ -126,13 +164,12 @@ const Header=styled.div`
         }
 
         .menu_list{
-            display:${(props)=>(props.isToggled ? "flex" : "none")};
+            display:${(props) => (props.isToggled ? "flex" : "none")};
             flex-direction:column;
             width:100%;
             background-color:black;
         }
 
-       
         #search_box{
             display:none;
         }
