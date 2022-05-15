@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import './LandingPage.css';
 import { FaSearch, FaArrowUp, FaUser, FaBars, FaTimes } from 'react-icons/fa';
 import axios from 'axios';
 import './LandingPage.css';
@@ -10,92 +9,36 @@ import top_image from "./watercolor.jpg";
 
 export default function Main() {
 
-    //무한 스크롤
-    const [loading, setLoading] = useState(false);
-    const [icons, setIcons] = useState([]);
-    const [page, setPage] = useState(1);
-
-    useEffect(() => {
-        setLoading(true);
-        fetch(`https://picsum.photos/v2/list?page=${page}&limit=20`)
-        //picsum 랜덤 사진 사이트를 통해 무한스크롤이 되는지 테스트
-            .then((res) => res.json())
-            .then((data) => {
-                setIcons((prevIcons) => [...prevIcons, ...data]);
-                setLoading(false);
-            });
-    }, [page]);
-
-    //Instersection Observer 사용
-    const observer = useRef();
-    const lastElRef = useCallback(
-        (event) => {
-            if (loading) return;
-            if (observer.current) observer.current.disconnect();
-            observer.current = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    setPage((prevPage) => prevPage + 1);
-                }
-            });
-            if (event) observer.current.observe(event);
-        },
-        [loading]
-    );
-
-    //Button 1개로 두가지 기능
+    // 유저 로그인 여부
     const [sign, setSign] = useState(null)
-
+    // 접속이후 axios 통신을 이용하여 확인함
     useEffect(() => {
-        axios({
-            method: 'post',
-            url: '/get_auth'
+        axios.post('/get_auth')
+        .then((res) => {
+            setSign(res.data)
+            //console.log(res.data)
         })
-            .then((res) => {
-                if (res.data !== null) {
-                    setSign(res.data)
-                    console.log(res.data)
-                }
-            })
     }, []);
 
-    //Hide Header
+    // 스크롤 위치
     const [scrollPosition, setScrollPosition] = useState(0);
-
+    // 스크롤의 위치를 저장
     const updateScroll = () => {
         setScrollPosition(window.scrollY || document.documentElement.scrollTop);
     }
-
     useEffect(() => {
         window.addEventListener('scroll', updateScroll);
     });
 
-    //Top Button
-    const [ShowBtn, setShowBtn] = useState(false);
-
-    //스크롤이 600이상 내려가면 화면에 보임
-    useEffect(() => {
-        window.addEventListener("scroll", () => {
-            if (window.pageYOffset > 600)
-                setShowBtn(true);
-            else
-                setShowBtn(false);
-        });
-    });
-
-    //맨 위로 올라가게 함
+    // 맨 위로 올라가게 함
     const scrollTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: 'smooth'  // 이거 왜 안먹음?
         });
     };
 
-    //반응형 헤더
-    const [HambergerBar, setHambergerBar] = useState(false);
-
-    const showBar = () => setHambergerBar(!HambergerBar);
-
-    //search_box 변수화
+    // search_box 컴포넌트
     const search_box = (
         <div id="search_box">
             <input placeholder="keyword" type="text"></input>
@@ -103,7 +46,47 @@ export default function Main() {
         </div>
     )
 
+    // 반응형 헤더
+    const [HambergerBar, setHambergerBar] = useState(false);
+    const showBar = () => setHambergerBar(!HambergerBar);
 
+    //무한 스크롤
+    const [loading, setLoading] = useState(false);
+    const [icons, setIcons] = useState([]);
+    const [page, setPage] = useState(1);
+    const loading_size = 4;
+
+    useEffect(() => {
+        setLoading(true);
+
+        axios.post('/get_contents', {
+            id : page,
+            count: loading_size
+        })
+        .then((res) => {
+            console.log(res.data)
+            setIcons((prevIcons) => [...prevIcons, ...res.data]);
+            setLoading(false);
+        });
+
+    }, [page]);
+
+    //Instersection Observer 사용
+    const observer = useRef();
+    const lastElRef = useCallback(
+        (event) => {
+            if (loading) return;
+            if (observer.current)
+                observer.current.disconnect();
+            observer.current = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting)
+                    setPage((prevPage) => prevPage + loading_size);
+            });
+            if (event)
+                observer.current.observe(event);
+        },
+        [loading]
+    );
 
     return (<>
         <Header>
@@ -122,27 +105,29 @@ export default function Main() {
             <h1>GET FREE ICONS</h1>
             {search_box}
         </div>
-        <nav className={HambergerBar ? 'nav-menu active' : 'nav-menu'}>
-            <ul className="menu-list-items" onClick={showBar}>
+        <nav className = {HambergerBar ? 'nav-menu active' : 'nav-menu'}>
+            <ul className = "menu-list-items" onClick={showBar}>
                 <li className="navbar-toggle">
                     <FaTimes className="menu-bars" size="30" color="white" />
                 </li>
             </ul>
         </nav>
-        <div className="image-grid">
-            {icons.map((lists,idx) => (
-                <div key={idx}>
-                    {idx + 1 === icons.length ? (
-                        <div className="icon-list" ref={lastElRef}/>
-                    ) : (
-                        <div className="icon-list"/>
-                    )}
+        <div className = "image-grid">
+            {icons.map((list, idx) => (
+                <div key = {idx}>
+                    {idx + 1 === icons.length ?
+                        <div className = "icon-list" ref = { lastElRef }>
+                            <img src = {"/" + list.content_id + ".svg"} alt = "no_img"/>
+                        </div>:
+                        <div className = "icon-list">
+                            <img src = {"/" + list.content_id + ".svg"} alt = "no_img"/>
+                        </div>}
                 </div>
             ))}
             {loading && <p>Loading...</p>}
         </div>
-        {ShowBtn &&
-            <button id="top_btn" onClick={scrollTop}><FaArrowUp size="26" color="white" /></button>}
+        {scrollPosition > 500 &&
+            <button id="top_btn" onClick = { scrollTop }><FaArrowUp size="26" color="white" /></button>}
     </>)
 }
 const Header = styled.div`

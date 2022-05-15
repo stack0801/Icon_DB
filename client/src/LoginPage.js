@@ -31,7 +31,7 @@ export default function LoginPage() {
 		})
 		.then((res) => {
 			console.log(res.data)
-			if (res.data == 'success') {
+			if (res.data === 'success') {
 				window.location.href = '/'
 			}
 		})
