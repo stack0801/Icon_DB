@@ -23,10 +23,9 @@ function RegisterPage() {
     }
 
     return (
-        <>
+        <div className='all'>
             <div className='page'>
             <Link to = "/"><img src = {logo} alt = "logo"/></Link>
-
                 <div className='container'>
                     <div><input name="name" type="text" placeholder="이름" value={name} onChange={onNameHandler} className="loginregister__input" /></div>
                     <div><input name="id" type="text" placeholder="아이디" value={id} onChange={onIdHandler} className="loginregister__input" /></div>
@@ -36,9 +35,8 @@ function RegisterPage() {
                         <span>Already have an account?</span><Link to="/sign_in">Log in</Link>
                     </div>
                 </div>
-
             </div>
-        </>
+        </div>
     );
 }
 export default RegisterPage;
