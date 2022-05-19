@@ -37,7 +37,7 @@ export default function LoginPage() {
 		})
     }
 
-    return (<>
+    return (<div className="all">
             <div className="page">
                 <Link to = "/"><img src = {logo} alt = "logo"/></Link>
                 <div className="container">
@@ -45,9 +45,9 @@ export default function LoginPage() {
                     <div><input name="password" type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler} className="loginregister__input" /></div>
                     <div><button type="submit" onClick={onSubmit} className="loginregister__button">로그인</button></div>
                     <div className="link_msg">
-                        <span>Not a Member?</span><a href="/sign_up">Register</a>
+                        <span>Not a Member?</span><Link to="/sign_up">Register</Link>
                     </div>
                 </div>
             </div>
-        </>)
+        </div>)
 }

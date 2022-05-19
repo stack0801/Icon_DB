@@ -1,23 +1,37 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
+import Rodal from "rodal";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, renderMatches } from "react-router-dom";
 import { FaSearch, FaArrowUp, FaUser, FaBars, FaTimes } from 'react-icons/fa';
+import { MdOutlineSaveAlt } from "react-icons/md";
+import { FcLike,FcLikePlaceholder } from "react-icons/fc";
 import axios from 'axios';
 import './LandingPage.css';
+import './Modal.css';
 import logo from './logo.svg';
 import top_image from "./watercolor.jpg";
+import "rodal/lib/rodal.css";
 
 export default function Main() {
+    
+    //좋아요 기능
+    const [like,setLike]=useState(false);
+    const LikeButton=()=>{setLike(!like)};
+
+    //Modal
+    const [visible, setVisible] = useState(false);
+    const modalOpen = () => { setVisible(true) }
+    const modalClose = () => { setVisible(false) }
 
     // 유저 로그인 여부
     const [sign, setSign] = useState(null)
     // 접속이후 axios 통신을 이용하여 확인함
     useEffect(() => {
         axios.post('/get_auth')
-        .then((res) => {
-            setSign(res.data)
-            //console.log(res.data)
-        })
+            .then((res) => {
+                setSign(res.data)
+                //console.log(res.data)
+            })
     }, []);
 
     // 스크롤 위치
@@ -42,7 +56,7 @@ export default function Main() {
     const search_box = (
         <div id="search_box">
             <input placeholder="keyword" type="text"></input>
-            <button><FaSearch size="26" color="#9ed1d9" /></button>
+            <Link to='/searching'><FaSearch size="26" color="#9ed1d9" /></Link>
         </div>
     )
 
@@ -60,14 +74,14 @@ export default function Main() {
         setLoading(true);
 
         axios.post('/get_contents', {
-            id : page,
+            id: page,
             count: loading_size
         })
-        .then((res) => {
-            console.log(res.data)
-            setIcons((prevIcons) => [...prevIcons, ...res.data]);
-            setLoading(false);
-        });
+            .then((res) => {
+                console.log(res.data)
+                setIcons((prevIcons) => [...prevIcons, ...res.data]);
+                setLoading(false);
+            });
 
     }, [page]);
 
@@ -88,6 +102,9 @@ export default function Main() {
         [loading]
     );
 
+
+
+
     return (<>
         <Header>
             <Link to="#" className="toggle"><FaBars size="26" color="white" onClick={showBar} /></Link>
@@ -102,61 +119,80 @@ export default function Main() {
         <div id="top">
             <img id="top_img" src={top_image} alt="top_img" />
             <div></div>
-            <h1>GET FREE ICONS</h1>
+            <h1 onClick={modalOpen}>GET FREE ICONS</h1>
+               <Rodal  visible={visible} onClose={modalClose} animation='fade' width='600' height='330'>
+                   <div className="modal-container" >
+                        <div className="modal-img">아이콘 </div>
+                        <div className="modal-title">제목</div>
+                        <div className="modal-detail">
+                            {like === false ?
+                            <FcLikePlaceholder className="icon-nonlike" size="35"onClick={LikeButton}/>:
+                            <FcLike className="icon-like" size="35"onClick={LikeButton}/>
+                            }
+                            <MdOutlineSaveAlt className="icon-save animated" />
+                        </div>
+                        <button className="close-btn" onClick={modalClose}>close</button>
+                        </div>
+                </Rodal>
             {search_box}
         </div>
-        <nav className = {HambergerBar ? 'nav-menu active' : 'nav-menu'}>
-            <ul className = "menu-list-items" onClick={showBar}>
+                
+        <nav className={HambergerBar ? 'nav-menu active' : 'nav-menu'}>
+            <ul className="menu-list-items" onClick={showBar}>
                 <li className="navbar-toggle">
                     <FaTimes className="menu-bars" size="30" color="white" />
                 </li>
             </ul>
         </nav>
-        <div className = "image-grid">
+        <div className="image-grid">
             {icons.map((list, idx) => (
-                <div key = {idx}>
+                <div key={idx}>
                     {idx + 1 === icons.length ?
-                        <div className = "icon-list" ref = { lastElRef }>
-                            <img src = {"/" + list.content_id + ".svg"} alt = "no_img"/>
-                        </div>:
-                        <div className = "icon-list">
-                            <img src = {"/" + list.content_id + ".svg"} alt = "no_img"/>
+                        <div className="icon-list" ref={lastElRef}>
+                            <img src={"/" + list.content_id + ".svg"} alt="no_img" onClick={this.handleLikeModal} />
+                        </div> :
+                        <div className="icon-list">
+                            <img src={"/" + list.content_id + ".svg"} alt="no_img" onClick={this.handleLikeModal} />
                         </div>}
                 </div>
             ))}
             {loading && <p>Loading...</p>}
         </div>
-        {scrollPosition > 500 &&
-            <button id="top_btn" onClick = { scrollTop }><FaArrowUp size="26" color="white" /></button>}
+        {
+            scrollPosition > 500 &&
+            <button id="top_btn" onClick={scrollTop}><FaArrowUp size="26" color="white" /></button>
+        }
     </>)
 }
 const Header = styled.div`
-    background:#9ed1d9;
-    position: fixed;
-    width:100%;
-    height:60px;
-    font-size: 30px;
-    display: grid;
-    place-items: center;
-    grid-template-columns: 230px 1fr 200px;
+        background:#9ed1d9;
+        position: fixed;
+        width:100%;
+        height:60px;
+        font-size: 30px;
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(3,1fr);
 
-    .toggle{
-        display:none;
+        .toggle{
+            display:none;
     }
-    @media screen and (max-width:840px){
+        @media screen and (max-width:840px){
         .toggle{
             display:block;
         }
 
         .menu_list{
             display:${(props) => (props.isToggled ? "flex" : "none")};
-            flex-direction:column;
-            width:100%;
-            background-color:black;
+        flex-direction:column;
+        width:100%;
+        background-color:black;
         }
 
         #search_box{
             display:none;
         }
     }
-`;
+        `;
+const ModalComponenet = styled.div`
+        `;

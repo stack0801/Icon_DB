@@ -33,7 +33,7 @@ function RegisterPage() {
                     <div><input name="password" type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler} className="loginregister__input" /></div>
                     <div><button type="submit" onSubmit={onSubmit} className="loginregister__button">계정 생성하기</button></div>
                     <div className="link_msg">
-                        <span>Already have an account?</span><a href="/sign_in">Log in</a>
+                        <span>Already have an account?</span><Link to="/sign_in">Log in</Link>
                     </div>
                 </div>
 
