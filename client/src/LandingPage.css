@@ -47,6 +47,10 @@ a {
     justify-items: center;
     border: solid 2px #9ed1d9;
 }
+.rodal-container{
+  width: 600;
+  height: 330;
+}
 .signin-box{
     color: #9ed1d9;
     width:70px;

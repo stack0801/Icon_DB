@@ -5,7 +5,6 @@ import { Link, renderMatches } from 'react-router-dom';
 import { FaSearch, FaArrowUp, FaUser, FaBars, FaTimes } from 'react-icons/fa';
 import { MdOutlineSaveAlt } from 'react-icons/md';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
-import { HambergerArrow } from 'react-animated-burgers';
 import axios from 'axios';
 import './LandingPage.css';
 import './Modal.css';
@@ -127,14 +126,17 @@ export default function Main() {
             <img id="top_img" src={top_image} alt="top_img" />
             <div></div>
             <h1 onClick={modalOpen}>GET FREE ICONS</h1>
-            <Rodal visible={visible} onClose={modalClose} animation='fade' width='600' height='330'>
+            <Rodal customStyles={{
+            height: "330px",
+            width: "600px",
+          }}visible={visible} onClose={modalClose} animation='fade'>
                 <div className="modal-container" >
                     <div className="modal-img">아이콘 </div>
                     <div className="modal-title">제목</div>
                     <div className="modal-detail">
                         {like === false ?
-                            <FcLikePlaceholder className="icon-nonlike animated1" size="35" onClick={LikeButton} /> :
-                            <FcLike className="icon-like animated1" size="35" onClick={LikeButton} />}
+                            <FcLikePlaceholder className="icon-nonlike animated1" size="35" onClick={LikeButton}/> :
+                            <FcLike className="icon-like animated1" size="35" onClick={LikeButton}/>}
                         <MdOutlineSaveAlt className="icon-save animated1" />
                     </div>
                     <button className="close-btn" onClick={modalClose}>close</button>
@@ -153,10 +155,10 @@ export default function Main() {
                 <div key={idx}>
                     {idx + 1 === icons.length ?
                         <div className="icon-list" ref={lastElRef}>
-                            <img src={"/" + list.content_id + ".svg"} alt="no_img" onClick={this.handleLikeModal} />
+                            <img src={"/" + list.content_id + ".svg"} alt="no_img" />
                         </div> :
                         <div className="icon-list">
-                            <img src={"/" + list.content_id + ".svg"} alt="no_img" onClick={this.handleLikeModal} />
+                            <img src={"/" + list.content_id + ".svg"} alt="no_img" />
                         </div>}
                 </div>
             ))}
