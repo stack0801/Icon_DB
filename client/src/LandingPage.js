@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Rodal from 'rodal';
 import styled from 'styled-components';
-import { Link, renderMatches } from 'react-router-dom';
-import { FaSearch, FaArrowUp, FaUser, FaBars, FaTimes } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { FaSearch, FaArrowUp, FaBars, FaTimes } from 'react-icons/fa';
 import { MdOutlineSaveAlt } from 'react-icons/md';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import axios from 'axios';
@@ -114,29 +114,26 @@ export default function Main() {
                 }
             </Link>
             <Link to="/" className="logo" onClick={scrollTop}><img src={logo} alt="logo" /></Link>
-            {scrollPosition < 500 ? 
-            <Link to="/" className='menu_list'><div>menu</div></Link> : 
-            search_box}
+            {scrollPosition < 500 ?
+                <Link to="/" className='menu_list'><div>menu</div></Link> :
+                search_box}
             {sign === null ?
                 <Link to="/sign_in" className='signin-box'>Sign in</Link> :
                 <Link to="/sign_up"><div>sign up</div></Link>}
-            
+
         </Header>
         <div id="top">
             <img id="top_img" src={top_image} alt="top_img" />
             <div></div>
             <h1 onClick={modalOpen}>GET FREE ICONS</h1>
-            <Rodal customStyles={{
-            height: "330px",
-            width: "600px",
-          }}visible={visible} onClose={modalClose} animation='fade'>
+            <Rodal customStyles={{ height: "330px", width: "600px", }} visible={visible} onClose={modalClose} animation='fade'>
                 <div className="modal-container" >
                     <div className="modal-img">아이콘 </div>
                     <div className="modal-title">제목</div>
                     <div className="modal-detail">
                         {like === false ?
-                            <FcLikePlaceholder className="icon-nonlike animated1" size="35" onClick={LikeButton}/> :
-                            <FcLike className="icon-like animated1" size="35" onClick={LikeButton}/>}
+                            <FcLikePlaceholder className="icon-nonlike animated1" size="35" onClick={LikeButton} /> :
+                            <FcLike className="icon-like animated1" size="35" onClick={LikeButton} />}
                         <MdOutlineSaveAlt className="icon-save animated1" />
                     </div>
                     <button className="close-btn" onClick={modalClose}>close</button>
