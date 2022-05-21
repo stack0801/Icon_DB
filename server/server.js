@@ -111,34 +111,78 @@ app.get('/boardtest', (req, res) => {
 })
 
 //multer 모듈 사용
+const AWS = require('aws-sdk');
 const multer = require('multer');
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'icons/');
-    },
-    filename: (req, file, cb) => {
-        const sql = 'select * from content order by content_id desc limit 1'
-        sql_pool.query(sql, (err, results) => {
-            if (err)
-                console.log(err);
-            else
-                cb(null, "" + (results[0].content_id + 1) + path.extname(file.originalname));    //강제 jpg 형변환 추후 고려
-        })
-    }
+const multerS3 = require('multer-s3-transform');
+
+AWS.config.update({
+    region : 'us-east-1',
+    accessKeyId : process.env.AWS_ACCESSKEY,
+    secretAccessKey : process.env.AWS_SECRETACCESSKEY
 })
-const upload = multer({storage: storage })
-//
+
+var s3 = new AWS.S3()
+ 
+var upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: 'webservicegraduationproject',
+    acl: 'public-read-write',
+    key: function(req, file, cb) {
+         cb(null, Math.floor(Math.random() * 1000).toString() + Date.now() + '.' + file.originalname.split('.').pop());
+    },
+    limits: { fileSize: 1000 * 1000 * 10 }
+  })
+})
+
+// const s3 = new AWS.S3({
+//     accessKeyID : process.env.AWS_ACCESSKEY,
+//     secretAccessKey : process.env.AWS_SECRETACCESSKEY,
+//     region : 'us-east-1'
+// });
+
+// const allowedExtensions = ['.png', '.jpg', '.svg']
+
+// const imageUploader = multer({
+//     storage: multerS3({
+//         s3: s3,
+//         bucket: 'webservicegraduationproject',
+//         contentType: multerS3.AUTO_CONTENT_TYPE,
+//         key: (req, file, callback) => {
+//             callback(null, `${file.originalname}`)
+//         },
+//         acl: 'public-read-write'
+//     }),
+// })
+
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, 'icons/');
+//     },
+//     filename: (req, file, cb) => {
+//         const sql = 'select * from content order by content_id desc limit 1'
+//         sql_pool.query(sql, (err, results) => {
+//             if (err)
+//                 console.log(err);
+//             else
+//                 cb(null, "" + (results[0].content_id + 1) + path.extname(file.originalname));    //강제 jpg 형변환 추후 고려
+//         })
+//     }
+// })
+// const upload = multer({storage: storage })
+// //
 
 app.post('/boardtest', upload.single('img'), (req, res) => {
+    console.log("env, ", process.env.AWS_CONFIG)
 
-    const id = req.session.sign
-    const message = req.body.message
+    // const id = req.session.sign
+    // const message = req.body.message
 
-    const sql = 'insert into content(user_id, message) values (?,?)'
-    sql_pool.query(sql, [id, message], (err, result) => {
-        if (err)
-            throw err
-    })
+    // const sql = 'insert into content(user_id, message) values (?,?)'
+    // sql_pool.query(sql, [id, message], (err, result) => {
+    //     if (err)
+    //         throw err
+    // })
 
     res.send("success")
 })
