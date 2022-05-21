@@ -1,14 +1,7 @@
 <svg width="220" height="50" xmlns="http://www.w3.org/2000/svg">
- <defs>
-  <linearGradient y2="0" x2="1" y1="0" x1="0" id="svg_7">
-   <stop offset="0" stop-color="#00bf00"/>
-   <stop stop-opacity="0.99609" offset="1" stop-color="#7442ff"/>
-  </linearGradient>
- </defs>
  <g>
   <title>Layer 1</title>
-  <text xml:space="preserve" text-anchor="start" font-family="'Alumni Sans'" font-size="40" id="svg_1" y="40" x="45" stroke-width="0" stroke="#000" fill="#FFFFFF">ICON DB</text>
+  <text xml:space="preserve" text-anchor="start" font-family="'Skranji'" font-size="40" id="svg_1" y="40" x="45" stroke-width="0" stroke="#000" fill="#9ed1d9">Aiconote</text>
   <ellipse transform="rotate(40 22.75 25.75)" ry="18.5" rx="18.5" id="svg_2" cy="25.75" cx="22.75" stroke-width="0" stroke="#000" fill="url(#svg_7)"/>
-  <path stroke="#000" id="svg_4" d="m25.54167,34.75c-6.9291,0 -12.54167,-5.61257 -12.54167,-12.54167c0,-6.9291 5.61257,-12.54167 12.54167,-12.54167c6.9291,0 12.54167,5.61257 12.54167,12.54167c0,6.9291 -5.61257,12.54167 -12.54167,12.54167z" opacity="undefined" stroke-width="0" fill="#ffffff"/>
  </g>
 </svg>

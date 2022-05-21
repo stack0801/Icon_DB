@@ -1,22 +1,22 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import Rodal from "rodal";
-import styled from "styled-components";
-import { Link, renderMatches } from "react-router-dom";
-import { FaSearch, FaArrowUp, FaUser, FaBars, FaTimes } from 'react-icons/fa';
-import { MdOutlineSaveAlt } from "react-icons/md";
-import { FcLike,FcLikePlaceholder } from "react-icons/fc";
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import Rodal from 'rodal';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { FaSearch, FaArrowUp, FaBars, FaTimes } from 'react-icons/fa';
+import { MdOutlineSaveAlt } from 'react-icons/md';
+import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import axios from 'axios';
 import './LandingPage.css';
 import './Modal.css';
+import 'rodal/lib/rodal.css';
 import logo from './logo.svg';
-import top_image from "./watercolor.jpg";
-import "rodal/lib/rodal.css";
+import top_image from './watercolor.jpg';
 
 export default function Main() {
-    
+
     //좋아요 기능
-    const [like,setLike]=useState(false);
-    const LikeButton=()=>{setLike(!like)};
+    const [like, setLike] = useState(false);
+    const LikeButton = () => { setLike(!like) };
 
     //Modal
     const [visible, setVisible] = useState(false);
@@ -107,41 +107,44 @@ export default function Main() {
 
     return (<>
         <Header>
-            <Link to="#" className="toggle"><FaBars size="26" color="white" onClick={showBar} /></Link>
+            <Link to="#" className="toggle">
+                {HambergerBar === false ?
+                    <FaBars className='menubar-open animated' size="26" color="#9ed1d9" onClick={showBar} /> :
+                    <FaTimes className='menubar-open animated' size="28" color="#9ed1d9" onClick={showBar} />
+                }
+            </Link>
             <Link to="/" className="logo" onClick={scrollTop}><img src={logo} alt="logo" /></Link>
             {scrollPosition < 500 ?
-                <Link to="/" className="menu_list"><div>menu</div></Link> :
+                <Link to="/" className='menu_list'><div>menu</div></Link> :
                 search_box}
             {sign === null ?
-                <Link to="/sign_in"><FaUser className="user_icon" size="26" color="white" /></Link> :
+                <Link to="/sign_in" className='signin-box'>Sign in</Link> :
                 <Link to="/sign_up"><div>sign up</div></Link>}
+
         </Header>
         <div id="top">
             <img id="top_img" src={top_image} alt="top_img" />
             <div></div>
             <h1 onClick={modalOpen}>GET FREE ICONS</h1>
-               <Rodal  visible={visible} onClose={modalClose} animation='fade' width='600' height='330'>
-                   <div className="modal-container" >
-                        <div className="modal-img">아이콘 </div>
-                        <div className="modal-title">제목</div>
-                        <div className="modal-detail">
-                            {like === false ?
-                            <FcLikePlaceholder className="icon-nonlike" size="35"onClick={LikeButton}/>:
-                            <FcLike className="icon-like" size="35"onClick={LikeButton}/>
-                            }
-                            <MdOutlineSaveAlt className="icon-save animated" />
-                        </div>
-                        <button className="close-btn" onClick={modalClose}>close</button>
-                        </div>
-                </Rodal>
+            <Rodal customStyles={{ height: "330px", width: "600px", }} visible={visible} onClose={modalClose} animation='fade'>
+                <div className="modal-container" >
+                    <div className="modal-img">아이콘 </div>
+                    <div className="modal-title">제목</div>
+                    <div className="modal-detail">
+                        {like === false ?
+                            <FcLikePlaceholder className="icon-nonlike animated1" size="35" onClick={LikeButton} /> :
+                            <FcLike className="icon-like animated1" size="35" onClick={LikeButton} />}
+                        <MdOutlineSaveAlt className="icon-save animated1" />
+                    </div>
+                    <button className="close-btn" onClick={modalClose}>close</button>
+                </div>
+            </Rodal>
             {search_box}
         </div>
-                
+
         <nav className={HambergerBar ? 'nav-menu active' : 'nav-menu'}>
-            <ul className="menu-list-items" onClick={showBar}>
-                <li className="navbar-toggle">
-                    <FaTimes className="menu-bars" size="30" color="white" />
-                </li>
+            <ul className="menu-list-items">
+
             </ul>
         </nav>
         <div className="image-grid">
@@ -149,10 +152,10 @@ export default function Main() {
                 <div key={idx}>
                     {idx + 1 === icons.length ?
                         <div className="icon-list" ref={lastElRef}>
-                            <img src={"/" + list.content_id + ".svg"} alt="no_img" onClick={this.handleLikeModal} />
+                            <img src={"/" + list.content_id + ".svg"} alt="no_img" />
                         </div> :
                         <div className="icon-list">
-                            <img src={"/" + list.content_id + ".svg"} alt="no_img" onClick={this.handleLikeModal} />
+                            <img src={"/" + list.content_id + ".svg"} alt="no_img" />
                         </div>}
                 </div>
             ))}
@@ -165,34 +168,32 @@ export default function Main() {
     </>)
 }
 const Header = styled.div`
-        background:#9ed1d9;
-        position: fixed;
-        width:100%;
-        height:60px;
-        font-size: 30px;
-        display: grid;
-        place-items: center;
-        grid-template-columns: repeat(3,1fr);
-
-        .toggle{
-            display:none;
+    background:white;
+    position: fixed;
+    width:100%;
+    height:60px;
+    font-size: 30px;
+    display: grid;   
+    place-items:center;
+    grid-template-columns: repeat(3,1fr);
+    
+    .toggle{
+        display:none;
     }
-        @media screen and (max-width:840px){
-        .toggle{
-            display:block;
-        }
-
-        .menu_list{
-            display:${(props) => (props.isToggled ? "flex" : "none")};
+    .menu_list{
+        display:flex;
         flex-direction:column;
         width:100%;
-        background-color:black;
-        }
-
-        #search_box{
-            display:none;
-        }
+        color: #9ed1d9;
     }
-        `;
-const ModalComponenet = styled.div`
-        `;
+    @media screen and (max-width:840px){
+    .toggle{
+        display:block;
+    }
+    .menu_list{
+        display:none;
+    }
+    #search_box{
+        display:none;
+    }
+}`;

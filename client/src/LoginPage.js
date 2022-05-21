@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import './LoginRegister.css'
 import logo from './logo.svg'
@@ -22,24 +22,25 @@ export default function LoginPage() {
 
     const onSubmit = (event) => {
         axios({
-			method: 'post',
-			url: '/sign_in',
-			data: {
-				id: id,
-				pw: password
-			}
-		})
-		.then((res) => {
-			console.log(res.data)
-			if (res.data === 'success') {
-				window.location.href = '/'
-			}
-		})
+            method: 'post',
+            url: '/sign_in',
+            data: {
+                id: id,
+                pw: password
+            }
+        })
+            .then((res) => {
+                console.log(res.data)
+                if (res.data === 'success') {
+                    window.location.href = '/'
+                }
+            })
     }
 
-    return (<div className="all">
+    return (
+        <div className="all">
             <div className="page">
-                <Link to = "/"><img src = {logo} alt = "logo"/></Link>
+                <Link to="/"><img src={logo} alt="logo" /></Link>
                 <div className="container">
                     <div><input name="id" type="text" placeholder="아이디" value={id} onChange={onIdHandler} className="loginregister__input" /></div>
                     <div><input name="password" type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler} className="loginregister__input" /></div>
