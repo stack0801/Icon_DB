@@ -5,7 +5,6 @@ import { FaSearch, FaArrowUp, FaUser, FaBars, FaTimes } from 'react-icons/fa';
 import axios from 'axios';
 import './LandingPage.css';
 import logo from './logo.svg';
-import top_image from "./watercolor.jpg";
 
 export default function Main() {
 
@@ -93,14 +92,15 @@ export default function Main() {
             <Link to="#" className="toggle"><FaBars size="26" color="white" onClick={showBar} /></Link>
             <Link to="/" className="logo" onClick={scrollTop}><img src={logo} alt="logo" /></Link>
             {scrollPosition < 500 ?
-                <Link to="/" className="menu_list"><div>menu</div></Link> :
+                <Link to="/" className="menu_list">menu</Link> :
                 search_box}
             {sign === null ?
-                <Link to="/sign_in"><FaUser className="user_icon" size="26" color="white" /></Link> :
+                <Link to="/sign_in"><FaUser className="user_icon" size="26" color="#9ed1d9" /></Link> :
                 <Link to="/sign_up"><div>sign up</div></Link>}
         </Header>
         <div id="top">
             {search_box}
+            <div></div>
             <div>Icons</div>
         </div>
         <nav className={HambergerBar ? 'nav-menu active' : 'nav-menu'}>
@@ -129,7 +129,7 @@ export default function Main() {
     </>)
 }
 const Header = styled.div`
-    background:#9ed1d9;
+    background:white;
     position: fixed;
     width:100%;
     height:60px;

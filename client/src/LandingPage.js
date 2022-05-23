@@ -115,11 +115,15 @@ export default function Main() {
             </Link>
             <Link to="/" className="logo" onClick={scrollTop}><img src={logo} alt="logo" /></Link>
             {scrollPosition < 500 ?
-                <Link to="/" className='menu_list'><div>menu</div></Link> :
+                <Link to="/" className='menu_list'>menu</Link> :
                 search_box}
             {sign === null ?
                 <Link to="/sign_in" className='signin-box'>Sign in</Link> :
-                <Link to="/sign_up"><div>sign up</div></Link>}
+                <ul className='posting-logout-list'>
+                 <li><Link to="/posting" className='signin-box'>Posting</Link></li>
+                 <li><Link to="/sign_up" className='signin-box'>Logout</Link></li>   
+                </ul>
+                }
 
         </Header>
         <div id="top">
@@ -175,7 +179,7 @@ const Header = styled.div`
     font-size: 30px;
     display: grid;   
     place-items:center;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: 29% 50% 21%;
     
     .toggle{
         display:none;

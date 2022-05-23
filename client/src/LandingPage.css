@@ -6,6 +6,13 @@ a {
     text-decoration: none;
     color: white;
 }
+ul{
+  list-style: none;
+}
+li{
+  float: left;
+  margin-left: 20px;
+}
 #top {
     height: 100vh;
     display: grid;
@@ -69,8 +76,12 @@ a {
     border: solid 2px #7facb3;
     background: #7facb3;
 }
+.menu_list{
+  color:#9ed1d9;
+}
 .menu-list-items {
     list-style: none;
+    color: #9ed1d9;
 }
 
 .menu-bars {
