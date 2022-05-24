@@ -175,14 +175,14 @@ var upload = multer({
 app.post('/boardtest', upload.single('img'), (req, res) => {
     console.log("env, ", process.env.AWS_CONFIG)
 
-    // const id = req.session.sign
-    // const message = req.body.message
+    const id = req.session.sign
+    const message = req.body.message
 
-    // const sql = 'insert into content(user_id, message) values (?,?)'
-    // sql_pool.query(sql, [id, message], (err, result) => {
-    //     if (err)
-    //         throw err
-    // })
+    const sql = 'insert into content(user_id, message) values (?,?)'
+    sql_pool.query(sql, [id, message], (err, result) => {
+        if (err)
+            throw err
+    })
 
     res.send("success")
 })

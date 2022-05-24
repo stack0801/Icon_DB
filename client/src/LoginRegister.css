@@ -1,7 +1,5 @@
-.all{
-    background: #f3f4f6;
-}
 .page{
+    background: #f3f4f6;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -13,7 +11,7 @@
     font-size: 30px;
     padding-bottom: 30px;
 }
-.container{
+.login_container{
     border:solid 2px #ececee;
     background: white;
     width: 540px;

@@ -6,6 +6,7 @@
     border-radius: 5px;
     width: 100px;
     height : 40px;
+    cursor: pointer;
 }
 .upload-image-wrapper{
     border: 3px solid #bbbbbb;

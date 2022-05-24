@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import './LandingPage.css';
-import './uploading.css';
+import './Posting.css';
 import logo from './logo.svg';
 
 export default function Main() {
@@ -44,28 +44,17 @@ export default function Main() {
 
         <div className='container'>
             <ImageUploader
-                multiple
+                single
                 value={images}
                 onChange={onChange}
                 maxNumber={maxNumber}
                 dataURLKey="data_url"
                 onError={onError}
             >
-                {({
-                    imageList,
-                    onImageUpload,
-                    onImageUpdate,
-                    onImageRemove,
-                    isDragging,
-                    dragProps,
-                }) => (
-                    // write your building UI
+                {({ imageList, onImageUpload, onImageUpdate, onImageRemove, isDragging, dragProps, }) => (
                     <div className="upload-image-wrapper">
-                        <button className='upload-btn'
-                            style={isDragging ? { color: 'red' } : undefined}
-                            onClick={onImageUpload}
-                            {...dragProps}
-                        > <AiOutlinePlusCircle/>Add
+                        <button className='upload-btn' style={isDragging ? { color: 'red' } : undefined} onClick={onImageUpload} {...dragProps}>
+                            <AiOutlinePlusCircle />Add
                         </button>
                         {imageList.map((image, index) => (
                             <div key={index} className="image-item">
@@ -76,6 +65,7 @@ export default function Main() {
                                 </ul>
                             </div>
                         ))}
+                        <button className='upload-btn'>올리기</button>
                     </div>
                 )}
             </ImageUploader>
