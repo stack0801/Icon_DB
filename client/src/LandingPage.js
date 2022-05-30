@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Rodal from 'rodal';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { FaSearch, FaArrowUp, FaBars, FaTimes } from 'react-icons/fa';
+import { FaSearch, FaArrowUp, FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import { MdOutlineSaveAlt } from 'react-icons/md';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import axios from 'axios';
@@ -114,6 +114,7 @@ export default function Main() {
                 }
             </Link>
             <Link to="/" className="logo" onClick={scrollTop}><img src={logo} alt="logo" /></Link>
+           
             {scrollPosition < 500 ?
                 <Link to="/" className='menu_list'>menu</Link> :
                 search_box}
@@ -124,7 +125,7 @@ export default function Main() {
                  <li><Link to="/sign_up" className='signin-box'>Logout</Link></li>   
                 </ul>
                 }
-
+                 <Link to ="/posting"><FaUser className='header-user' size="26" color="#9ed1d9"/></Link>
         </Header>
         <div id="top">
             <img id="top_img" src={top_image} alt="top_img" />
@@ -190,14 +191,26 @@ const Header = styled.div`
         width:100%;
         color: #9ed1d9;
     }
+    .header-user{
+        display:none;
+    }
     @media screen and (max-width:840px){
     .toggle{
         display:block;
+    }
+    .signin-box{
+        display:none;
     }
     .menu_list{
         display:none;
     }
     #search_box{
         display:none;
+    }
+    .posting-logout-list{
+        display:none;
+    }
+    .header-user{
+        display:block;
     }
 }`;

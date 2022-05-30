@@ -53,9 +53,7 @@ export default function Main() {
             >
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove, isDragging, dragProps, }) => (
                     <div className="upload-image-wrapper">
-                        <button className='upload-btn' style={isDragging ? { color: 'red' } : undefined} onClick={onImageUpload} {...dragProps}>
-                            <AiOutlinePlusCircle />Add
-                        </button>
+                       
                         {imageList.map((image, index) => (
                             <div key={index} className="image-item">
                                 <img src={image['data_url']} alt="" width="300" />
@@ -64,7 +62,10 @@ export default function Main() {
                                     <li><button className='upload-btn' onClick={() => onImageRemove(index)}>삭제</button></li>
                                 </ul>
                             </div>
-                        ))}
+                        ))} 
+                        <button className='upload-btn' style={isDragging ? { color: 'red' } : undefined} onClick={onImageUpload} {...dragProps}>
+                        <AiOutlinePlusCircle />Add
+                        </button>
                         <button className='upload-btn'>올리기</button>
                     </div>
                 )}
@@ -106,3 +107,7 @@ const Header = styled.div`
         display:none;
     }
 }`;
+
+const Posting = styled.div`
+
+`;

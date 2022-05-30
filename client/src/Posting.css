@@ -7,6 +7,7 @@
     width: 100px;
     height : 40px;
     cursor: pointer;
+    margin: 14px;
 }
 .upload-image-wrapper{
     border: 3px solid #bbbbbb;
@@ -21,7 +22,6 @@
     justify-content: center;
 }
 .image-item{
-    
     display: grid;
     grid-template-columns: repeat(autofill, minmax(50%,auto));
 }
