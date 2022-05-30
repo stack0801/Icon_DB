@@ -13,7 +13,7 @@ export default function RegisterPage() {
     const onIdHandler = (e) => { setId(e.currentTarget.value) }
     const onPasswordHandler = (e) => { setPassword(e.currentTarget.value) }
 
-    //const onSubmit = (e) => { e.preventDefault() }
+    const onSubmit = (e) => { e.preventDefault() }
 
     const checkValid=()=>{
         id.length && password.length >=1
@@ -21,6 +21,7 @@ export default function RegisterPage() {
         : setActive(false)
     }
 
+    /*
     const onSubmit = () => {
         axios({
             method: 'post',
@@ -38,6 +39,7 @@ export default function RegisterPage() {
                 }
             })
     }
+    */
 
     return (
         <div className='page'>
@@ -46,7 +48,7 @@ export default function RegisterPage() {
                 <input className="loginregister__input" type="text" placeholder="이름" value={name} onChange={onNameHandler} onKeyUp={checkValid} />
                 <input className="loginregister__input" type="text" placeholder="아이디" value={id} onChange={onIdHandler} onKeyUp={checkValid}/>
                 <input className="loginregister__input" type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler} onKeyUp={checkValid}/>
-                <button className={active ? "loginregister__button" : "loginregister_unactive"} type="submit" onClick={onSubmit} >계정 생성하기</button>
+                <button className={active ? "loginregister__button" : "loginregister_unactive"} type="submit" onSubmit={onSubmit} >계정 생성하기</button>
             <div className="link_msg">
                 <span>Already have an account?</span><Link to="/sign_in">Lo g in</Link>
             </div>
