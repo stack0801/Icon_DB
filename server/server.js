@@ -37,11 +37,11 @@ app.get('/boardtest', (req, res) => {
 app.post('/sign_up', (req, res) => {
     const id = req.body.id
     const password = req.body.pw
-    const nickmane = req.body.nickmane
+    const name = req.body.name
 
-    if (id && password && nickmane) {
+    if (id && password && name) {
         const sql = 'INSERT INTO user VALUES(?, ?, ?)'
-        sql_pool.query(sql, [id, password, nickmane], (err, result) => {
+        sql_pool.query(sql, [id, password, name], (err, result) => {
             if (err)
                 res.send("fail")
             else          
