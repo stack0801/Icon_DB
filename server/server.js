@@ -25,6 +25,13 @@ app.get('/sign_in', (req, res) => {
     res.sendFile(__dirname + '/Front/html/sign_in.html')
 })
 
+app.get('/boardtest', (req, res) => {
+    if(req.session.sign)
+        res.sendFile(__dirname + '/Front/html/boardtest.html')
+    else
+        res.redirect('/')
+})
+
 //api
 
 app.post('/sign_up', (req, res) => {
@@ -103,13 +110,6 @@ app.post('/get_content', (req, res) => {
     })
 })
 
-app.get('/boardtest', (req, res) => {
-    if(req.session.sign)
-        res.sendFile(__dirname + '/Front/html/boardtest.html')
-    else
-        res.redirect('/')
-})
-
 //multer 모듈 사용
 const AWS = require('aws-sdk');
 const multer = require('multer');
@@ -173,8 +173,9 @@ var upload = multer({
 // //
 
 app.post('/boardtest', upload.single('img'), (req, res) => {
-    console.log("env, ", process.env.AWS_CONFIG)
 
+    console.log(req.body)
+    
     const id = req.session.sign
     const message = req.body.message
 

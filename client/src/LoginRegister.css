@@ -1,4 +1,4 @@
-.page{
+.page {
     background: #f3f4f6;
     width: 100vw;
     height: 100vh;
@@ -7,12 +7,14 @@
     align-items: center;
     justify-content: center;
 }
-.main_icon{
+
+.main_icon {
     font-size: 30px;
     padding-bottom: 30px;
 }
-.login_container{
-    border:solid 2px #ececee;
+
+.login_container {
+    border: solid 2px #ececee;
     background: white;
     width: 540px;
     height: 50%;
@@ -22,15 +24,18 @@
     border-radius: 15px;
     justify-content: center;
 }
+
 .loginregister {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
-.container div{
+
+.container div {
     padding-top: 20px;
 }
+
 .loginregister__input {
     width: 430px;
     height: 60px;
@@ -40,10 +45,12 @@
     border: solid 2px gray;
     margin: 13px;
 }
-.loginregister__input:focus{
+
+.loginregister__input:focus {
     border: solid 2px #9ed1d9;
     outline: 0;
 }
+
 .loginregister__button {
     margin-top: 13px;
     background: #f5a282;
@@ -56,12 +63,14 @@
     border: none;
     transition-duration: 0.2s;
 }
-.loginregister__button:active{
-    background:#f28962;
+
+.loginregister__button:active {
+    background: #f28962;
 }
-.loginregister_unactive{
+
+.loginregister_unactive {
     margin-top: 13px;
-    background:#ffcdbb;
+    background: #ffcdbb;
     color: white;
     font-size: 16px;
     width: 465px;
@@ -70,20 +79,23 @@
     cursor: not-allowed;
     border: none;
 }
-.link_msg{
+
+.link_msg {
     display: flex;
 }
 
-.link_msg span{
+.link_msg span {
     font-size: 20px;
     padding-right: 20px;
 }
-.link_msg a{
+
+.link_msg a {
     font-size: 20px;
     font-weight: 700;
     text-decoration: none;
-    color:#f5a282;
+    color: #f5a282;
 }
-.link_msg a:active{
+
+.link_msg a:active {
     color: #f28962;
 }

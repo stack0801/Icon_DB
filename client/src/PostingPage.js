@@ -7,6 +7,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import './LandingPage.css';
 import './Posting.css';
 import logo from './logo.svg';
+import axios from 'axios';
 
 export default function Main() {
 
@@ -14,13 +15,13 @@ export default function Main() {
     const [images, setImages] = useState([]);
     const maxNumber = 1;
 
-    const onChange = (imageList, addUpdateIndex) => {
-        console.log(imageList, addUpdateIndex);
+
+    const onChange = (imageList) => {
         setImages(imageList);
     }
 
-    const onError = (errors, files) => {
-        if (errors.maxNumber) {
+    const onError = (errors) => {
+        if (errors) {
             alert("이미지는 1개까지만 첨부할 수 있습니다")
         }
     }
@@ -29,6 +30,26 @@ export default function Main() {
     const [HambergerBar, setHambergerBar] = useState(false);
     const showBar = () => setHambergerBar(!HambergerBar);
 
+    const boardtest = () => {
+
+        const formData = new FormData()
+        formData.append("img", images[0].file)
+        formData.append("message", "hi")
+
+        //console.log(images[0].file)
+
+        axios({
+            method: 'post',
+            url: '/boardtest',
+            header: { 'content-type': 'multipart/form-data' },
+            data: formData
+        })
+        .then((res) => {
+            alert(res.data)/*
+            if (res.data == 'success') 
+                window.location.href = '/'*/
+        })
+    }   
     return (<>
         <Header>
             <Link to="#" className="toggle">
@@ -44,7 +65,6 @@ export default function Main() {
 
         <div className='container'>
             <ImageUploader
-                single
                 value={images}
                 onChange={onChange}
                 maxNumber={maxNumber}
@@ -66,7 +86,7 @@ export default function Main() {
                         <button className='upload-btn' style={isDragging ? { color: 'red' } : undefined} onClick={onImageUpload} {...dragProps}>
                         <AiOutlinePlusCircle />Add
                         </button>
-                        <button className='upload-btn'>올리기</button>
+                        <button className='upload-btn' onClick = { boardtest}>올리기</button>
                     </div>
                 )}
             </ImageUploader>
@@ -107,7 +127,3 @@ const Header = styled.div`
         display:none;
     }
 }`;
-
-const Posting = styled.div`
-
-`;

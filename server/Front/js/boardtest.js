@@ -12,6 +12,8 @@ board_in.onclick = () => {
     formData.append("img", board_img.files[0])
     formData.append("message", messageElement.value)
 
+    console.log(board_img.files[0])
+
     axios({
         method: 'post',
         url: '/boardtest',
@@ -19,8 +21,8 @@ board_in.onclick = () => {
         data: formData
     })
     .then((res) => {
-        alert(res.data)
+        alert(res.data)/*
         if (res.data == 'success') 
-            window.location.href = '/'
+            window.location.href = '/'*/
     })
 }

@@ -1,27 +1,30 @@
-.upload-btn{
+.upload-btn {
     background: #9ed1d9;
     border: none;
     color: white;
     font-size: 20px;
     border-radius: 5px;
     width: 100px;
-    height : 40px;
+    height: 40px;
     cursor: pointer;
     margin: 14px;
 }
-.upload-image-wrapper{
+
+.upload-image-wrapper {
     border: 3px solid #bbbbbb;
     background-color: #eeeeee;
     border-radius: 5px;
 }
-.container{
+
+.container {
     width: 100%;
     height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.image-item{
+
+.image-item {
     display: grid;
-    grid-template-columns: repeat(autofill, minmax(50%,auto));
+    grid-template-columns: repeat(autofill, minmax(50%, auto));
 }

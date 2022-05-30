@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Rodal from 'rodal';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { FaSearch, FaArrowUp, FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import { MdOutlineSaveAlt } from 'react-icons/md';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
@@ -102,9 +102,6 @@ export default function Main() {
         [loading]
     );
 
-
-
-
     return (<>
         <Header>
             <Link to="#" className="toggle">
@@ -114,18 +111,18 @@ export default function Main() {
                 }
             </Link>
             <Link to="/" className="logo" onClick={scrollTop}><img src={logo} alt="logo" /></Link>
-           
+
             {scrollPosition < 500 ?
                 <Link to="/" className='menu_list'>menu</Link> :
                 search_box}
             {sign === null ?
                 <Link to="/sign_in" className='signin-box'>Sign in</Link> :
                 <ul className='posting-logout-list'>
-                 <li><Link to="/posting" className='signin-box'>Posting</Link></li>
-                 <li><Link to="/sign_up" className='signin-box'>Logout</Link></li>   
+                    <li><Link to="/posting" className='signin-box'>Posting</Link></li>
+                    <li><Link to="/sign_up" className='signin-box'>Logout</Link></li>
                 </ul>
-                }
-                 <Link to ="/posting"><FaUser className='header-user' size="26" color="#9ed1d9"/></Link>
+            }
+            <Link to="/posting"><FaUser className='header-user' size="26" color="#9ed1d9" /></Link>
         </Header>
         <div id="top">
             <img id="top_img" src={top_image} alt="top_img" />
