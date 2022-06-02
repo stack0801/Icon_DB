@@ -1,7 +1,7 @@
 <svg width="220" height="50" xmlns="http://www.w3.org/2000/svg">
  <g>
   <title>Layer 1</title>
-  <text xml:space="preserve" text-anchor="start" font-family="'Skranji'" font-size="40" id="svg_1" y="40" x="45" stroke-width="0" stroke="#000" fill="#9ed1d9">Aiconote</text>
+  <text xml:space="preserve" text-anchor="start" font-family="'Skranji'" font-size="20" id="svg_1" y="35" x="45" stroke-width="0" stroke="#000" fill="white">Aiconote</text>
   <ellipse transform="rotate(40 22.75 25.75)" ry="18.5" rx="18.5" id="svg_2" cy="25.75" cx="22.75" stroke-width="0" stroke="#000" fill="url(#svg_7)"/>
  </g>
 </svg>

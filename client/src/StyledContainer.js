@@ -10,4 +10,4 @@ const StyledContianer = styled.div`
     flex-direction: column;
     place-items: center;
     border-radius: 15px;
-`
+`;

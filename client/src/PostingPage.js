@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import ImageUploader from 'react-images-uploading';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { AiOutlinePlusCircle } from "react-icons/ai";
+import Header from './StyledHeader'
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 import './LandingPage.css';
 import './Posting.css';
-import logo from './logo.svg';
 import axios from 'axios';
 
 export default function Main() {
@@ -25,11 +22,7 @@ export default function Main() {
             alert("이미지는 1개까지만 첨부할 수 있습니다")
         }
     }
-
-    // 반응형 헤더
-    const [HambergerBar, setHambergerBar] = useState(false);
-    const showBar = () => setHambergerBar(!HambergerBar);
-
+    
     const boardtest = () => {
 
         const formData = new FormData()
@@ -51,18 +44,7 @@ export default function Main() {
         })
     }   
     return (<>
-        <Header>
-            <Link to="#" className="toggle">
-                {HambergerBar === false ?
-                    <FaBars className='menubar-open animated' size="26" color="#9ed1d9" onClick={showBar} /> :
-                    <FaTimes className='menubar-open animated' size="28" color="#9ed1d9" onClick={showBar} />
-                }
-            </Link>
-            <Link to="/" className="logo" ><img src={logo} alt="logo" /></Link>
-            <Link to="/" className='menu_list'>menu</Link>
-            <Link to="/" className='signin-box'>Log out</Link>
-        </Header>
-
+        <Header/>
         <div className='container'>
             <ImageUploader
                 value={images}
@@ -91,39 +73,6 @@ export default function Main() {
                 )}
             </ImageUploader>
         </div>
-        <nav className={HambergerBar ? 'nav-menu active' : 'nav-menu'}>
-            <ul className="menu-list-items">
-            </ul>
-        </nav>
+       
     </>)
 }
-const Header = styled.div`
-    background:white;
-    position: fixed;
-    width:100%;
-    height:60px;
-    font-size: 30px;
-    display: grid;   
-    place-items:center;
-    grid-template-columns: 29% 50% 21%;
-    
-    .toggle{
-        display:none;
-    }
-    .menu_list{
-        display:flex;
-        flex-direction:column;
-        width:100%;
-        color: #9ed1d9;
-    }
-    @media screen and (max-width:840px){
-    .toggle{
-        display:block;
-    }
-    .menu_list{
-        display:none;
-    }
-    #search_box{
-        display:none;
-    }
-}`;
