@@ -37,11 +37,26 @@ export default function Main() {
         });
     };
 
+    const [searchbox, setSearch] = useState("");
+
+    const onSubmit = () => {
+        axios({
+            method: 'post',
+            url: '/search',
+            data: {
+                searchbox: searchbox
+            }
+        })
+            .then((res) => {
+                console.log(res.data) //아직 받는 데이터 없음(server.js에서 추후 수정)
+            })
+    }
+
     // search_box 컴포넌트
     const search_box = (
         <div id="search_box">
-            <input placeholder="keyword" type="text"></input>
-            <button><FaSearch size="26" color="#9ed1d9" /></button>
+            <input placeholder="keyword" type="text" value={searchbox}></input>
+            <button><FaSearch size="26" color="#9ed1d9" onClick={onSubmit}/></button>
         </div>
     )
 
