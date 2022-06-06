@@ -184,19 +184,16 @@ app.post('/boardtest', upload.single('img'), (req, res) => {
         if (err)
             throw err
     })
-
     res.send("success")
 })
 
 app.post('/search', (req, res) => { 
     const sql = 'SELECT * FROM content where message LIKE' + " '%" + req.body.searchbox + "%' "
-    console.log(sql)
     sql_pool.query(sql, (err, result) => {
         if (err)
             throw err
         else{
             console.log(result)
-            res.send(result)
         }
     })
 })
