@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "./StyledHeader";
+import Header from "./component/StyledHeader";
 import { FaSearch, FaArrowUp, FaTimes } from 'react-icons/fa';
 import axios from 'axios';
 import './LandingPage.css';

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import Header from './StyledHeader';
+import Header from './component/StyledHeader';
 import { FaSearch, FaArrowUp } from 'react-icons/fa';
 import axios from 'axios';
 import './LandingPage.css';

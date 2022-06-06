@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ImageUploader from 'react-images-uploading';
-import Header from './StyledHeader'
+import Header from './component/StyledHeader'
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import './LandingPage.css';
 import './Posting.css';

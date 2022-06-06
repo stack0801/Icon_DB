@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
-import logo from './img/logo.svg';
+import Logo from "./Logo";
+import SearchBox from "./SearchBox";
 import { FaSearch, FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import axios from 'axios';
 
 export default function App() {
+
     // 스크롤 위치
     const [scrollPosition, setScrollPosition] = useState(0);
     // 스크롤의 위치를 저장
@@ -16,17 +18,8 @@ export default function App() {
         window.addEventListener('scroll', updateScroll);
     });
 
-    // 맨 위로 올라가게 함
-    const scrollTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'  // 이거 왜 안먹음?
-        });
-    };
-
     // 유저 로그인 여부
     const [sign, setSign] = useState(null)
-    // 접속이후 axios 통신을 이용하여 확인함
     useEffect(() => {
         axios.post('/get_auth')
             .then((res) => {
@@ -35,16 +28,8 @@ export default function App() {
             })
     }, []);
 
-    const search_box = (
-        <div id="search_box">
-            <input placeholder="keyword" type="text"></input>
-            <Link to='/searching'><FaSearch size="26" color="#9ed1d9" /></Link>
-        </div>
-    )
-
     const [HambergerBar, setHambergerBar] = useState(false);
     const showBar = () => setHambergerBar(!HambergerBar);
-
 
     return (
         <Header>
@@ -54,18 +39,17 @@ export default function App() {
                     : <FaTimes className="menubar-open animated" size="20" onClick={showBar} />
                 }
             </Link>
-            <Link to="/" className="logo" onClick={scrollTop}><img src={logo} alt="logo" /></Link>
+            <Logo/>
 
             {scrollPosition < 500
                 ? <Link to="/" className="menu_list">menu</Link>
-                : search_box}
+                : <SearchBox/> }
             {sign === null
                 ? <Link to="/sign_in" className="signin_box">Sign in</Link>
                 : <ul className="posting-logout-list">
                     <li><Link to="/posting" className="signin_box">Posting</Link></li>
                     <li><Link to="/sign_up" className="signin_box">Logout</Link></li>
-                </ul>
-            }
+                </ul> }
             <Link to="/posting"><FaUser className="header_user" size="20" /></Link>
 
             <nav className={HambergerBar
@@ -143,23 +127,6 @@ const Header = styled.div`
         display:flex;
     }
     .menu_list{
-        display:none;
-    }
-    #search_box{
-        display:none;
-    }
-    .header_user{
-        transition:0.3s;
-        display:flex;
-        :hover{
-            color:#f5a282;
-            transition: 0.3s;
-        }
-    }
-    .posting_logout_list{
-        display:none;
-    }
-    .signin_box{
         display:none;
     }
 }`;

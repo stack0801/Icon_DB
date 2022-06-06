@@ -5,14 +5,14 @@ import Logo from "./component/Logo";
 
 export default function App() {
     return (
-        <SigninPage>
+        <SignupPage>
             <Logo/>
             <SignupContainer width="400px" height="300px" padding="30px"/>
-        </SigninPage>
+        </SignupPage>
     )
 }
 
-const SigninPage = styled.div`
+const SignupPage = styled.div`
     background: #9ed1d9;
     height: 100vh;
     display: flex;
