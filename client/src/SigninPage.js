@@ -8,7 +8,7 @@ export default function LoginPage() {
     return (
         <div className="page">
             <Link to="/"><img src={logo} alt="logo" /></Link>
-            <StyledContainer width="540px;" height="50%">
+            <StyledContainer width="540px" height="50%">
             </StyledContainer>
         </div>
 

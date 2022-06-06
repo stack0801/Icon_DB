@@ -41,6 +41,7 @@ export default function Main() {
     const onSearchHandler = (e) => { setSearchName(e.currentTarget.value) }
 
     const onSubmit = () => {
+        //console.log(searchname);
         axios({
             method: 'post',
             url: '/search',
