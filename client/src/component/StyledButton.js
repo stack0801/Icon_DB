@@ -3,7 +3,11 @@ import styled from "styled-components";
 
 export default function App({ width, height, text, fontSize, onClick }) {
     return (
-        <StyledButton width={width} height={height} fontSize={fontSize} onClick={onClick}>
+        <StyledButton
+            width = {width}
+            height = {height}
+            fontSize = {fontSize}
+            onClick = {onClick}>
             {text}
         </StyledButton>
     )
@@ -19,7 +23,7 @@ const StyledButton = styled.button`
     &:active {
         background: #f28962;
     }
-    width: ${(props) => props.width || "auto"};
-    height: ${(props) => props.height || "auto"};
-    font-size: ${(props) => props.fontSize || "20px"};
+    width: ${(props) => (props.width || "auto")};
+    height: ${(props) => (props.height || "auto")};
+    font-size: ${(props) => (props.fontSize || "20px")};
 `;

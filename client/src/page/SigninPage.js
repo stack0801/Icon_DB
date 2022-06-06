@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import SignupContainer from "./component/SignupContainer";
-import Logo from "./component/Logo";
+import SigninContainer from '../component/SigninContainer';
+import Logo from '../component/Logo';
 
 export default function App() {
     return (
-        <SignupPage>
+        <SigninPage>
             <Logo/>
-            <SignupContainer width="400px" height="300px" padding="30px"/>
-        </SignupPage>
+            <SigninContainer width="400px" height="300px" padding="30px"/>
+        </SigninPage>
     )
 }
 
-const SignupPage = styled.div`
+const SigninPage = styled.div`
     background: #9ed1d9;
     height: 100vh;
     display: flex;

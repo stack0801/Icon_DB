@@ -35,12 +35,12 @@ export default function App({ width, height, padding }) {
     }
 
     return (
-        <StyledContianer width={width} height={height} padding={padding}>
-            <StyledInput width="95%" placeholder="Name" onChange={onNameHandler} />
-            <StyledInput width="95%" placeholder="ID" onChange={onIdHandler} />
-            <StyledInput width="95%" placeholder="Password" type="password" onChange={onPasswordHandler} />
-            <StyledButton width="100%" text="회원가입" onClick={onSubmit} />
-            <Msg>Already have an account? <Link to="/sign_in"><LinkMsg>Sign in</LinkMsg></Link></Msg>
+        <StyledContianer width = {width} height = {height} padding = {padding}>
+            <StyledInput width = "95%" placeholder = "Name" onChange = {onNameHandler}/>
+            <StyledInput width = "95%" placeholder = "ID" onChange = {onIdHandler}/>
+            <StyledInput width = "95%" placeholder = "Password" type = "password" onChange = {onPasswordHandler}/>
+            <StyledButton width = "100%" text = "Register" onClick = {onSubmit}/>
+            <Msg>Already have an account? <Link to = "/sign_in"><LinkMsg>Sign in</LinkMsg></Link></Msg>
         </StyledContianer>
     )
 }
@@ -50,7 +50,7 @@ const StyledContianer = styled.div`
     background: white;
     border-radius: 15px;
     display: grid;
-    grid-template-rows : 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     justify-items: center;
     gap: 5px;
 
@@ -68,6 +68,6 @@ const LinkMsg = styled.div`
 const Msg = styled.div`
     font-size: 20px;
     display: grid;
-    grid-template-columns : 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 10px
 `;

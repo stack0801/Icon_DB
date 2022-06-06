@@ -31,11 +31,11 @@ export default function App({ width, height, padding }) {
     }
 
     return (
-        <StyledContianer width={width} height={height} padding={padding}>
-            <StyledInput width="95%" placeholder="ID" onChange={onIdHandler} />
-            <StyledInput width="95%" placeholder="Password" type="password" onChange={onPasswordHandler} />
-            <StyledButton width="100%" text="로그인" onClick={onSubmit} />
-            <Msg>Not a Member? <Link to="/sign_up"><LinkMsg>Sign up</LinkMsg></Link></Msg>
+        <StyledContianer width = {width} height = {height} padding = {padding}>
+            <StyledInput width = "95%" placeholder = "ID" onChange = {onIdHandler}/>
+            <StyledInput width = "95%" placeholder = "Password" type = "password" onChange = {onPasswordHandler}/>
+            <StyledButton width = "100%" text = "Sign In" onClick = {onSubmit}/>
+            <Msg>Not a Member? <Link to = "/sign_up"><LinkMsg>Sign up</LinkMsg></Link></Msg>
         </StyledContianer>
     )
 }
@@ -63,6 +63,6 @@ const LinkMsg = styled.div`
 const Msg = styled.div`
     font-size: 20px;
     display: grid;
-    grid-template-columns : 1.5fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     gap: 10px
 `

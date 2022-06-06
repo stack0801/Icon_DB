@@ -9,7 +9,7 @@ export default function App({ width, height, placeholder, type, fontSize, onChan
             placeholder = {placeholder} 
             fontSize = {fontSize} 
             onChange = {onChange}
-            type = "text">
+            type = {type}>
         </StyledInput>
     )
 }
@@ -23,7 +23,7 @@ const StyledInput = styled.input`
     width: ${(props) => props.width || "auto"};
     height: ${(props) => props.height || "auto"};
     font-size: ${(props) => props.fontSize || "20px"};
-    
+    type: ${(props) => props.type ? props.type : "text"};
     &:focus {
         border-color: #f5a382;
         outline: none;
