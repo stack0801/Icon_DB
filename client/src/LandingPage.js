@@ -1,26 +1,12 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import Rodal from 'rodal';
 import { Link } from 'react-router-dom';
 import Header from './StyledHeader';
 import { FaSearch, FaArrowUp } from 'react-icons/fa';
-import { MdOutlineSaveAlt } from 'react-icons/md';
-import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import axios from 'axios';
 import './LandingPage.css';
-import './Modal.css';
-import 'rodal/lib/rodal.css';
 import top_image from './watercolor.jpg';
 
 export default function Main() {
-
-    //좋아요 기능
-    const [like, setLike] = useState(false);
-    const LikeButton = () => { setLike(!like) };
-
-    //Modal
-    const [visible, setVisible] = useState(false);
-    const modalOpen = () => { setVisible(true) }
-    const modalClose = () => { setVisible(false) }
 
     // 스크롤 위치
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -39,12 +25,12 @@ export default function Main() {
             behavior: 'smooth'  // 이거 왜 안먹음?
         });
     };
-
+ 
     // search_box 컴포넌트
     const search_box = (
         <div id="search_box">
             <input placeholder="keyword" type="text"></input>
-            <Link to='/searching'><FaSearch size="20" color="#9ed1d9" /></Link>
+            <Link to='/searching' ><FaSearch size="20" color="#9ed1d9" /></Link>
         </div>
     )
 
@@ -88,26 +74,11 @@ export default function Main() {
 
     return (<>
         <Header/>
-
         <div id="top">
             <img id="top_img" src={top_image} alt="top_img" />
-            <h1 onClick={modalOpen}>GET FREE ICONS</h1>
-            {/* <Rodal customStyles={{ height: "330px", width: "600px", }} visible={visible} onClose={modalClose} animation='fade'>
-                <div className="modal-container" >
-                    <div className="modal-img">아이콘 </div>
-                    <div className="modal-title">제목</div>
-                    <div className="modal-detail">
-                        {like === false ?
-                            <FcLikePlaceholder className="icon-nonlike animated1" size="35" onClick={LikeButton} /> :
-                            <FcLike className="icon-like animated1" size="35" onClick={LikeButton} />}
-                        <MdOutlineSaveAlt className="icon-save animated1" />
-                    </div>
-                    <button className="close-btn" onClick={modalClose}>close</button>
-                </div>
-            </Rodal> */}
+            <h1>GET FREE ICONS</h1>
             {search_box}
         </div>
-
         <div className="image-grid">
             {icons.map((list, idx) => (
                 <div key={idx}>

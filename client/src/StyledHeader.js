@@ -91,7 +91,7 @@ const Header = styled.div`
 
     .nav-menu {
         background-color: white;
-        width: 20%;
+        width: 40%;
         height: 100vh;
         display: flex;
         position: fixed;
@@ -103,7 +103,7 @@ const Header = styled.div`
     .nav-menu.active {
             left: 0;
             transition: 0.35s;
-            opacity: 0.8;
+            opacity: 0.9;
         }
     }
     .toggle{

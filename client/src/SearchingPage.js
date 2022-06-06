@@ -1,13 +1,12 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { FaSearch, FaArrowUp, FaUser, FaBars, FaTimes } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import Header from "./StyledHeader";
+import { FaSearch, FaArrowUp, FaTimes } from 'react-icons/fa';
 import axios from 'axios';
 import './LandingPage.css';
-import logo from './logo.svg';
 
 export default function Main() {
 
+   
     // 유저 로그인 여부
     const [sign, setSign] = useState(null)
     // 접속이후 axios 통신을 이용하여 확인함
@@ -37,14 +36,16 @@ export default function Main() {
         });
     };
 
-    const [searchbox, setSearch] = useState("");
+    const [searchname, setSearchName] = useState("");
+
+    const onSearchHandler = (e) => { setSearchName(e.currentTarget.value) }
 
     const onSubmit = () => {
         axios({
             method: 'post',
             url: '/search',
             data: {
-                searchbox: searchbox
+                searchbox: searchname
             }
         })
             .then((res) => {
@@ -55,68 +56,21 @@ export default function Main() {
     // search_box 컴포넌트
     const search_box = (
         <div id="search_box">
-            <input placeholder="keyword" type="text" value={searchbox}></input>
-            <button><FaSearch size="26" color="#9ed1d9" onClick={onSubmit}/></button>
+            <input placeholder="keyword" type="text" onChange={onSearchHandler}></input>
+            <button onClick={onSubmit}><FaSearch size="20" color="#9ed1d9" /></button>
         </div>
     )
+
 
     // 반응형 헤더
     const [HambergerBar, setHambergerBar] = useState(false);
     const showBar = () => setHambergerBar(!HambergerBar);
 
-    //무한 스크롤
-    const [loading, setLoading] = useState(false);
-    const [icons, setIcons] = useState([]);
-    const [page, setPage] = useState(1);
-    const loading_size = 4;
-
-    useEffect(() => {
-        setLoading(true);
-
-        axios.post('/get_contents', {
-            id: page,
-            count: loading_size
-        })
-            .then((res) => {
-                console.log(res.data)
-                setIcons((prevIcons) => [...prevIcons, ...res.data]);
-                setLoading(false);
-            });
-
-    }, [page]);
-
-    //Instersection Observer 사용
-    const observer = useRef();
-    const lastElRef = useCallback(
-        (event) => {
-            if (loading) return;
-            if (observer.current)
-                observer.current.disconnect();
-            observer.current = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting)
-                    setPage((prevPage) => prevPage + loading_size);
-            });
-            if (event)
-                observer.current.observe(event);
-        },
-        [loading]
-    );
-
     return (<>
-        <Header>
-            <Link to="#" className="toggle"><FaBars size="26" color="white" onClick={showBar} /></Link>
-            <Link to="/" className="logo" onClick={scrollTop}><img src={logo} alt="logo" /></Link>
-            {scrollPosition < 500 ?
-                <Link to="/" className="menu_list">menu</Link> :
-                search_box}
-            {sign === null ?
-                <Link to="/sign_in"><FaUser className="user_icon" size="26" color="#9ed1d9" /></Link> :
-                <Link to="/sign_up"><div>sign up</div></Link>}
-        </Header>
+        <Header />
         <div id="top">
+            <h1>About</h1>
             {search_box}
-            <div></div>
-            <div>Icons</div>
         </div>
         <nav className={HambergerBar ? 'nav-menu active' : 'nav-menu'}>
             <ul className="menu-list-items" onClick={showBar}>
@@ -125,51 +79,7 @@ export default function Main() {
                 </li>
             </ul>
         </nav>
-        <div className="image-grid">
-            {icons.map((list, idx) => (
-                <div key={idx}>
-                    {idx + 1 === icons.length ?
-                        <div className="icon-list" ref={lastElRef}>
-                            <img src={"/" + list.content_id + ".svg"} alt="no_img" />
-                        </div> :
-                        <div className="icon-list">
-                            <img src={"/" + list.content_id + ".svg"} alt="no_img" />
-                        </div>}
-                </div>
-            ))}
-            {loading && <p>Loading...</p>}
-        </div>
         {scrollPosition > 500 &&
             <button id="top_btn" onClick={scrollTop}><FaArrowUp size="26" color="white" /></button>}
     </>)
 }
-const Header = styled.div`
-    background:white;
-    position: fixed;
-    width:100%;
-    height:60px;
-    font-size: 30px;
-    display: grid;
-    place-items: center;
-    grid-template-columns: repeat(3,1fr);
-
-    .toggle{
-        display:none;
-    }
-    @media screen and (max-width:840px){
-        .toggle{
-            display:block;
-        }
-
-        .menu_list{
-            display:${(props) => (props.isToggled ? "flex" : "none")};
-            flex-direction:column;
-            width:100%;
-            background-color:black;
-        }
-
-        #search_box{
-            display:none;
-        }
-    }
-`;

@@ -19,10 +19,6 @@ li{
     grid-template-rows: 1fr 100px 100px 1fr;
     place-items: center;
 }
-.App {
-    font-family: sans-serif;
-    place-items: center;
-}
 .image-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
@@ -62,8 +58,8 @@ li{
   width: 450px;
   height: 30px;
   display: grid;
-  grid-template-columns: 400px 50px;
   place-items: center;
+  grid-template-columns: 400px 50px;
   border: solid 2px #9ed1d9;
 }
 #search_box input {
@@ -72,6 +68,11 @@ li{
     border: solid 1px white;
     border-radius: 5px 0 0 5px;
     outline: none;
+}
+#search_box button{
+  border: none;
+  background-color: white;
+  cursor: pointer;
 }
 #top_btn {
     cursor: pointer;
