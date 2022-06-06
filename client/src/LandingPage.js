@@ -25,12 +25,29 @@ export default function Main() {
             behavior: 'smooth'  // 이거 왜 안먹음?
         });
     };
+
+    const [searchbox, setSearchbox] = useState("");
+
+    const onSearchHandler = (e) => { setSearchbox(e.currentTarget.value) }
+
+    const onSubmit = () => {
+        axios({
+            method: 'post',
+            url: '/search',
+            data: {
+                searchbox: searchbox
+            }
+        })
+            .then((res) => {
+                console.log(res.data) //아직 받는 데이터 없음(server.js에서 추후 수정)
+            })
+    }
  
     // search_box 컴포넌트
     const search_box = (
         <div id="search_box">
-            <input placeholder="keyword" type="text"></input>
-            <Link to='/searching' ><FaSearch size="20" color="#9ed1d9" /></Link>
+            <input placeholder="keyword" type="text" onChange={onSearchHandler}></input>
+            <Link to='/searching' onClick={onSubmit}><FaSearch size="20" color="#9ed1d9" /></Link>
         </div>
     )
 

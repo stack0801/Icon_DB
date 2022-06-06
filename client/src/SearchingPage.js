@@ -5,8 +5,6 @@ import axios from 'axios';
 import './LandingPage.css';
 
 export default function Main() {
-
-   
     // 유저 로그인 여부
     const [sign, setSign] = useState(null)
     // 접속이후 axios 통신을 이용하여 확인함
@@ -36,16 +34,16 @@ export default function Main() {
         });
     };
 
-    const [searchname, setSearchName] = useState("");
+    const [searchbox, setSearchbox] = useState("");
 
-    const onSearchHandler = (e) => { setSearchName(e.currentTarget.value) }
+    const onSearchHandler = (e) => { setSearchbox(e.currentTarget.value) }
 
     const onSubmit = () => {
         axios({
             method: 'post',
             url: '/search',
             data: {
-                searchbox: searchname
+                searchbox: searchbox
             }
         })
             .then((res) => {
