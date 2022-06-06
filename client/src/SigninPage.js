@@ -1,16 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import StyledContainer from "./SigninContainer";
-import logo from "./logo.svg";
-import "./Sign.css";
+import styled from "styled-components";
+import SigninContainer from "./component/SigninContainer";
+import Logo from "./component/Logo";
 
-export default function LoginPage() {
+export default function App() {
     return (
-        <div className="page">
-            <Link to="/"><img src={logo} alt="logo" /></Link>
-            <StyledContainer width="540px" height="50%">
-            </StyledContainer>
-        </div>
-
+        <SigninPage>
+            <Logo/>
+            <SigninContainer width="400px" height="300px" padding="30px"/>
+        </SigninPage>
     )
 }
+
+const SigninPage = styled.div`
+    background: #9ed1d9;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
-import logo from './logo.svg';
+import logo from './img/logo.svg';
 import { FaSearch, FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import axios from 'axios';
 

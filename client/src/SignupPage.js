@@ -1,17 +1,22 @@
-import React from 'react'
-import { Link } from "react-router-dom";
-import SignupContainer from "./SignupContainer";
-import logo from './logo.svg'
-import "./Sign.css";
+import React from "react";
+import styled from "styled-components";
+import SignupContainer from "./component/SignupContainer";
+import Logo from "./component/Logo";
 
-export default function RegisterPage() {
-    //const onSubmit = (e) => { e.preventDefault() }
+export default function App() {
     return (
-        <div className='page'>
-            <Link to="/"><img src={logo} alt="logo" /></Link>
-            <SignupContainer width="100vw" height="50%"/>
-        </div>
+        <SigninPage>
+            <Logo/>
+            <SignupContainer width="400px" height="300px" padding="30px"/>
+        </SigninPage>
     )
-
-
 }
+
+const SigninPage = styled.div`
+    background: #9ed1d9;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
