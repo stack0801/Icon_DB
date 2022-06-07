@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import Header from "./component/Header/Header";
-import Top from "./component/Top";
-import TopButton from "./component/TopButton";
+import styled from "styled-components";
+import Header from "../component/Header/Header";
+import Top from "../component/Top";
+import TopButton from "../component/TopButton";
 import axios from 'axios';
-import './LandingPage.css';
 
 export default function Main() {
 
@@ -15,16 +15,16 @@ export default function Main() {
 
     useEffect(() => {
         setLoading(true);
-
-        axios.post('/get_contents', {
+        axios
+        .post('/get_contents', {
             id: page,
             count: loading_size
         })
-            .then((res) => {
-                console.log(res.data)
-                setIcons((prevIcons) => [...prevIcons, ...res.data]);
-                setLoading(false);
-            });
+        .then((res) => {
+            console.log(res.data)
+            setIcons((prevIcons) => [...prevIcons, ...res.data]);
+            setLoading(false);
+        });
 
     }, [page]);
 
@@ -45,8 +45,9 @@ export default function Main() {
         [loading]
     );
 
-    return (<>
-        <Header />
+    return (
+    <LandingPage>
+        <Header/>
         <Top text="GET FREE ICONS" />
         <div className="image-grid">
             {icons.map((list, idx) => (
@@ -63,5 +64,20 @@ export default function Main() {
         </div>
         {loading && <div>Loading...</div>}
        <TopButton/>
-    </>)
+    </LandingPage>)
 }
+
+const LandingPage = styled.div`
+  .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+      grid-template-rows: repeat(auto-fit,minmax(300px,1fr));
+      gap: 5px;
+      justify-items: center;
+  }
+  .icon-list{
+      width: 300px;
+      height:300px;
+      background-color: white;
+  }
+`

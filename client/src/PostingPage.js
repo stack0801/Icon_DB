@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ImageUploader from 'react-images-uploading';
 import Header from './component/StyledHeader'
 import { AiOutlinePlusCircle } from 'react-icons/ai';
-import './LandingPage.css';
 import './Posting.css';
 import axios from 'axios';
 
@@ -11,7 +10,6 @@ export default function Main() {
     //이미지 업로드
     const [images, setImages] = useState([]);
     const maxNumber = 1;
-
 
     const onChange = (imageList) => {
         setImages(imageList);
@@ -73,6 +71,5 @@ export default function Main() {
                 )}
             </ImageUploader>
         </div>
-       
     </>)
 }

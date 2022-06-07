@@ -20,11 +20,7 @@ export default function App(){
              behavior: 'smooth' 
          });
      };
-     return(<>
-        {scrollPosition > 500 
-            && <TopButton onClick={scrollTop}><FaArrowUp size="26" color="white" /></TopButton>
-        }
-    </>);
+     return(scrollPosition > 500 && <TopButton onClick={scrollTop}><FaArrowUp size="26" color="white" /></TopButton>);
 }
 
 const TopButton =styled.button`

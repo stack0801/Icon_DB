@@ -1,9 +1,10 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import LandingPage from './LandingPage';
-import SigninPage from './pages/SigninPage';
-import SignupPage  from './pages/SignupPage';
+import LandingPage from './page/LandingPage';
+import SigninPage from './page/SigninPage';
+import SignupPage  from './page/SignupPage';
 import SearchingPage  from './SearchingPage';
 import PostingPage from './PostingPage';
+
 function App() {
   return (
     <Router>

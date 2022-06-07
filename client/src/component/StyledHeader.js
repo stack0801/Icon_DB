@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import Logo from "./Logo";
-import SearchBox from "./SearchBox/SearchBox";
+import SearchBox from "./SearchBox";
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import axios from 'axios';
 

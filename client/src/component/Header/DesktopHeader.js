@@ -2,28 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import Logo from "../Logo";
-import SearchBox from "../SearchBox/SearchBox";
+import SearchBox from "../SearchBox";
 import axios from 'axios';
 
 export default function App() {
 
     // 스크롤 위치
     const [scrollPosition, setScrollPosition] = useState(0);
-    // 스크롤의 위치를 저장
-    const updateScroll = () => {
-        setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-    }
     useEffect(() => {
-        window.addEventListener('scroll', updateScroll);
+        window.addEventListener('scroll', setScrollPosition(window.scrollY || document.documentElement.scrollTop));
     });
 
     // 유저 로그인 여부
     const [sign, setSign] = useState(null)
     useEffect(() => {
         axios.post('/get_auth')
-            .then((res) => {
-                setSign(res.data)
-            })
+        .then((res) => {
+            setSign(res.data)
+        })
     }, []);
 
     return (
