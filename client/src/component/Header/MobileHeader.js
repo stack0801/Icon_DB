@@ -64,14 +64,10 @@ const MobileHeader = styled.div`
     place-items:center;
     place-content:center;
 
-    ul{
-        list-style: none;
-      }
-      li{
-        float: left;
-        margin-left: 20px;
-      }
-
+    li{
+      float: left;
+      margin-left: 20px;
+    }
     .nav-menu {
         background-color: white;
         width: 40%;
@@ -80,19 +76,20 @@ const MobileHeader = styled.div`
         position: fixed;
         top: 40px;
         left: -100%;
-        transition: 350ms;
+        transition-duration: 0.35s;
         &.active{
              left: 0;
-            transition: 0.35s;
             opacity: 0.9;
         }
     }
-    .header_user:hover {
+    .header_user {
+      color: white;
+      transition-duration: 0.3s;
+      :hover {
         color:#f5a282;
-        transition: 0.3s;
+      }
     }
 
-    /*base code*/
   .animated {
       -webkit-animation-duration: 1s;
       animation-duration: 1s;
@@ -107,7 +104,6 @@ const MobileHeader = styled.div`
       -webkit-animation-duration: 2s;
       animation-duration: 2s;
     }
-    /*the animation definition*/
     @-webkit-keyframes flipInX {
       0% {
         -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);

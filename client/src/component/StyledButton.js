@@ -15,11 +15,14 @@ export default function App({ width, height, text, fontSize, onClick }) {
 
 const StyledButton = styled.button`
     background: #f5a282;
-    color: white;
+    color: #ececec;
     border-radius: 40px;
     cursor: pointer;
     border: none;
     transition-duration: 0.2s;
+    &:hover {
+        color: white;
+    }
     &:active {
         background: #f28962;
     }

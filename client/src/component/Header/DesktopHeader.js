@@ -40,31 +40,27 @@ export default function App() {
 const MenuList = styled.a`
     width:100%;
     color: #ececec;
-    display:flex;
+    display:grid;
     flex-direction:column;
-    align-items:center;
-    content-align:center;
-    transition:0.3s;
+    place-items:center;
+    place-content:center;
+    transition-duration:0.3s;
     &:hover {
         color:white;
-        transition:0.3s;
     }
     &:active{
         color:#f5a282;
-        transition:0.3s;
     }
 `;
 
 const SigninBox = styled(Link)`
     color: #ececec;
-    transition:0.3s;
+    transition-duration: 0.3s;
     &:hover{
         color: white;
-        transition: 0.3s;
     }
     &:active{
         color: #f5a282;
-        transition: 0.3s;
     }
 `;
 
