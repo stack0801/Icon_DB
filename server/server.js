@@ -129,7 +129,16 @@ var upload = multer({
     bucket: 'webservicegraduationproject',
     acl: 'public-read-write',
     key: function(req, file, cb) {
-         cb(null, Math.floor(Math.random() * 1000).toString() + Date.now() + '.' + file.originalname.split('.').pop());
+        const sql = 'SELECT content_id FROM content ORDER BY content_id DESC LIMIT 1'
+        sql_pool.query(sql, (err, rows, result) => {
+          if (err)
+            console.log(err)
+          else{
+            const filedirectory = 'img/' + (rows[0].content_id + 1)+ '.' + file.originalname.split('.').pop()
+            console.log(filedirectory)
+            cb(null, filedirectory);
+          }     
+        })
     },
     limits: { fileSize: 1000 * 1000 * 10 }
   })
