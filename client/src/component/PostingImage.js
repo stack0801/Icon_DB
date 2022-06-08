@@ -22,11 +22,13 @@ export default function App() {
         }
     }
 
+    const [Message, setMessagebox] = useState("");
+    const onMessageHandler = (e) => { setMessagebox(e.currentTarget.value) }  
     const boardtest = () => {
 
         const formData = new FormData()
         formData.append("img", images[0].file)
-        formData.append("message", "hi")
+        formData.append("message", Message)
 
         axios({
             method: 'post',
@@ -63,7 +65,7 @@ export default function App() {
 
                         ))}
                         <TitleImgUpload>
-                            <StyledIuput width="95%" height="35px" placeholder="Title" />
+                            <StyledIuput width="95%" height="35px" placeholder="Message" onChange={onMessageHandler}/>
                             {imageList.length !== 0
                                 ? <StyledButton width="100px" height="35px" text="Upload" onClick={boardtest} />
                                 : <ul>
