@@ -27,8 +27,6 @@ export default function App() {
         formData.append("img", images[0].file)
         formData.append("message", "hi")
 
-        //console.log(images[0].file)
-
         axios({
             method: 'post',
             url: '/boardtest',

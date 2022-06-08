@@ -56,12 +56,12 @@ export default function Main() {
                     {idx + 1 === icons.length ?
                         <Link to = {"/post/" + list.content_id}>
                             <div className="icon-list" ref={lastElRef}>
-                                <img src={"/" + list.content_id + ".svg"} alt="no_img" />
+                                <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
                             </div>
                         </Link> :
                         <Link to = {"/post/" + list.content_id}>
                             <div className="icon-list">
-                                <img src={"/" + list.content_id + ".svg"} alt="no_img" />
+                                <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
                             </div>
                         </Link>}
                 </div>

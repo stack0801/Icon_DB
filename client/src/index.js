@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     list-style: none;
     padding-inline-start: 0;
+    gap: 15px;
   }
   li{
     float: left;
