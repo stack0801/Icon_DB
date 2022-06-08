@@ -11,7 +11,7 @@ export default function Main() {
     //무한 스크롤
     const [loading, setLoading] = useState(false);
     const [icons, setIcons] = useState([]);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(0);
     const loading_size = 10;
 
     useEffect(() => {
