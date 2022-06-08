@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import axios from 'axios';
 import { FaSearch } from "react-icons/fa";
 
 export default function App({width, height, fontSize}) {
@@ -13,16 +12,7 @@ export default function App({width, height, fontSize}) {
             alert("2글자 이상 입력해주세요")
         }
         else {
-            axios({
-                method: 'post',
-                url: '/searching',
-                data: {
-                    searchbox: searchbox
-                }
-            })
-            .then((res) => {
-                console.log(res.data) //아직 받는 데이터 없음(server.js에서 추후 수정)
-            })
+            window.location.href = "/searching/" + searchbox;
         }
     }
 

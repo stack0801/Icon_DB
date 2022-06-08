@@ -202,7 +202,7 @@ app.post('/search', (req, res) => {
         if (err)
             throw err
         else{
-            console.log(result)
+            res.send(result)
         }
     })
 })
