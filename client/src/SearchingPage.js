@@ -3,7 +3,6 @@ import Header from "./component/Header/Header";
 import Top from "./component/Top";
 import TopButton from "./component/TopButton";
 import axios from 'axios';
-import './LandingPage.css';
 
 export default function Main() {
     // 유저 로그인 여부

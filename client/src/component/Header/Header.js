@@ -3,26 +3,14 @@ import DesktopHeader from "./DesktopHeader";
 import MobileHeader from "./MobileHeader";
 
 export default function App() {
-
-    const [state, setState] = useState({ mobileView: false });
-    const { mobileView } = state;
-    
+    //스크린 가로
+    const [screenWidth, setScreenWidth] = useState(0);
     useEffect(() => {
-        const setResponse = () => {
-            return window.innerWidth < 900
-                ? setState((prevState) => ({ ...prevState, mobileView: true }))
-                : setState((prevState) => ({ ...prevState, mobileView: false }))
-        }
-        setResponse();
-
-        window.addEventListener("resize", () => setResponse());
-
-        return () => {
-            window.removeEventListener("resize", () => setResponse());
-        };
+        window.addEventListener('resize', () => {setScreenWidth(window.innerWidth)});
+    });
+    useEffect(() => {
+        setScreenWidth(window.innerWidth);
     }, []);
 
-    return (<>
-        {mobileView ? <MobileHeader /> : <DesktopHeader />}
-    </>)
+    return (screenWidth < 900 ? <MobileHeader /> : <DesktopHeader />)
 }
