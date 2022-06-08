@@ -3,7 +3,7 @@ import LandingPage from './page/LandingPage';
 import SigninPage from './page/SigninPage';
 import SignupPage  from './page/SignupPage';
 import PostPage  from './page/PostPage';
-import SearchingPage  from './SearchingPage';
+import SearchingPage  from './page/SearchingPage';
 import PostingPage from './PostingPage';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<LandingPage/>} />
-        <Route exact path="/searching" element={<SearchingPage/>}/>
+        <Route exact path="/searching/:keyword" element={<SearchingPage/>}/>
         <Route exact path="/posting" element={<PostingPage/>}/>
         <Route exact path="/sign_in" element={<SigninPage/>}/>
         <Route exact path="/sign_up" element={<SignupPage/>} />
