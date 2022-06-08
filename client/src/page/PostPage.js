@@ -27,7 +27,7 @@ export default function App() {
         <PostPage>
             <div />
             <Image>
-                <img src = {"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
+                <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + data.content_id +  ".png"} alt="no_img" />
                 <Title>
                 ID : {data.user_id}
             <div>Title : {data.message}</div>
@@ -42,6 +42,7 @@ const PostPage = styled.div`
     display: grid;
     grid-template-rows: 100px 100px 100px 100px;
     gap: 5px;
+    border: solid 2px gray;
     place-items: center;
 `;
 

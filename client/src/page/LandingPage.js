@@ -86,7 +86,7 @@ const LandingPage = styled.div`
       background-color: white;
       &:hover{
           background-color: black;
-          z-index: -1;
+          z-index: -3;
       }
   }
 `
