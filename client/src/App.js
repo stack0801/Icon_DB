@@ -3,7 +3,7 @@ import LandingPage from './page/LandingPage';
 import SigninPage from './page/SigninPage';
 import SignupPage  from './page/SignupPage';
 import PostPage  from './page/PostPage';
-import PostingPage  from './PostingPage';
+import PostingPage  from './page/PostingPage';
 import SearchingPage  from './page/SearchingPage';
 
 function App() {

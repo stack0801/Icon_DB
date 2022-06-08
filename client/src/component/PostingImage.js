@@ -3,6 +3,7 @@ import ImageUploader from 'react-images-uploading';
 import styled from "styled-components";
 import StyledButton from "./StyledButton";
 import StyledIuput from "./StyledInput";
+import NoImg from "../img/NoImage.png"
 import axios from 'axios';
 
 export default function App() {
@@ -42,29 +43,36 @@ export default function App() {
     return (
         <PostingImage>
             <ImageUploader
-                value = {images}
-                onChange = {onChange}
-                maxNumber = {maxNumber}
-                dataURLKey = "data_url"
-                onError = {onError}
+                value={images}
+                onChange={onChange}
+                maxNumber={maxNumber}
+                dataURLKey="data_url"
+                onError={onError}
             >
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
                     <ImageWrapper>
+                        {imageList.length === 0 && <img src={NoImg} alt="" width="260" />}
                         {imageList.map((image, index) => (
-                            <div key = {index}>
-                                <img src = {image['data_url']} alt = "" width = "300" />
+                            <div key={index}>
+                                <img src={image['data_url']} alt="" width="260" />
                                 <ul>
-                                    <li><StyledButton width = "100px" height = "35px" text = "Update" onClick = {() => onImageUpdate(index)} /></li>
-                                    <li><StyledButton width = "100px" height = "35px" text = "Delete" onClick = {() => onImageRemove(index)} /></li>
+                                    <li><StyledButton width="100px" height="35px" text="Update" onClick={() => onImageUpdate(index)} /></li>
+                                    <li><StyledButton width="100px" height="35px" text="Delete" onClick={() => onImageRemove(index)} /></li>
                                 </ul>
                             </div>
 
                         ))}
-                        <ul>
-                        <li><StyledButton width = "100px" height = "35px" text = "Add" onClick = {onImageUpload} /></li>
-                        <li><StyledButton width = "100px" height = "35px" text = "Upload" onClick = {boardtest} /></li>
-                        </ul>
-                        <StyledIuput width = "95%" height = "35px" placeholder = "Title" />
+                        <TitleImgUpload>
+                            <StyledIuput width="95%" height="35px" placeholder="Title" />
+                            {imageList.length !== 0
+                                ? <StyledButton width="100px" height="35px" text="Upload" onClick={boardtest} />
+                                : <ul>
+                                    <li><StyledButton width="100px" height="35px" text="Add" onClick={onImageUpload} /></li>
+                                    <li><StyledButton width="100px" height="35px" text="Upload" onClick={boardtest} /></li>
+                                </ul>
+
+                            }
+                        </TitleImgUpload>
                     </ImageWrapper>
                 )}
             </ImageUploader>
@@ -84,8 +92,16 @@ const ImageWrapper = styled.div`
     border: solid 2px #ececee;
     border-radius: 5px;
     display: grid;
-    grid-template-rows:1fr 1fr;
+    grid-template-rows: 3fr 1fr;
     place-items:center;
     place-content:center;
+    gap : 10px;
     padding: 5%;
+`;
+
+const TitleImgUpload = styled.div`
+    display: grid;
+    place-items: center;
+    place-content: center;
+    gap: 10px;
 `;
