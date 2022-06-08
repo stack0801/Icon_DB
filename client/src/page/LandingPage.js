@@ -4,6 +4,7 @@ import Header from "../component/Header/Header";
 import Top from "../component/Top";
 import TopButton from "../component/TopButton";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function Main() {
 
@@ -53,12 +54,16 @@ export default function Main() {
             {icons.map((list, idx) => (
                 <div key={idx}>
                     {idx + 1 === icons.length ?
-                        <div className="icon-list" ref={lastElRef}>
-                            <img src={"/" + list.content_id + ".svg"} alt="no_img" />
-                        </div> :
-                        <div className="icon-list">
-                            <img src={"/" + list.content_id + ".svg"} alt="no_img" />
-                        </div>}
+                        <Link to = {"/post/" + list.content_id}>
+                            <div className="icon-list" ref={lastElRef}>
+                                <img src={"/" + list.content_id + ".svg"} alt="no_img" />
+                            </div>
+                        </Link> :
+                        <Link to = {"/post/" + list.content_id}>
+                            <div className="icon-list">
+                                <img src={"/" + list.content_id + ".svg"} alt="no_img" />
+                            </div>
+                        </Link>}
                 </div>
             ))}
         </div>
