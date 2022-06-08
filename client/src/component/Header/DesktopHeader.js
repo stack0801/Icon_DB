@@ -65,8 +65,8 @@ const SigninBox = styled(Link)`
 `;
 
 const DesktopHeader = styled.div`
+    position:fixed;
     background:#9ed1d9;
-    position: fixed;
     width:100vw;
     height:40px;
     font-size: 18px;

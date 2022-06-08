@@ -10,12 +10,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<LandingPage/>} />
-        <Route exact path="/searching/:keyword" element={<SearchingPage/>}/>
-        <Route exact path="/posting" element={<PostingPage/>}/>
-        <Route exact path="/sign_in" element={<SigninPage/>}/>
-        <Route exact path="/sign_up" element={<SignupPage/>} />
-        <Route exact path="/post/:id" element={<PostPage/>} />
+        <Route exact path = "/" element = {<LandingPage/>} />
+        <Route exact path = "/searching/:keyword" element={<SearchingPage/>}/>
+        <Route exact path = "/posting" element={<PostingPage/>}/>
+        <Route exact path = "/sign_in" element={<SigninPage/>}/>
+        <Route exact path = "/sign_up" element={<SignupPage/>} />
+        <Route exact path = "/post/:id" element={<PostPage/>} />
       </Routes>
     </Router>
   );

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "../component/Header/Header";
 import Top from "../component/Top";
 import TopButton from "../component/TopButton";
+import Loading from "../component/Loading";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -17,15 +18,15 @@ export default function Main() {
     useEffect(() => {
         setLoading(true);
         axios
-        .post('/get_contents', {
-            id: page,
-            count: loading_size
-        })
-        .then((res) => {
-            console.log(res.data)
-            setIcons((prevIcons) => [...prevIcons, ...res.data]);
-            setLoading(false);
-        });
+            .post('/get_contents', {
+                id: page,
+                count: loading_size
+            })
+            .then((res) => {
+                console.log(res.data)
+                setIcons((prevIcons) => [...prevIcons, ...res.data]);
+                setLoading(false);
+            });
 
     }, [page]);
 
@@ -47,29 +48,31 @@ export default function Main() {
     );
 
     return (
-    <LandingPage>
-        <Header/>
-        <Top text="GET FREE ICONS" />
-        <div className="image-grid">
-            {icons.map((list, idx) => (
-                <div key={idx}>
-                    {idx + 1 === icons.length ?
-                        <Link to = {"/post/" + list.content_id}>
-                            <div className="icon-list" ref={lastElRef}>
-                                <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
-                            </div>
-                        </Link> :
-                        <Link to = {"/post/" + list.content_id}>
-                            <div className="icon-list">
-                                <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
-                            </div>
-                        </Link>}
-                </div>
-            ))}
-        </div>
-        {loading && <div>Loading...</div>}
-       <TopButton/>
-    </LandingPage>)
+        <LandingPage>
+             <Header />
+            <Top text="GET FREE ICONS" />
+            <div className="image-grid">
+                {icons.map((list, idx) => (
+                    <div key={idx}>
+                        {idx + 1 === icons.length
+                            ? <Link to={"/post/" + list.content_id}>
+                                <div className="icon-list" ref={lastElRef}>
+                                    <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
+                                </div>
+                            </Link>
+                            : <Link to={"/post/" + list.content_id}>
+                                <div className="icon-list">
+                                    <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
+                                </div>
+                            </Link>}
+                    </div>
+
+                ))}
+            </div>
+            {loading && <Loading />}
+            <TopButton />
+        </LandingPage>
+        )
 }
 
 const LandingPage = styled.div`
@@ -80,13 +83,10 @@ const LandingPage = styled.div`
       gap: 5px;
       justify-items: center;
   }
+
   .icon-list {
       width: 300px;
-      height:300px;
+      height: 300px;
       background-color: white;
-      &:hover{
-          background-color: black;
-          z-index: -3;
-      }
   }
-`
+`;

@@ -25,34 +25,38 @@ export default function App() {
     return (<>
         <Header />
         <PostPage>
-            <div />
             <Image>
-                <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + data.content_id +  ".png"} alt="no_img" />
+                <img src = {"https://webservicegraduationproject.s3.amazonaws.com/img/" + data.content_id + ".png"} alt = "no_img" />
                 <Title>
-                ID : {data.user_id}
-            <div>Title : {data.message}</div>
-            <div>Date : {data.date}</div>
-            </Title>
+                    ID : {data.user_id}
+                    <div>Title : {data.message}</div>
+                    <div>Date : {data.date}</div>
+                </Title>
             </Image>
         </PostPage>
-        </>)
+    </>)
 }
 
 const PostPage = styled.div`
+    margin: auto auto;
+    width: 1024px;
     display: grid;
-    grid-template-rows: 100px 100px 100px 100px;
+    padding: 8%;
     gap: 5px;
-    border: solid 2px gray;
-    place-items: center;
+    border: solid 2px #9ed1d9;
+    border-radius: 5px;
 `;
 
 const Image = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
 `;
 
 const Title = styled.div`
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
     gap: 15px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #9ed1d9;
 `;

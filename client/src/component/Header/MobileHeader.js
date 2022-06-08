@@ -32,58 +32,33 @@ export default function App() {
                 ? <Link to = "/sign_in"><FaUser className = "header_user" size = "20" /></Link>
                 : <Link to = "/posting"><FaUser className = "header_user" size = "20" /></Link>
             }
-
-            <nav className={HambergerBar
-                ? "nav-menu active"
-                : "nav-menu"}>
-            </nav>
+           <div className = {HambergerBar === false
+          
+              }>
+           </div>
         </MobileHeader>
     )
 }
 
-const Toggle = styled.button`
-    background-color: #9ed1d9;
-    color: #ececec;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-    &:hover{
-        color: white;
-        transition: 0.3s;
-    }
-`;
-
 const MobileHeader = styled.div`
-    background:#9ed1d9;
-    position: fixed;
-    width: 100vw;
-    height:40px;
-    font-size: 18px;
-    display: grid;   
-    grid-template-columns: 20% 1fr 20%;
-    place-items:center;
-    place-content:center;
+  position:fixed;
+  background:#9ed1d9;
+  width:100vw;
+  height:40px;
+  font-size: 18px;
+  display: grid;   
+  grid-template-columns: 20% 1fr 20%;
+  place-items:center;
+  place-content:center;
 
-    .nav-menu {
-        background-color: white;
-        width: 40%;
-        height: 100vh;
-        display: flex;
-        position: fixed;
-        top: 40px;
-        left: -100%;
-        transition-duration: 0.35s;
-        z-index: -1;
-        &.active{
-            left: 0;
-            opacity: 0.9;
-        }
-    }
     .header_user {
-      color: white;
+      color: #ececec;
       transition-duration: 0.3s;
-      :hover {
-        color:#f5a282;
+      &:hover {
+        color: white;
+      }
+      &:active {
+        color: #f5a282;
       }
     }
 
@@ -170,3 +145,15 @@ const MobileHeader = styled.div`
       animation-name: flipInX
     }
 }`;
+
+const Toggle = styled.button`
+    background-color: #9ed1d9;
+    height: 40px;
+    color: #ececec;
+    border: none;
+    cursor: pointer;
+    transition-duratio: 0.3s;
+    &:hover{
+        color: white;
+    }
+`;
