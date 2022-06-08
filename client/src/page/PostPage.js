@@ -13,30 +13,45 @@ export default function App() {
             method: 'post',
             url: '/get_content',
             data: {
-                id : id
+                id: id
             }
         })
-        .then((res) => {
-            setData(res.data[0]);
-            console.log(res.data[0]);
-        })
+            .then((res) => {
+                setData(res.data[0]);
+                console.log(res.data[0]);
+            })
     }, []);
 
-    return (
+    return (<>
+        <Header />
         <PostPage>
-            <Header/>
-            <div/>
-            <img src={"/" + data.content_id + ".svg"} alt="no_img" />
-            <div>{data.user_id}</div>
-            <div>{data.message}</div>
-            <div>{data.date}</div>
+            <div />
+            <Image>
+                <img src = {"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
+                <Title>
+                ID : {data.user_id}
+            <div>Title : {data.message}</div>
+            <div>Date : {data.date}</div>
+            </Title>
+            </Image>
         </PostPage>
-    )
+        </>)
 }
 
 const PostPage = styled.div`
     display: grid;
     grid-template-rows: 100px 100px 100px 100px;
     gap: 5px;
-    justify-items: center;
+    place-items: center;
+`;
+
+const Image = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+`;
+
+const Title = styled.div`
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 15px;
 `;

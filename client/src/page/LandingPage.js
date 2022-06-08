@@ -80,9 +80,13 @@ const LandingPage = styled.div`
       gap: 5px;
       justify-items: center;
   }
-  .icon-list{
+  .icon-list {
       width: 300px;
       height:300px;
       background-color: white;
+      &:hover{
+          background-color: black;
+          z-index: -1;
+      }
   }
 `

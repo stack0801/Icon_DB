@@ -64,10 +64,6 @@ const MobileHeader = styled.div`
     place-items:center;
     place-content:center;
 
-    li{
-      float: left;
-      margin-left: 20px;
-    }
     .nav-menu {
         background-color: white;
         width: 40%;
@@ -77,8 +73,9 @@ const MobileHeader = styled.div`
         top: 40px;
         left: -100%;
         transition-duration: 0.35s;
+        z-index: -1;
         &.active{
-             left: 0;
+            left: 0;
             opacity: 0.9;
         }
     }
