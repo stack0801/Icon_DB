@@ -13,7 +13,7 @@ export default function Main() {
     const [loading, setLoading] = useState(false);
     const [icons, setIcons] = useState([]);
     const [page, setPage] = useState(0);
-    const loading_size = 10;
+    const loading_size = 2;
 
     useEffect(() => {
         setLoading(true);
@@ -25,11 +25,9 @@ export default function Main() {
             .then((res) => {
                 console.log(res.data)
                 setIcons((prevIcons) => [...prevIcons, ...res.data]);
-                setLoading(false);
             });
-
+            setLoading(false);
     }, [page]);
-
     //Instersection Observer 사용
     const observer = useRef();
     const lastElRef = useCallback(
@@ -46,30 +44,28 @@ export default function Main() {
         },
         [loading]
     );
-
     return (
         <LandingPage>
              <Header />
-            <Top text="GET FREE ICONS" />
-            <div className="image-grid">
+            <Top text = "GET FREE ICONS" />
+            <div className = "image-grid">
                 {icons.map((list, idx) => (
-                    <div key={idx}>
+                    <div key = {idx}>
                         {idx + 1 === icons.length
                             ? <Link to={"/post/" + list.content_id}>
-                                <div className="icon-list" ref={lastElRef}>
-                                    <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
+                                <div className = "icon-list" ref = {lastElRef}>
+                                    <img src = {"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
                                 </div>
                             </Link>
-                            : <Link to={"/post/" + list.content_id}>
-                                <div className="icon-list">
-                                    <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
+                            : <Link to = {"/post/" + list.content_id}>
+                                <div className = "icon-list">
+                                    <img src = {"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
                                 </div>
                             </Link>}
                     </div>
-
                 ))}
             </div>
-            {loading && <Loading />}
+            {!loading && <Loading/>}
             <TopButton />
         </LandingPage>
         )
@@ -83,7 +79,6 @@ const LandingPage = styled.div`
       gap: 5px;
       justify-items: center;
   }
-
   .icon-list {
       width: 300px;
       height: 300px;

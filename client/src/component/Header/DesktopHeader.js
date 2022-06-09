@@ -26,7 +26,7 @@ export default function App() {
         <DesktopHeader>
             <Logo/>
             {scrollPosition < 500
-                ? <MenuList href="#" >menu</MenuList>
+                ? <MenuList href = "#" >menu</MenuList>
                 : <SearchBox width="450px" height="30px"/> }
             {sign === null
                 ? <SigninBox to="/sign_in">Sign in</SigninBox>

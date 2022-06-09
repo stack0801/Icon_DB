@@ -32,10 +32,6 @@ export default function App() {
                 ? <Link to = "/sign_in"><FaUser className = "header_user" size = "20" /></Link>
                 : <Link to = "/posting"><FaUser className = "header_user" size = "20" /></Link>
             }
-           <div className = {HambergerBar === false
-          
-              }>
-           </div>
         </MobileHeader>
     )
 }

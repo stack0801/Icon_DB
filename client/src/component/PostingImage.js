@@ -45,21 +45,21 @@ export default function App() {
     return (
         <PostingImage>
             <ImageUploader
-                value={images}
-                onChange={onChange}
-                maxNumber={maxNumber}
-                dataURLKey="data_url"
-                onError={onError}
+                value = { images }
+                onChange = { onChange }
+                maxNumber = { maxNumber }
+                dataURLKey = "data_url"
+                onError = { onError }
             >
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
                     <ImageWrapper>
-                        {imageList.length === 0 && <img src={NoImg} alt="" width="260" />}
+                        {imageList.length === 0 && <img src = { NoImg } alt = "" width = "260" />}
                         {imageList.map((image, index) => (
-                            <div key={index}>
-                                <img src={image['data_url']} alt="" width="260" />
+                            <div key = { index }>
+                                <img src={ image['data_url'] } alt = "" width = "260" />
                                 <ul>
-                                    <li><StyledButton width="100px" height="35px" text="Update" onClick={() => onImageUpdate(index)} /></li>
-                                    <li><StyledButton width="100px" height="35px" text="Delete" onClick={() => onImageRemove(index)} /></li>
+                                    <li><StyledButton width = "100px" height = "35px" text = "Update" onClick = {() => onImageUpdate(index)} /></li>
+                                    <li><StyledButton width = "100px" height = "35px" text = "Delete" onClick = {() => onImageRemove(index)} /></li>
                                 </ul>
                             </div>
 
