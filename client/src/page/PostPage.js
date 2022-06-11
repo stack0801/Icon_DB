@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Header from "../component/Header/Header";
 import ImageDetail from "../component/ImageDetail"
 import StyledButton from "../component/StyledButton"
+import StyledInput from "../component/StyledInput"
 import axios from 'axios';
 
 export default function App() {
@@ -41,8 +42,19 @@ export default function App() {
         })
     }
 
-    const content_modify = () => {
-        
+    const [message, setMessage] = useState("");
+    const onMassageHandler = (event) => { setMessage(event.currentTarget.value); }
+
+    const content_update = () => {
+        axios.post('/content_update', {
+            content_id: id,
+            content_message: message,
+            image: null
+        })
+        .then((res) => {
+            console.log(res)
+            window.location.href = '/';
+        })
     }
 
     return (<>
@@ -51,7 +63,8 @@ export default function App() {
            <ImageDetail/>
            {(sign === data.user_id) && <>
                 <StyledButton width = "50%" text = "delete" onClick = {content_delete}/>
-                <StyledButton width = "50%" text = "modify" onClick = {content_modify}/>
+                <StyledButton width = "50%" text = "update" onClick = {content_update}/>
+                <StyledInput width = "95%" placeholder = "MESSAGE" onChange = {onMassageHandler}/>
            </>}
         </PostPage>
     </>)

@@ -237,7 +237,7 @@ app.post('/content_update', (req, res) => {
     const content_id = req.body.content_id
     const content_message = req.body.content_message
     const sql = 'UPDATE content SET message = ? WHERE content_id = ?'
-    sql_pool.query(sql, [content_id, content_message], (err, result) => {
+    sql_pool.query(sql, [content_message, content_id], (err, result) => {
         if (err)
             throw err
         else
