@@ -15,10 +15,9 @@ export default function App(){
                 id: id
             }
         })
-            .then((res) => {
-                setData(res.data[0]);
-                console.log(res.data[0]);
-            })
+        .then((res) => {
+            setData(res.data[0]);
+        })
     }, []);
 
     return(

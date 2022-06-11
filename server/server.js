@@ -201,9 +201,31 @@ app.post('/search', (req, res) => {
     sql_pool.query(sql, (err, result) => {
         if (err)
             throw err
-        else{
+        else
             res.send(result)
-        }
+    })
+})
+
+app.post('/content_delete', (req, res) => {
+    const content_id = req.body.content_id 
+    const sql = 'DELETE FROM content WHERE content_id = ?'
+    sql_pool.query(sql, [content_id], (err, result) => {
+        if (err)
+            throw err
+        else
+            res.send("success")
+    })
+})
+
+app.post('/content_update', (req, res) => {
+    const content_id = req.body.content_id
+    const content_message = req.body.content_message 
+    const sql = 'UPDATE content SET message = ? WHERE content_id = ?'
+    sql_pool.query(sql, [content_id, content_message], (err, result) => {
+        if (err)
+            throw err
+        else
+            res.send("success")
     })
 })
 

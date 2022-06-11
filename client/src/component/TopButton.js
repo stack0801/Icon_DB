@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react';
 import styled from "styled-components";
 import { FaArrowUp } from 'react-icons/fa';
 
-export default function App(){
+export default function App() {
      // 스크롤 위치
      const [scrollPosition, setScrollPosition] = useState(0);
      // 스크롤의 위치를 저장
@@ -12,7 +12,7 @@ export default function App(){
      useEffect(() => {
          window.addEventListener('scroll', updateScroll);
      });
- 
+     
      // 맨 위로 올라가게 함
      const scrollTop = () => {
          window.scrollTo({
