@@ -41,12 +41,18 @@ export default function App() {
         })
     }
 
+    const content_modify = () => {
+        
+    }
+
     return (<>
         <Header/>
         <PostPage>
            <ImageDetail/>
-           {(sign === data.user_id) && 
-           <StyledButton width = "50%" text = "delete" onClick = {content_delete}/>}
+           {(sign === data.user_id) && <>
+                <StyledButton width = "50%" text = "delete" onClick = {content_delete}/>
+                <StyledButton width = "50%" text = "modify" onClick = {content_modify}/>
+           </>}
         </PostPage>
     </>)
 }

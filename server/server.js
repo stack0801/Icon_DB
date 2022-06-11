@@ -74,11 +74,20 @@ app.post('/sign_in', (req, res) => {
 })
 
 app.post('/get_auth', (req, res) => {
-    console.log(req.session.sign)
     if (req.session.sign) 
         res.send(req.session.sign)
     else
         res.send("null")
+})
+
+app.post('/get_user', (req, res) => {
+    const sql = 'SELECT * FROM user where id = ?'
+    sql_pool.query(sql, [req.session.sign], (err, result) => {
+        if (err)
+            throw err
+        else
+            res.send(result)
+    })
 })
 
 app.post('/get_contents', (req, res) => {
