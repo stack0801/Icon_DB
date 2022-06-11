@@ -26,7 +26,7 @@ export default function Main() {
                 console.log(res.data)
                 setIcons((prevIcons) => [...prevIcons, ...res.data]);
             });
-            setLoading(false);
+        setLoading(false);
     }, [page]);
     //Instersection Observer 사용
     const observer = useRef();
