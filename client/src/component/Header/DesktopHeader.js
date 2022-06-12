@@ -17,23 +17,23 @@ export default function App() {
     const [sign, setSign] = useState(null)
     useEffect(() => {
         axios.post('/get_auth')
-        .then((res) => {
-            setSign(res.data)
-        })
+            .then((res) => {
+                setSign(res.data)
+            })
     }, []);
 
     return (
         <DesktopHeader>
-            <Logo/>
+            <Logo />
             {scrollPosition < 500
-                ? <MenuList href = "#" >menu</MenuList>
-                : <SearchBox width="450px" height="30px"/> }
+                ? <MenuList href="/posting" >posting</MenuList>
+                : <SearchBox width="450px" height="30px" />}
             {sign === null
                 ? <SigninBox to="/sign_in">Sign in</SigninBox>
                 : <ul>
-                    <li><SigninBox to="/posting">Posting</SigninBox></li>
+                    <li><SigninBox to="/user">User</SigninBox></li>
                     <li><SigninBox to="/sign_up">Logout</SigninBox></li>
-                </ul> }
+                </ul>}
         </DesktopHeader>
     )
 }

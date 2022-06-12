@@ -15,8 +15,7 @@ export default function App() {
 const SignupPage = styled.div`
     background: #9ed1d9;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items:center;
+    place-content:center;
 `;
