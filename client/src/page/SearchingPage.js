@@ -18,29 +18,31 @@ export default function App() {
                 searchbox: keyword
             }
         })
-        .then((res) => {
-            setData(res.data)
-            console.log(res.data) //아직 받는 데이터 없음(server.js에서 추후 수정)
-        })
+            .then((res) => {
+                setData(res.data)
+                console.log(res.data) //아직 받는 데이터 없음(server.js에서 추후 수정)
+            })
     }, []);
-    
-    return (
+
+    return (<>
+        <Header />
         <SearchingPage>
-            <Header/>
             {data.map((list, idx) => (
                 <div key={idx}>
-                    <Link to = {"/post/" + list.content_id}>
+                    <Link to={"/post/" + list.content_id}>
                         <div className="icon-list">
                             <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
                         </div>
                     </Link>
                 </div>
             ))}
-            <TopButton/>
+            <TopButton />
         </SearchingPage>
-    )
+    </>);
 }
 
 const SearchingPage = styled.div`
-        
+    display: grid;
+    place-items: center;
+    place-content: center;
 `;

@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import Header from "../component/Header/Header";
 import ImageDetail from "../component/ImageDetail"
 import StyledButton from "../component/StyledButton"
-import StyledInput from "../component/StyledInput"
 import axios from 'axios';
 
 export default function App() {

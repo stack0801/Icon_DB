@@ -5,7 +5,7 @@ import SignupPage  from './page/SignupPage';
 import PostPage  from './page/PostPage';
 import PostingPage  from './page/PostingPage';
 import SearchingPage  from './page/SearchingPage';
-import UserPage from './page/UserPage';
+import ProfilePage from './page/ProfilePage';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route exact path = "/sign_in" element={<SigninPage/>}/>
         <Route exact path = "/sign_up" element={<SignupPage/>} />
         <Route exact path = "/post/:id" element={<PostPage/>} />
-        <Route exact path = "/user" element={<UserPage/>} />
+        <Route exact path = "/profile" element={<ProfilePage/>} />
       </Routes>
     </Router>
   );
