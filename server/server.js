@@ -215,7 +215,38 @@ app.post('/search', (req, res) => {
     })
 })
 
-app.post('/tag', (req, res) => {
+app.post('/tag_insert', (req, res) => {
+    const content_id = req.body.content_id
+    const tag_context = req.body.tag_context
+
+    const sql_Hashtag = 'SELECT * FROM Hash WHERE Hashtag = ?'
+    sql_pool.query(sql_Hashtag, [tag_context], (err_Hash, result_Hash) => {
+        if (result_Hash.length == 0) {
+            const sql_InsertHash = "INSERT INTO Hash(Hashtag) VALUES ('" + tag_context + "')"
+            console.log(sql_InsertHash)
+            sql_pool.query(sql_InsertHash, (err_InsertHash, result_InsertHash) => {
+                if (err_InsertHash) {
+                    console.log(err_InsertHash)
+                }
+            })
+        }
+        sql_pool.query(sql_Hashtag, [tag_context], (err_Hash, rows_Hash, result_Hash) => {
+            const Hash_idx = rows_Hash[0].Hash_id
+            const sql_content_tag = 'INSERT INTO content_has_hash(content_idx, Hash_idx) VALUES (?,?)'
+            sql_pool.query(sql_content_tag, [content_id, Hash_idx], (err_content_tag, result_content_tag) => {
+                if (err_content_tag) {
+                    console.log("중복된 값")
+                    res.send("duplication")
+                }
+                else {
+                    res.send(result_content_tag)
+                }
+            })
+        })
+    })
+})
+
+app.post('/tag_search', (req, res) => {
     const search_tag = req.body.search_tag
     const sql_Hashtag = 'SELECT Hash_id FROM Hash WHERE Hashtag = ?'
     sql_pool.query(sql_Hashtag, [search_tag], (err_tag, rows_tag, result_tag) => {
@@ -234,7 +265,7 @@ app.post('/tag', (req, res) => {
                             if (err_content)
                                 console.log(err_content)
                             else {
-                                console.log(result_content)
+                                res.send("success")
                             }
                         })
                     }
