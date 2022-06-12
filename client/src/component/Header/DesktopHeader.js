@@ -8,10 +8,11 @@ import axios from 'axios';
 export default function App() {
 
     // 스크롤 위치
-    const [scrollPosition, setScrollPosition] = useState(0);
-    useEffect(() => {
-        window.addEventListener('scroll', setScrollPosition(window.scrollY || document.documentElement.scrollTop));
-    });
+    // const [scrollPosition, setScrollPosition] = useState(0);
+    // useEffect(() => {
+    //     console.log(scrollPosition);
+    //     window.addEventListener('scroll', setScrollPosition(window.scrollY));
+    // });
 
     // 유저 로그인 여부
     const [sign, setSign] = useState(null)
@@ -21,10 +22,24 @@ export default function App() {
                 setSign(res.data)
             })
     }, []);
+
+    const [scroll, setScroll] = useState(false);
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll); //clean up
+        };
+    }, []);
+    const handleScroll = () => {
+        if (window.scrollY >= 500)
+            setScroll(true);
+        else
+            setScroll(false);
+    };
     return (
         <DesktopHeader>
             <Logo />
-            {scrollPosition < 500
+            {scroll === false
                 ? <MenuList>
                     <li><Menu href="/posting">posting</Menu></li>
                 </MenuList>

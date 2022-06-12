@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import ImageUploader from 'react-images-uploading';
 import styled from "styled-components";
-import { withStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import ImageContainer from "./ImageContainer";
 import StyledButton from "./StyledButton";
-import axios from "axios";
+import { withStyles, TextField } from "@material-ui/core";
+import axios from "axios"
+import NoImg from "../img/NoImage.png"
 
 function App({classes}) {
     const [profiledata, setProfileData] = useState({});
@@ -25,11 +27,57 @@ function App({classes}) {
             })
     }, []);
 
+    //이미지 업로드
+    const [images, setImages] = useState([]);
+    const maxNumber = 1;
+
+    const onChange = (imageList) => {
+        setImages(imageList);
+    }
+
+    const boardtest = () => {
+
+        const formData = new FormData()
+        formData.append("img", images[0].file)
+
+        axios({
+            method: 'post',
+            url: '/boardtest',
+            header: { 'content-type': 'multipart/form-data' },
+            data: formData
+        })
+            .then((res) => {
+                alert(res.data)/*
+            if (res.data == 'success') 
+                window.location.href = '/'*/
+            })
+    }
+
     const profile_update = () => {
 
     }
     return (
             <ProfileContainer>
+                <ImageUploader
+                 value = { images }
+                 onChange = { onChange }
+                 maxNumber = { maxNumber }
+                 dataURLKey = "data_url">
+                {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (<>
+                        {imageList.length === 0 && <ImageContainer src = { NoImg } alt = "" width = "260" borderRadius="50%" />}
+                        {imageList.map((image, index) => (
+                            <div key = { index }>
+                                <ImageContainer src={ image['data_url'] } alt = "" width = "260" borderRadius="50%"/>
+                                <ul>
+                                    <li><StyledButton width = "100px" height = "35px" text = "Update" onClick = {() => onImageUpdate(index)} /></li>
+                                    <li><StyledButton width = "100px" height = "35px" text = "Delete" onClick = {() => onImageRemove(index)} /></li>
+                                </ul>
+                            </div>
+                            
+                        ))}
+                        
+                </>)}
+            </ImageUploader>
                 <TextField className={classes.TextField}
                     variant="outlined"
                     fullWidth
@@ -54,7 +102,7 @@ function App({classes}) {
 
 const ProfileContainer = styled.div`
     width: 30vw;
-    height: 50vh;
+    height: 70vh;
     display: grid;
     place-items: center;
     border: solid 2px #ececec;

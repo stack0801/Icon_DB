@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ImageUploader from 'react-images-uploading';
 import styled from "styled-components";
+import ImageContainer from "./ImageContainer";
 import StyledButton from "./StyledButton";
 import StyledIuput from "./StyledInput";
 import NoImg from "../img/NoImage.png"
@@ -23,7 +24,7 @@ export default function App() {
     }
 
     const [Message, setMessagebox] = useState("");
-    const onMessageHandler = (e) => { setMessagebox(e.currentTarget.value) }  
+    const onMessageHandler = (e) => { setMessagebox(e.currentTarget.value) }
     const boardtest = () => {
 
         const formData = new FormData()
@@ -45,65 +46,57 @@ export default function App() {
     return (
         <PostingImage>
             <ImageUploader
-                value = { images }
-                onChange = { onChange }
-                maxNumber = { maxNumber }
-                dataURLKey = "data_url"
-                onError = { onError }
+                value={images}
+                onChange={onChange}
+                maxNumber={maxNumber}
+                dataURLKey="data_url"
+                onError={onError}
             >
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
                     <ImageWrapper>
-                        {imageList.length === 0 && <img src = { NoImg } alt = "" width = "260" />}
+                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="70%" />}
                         {imageList.map((image, index) => (
-                            <div key = { index }>
-                                <img src={ image['data_url'] } alt = "" width = "260" />
+                            <div key={index}>
+                                <ImageContainer src={image['data_url']} alt="" width="260" />
                                 <ul>
-                                    <li><StyledButton width = "100px" height = "35px" text = "Update" onClick = {() => onImageUpdate(index)} /></li>
-                                    <li><StyledButton width = "100px" height = "35px" text = "Delete" onClick = {() => onImageRemove(index)} /></li>
+                                    <li><StyledButton width="100%" height="35px" text="Update" onClick={() => onImageUpdate(index)} /></li>
+                                    <li><StyledButton width="100%" height="35px" text="Delete" onClick={() => onImageRemove(index)} /></li>
                                 </ul>
                             </div>
 
                         ))}
                         <TitleImgUpload>
-                            <StyledIuput width="95%" height="35px" placeholder="Message" onChange={onMessageHandler}/>
+                            <StyledIuput width="95%" height="35px" placeholder="Message" onChange={onMessageHandler} />
                             {imageList.length !== 0
-                                ? <StyledButton width="100px" height="35px" text="Upload" onClick={boardtest} />
-                                : <ul>
-                                    <li><StyledButton width="100px" height="35px" text="Add" onClick={onImageUpload} /></li>
-                                    <li><StyledButton width="100px" height="35px" text="Upload" onClick={boardtest} /></li>
-                                </ul>
-
-                            }
+                                ? <StyledButton width="100%" height="35px" text="Upload" onClick={boardtest} />
+                                : <>
+                                    <StyledButton width="60%" height="35px" text="Add" onClick={onImageUpload} />
+                                    <StyledButton width="60%" height="35px" text="Upload" onClick={boardtest} />
+                                </>}
                         </TitleImgUpload>
                     </ImageWrapper>
                 )}
             </ImageUploader>
-        </PostingImage>)
+        </PostingImage>
+    );
 }
 
 const PostingImage = styled.div`
-    height: 100vh;
     display: grid;
     place-items:center;
-    place-content:center;
 `;
 
 const ImageWrapper = styled.div`
-    width: 450px;
-    height: 600px;
+    width: 30vw;
+    height: 60vh;
     border: solid 2px #ececee;
     border-radius: 5px;
     display: grid;
     grid-template-rows: 3fr 1fr;
     place-items:center;
-    place-content:center;
-    gap : 10px;
-    padding: 5%;
+    padding: 3%;
 `;
 
-const TitleImgUpload = styled.div`
-    display: grid;
-    place-items: center;
-    place-content: center;
+const TitleImgUpload = styled(PostingImage)`
     gap: 10px;
 `;

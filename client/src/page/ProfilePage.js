@@ -6,15 +6,19 @@ import Header from "../component/Header/Header";
 export default function App() {
     return (<>
         <Header />
-        <UserPage>
-            <h1>Edit Your Profile</h1>
-            <ProfileContainer/>
-        </UserPage>
+        <ProfilePage>
+            <EditProfile>Edit Your Profile</EditProfile>
+            <ProfileContainer />
+        </ProfilePage>
     </>);
 }
-const UserPage = styled.div`
+const ProfilePage = styled.div`
     height: 100vh;
     display: grid;
     place-items: center;
     place-content: center;
+`;
+
+const EditProfile = styled.h1`
+    color: #f5a282;
 `;

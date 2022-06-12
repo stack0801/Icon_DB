@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import Header from "../component/Header/Header";
 import ImageDetail from "../component/ImageDetail"
 import StyledButton from "../component/StyledButton"
+import StyledInput from "../component/StyledInput"
+import TitleImgUpload from "../component/PostingImage";
 import axios from 'axios';
 
 export default function App() {
@@ -50,21 +52,23 @@ export default function App() {
             content_message: message,
             image: null
         })
-        .then((res) => {
-            console.log(res)
-            window.location.href = '/';
-        })
+            .then((res) => {
+                console.log(res)
+                window.location.href = '/';
+            })
     }
 
     return (<>
         <Header />
         <PostPage>
-           <ImageDetail/>
-           {(sign === data.user_id) && <>
-                <StyledButton width = "50%" text = "delete" onClick = {content_delete}/>
-                <StyledButton width = "50%" text = "update" onClick = {content_update}/>
-                <StyledInput width = "95%" placeholder = "MESSAGE" onChange = {onMassageHandler}/>
-           </>}
+            <PostContainer>
+                <ImageDetail />
+                {(sign === data.user_id) && <UserContainer>
+                    <StyledInput width="95%" placeholder="MESSAGE" onChange={onMassageHandler} />
+                    <StyledButton width="50%" text="Delete" onClick={content_delete} />
+                    <StyledButton width="50%" text="Update" onClick={content_update} />
+                </UserContainer>}
+            </PostContainer>
         </PostPage>
     </>)
 }
@@ -81,7 +85,13 @@ const PostContainer = styled.div`
     display: grid;
     place-items: center;
     place-content: center;
-    padding: 8%;
+    padding: 5%;
     border: solid 2px #ececee;
     border-radius: 5px;
+`;
+
+const UserContainer = styled.div`
+    display: grid;
+    place-items: center;
+    gap: 15px;
 `;
