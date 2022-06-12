@@ -21,27 +21,43 @@ export default function App() {
                 setSign(res.data)
             })
     }, []);
-
     return (
         <DesktopHeader>
             <Logo />
             {scrollPosition < 500
-                ? <MenuList href="/posting" >posting</MenuList>
+                ? <MenuList>
+                    <li><Menu href="/posting">posting</Menu></li>
+                </MenuList>
                 : <SearchBox width="450px" height="30px" />}
             {sign === null
                 ? <SigninBox to="/sign_in">Sign in</SigninBox>
                 : <ul>
-                    <li><SigninBox to="/user">User</SigninBox></li>
+                    <li><SigninBox to="/profile">Profile</SigninBox></li>
                     <li><SigninBox to="/sign_up">Logout</SigninBox></li>
                 </ul>}
         </DesktopHeader>
     )
 }
-const MenuList = styled.a`
+
+const Menu = styled.a`
     width:100%;
     color: #ececec;
     display:grid;
     flex-direction:column;
+    place-items:center;
+    place-content:center;
+    transition-duration:0.3s;
+    &:hover {
+        color:white;
+    }
+    &:active{
+        color:#f5a282;
+    }
+`;
+
+const MenuList = styled.ul`
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
     place-items:center;
     place-content:center;
     transition-duration:0.3s;
@@ -71,7 +87,7 @@ const DesktopHeader = styled.div`
     height:40px;
     font-size: 18px;
     display: grid;   
-    grid-template-columns: 20% 1fr 20%;
+    grid-template-columns: 15% 1fr 15%;
     place-items:center;
     place-content:center;
 }`;

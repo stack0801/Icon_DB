@@ -30,7 +30,7 @@ export default function App() {
             <Logo />
             {sign === null
                 ? <Link to = "/sign_in"><FaUser className = "header_user" size = "20" /></Link>
-                : <Link to = "/posting"><FaUser className = "header_user" size = "20" /></Link>
+                : <Link to = "/user"><FaUser className = "header_user" size = "20" /></Link>
             }
         </MobileHeader>
     )

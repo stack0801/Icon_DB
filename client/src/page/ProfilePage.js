@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import StyledInput from "../component/StyledInput";
 import StyledButton from "../component/StyledButton";
 import Header from "../component/Header/Header";
-import axios from 'axios';
+import axios from "axios";
 
 export default function App() {
-    const [userdata, setUserData] = useState({});
+    const [profiledata, setProfileData] = useState({});
     const [sign, setSign] = useState(null);
 
     useEffect(() => {
@@ -20,12 +20,12 @@ export default function App() {
             url: '/get_user'
         })
             .then((res) => {
-                setUserData(res.data[0]);
+                setProfileData(res.data[0]);
                 console.log(res.data[0]);
             })
     }, []);
 
-    const user_update = () => {
+    const profile_update = () => {
 
     }
     return (<>
@@ -35,11 +35,11 @@ export default function App() {
                 <LikeList>LikeList</LikeList>
             </ListContainer>
             <UserContainer>
-                <StyledInput width="70%" height="60px" placeholder={userdata.nickname} />
-                <StyledInput width="70%" height="60px" placeholder={userdata.id} />
-                <StyledInput width="70%" height="60px" placeholder={userdata.password} />
-                {(sign === userdata.id) &&
-                    <StyledButton width="75%" height="60px" text="Update" onClick={user_update} />
+                <StyledInput width="70%" height="60px" placeholder={profiledata.nickname} />
+                <StyledInput width="70%" height="60px" placeholder={profiledata.id} />
+                <StyledInput width="70%" height="60px" placeholder={profiledata.password} />
+                {(sign === profiledata.id) &&
+                    <StyledButton width="75%" height="60px" text="Update" onClick={profile_update} />
                 }
             </UserContainer>
         </UserPage>
@@ -54,14 +54,12 @@ const UserPage = styled.div`
 `;
 
 const ListContainer = styled.div`
-    margin-top: 80px;
     width: 100%;
     heigth: 100vh;
     display: grid;
 `;
 
 const UserContainer = styled.div`
-    margin-top: 80px;
     width: 70%;
     height: 40vh;
     display: grid;

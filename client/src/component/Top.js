@@ -22,7 +22,7 @@ const Top = styled.div`
     place-items: center;
 `;
 
-const TopImage=styled.img`
+const TopImage = styled.img`
     position: fixed;
     top: 0;
     left: 0;

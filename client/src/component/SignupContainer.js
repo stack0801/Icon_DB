@@ -50,9 +50,8 @@ const StyledContianer = styled.div`
     background: white;
     border-radius: 15px;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
     justify-items: center;
-    gap: 5px;
+    gap: 7px;
 
     width: ${(props) => (props.width || "auto")};
     height: ${(props) => (props.height || "auto")};

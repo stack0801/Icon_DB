@@ -13,7 +13,7 @@ export default function Main() {
     const [loading, setLoading] = useState(false);
     const [icons, setIcons] = useState([]);
     const [page, setPage] = useState(0);
-    const loading_size = 2;
+    const loading_size = 10;
 
     useEffect(() => {
         setLoading(true);

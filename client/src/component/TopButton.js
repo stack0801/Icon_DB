@@ -23,17 +23,16 @@ export default function App() {
      return(scrollPosition > 500 && <TopButton onClick={scrollTop}><FaArrowUp size="26" color="white" /></TopButton>);
 }
 
-const TopButton =styled.button`
-    cursor: pointer;
+const TopButton = styled.button`
+    background: #9ed1d9;
     position: fixed;
     display: flex;
     bottom: 1.5rem;
     right: 1.5rem;
-    background: #9ed1d9;
-    padding: 0.5rem;
-    font-size: 2rem;
     border: 1.5px solid white;
     border-radius: 50%;
+    padding: 0.5rem;
+    font-size: 2rem;
     box-shadow: -1px 0 4px rgba(14, 55, 63, 0.15);
-    transition: 0.5s ease-in;
+    cursor: pointer;
 `;
