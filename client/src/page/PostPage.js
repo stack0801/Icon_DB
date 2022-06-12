@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Header from "../component/Header/Header";
 import ImageDetail from "../component/ImageDetail"
 import StyledButton from "../component/StyledButton"
+import StyledInput from "../component/StyledInput"
 import axios from 'axios';
 
 export default function App() {
@@ -41,13 +42,30 @@ export default function App() {
             })
     }
 
+<<<<<<< HEAD
     const content_modify = () => {
 
+=======
+    const [message, setMessage] = useState("");
+    const onMassageHandler = (event) => { setMessage(event.currentTarget.value); }
+
+    const content_update = () => {
+        axios.post('/content_update', {
+            content_id: id,
+            content_message: message,
+            image: null
+        })
+        .then((res) => {
+            console.log(res)
+            window.location.href = '/';
+        })
+>>>>>>> 2001ae4cde1dd8da7bd3c12e608795b13ae40838
     }
 
     return (<>
         <Header />
         <PostPage>
+<<<<<<< HEAD
             <PostContainer>
                 <ImageDetail />
                 {(sign === data.user_id) && <ul>
@@ -55,6 +73,14 @@ export default function App() {
                     <li><StyledButton width="110%" height="40px" text="modify" onClick={content_modify} /></li>
                 </ul>}
             </PostContainer>
+=======
+           <ImageDetail/>
+           {(sign === data.user_id) && <>
+                <StyledButton width = "50%" text = "delete" onClick = {content_delete}/>
+                <StyledButton width = "50%" text = "update" onClick = {content_update}/>
+                <StyledInput width = "95%" placeholder = "MESSAGE" onChange = {onMassageHandler}/>
+           </>}
+>>>>>>> 2001ae4cde1dd8da7bd3c12e608795b13ae40838
         </PostPage>
     </>)
 }
