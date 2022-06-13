@@ -17,9 +17,14 @@ export default function Main() {
 }
 
 const LandingPage = styled.div`
-  .icon-list {
-      width: 300px;
-      height: 300px;
-      background-color: white;
-  }
+    .icon-list {
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    }
+    -ms-overflow-style: none;
+    }
+    ::-webkit-scrollbar {
+    display: none;
+    }
 `;

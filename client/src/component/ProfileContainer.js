@@ -57,14 +57,17 @@ function App({classes}) {
 
     }
     return (
-            <ProfileContainer>
+        
+       
+    <ProfileContainer>
+         <EditProfile>Edit Your Profile</EditProfile>
                 <ImageUploader
                  value = { images }
                  onChange = { onChange }
                  maxNumber = { maxNumber }
                  dataURLKey = "data_url">
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (<>
-                        {imageList.length === 0 && <ImageContainer src = { NoImg } alt = "" width = "260" borderRadius="50%" />}
+                        {imageList.length === 0 && <ImageContainer src = { NoImg } alt = "" width = "60%" borderRadius="50%" />}
                         {imageList.map((image, index) => (
                             <div key = { index }>
                                 <ImageContainer src={ image['data_url'] } alt = "" width = "260" borderRadius="50%"/>
@@ -97,17 +100,20 @@ function App({classes}) {
                     <StyledButton width="75%" height="60px" text="Update" onClick={profile_update} />
                 }
             </ProfileContainer>
-    );
+            );
 }
 
 const ProfileContainer = styled.div`
     width: 30vw;
-    height: 70vh;
+    height: 80vh;
     display: grid;
     place-items: center;
     border: solid 2px #ececec;
-    border-radius: 5px;
     padding: 5%;
+`;
+
+const EditProfile = styled.h1`
+    color: #f5a282;
 `;
 
 const styles = () => ({
