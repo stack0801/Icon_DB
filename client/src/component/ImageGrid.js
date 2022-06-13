@@ -49,15 +49,19 @@ export default function Main() {
                         {idx + 1 === icons.length
                             ? <Link to={"/post/" + list.content_id}>
                                 <IconContainer>
-                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" width="260"  ref={lastElRef}/>
-                                    <ShowTitle/>
-                                    </IconContainer>
+                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" width="260" ref={lastElRef} />
+                                    <ShowTitle>
+                                        <Text>Title</Text>
+                                    </ShowTitle>
+                                </IconContainer>
                             </Link>
                             : <Link to={"/post/" + list.content_id}>
                                 <IconContainer>
                                     <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" width="260" />
-                                    <ShowTitle/>
-                                    </IconContainer>
+                                    <ShowTitle>
+                                        <Text>Title</Text>
+                                    </ShowTitle>
+                                </IconContainer>
                             </Link>}
                     </div>
                 ))}
@@ -94,10 +98,21 @@ const ShowTitle = styled.div`
     transition: .5s ease;
     background-color: #9ed1d9;
     &:hover { 
-        opacity: 0.8;
+        opacity: 0.9;
     }
 `;
 
+const Text = styled.div`
+    width: fit-content;
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+`;
 const IconContainer = styled.div`
     display: inline-block;
     height: 260px;

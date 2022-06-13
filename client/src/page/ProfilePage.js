@@ -7,7 +7,6 @@ export default function App() {
     return (<>
         <Header />
         <ProfilePage>
-            <EditProfile>Edit Your Profile</EditProfile>
             <ProfileContainer />
         </ProfilePage>
     </>);
@@ -17,8 +16,4 @@ const ProfilePage = styled.div`
     display: grid;
     place-items: center;
     place-content: center;
-`;
-
-const EditProfile = styled.h1`
-    color: #f5a282;
 `;

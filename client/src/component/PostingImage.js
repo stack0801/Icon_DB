@@ -57,7 +57,7 @@ export default function App() {
                         {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="70%" />}
                         {imageList.map((image, index) => (
                             <div key={index}>
-                                <ImageContainer src={image['data_url']} alt="" width="260" />
+                                <ImageContainer src={image['data_url']} alt="" width="60%" />
                                 <ul>
                                     <li><StyledButton width="100%" height="35px" text="Update" onClick={() => onImageUpdate(index)} /></li>
                                     <li><StyledButton width="100%" height="35px" text="Delete" onClick={() => onImageRemove(index)} /></li>
@@ -84,12 +84,13 @@ export default function App() {
 const PostingImage = styled.div`
     display: grid;
     place-items:center;
+    padding: 5%;
 `;
 
 const ImageWrapper = styled.div`
-    width: 30vw;
-    height: 60vh;
-    border: solid 2px #ececee;
+    width: 60%;
+    height: 80%;
+    border: solid 2px #f5d7cb;
     border-radius: 5px;
     display: grid;
     grid-template-rows: 3fr 1fr;
