@@ -7,7 +7,7 @@ import { withStyles, TextField } from "@material-ui/core";
 import axios from "axios"
 import NoImg from "../img/NoImage.png"
 
-function App({classes}) {
+function App({ classes }) {
     const [profiledata, setProfileData] = useState({});
     const [sign, setSign] = useState(null);
 
@@ -56,56 +56,56 @@ function App({classes}) {
     const profile_update = () => {
 
     }
-    return (
+    return (<>
         
-       
-    <ProfileContainer>
-         <EditProfile>Edit Your Profile</EditProfile>
-                <ImageUploader
-                 value = { images }
-                 onChange = { onChange }
-                 maxNumber = { maxNumber }
-                 dataURLKey = "data_url">
+        <EditProfile>Edit Your Profile</EditProfile>
+        <ProfileContainer>
+            <ProfileImage>
+            <ImageUploader
+                value={images}
+                onChange={onChange}
+                maxNumber={maxNumber}
+                dataURLKey="data_url">
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (<>
-                        {imageList.length === 0 && <ImageContainer src = { NoImg } alt = "" width = "60%" borderRadius="50%" />}
-                        {imageList.map((image, index) => (
-                            <div key = { index }>
-                                <ImageContainer src={ image['data_url'] } alt = "" width = "260" borderRadius="50%"/>
-                                <ul>
-                                    <li><StyledButton width = "100px" height = "35px" text = "Update" onClick = {() => onImageUpdate(index)} /></li>
-                                    <li><StyledButton width = "100px" height = "35px" text = "Delete" onClick = {() => onImageRemove(index)} /></li>
-                                </ul>
-                            </div>
-                            
-                        ))}
-                        
+                    {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="60%" borderRadius="50%" />}
+                    {imageList.map((image, index) => (
+                        <div key={index}>
+                            <ImageContainer src={image['data_url']} alt="" width="260" borderRadius="50%" />
+                            <ul>
+                                <li><StyledButton width="100px" height="35px" text="Update" onClick={() => onImageUpdate(index)} /></li>
+                                <li><StyledButton width="100px" height="35px" text="Delete" onClick={() => onImageRemove(index)} /></li>
+                            </ul>
+                        </div>
+
+                    ))}
                 </>)}
             </ImageUploader>
-                <TextField className={classes.TextField}
-                    variant="outlined"
-                    fullWidth
-                    label={profiledata.nickname}
-                    required />
-                <TextField className={classes.TextField}
-                    variant="outlined"
-                    fullWidth
-                    label={profiledata.id}
-                    required />
-                <TextField className={classes.TextField}
-                    variant="outlined"
-                    fullWidth
-                    label={profiledata.password}
-                    required />
-                {(sign === profiledata.id) &&
-                    <StyledButton width="75%" height="60px" text="Update" onClick={profile_update} />
-                }
-            </ProfileContainer>
-            );
+            <TextField className={classes.TextField}
+                variant="outlined"
+                fullWidth
+                label={profiledata.nickname}
+                required />
+            <TextField className={classes.TextField}
+                variant="outlined"
+                fullWidth
+                label={profiledata.id}
+                required />
+            <TextField className={classes.TextField}
+                variant="outlined"
+                fullWidth
+                label={profiledata.password}
+                required />
+            {(sign === profiledata.id) &&
+                <StyledButton width="75%" height="60px" text="Update" onClick={profile_update} />
+            }
+            </ProfileImage>
+        </ProfileContainer>
+        </>);
 }
 
 const ProfileContainer = styled.div`
-    width: 30vw;
-    height: 80vh;
+    width: 60%;
+    height: 85%;
     display: grid;
     place-items: center;
     border: solid 2px #ececec;
@@ -113,7 +113,15 @@ const ProfileContainer = styled.div`
 `;
 
 const EditProfile = styled.h1`
+    display: grid;
+    place-items: center;
     color: #f5a282;
+`;
+
+const ProfileImage = styled.div`
+    display: grid;
+    place-items:center;
+    gap: 10px;
 `;
 
 const styles = () => ({
