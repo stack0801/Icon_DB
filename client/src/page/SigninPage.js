@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SigninContainer from '../component/SigninContainer';
+import SigninContainer from '../component/SigninPage/SigninContainer';
 import Logo from '../component/Logo';
 
 export default function App() {

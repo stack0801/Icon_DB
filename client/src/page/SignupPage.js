@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SignupContainer from '../component/SignupContainer';
+import SignupContainer from '../component/SignupPage/SignupContainer';
 import Logo from '../component/Logo';
 
 export default function App() {

@@ -1,24 +1,22 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import PostingContainer from "../component/PostingPage/PostingContainer"
+import ProfileContainer from "../component/EditProfilePage/EditProfileContainer";
 import Header from "../component/Header/Header";
 
 export default function App() {
     return (<>
         <Header />
-        <PostingPage>
-        <PostingContainer/>
-    </PostingPage>
+        <EditProfilePage>
+            <ProfileContainer />
+        </EditProfilePage>
     </>);
 }
-
-const PostingPage = styled.div`
-    position:absolute;
+const EditProfilePage = styled.div`
+    position: absolute;
     top: 40px;
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 0.5fr 1fr;
     place-items: center;
     place-content: center;
 `;

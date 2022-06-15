@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import styled from "styled-components";
-import Loading from "../component/Loading";
+import Loading from "../Loading";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export default function Main() {
-
     //무한 스크롤
     const [loading, setLoading] = useState(false);
     const [icons, setIcons] = useState([]);
@@ -25,6 +24,7 @@ export default function Main() {
             });
         setLoading(false);
     }, [page]);
+
     //Instersection Observer 사용
     const observer = useRef();
     const lastElRef = useCallback(
@@ -41,46 +41,41 @@ export default function Main() {
         },
         [loading]
     );
-    return (
-        <Container>
-            <ImageGrid>
-                {icons.map((list, idx) => (
-                    <div key={idx}>
-                        {idx + 1 === icons.length
-                            ? <Link to={"/post/" + list.content_id}>
-                                <IconContainer>
-                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" width="260" ref={lastElRef} />
-                                    <ShowTitle>
-                                        <Text>Title</Text>
-                                    </ShowTitle>
-                                </IconContainer>
-                            </Link>
-                            : <Link to={"/post/" + list.content_id}>
-                                <IconContainer>
-                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" width="260" />
-                                    <ShowTitle>
-                                        <Text>Title</Text>
-                                    </ShowTitle>
-                                </IconContainer>
-                            </Link>}
-                    </div>
-                ))}
-            </ImageGrid>
-            {!loading && <Loading />}
-        </Container>
-    );
+
+    return (<>
+        <ImageListWrapper>
+            {icons.map((list, idx) => (
+                <div key={idx}>
+                    {idx + 1 === icons.length
+                        ? <Link to={"/post/" + list.content_id}>
+                            <IconContainer>
+                                <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" width="260" ref={lastElRef} />
+                                <ShowTitle><Text>Title</Text></ShowTitle>
+                            </IconContainer>
+                        </Link>
+                        : <Link to={"/post/" + list.content_id}>
+                            <IconContainer>
+                                <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" width="260" />
+                                <ShowTitle><Text>Title</Text></ShowTitle>
+                            </IconContainer>
+                        </Link>}
+                </div>
+            ))}
+        </ImageListWrapper>
+        {!loading && <Loading />}
+    </>);
 }
-
-const Container = styled.div`
-    postion:absolute;
-`;
-
-const ImageGrid = styled.div`
+const ImageListWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
     grid-template-rows: repeat(auto-fit,minmax(300px,1fr));
     gap: 5px;
     justify-items: center;
+`;
+
+const IconContainer = styled.div`
+    display: inline-block;
+    height: 260px;
 `;
 
 const IconList = styled.img`
@@ -112,8 +107,4 @@ const Text = styled.div`
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
-`;
-const IconContainer = styled.div`
-    display: inline-block;
-    height: 260px;
 `;

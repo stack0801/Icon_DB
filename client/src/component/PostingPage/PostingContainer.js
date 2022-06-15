@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
-import PostingImage from "./PostingImage";
+import PostingWrapper from "./PostingWrapper";
 
 export default function App() {
     return (
         <PostingContainer>
             <PostingMessage>Post Your Icon</PostingMessage>
-            <PostingImage />
+            <PostingWrapper />
         </PostingContainer>
     );
 }

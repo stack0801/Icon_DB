@@ -54,27 +54,28 @@ export default function App() {
     )
 }
 
-const Menu = styled.a`
-    width:100%;
-    color: #ececec;
-    display:grid;
-    flex-direction:column;
+const DesktopHeader = styled.div`
+    position:fixed;
+    background:#9ed1d9;
+    width:100vw;
+    height:40px;
+    font-size: 18px;
+    display: grid;    
+    grid-template-columns: 15% 1fr 15%;
     place-items:center;
     place-content:center;
-    transition-duration:0.3s;
-    &:hover {
-        color:white;
-    }
-    &:active{
-        color:#f5a282;
-    }
-`;
+    z-index: 999;
+}`;
 
 const MenuList = styled.ul`
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
     place-items:center;
     place-content:center;
+`;
+
+const Menu = styled.a`
+    width:100%;
+    color: #ececec;
     transition-duration:0.3s;
     &:hover {
         color:white;
@@ -82,6 +83,7 @@ const MenuList = styled.ul`
     &:active{
         color:#f5a282;
     }
+  
 `;
 
 const SigninBox = styled(Link)`
@@ -94,15 +96,3 @@ const SigninBox = styled(Link)`
         color: #f5a282;
     }
 `;
-
-const DesktopHeader = styled.div`
-    position:fixed;
-    background:#9ed1d9;
-    width:100vw;
-    height:40px;
-    font-size: 18px;
-    display: grid;   
-    grid-template-columns: 15% 1fr 15%;
-    place-items:center;
-    place-content:center;
-}`;

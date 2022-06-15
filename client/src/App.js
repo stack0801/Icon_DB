@@ -5,6 +5,7 @@ import SignupPage  from './page/SignupPage';
 import PostPage  from './page/PostPage';
 import PostingPage  from './page/PostingPage';
 import SearchingPage  from './page/SearchingPage';
+import EditProfilePage from './page/EditProfilePage';
 import ProfilePage from './page/ProfilePage';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route exact path = "/sign_up" element={<SignupPage/>} />
         <Route exact path = "/post/:id" element={<PostPage/>} />
         <Route exact path = "/profile" element={<ProfilePage/>} />
+        <Route exact path = "/editprofile" element={<EditProfilePage/>} />
       </Routes>
     </Router>
   );

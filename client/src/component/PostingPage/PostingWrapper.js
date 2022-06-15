@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import ImageUploader from 'react-images-uploading';
 import styled from "styled-components";
-import ImageContainer from "./ImageContainer";
-import StyledButton from "./StyledButton";
-import StyledIuput from "./StyledInput";
-import NoImg from "../img/NoImage.png"
+import ImageContainer from "../ImageContainer";
+import StyledButton from "../StyledButton";
+import StyledIuput from "../StyledInput";
+import NoImg from "../../img/NoImage.png";
 import axios from 'axios';
 
 export default function App() {
@@ -44,7 +44,7 @@ export default function App() {
             })
     }
     return (
-        <PostingImage>
+        <PostingWrapper>
             <ImageUploader
                 value={images}
                 onChange={onChange}
@@ -54,10 +54,11 @@ export default function App() {
             >
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
                     <ImageWrapper>
-                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="70%" />}
+                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="70%" heigth="70%"/>}
                         {imageList.map((image, index) => (
                             <div key={index}>
-                                <ImageContainer src={image['data_url']} alt="" width="60%" />
+                                <ImageContainer src={image['data_url']} alt="" width="70%">
+                                </ImageContainer>
                                 <ul>
                                     <li><StyledButton width="100%" height="35px" text="Update" onClick={() => onImageUpdate(index)} /></li>
                                     <li><StyledButton width="100%" height="35px" text="Delete" onClick={() => onImageRemove(index)} /></li>
@@ -77,27 +78,24 @@ export default function App() {
                     </ImageWrapper>
                 )}
             </ImageUploader>
-        </PostingImage>
+        </PostingWrapper>
     );
 }
 
-const PostingImage = styled.div`
+const PostingWrapper = styled.div`
     display: grid;
     place-items:center;
-    padding: 5%;
 `;
 
 const ImageWrapper = styled.div`
-    width: 60%;
-    height: 80%;
     border: solid 2px #f5d7cb;
     border-radius: 5px;
     display: grid;
     grid-template-rows: 3fr 1fr;
     place-items:center;
-    padding: 3%;
+    padding: 5%;
 `;
 
-const TitleImgUpload = styled(PostingImage)`
-    gap: 10px;
+const TitleImgUpload = styled(PostingWrapper)`
+    gap: 20px;
 `;

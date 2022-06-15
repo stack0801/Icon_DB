@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import SearchBox from "./SearchBox";
-import top_image from "../img/watercolor.jpg";
+import SearchBox from "../SearchBox";
+import top_image from "../../img/watercolor.jpg";
 
 export default function App({text}){
     return(
@@ -11,7 +11,6 @@ export default function App({text}){
             {text}
             <SearchBox width="600px" height="60px" fontSize="30px"/>
         </Top>
-
     );
 }
 

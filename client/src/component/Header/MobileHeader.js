@@ -46,7 +46,7 @@ const MobileHeader = styled.div`
   grid-template-columns: 20% 1fr 20%;
   place-items:center;
   place-content:center;
-
+  z-index: 999;
     .header_user {
       color: #ececec;
       transition-duration: 0.3s;

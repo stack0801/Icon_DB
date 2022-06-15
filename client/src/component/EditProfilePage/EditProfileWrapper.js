@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ImageUploader from 'react-images-uploading';
 import styled from "styled-components";
-import ImageContainer from "./ImageContainer";
-import StyledButton from "./StyledButton";
+import ImageContainer from "../ImageContainer";
+import StyledButton from "../StyledButton";
 import { withStyles, TextField } from "@material-ui/core";
 import axios from "axios"
-import NoImg from "../img/NoImage.png"
+import NoImg from "../../img/NoImage.png";
 
 function App({ classes }) {
     const [profiledata, setProfileData] = useState({});
@@ -56,11 +56,8 @@ function App({ classes }) {
     const profile_update = () => {
 
     }
-    return (<>
-        
-        <EditProfile>Edit Your Profile</EditProfile>
-        <ProfileContainer>
-            <ProfileImage>
+    return (
+        <EditProfileWrapper>
             <ImageUploader
                 value={images}
                 onChange={onChange}
@@ -98,30 +95,16 @@ function App({ classes }) {
             {(sign === profiledata.id) &&
                 <StyledButton width="75%" height="60px" text="Update" onClick={profile_update} />
             }
-            </ProfileImage>
-        </ProfileContainer>
-        </>);
+        </EditProfileWrapper>);
 }
 
-const ProfileContainer = styled.div`
-    width: 60%;
-    height: 85%;
+const EditProfileWrapper = styled.div`
+    border: solid 2px #f5d7cb;
+    border-radius: 5px;
     display: grid;
-    place-items: center;
-    border: solid 2px #ececec;
-    padding: 5%;
-`;
-
-const EditProfile = styled.h1`
-    display: grid;
-    place-items: center;
-    color: #f5a282;
-`;
-
-const ProfileImage = styled.div`
-    display: grid;
+    grid-template-rows: 3fr 1fr;
     place-items:center;
-    gap: 10px;
+    padding: 5%;
 `;
 
 const styles = () => ({
