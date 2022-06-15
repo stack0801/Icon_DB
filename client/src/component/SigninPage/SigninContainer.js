@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import StyledButton from "../StyledButton";
 import StyledInput from "../StyledInput";
+import GoogleButton from "../GoogleButton";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -36,6 +37,7 @@ export default function App({ width, height, padding }) {
             <StyledInput width = "95%" placeholder = "Password" type = "password" onChange = {onPasswordHandler}/>
             <StyledButton width = "100%" text = "Sign In" onClick = {onSubmit}/>
             <Msg>Not a Member? <Link to = "/sign_up"><LinkMsg>Sign up</LinkMsg></Link></Msg>
+            <GoogleButton/>
         </StyledContianer>
     )
 }
