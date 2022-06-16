@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     display: grid;
     place-items: center;
     place-content: center;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     color: white;
     list-style: none;
     padding-inline-start: 0;

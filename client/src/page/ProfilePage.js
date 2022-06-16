@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../component/Header/Header";
 import ImageContainer from "../component/ImageContainer";
-import StyledButton from "../component/StyledButton";
+import LinkButton from "../component/LinkButton";
 import { withStyles, TextField } from "@material-ui/core";
 import axios from "axios"
 import NoImg from "../img/NoImage.png";
@@ -34,7 +34,7 @@ function App({ classes }) {
                 <ProfileWrapper>
                     <ImageContainer src={NoImg} alt="" width="60%" borderRadius="50%" />
                     <TextField className={classes.TextField}variant="outlined" label={profiledata.nickname} disabled/>
-                    <a href='editprofile'><StyledButton width="100%" height="35px" text="Edit" /></a>
+                    <EditButton href="editprofile">Edit</EditButton>
                 </ProfileWrapper>
             </ProfilePage>
             <FavoritePage>
@@ -61,7 +61,27 @@ const ProfileWrapper = styled.div`
 height:40%;
 display: grid;
 place-items: center;
-padding: 5%;
+padding: 5%
+border: solid 2px black;
+`;
+
+const EditButton = styled.a`
+    display: grid;
+    place-items: center;
+    width: 50%;
+    background: #f5a282;
+    color: #ececec;
+    font-size: 30px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    &:hover {
+        color: white;
+    }
+    &:active {
+        background: #f28962;
+    }
 `;
 
 const FavoritePage = styled(ProfilePage)`
