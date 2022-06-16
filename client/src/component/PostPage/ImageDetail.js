@@ -22,7 +22,7 @@ export default function App(){
 
     return(
         <ImageDetail>
-        <img src = {"https://webservicegraduationproject.s3.amazonaws.com/img/" + data.content_id + ".png"} alt = "no_img" />
+        <img src = {"https://webservicegraduationproject.s3.amazonaws.com/img/" + data.filename} alt = "no_img" />
         <Title>
             ID : {data.user_id}
             <div>Title : {data.message}</div>
