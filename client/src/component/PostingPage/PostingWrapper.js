@@ -50,8 +50,7 @@ export default function App() {
                 onChange={onChange}
                 maxNumber={maxNumber}
                 dataURLKey="data_url"
-                onError={onError}
-            >
+                onError={onError}>
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
                     <ImageWrapper>
                         {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="70%" heigth="70%"/>}

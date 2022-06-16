@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from "styled-components";
-export default function App({fontSize, onClick, text}) {
+export default function App({href, fontSize, onClick, text}) {
     return (
-        <LinkButton fontSize={fontSize} onClick={onClick}>{text}</LinkButton>
+        <LinkButton href={href} fontSize={fontSize} onClick={onClick}>{text}</LinkButton>
     );
 }
 
-const LinkButton = styled.button`
+const LinkButton = styled.a`
     background-color: #9ed1d9;
     color: #ececec;
     border:none;
     transition-duration: 0.3s;
+    cursor: pointer;
 
     font-size: ${(props) => (props.fontSize || "18px")};
     &:hover{

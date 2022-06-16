@@ -63,48 +63,60 @@ function App({ classes }) {
                 onChange={onChange}
                 maxNumber={maxNumber}
                 dataURLKey="data_url">
-                {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (<>
-                    {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="60%" borderRadius="50%" />}
-                    {imageList.map((image, index) => (
-                        <div key={index}>
-                            <ImageContainer src={image['data_url']} alt="" width="260" borderRadius="50%" />
-                            <ul>
-                                <li><StyledButton width="100px" height="35px" text="Update" onClick={() => onImageUpdate(index)} /></li>
-                                <li><StyledButton width="100px" height="35px" text="Delete" onClick={() => onImageRemove(index)} /></li>
-                            </ul>
-                        </div>
-
-                    ))}
-                </>)}
+                {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
+                    <ImageWrapper>
+                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="70%" heigth="70%" borderRadius="50%" />}
+                        {imageList.map((image, index) => (
+                            <div key={index}>
+                                <ImageContainer src={image['data_url']} alt="" width="70%" borderRadius="50%"/>
+                                <ul>
+                                    <li><StyledButton width="100%" height="35px" text="Update" onClick={() => onImageUpdate(index)} /></li>
+                                    <li><StyledButton width="100%" height="35px" text="Delete" onClick={() => onImageRemove(index)} /></li>
+                                </ul>
+                            </div>
+                        ))}
+                        <User>
+                            <TextField className={classes.TextField}
+                                variant="outlined"
+                                fullWidth
+                                label={profiledata.nickname}
+                                required />
+                            <TextField className={classes.TextField}
+                                variant="outlined"
+                                fullWidth
+                                label={profiledata.id}
+                                required />
+                            <TextField className={classes.TextField}
+                                variant="outlined"
+                                fullWidth
+                                label={profiledata.password}
+                                required />
+                            {(sign === profiledata.id) &&
+                                <StyledButton width="75%" height="60px" text="Update" onClick={profile_update} />
+                            }
+                        </User>
+                    </ImageWrapper>
+                )}
             </ImageUploader>
-            <TextField className={classes.TextField}
-                variant="outlined"
-                fullWidth
-                label={profiledata.nickname}
-                required />
-            <TextField className={classes.TextField}
-                variant="outlined"
-                fullWidth
-                label={profiledata.id}
-                required />
-            <TextField className={classes.TextField}
-                variant="outlined"
-                fullWidth
-                label={profiledata.password}
-                required />
-            {(sign === profiledata.id) &&
-                <StyledButton width="75%" height="60px" text="Update" onClick={profile_update} />
-            }
         </EditProfileWrapper>);
 }
 
 const EditProfileWrapper = styled.div`
+    display: grid;
+    place-items:center;
+`;
+
+const ImageWrapper = styled.div`
     border: solid 2px #f5d7cb;
     border-radius: 5px;
     display: grid;
-    grid-template-rows: 3fr 1fr;
+    grid-template-rows: 2fr 1fr;
     place-items:center;
-    padding: 5%;
+    padding: 3%;
+`;
+
+const User = styled(EditProfileWrapper)`
+    gap: 5px;
 `;
 
 const styles = () => ({

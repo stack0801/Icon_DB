@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import LinkButton from "../LinkButton";
 import Logo from "../Logo";
 import SearchBox from "../SearchBox";
 import axios from 'axios';
 
 export default function App() {
+
 
     // 유저 로그인 여부
     const [sign, setSign] = useState(null)
@@ -19,14 +21,14 @@ export default function App() {
     const signOut = () => {
         console.log("!!")
         axios
-        .post('/sign_out')
-        .then((res) => {
-            console.log(res.data)
-            if (res.data === 'success')
-                window.location.href = '/';
-        })
+            .post('/sign_out')
+            .then((res) => {
+                console.log(res.data)
+                if (res.data === 'success')
+                    window.location.href = '/';
+            })
     }
-    
+
     const [scroll, setScroll] = useState(false);
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -44,15 +46,13 @@ export default function App() {
         <DesktopHeader>
             <Logo />
             {scroll === false
-                ? <MenuList>
-                    <li><Menu href="/posting">posting</Menu></li>
-                </MenuList>
+                ? <LinkButton href="posting" text="Posting" />
                 : <SearchBox width="450px" height="30px" />}
             {sign === null
-                ? <Link to="/sign_in"><SigninBox>Sign in</SigninBox></Link>
+                ? <LinkButton href="sign_in" text="Sign in" />
                 : <ul>
-                    <li><Link to="/profile"><SigninBox>Profile</SigninBox></Link></li>
-                    <li><SigninBox onClick={signOut}>Logout</SigninBox></li>
+                    <li><LinkButton href="profile" text="Profile" /></li>
+                    <li><LinkButton onClick={signOut} text="Logout" /></li>
                 </ul>}
         </DesktopHeader>
     )
