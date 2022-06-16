@@ -49,6 +49,16 @@ app.post('/sign_in', (req, res) => {
         res.send("void")
 })
 
+app.post('/sign_out', (req, res) => {
+    if(req.session.user){
+        req.session.destroy(function(err){
+            if(err) throw err;
+            console.log('세션 삭제하고 로그아웃됨');
+            res.send("success")
+        });
+    }
+})
+
 app.post('/get_auth', (req, res) => {
     if (req.session.sign)
         res.send(req.session.sign)
