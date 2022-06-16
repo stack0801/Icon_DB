@@ -103,15 +103,20 @@ app.post('/get_content', (req, res) => {
 })
 
 app.post('/boardtest', upload.single('img'), (req, res) => {
+
+    console.log(req.filedirectory)
+
     const id = req.session.sign
     const message = req.body.message
+    const filename = req.filedirectory
 
-    const sql = 'insert into content(user_id, message) values (?,?)'
-    sql_pool.query(sql, [id, message], (err, result) => {
+    const sql = 'insert into content(user_id, message, filename) values (?, ?, ?)'
+    sql_pool.query(sql, [id, message, filename], (err, result) => {
         if (err)
             throw err
+        else
+            res.send("success")
     })
-    res.send("success")
 })
 
 app.post('/search', (req, res) => {

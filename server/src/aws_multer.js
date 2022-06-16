@@ -2,7 +2,9 @@
 const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3-transform');
-const sql_pool = require('./mysql')
+const dotenv = require('dotenv') 
+const path = require("path")
+dotenv.config()
 
 AWS.config.update({
     region: 'us-east-1',
@@ -16,17 +18,16 @@ const upload = multer({
     storage: multerS3({
         s3: s3,
         bucket: 'webservicegraduationproject',
+        contentType: (req, file, cb) => {
+            if(path.extname(file.originalname) === '.svg')
+                cb(null, 'image/svg+xml')
+            else
+                cb(null, 'application/octet-stream')
+        },
         acl: 'public-read-write',
-        key: function (req, file, cb) {
-            const sql = 'SELECT content_id FROM content ORDER BY content_id DESC LIMIT 1'
-            sql_pool.query(sql, (err, rows, result) => {
-                if (err)
-                    console.log(err)
-                else {
-                    const filedirectory = 'img/' + (rows[0].content_id + 1) + '.' + file.originalname.split('.').pop()
-                    cb(null, filedirectory);
-                }
-            })
+        key:(req, file, cb) => {
+            req.filedirectory = Date.now().toString() + path.extname(file.originalname)
+            cb(null, 'img/' + req.filedirectory);
         },
         limits: { fileSize: 1000 * 1000 * 10 }
     })

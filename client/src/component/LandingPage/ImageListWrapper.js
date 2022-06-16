@@ -49,13 +49,13 @@ export default function Main() {
                     {idx + 1 === icons.length
                         ? <Link to={"/post/" + list.content_id}>
                             <IconContainer>
-                                <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" width="260" ref={lastElRef} />
+                                <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260" ref={lastElRef} />
                                 <ShowTitle><Text>Title</Text></ShowTitle>
                             </IconContainer>
                         </Link>
                         : <Link to={"/post/" + list.content_id}>
                             <IconContainer>
-                                <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" width="260" />
+                                <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260" />
                                 <ShowTitle><Text>Title</Text></ShowTitle>
                             </IconContainer>
                         </Link>}

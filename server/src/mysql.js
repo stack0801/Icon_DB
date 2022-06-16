@@ -1,5 +1,6 @@
 const mysql = require('mysql')      // mysql 모듈 사용
-require('dotenv').config()          // dotenv 모듈 사용
+const dotenv = require('dotenv') 
+dotenv.config()
 
 const options = {
     host                : process.env.DB_HOST,      // 데이터베이스 연결을 위한 호스트 이름
