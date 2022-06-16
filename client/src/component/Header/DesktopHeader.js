@@ -7,13 +7,6 @@ import axios from 'axios';
 
 export default function App() {
 
-    // 스크롤 위치
-    // const [scrollPosition, setScrollPosition] = useState(0);
-    // useEffect(() => {
-    //     console.log(scrollPosition);
-    //     window.addEventListener('scroll', setScrollPosition(window.scrollY));
-    // });
-
     // 유저 로그인 여부
     const [sign, setSign] = useState(null)
     useEffect(() => {
@@ -23,6 +16,17 @@ export default function App() {
             })
     }, []);
 
+    const signOut = () => {
+        console.log("!!")
+        axios
+        .post('/sign_out')
+        .then((res) => {
+            console.log(res.data)
+            if (res.data === 'success')
+                window.location.href = '/';
+        })
+    }
+    
     const [scroll, setScroll] = useState(false);
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -45,10 +49,10 @@ export default function App() {
                 </MenuList>
                 : <SearchBox width="450px" height="30px" />}
             {sign === null
-                ? <SigninBox to="/sign_in">Sign in</SigninBox>
+                ? <Link to="/sign_in"><SigninBox>Sign in</SigninBox></Link>
                 : <ul>
-                    <li><SigninBox to="/profile">Profile</SigninBox></li>
-                    <li><SigninBox to="/sign_up">Logout</SigninBox></li>
+                    <li><Link to="/profile"><SigninBox>Profile</SigninBox></Link></li>
+                    <li><SigninBox onClick={signOut}>Logout</SigninBox></li>
                 </ul>}
         </DesktopHeader>
     )
@@ -86,9 +90,12 @@ const Menu = styled.a`
   
 `;
 
-const SigninBox = styled(Link)`
+const SigninBox = styled.button`
+    background-color: #9ed1d9;
     color: #ececec;
+    font-size: 18px;
     transition-duration: 0.3s;
+    border:none;
     &:hover{
         color: white;
     }
