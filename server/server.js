@@ -1,11 +1,12 @@
-const express = require('express')                      //express 모듈 사용
-const sql_pool = require('./src/mysql')                     //mysql.js 파일 로드
+const express = require('express')
+const sql_pool = require('./src/mysql')
 const session_stream = require('./src/session')
+const upload = require('./src/aws_multer')
 
 const app = express()
 
 app.use(express.json())                                 //json 방식으로 통신
-app.use(express.urlencoded({ extended: false }))           //post 로 받은 값에서 req.body를 읽을 수 있게함 //근데 솔직히 뭔뜻인지 모르겠음
+app.use(express.urlencoded({ extended: false }))        //post 로 받은 값에서 req.body를 읽을 수 있게함 //근데 솔직히 뭔뜻인지 모르겠음
 app.use(session_stream)
 
 //api
@@ -50,7 +51,7 @@ app.post('/sign_in', (req, res) => {
 })
 
 app.post('/sign_out', (req, res) => {
-    if(req.session.sign){
+    if(req.session.user){
         req.session.destroy(function(err){
             if(err) throw err;
             console.log('세션 삭제하고 로그아웃됨');
@@ -101,44 +102,7 @@ app.post('/get_content', (req, res) => {
     })
 })
 
-//multer 모듈 사용
-const AWS = require('aws-sdk');
-const multer = require('multer');
-const multerS3 = require('multer-s3-transform');
-
-AWS.config.update({
-    region: 'us-east-1',
-    accessKeyId: process.env.AWS_ACCESSKEY,
-    secretAccessKey: process.env.AWS_SECRETACCESSKEY
-})
-
-var s3 = new AWS.S3()
-
-var upload = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: 'webservicegraduationproject',
-        acl: 'public-read-write',
-        key: function (req, file, cb) {
-            const sql = 'SELECT content_id FROM content ORDER BY content_id DESC LIMIT 1'
-            sql_pool.query(sql, (err, rows, result) => {
-                if (err)
-                    console.log(err)
-                else {
-                    const filedirectory = 'img/' + (rows[0].content_id + 1) + '.' + file.originalname.split('.').pop()
-                    console.log(filedirectory)
-                    cb(null, filedirectory);
-                }
-            })
-        },
-        limits: { fileSize: 1000 * 1000 * 10 }
-    })
-})
-
 app.post('/boardtest', upload.single('img'), (req, res) => {
-
-    console.log(req.body)
-
     const id = req.session.sign
     const message = req.body.message
 
