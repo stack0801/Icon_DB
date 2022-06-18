@@ -1,7 +1,8 @@
 const express = require('express')
 const sql_pool = require('./src/mysql')
 const session_stream = require('./src/session')
-const upload = require('./src/aws_multer')
+const upload = require('./src/aws_multer').upload;
+const download = require('./src/aws_multer').download;
 
 const app = express()
 
@@ -10,6 +11,12 @@ app.use(express.urlencoded({ extended: false }))        //post 로 받은 값에
 app.use(session_stream)
 
 //api
+
+app.get('/download/:key', (req, res) => {
+    const key = req.params.key
+    console.log(key)
+    download(req, res, key);
+})
 
 app.post('/sign_up', (req, res) => {
     const id = req.body.id
@@ -57,6 +64,38 @@ app.post('/sign_out', (req, res) => {
         res.send("success")
     });
 })
+
+app.post('/google_sign_in', (req, res) => {
+    const id = req.body.id
+    const password = req.body.pw
+    const name = req.body.name
+
+    if (id && password && name) {
+        let sql = 'SELECT * FROM user WHERE id = ? AND password = ?'
+        sql_pool.query(sql, [id, password], (err, result) => {
+            if (err)
+                throw err
+            if (result.length > 0) {
+                req.session.sign = id
+                res.send("success")
+            }
+            else {
+                let sql = 'INSERT INTO user VALUES(?, ?, ?)'
+                sql_pool.query(sql, [id, password, name], (err, result) => {
+                    if (err)
+                        res.send("fail")
+                    else {
+                        req.session.sign = id
+                        res.send("success")
+                    }
+                })
+            }
+        })
+    }
+    else
+        res.send("void")
+})
+
 
 app.post('/get_auth', (req, res) => {
     if (req.session.sign)

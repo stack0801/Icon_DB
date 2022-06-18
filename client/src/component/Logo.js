@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import  {ReactComponent as SvgLogo} from '../img/logo.svg'
+import  {ReactComponent as SvgLogo} from '../img/logo3.svg'
 import { Link } from 'react-router-dom';
 
 const Logo = styled.div``;

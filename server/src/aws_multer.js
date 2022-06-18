@@ -33,4 +33,19 @@ const upload = multer({
     })
 })
 
-module.exports = upload
+const download = (req, res, key) => {
+
+    const params = {
+        Bucket: 'webservicegraduationproject',
+        Key: 'img/' + key
+    }
+
+    res.attachment(key);
+    var fileStream = s3.getObject(params).createReadStream();
+    fileStream.pipe(res);
+};
+
+module.exports = {
+    upload: upload,
+    download: download
+}
