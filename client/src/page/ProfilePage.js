@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../component/Header/Header";
 import ImageContainer from "../component/ImageContainer";
-import LinkButton from "../component/LinkButton";
 import { withStyles, TextField } from "@material-ui/core";
 import axios from "axios"
 import NoImg from "../img/NoImage.png";
