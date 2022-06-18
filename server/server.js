@@ -1,7 +1,8 @@
 const express = require('express')
 const sql_pool = require('./src/mysql')
 const session_stream = require('./src/session')
-const upload = require('./src/aws_multer')
+const upload = require('./src/aws_multer').upload;
+const download = require('./src/aws_multer').download;
 
 const app = express()
 
@@ -10,6 +11,12 @@ app.use(express.urlencoded({ extended: false }))        //post 로 받은 값에
 app.use(session_stream)
 
 //api
+
+app.get('/download/:key', (req, res) => {
+    const key = req.params.key
+    console.log(key)
+    download(req, res, key);
+})
 
 app.post('/sign_up', (req, res) => {
     const id = req.body.id
@@ -51,13 +58,11 @@ app.post('/sign_in', (req, res) => {
 })
 
 app.post('/sign_out', (req, res) => {
-    if(req.session.user){
-        req.session.destroy(function(err){
-            if(err) throw err;
-            console.log('세션 삭제하고 로그아웃됨');
-            res.send("success")
-        });
-    }
+    req.session.destroy(function(err){
+        if(err) throw err;
+        console.log('세션 삭제하고 로그아웃됨');
+        res.send("success")
+    });
 })
 
 app.post('/google_sign_in', (req, res) => {
