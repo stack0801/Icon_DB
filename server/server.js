@@ -60,6 +60,38 @@ app.post('/sign_out', (req, res) => {
     }
 })
 
+app.post('/google_sign_in', (req, res) => {
+    const id = req.body.id
+    const password = req.body.pw
+    const name = req.body.name
+
+    if (id && password && name) {
+        let sql = 'SELECT * FROM user WHERE id = ? AND password = ?'
+        sql_pool.query(sql, [id, password], (err, result) => {
+            if (err)
+                throw err
+            if (result.length > 0) {
+                req.session.sign = id
+                res.send("success")
+            }
+            else {
+                let sql = 'INSERT INTO user VALUES(?, ?, ?)'
+                sql_pool.query(sql, [id, password, name], (err, result) => {
+                    if (err)
+                        res.send("fail")
+                    else {
+                        req.session.sign = id
+                        res.send("success")
+                    }
+                })
+            }
+        })
+    }
+    else
+        res.send("void")
+})
+
+
 app.post('/get_auth', (req, res) => {
     if (req.session.sign)
         res.send(req.session.sign)

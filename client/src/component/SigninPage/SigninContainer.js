@@ -36,8 +36,8 @@ export default function App({ width, height, padding }) {
             <StyledInput width = "95%" placeholder = "ID" onChange = {onIdHandler}/>
             <StyledInput width = "95%" placeholder = "Password" type = "password" onChange = {onPasswordHandler}/>
             <StyledButton width = "100%" text = "Sign In" onClick = {onSubmit}/>
-            <Msg>Not a Member? <Link to = "/sign_up"><LinkMsg>Sign up</LinkMsg></Link></Msg>
             <GoogleButton/>
+            <Msg>Not a Member? <Link to = "/sign_up"><LinkMsg>Sign up</LinkMsg></Link></Msg>
         </StyledContianer>
     )
 }
