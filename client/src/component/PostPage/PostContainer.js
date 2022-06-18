@@ -69,11 +69,11 @@ export default function App() {
 }
 
 const PostContainer = styled.div`
-    width: 80vw;
+    width: 60vw;
     display: grid;
     place-items: center;
     place-content: center;
-    padding: 5%;
+    padding: 3%;
     border: solid 2px #ececee;
     border-radius: 5px;
 `;

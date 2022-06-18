@@ -46,13 +46,13 @@ export default function App() {
         <DesktopHeader>
             <Logo />
             {scroll === false
-                ? <LinkButton href="posting" text="Posting" />
+                ? <Link to = "/posting"><LinkButton text="Posting" /></Link>
                 : <SearchBox width="450px" height="30px" />}
             {sign === null
-                ? <LinkButton href="sign_in" text="Sign in" />
+                ? <Link to = "/sign_in"><LinkButton text="Sign in" /></Link>
                 : <ul>
-                    <li><LinkButton href="profile" text="Profile" /></li>
-                    <li><LinkButton onClick={signOut} text="Logout" /></li>
+                    <li><Link to ="/profile"><LinkButton text="Profile" /></Link></li>
+                    <li><LinkButton onClick={signOut} text="Sign out" /></li>
                 </ul>}
         </DesktopHeader>
     )
@@ -70,36 +70,3 @@ const DesktopHeader = styled.div`
     place-content:center;
     z-index: 999;
 }`;
-
-const MenuList = styled.ul`
-    display:grid;
-    place-items:center;
-    place-content:center;
-`;
-
-const Menu = styled.a`
-    width:100%;
-    color: #ececec;
-    transition-duration:0.3s;
-    &:hover {
-        color:white;
-    }
-    &:active{
-        color:#f5a282;
-    }
-  
-`;
-
-const SigninBox = styled.button`
-    background-color: #9ed1d9;
-    color: #ececec;
-    font-size: 18px;
-    transition-duration: 0.3s;
-    border:none;
-    &:hover{
-        color: white;
-    }
-    &:active{
-        color: #f5a282;
-    }
-`;

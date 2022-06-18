@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
-export default function App({href, fontSize, onClick, text}) {
+export default function App({ fontSize, onClick, text}) {
     return (
-        <LinkButton href={href} fontSize={fontSize} onClick={onClick}>{text}</LinkButton>
+        <LinkButton fontSize={fontSize} onClick={onClick}>{text}</LinkButton>
     );
 }
 
-const LinkButton = styled.a`
+const LinkButton = styled.button`
     background-color: #9ed1d9;
     color: #ececec;
     border:none;

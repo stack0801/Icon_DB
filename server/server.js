@@ -51,13 +51,11 @@ app.post('/sign_in', (req, res) => {
 })
 
 app.post('/sign_out', (req, res) => {
-    if(req.session.user){
-        req.session.destroy(function(err){
-            if(err) throw err;
-            console.log('세션 삭제하고 로그아웃됨');
-            res.send("success")
-        });
-    }
+    req.session.destroy(function(err){
+        if(err) throw err;
+        console.log('세션 삭제하고 로그아웃됨');
+        res.send("success")
+    });
 })
 
 app.post('/get_auth', (req, res) => {

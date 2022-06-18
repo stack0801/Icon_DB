@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import StyledButton from "../StyledButton";
 import StyledInput from "../StyledInput";
 import GoogleButton from "../GoogleButton";
+import { ThemeProvider, Button } from '@material-ui/core';
+import { theme } from "../theme";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export default function App({ width, height, padding }) {
     const [id, setId] = useState("");
@@ -35,7 +37,9 @@ export default function App({ width, height, padding }) {
         <StyledContianer width = {width} height = {height} padding = {padding}>
             <StyledInput width = "95%" placeholder = "ID" onChange = {onIdHandler}/>
             <StyledInput width = "95%" placeholder = "Password" type = "password" onChange = {onPasswordHandler}/>
-            <StyledButton width = "100%" text = "Sign In" onClick = {onSubmit}/>
+            <ThemeProvider theme={theme}>
+                <Button variant="contained" color="secondary" fullWidth onClick={onSubmit}>Sign in</Button>
+            </ThemeProvider>
             <Msg>Not a Member? <Link to = "/sign_up"><LinkMsg>Sign up</LinkMsg></Link></Msg>
             <GoogleButton/>
         </StyledContianer>
