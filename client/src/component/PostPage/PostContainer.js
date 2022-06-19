@@ -18,10 +18,10 @@ export default function App() {
 
     useEffect(() => {
         axios.post('/get_auth')
-        .then((res) => {
-            setSign(res.data)
-            console.log(res.data)
-        })
+            .then((res) => {
+                setSign(res.data)
+                console.log(res.data)
+            })
 
         axios({
             method: 'post',
@@ -30,10 +30,10 @@ export default function App() {
                 content_id: id
             }
         })
-        .then((res) => {
-            if(res.data === 'Unliked')
-                setLiked(!liked)
-        })
+            .then((res) => {
+                if (res.data === 'Unliked')
+                    setLiked(!liked)
+            })
 
         axios({
             method: 'post',
@@ -42,19 +42,19 @@ export default function App() {
                 id: id
             }
         })
-        .then((res) => {
-            setData(res.data[0]);
-        })
+            .then((res) => {
+                setData(res.data[0]);
+            })
     }, []);
 
     const content_delete = () => {
         axios.post('/content_delete', {
             content_id: id
         })
-        .then((res) => {
-            console.log(res)
-            window.location.href = '/';
-        })
+            .then((res) => {
+                console.log(res)
+                window.location.href = '/';
+            })
     }
 
     const onLikedHandler = () => {
@@ -66,7 +66,9 @@ export default function App() {
                 liked: liked
             }
         })
-        setLiked(!liked)
+            .then((res) => {
+                setLiked(!liked)
+            })
     };
 
     const url = () => {
@@ -82,10 +84,10 @@ export default function App() {
             content_message: message,
             image: null
         })
-        .then((res) => {
-            console.log(res)
-            window.location.href = '/';
-        })
+            .then((res) => {
+                console.log(res)
+                window.location.href = '/';
+            })
     }
 
     return (
@@ -95,18 +97,18 @@ export default function App() {
             </ImageDetail>
             <Title>
                 <Information>
-                <ThemeProvider theme={theme}>
-                    {liked === false
-                        ? <Button variant="outlined" color="secondary" onClick={onLikedHandler}>Like</Button>
-                        : <Button variant="outlined" color="primary" onClick={onLikedHandler}>Liked!</Button>
-                    }
-                </ThemeProvider>
-                <ThemeProvider theme={theme}>
-                    <Button variant="outlined" color="secondary" onClick={url}>Download</Button>
-                </ThemeProvider>
-                <div>Title : {data.message}</div>
-                <div>ID : {data.user_id}</div>
-                <div>{data.date}</div>
+                    <ThemeProvider theme={theme}>
+                        {liked === false
+                            ? <Button variant="outlined" color="secondary" onClick={onLikedHandler}>Like</Button>
+                            : <Button variant="outlined" color="primary" onClick={onLikedHandler}>Liked!</Button>
+                        }
+                    </ThemeProvider>
+                    <ThemeProvider theme={theme}>
+                        <Button variant="outlined" color="secondary" onClick={url}>Download</Button>
+                    </ThemeProvider>
+                    <div>Title : {data.message}</div>
+                    <div>ID : {data.user_id}</div>
+                    <div>{data.date}</div>
                 </Information>
                 {(sign === data.user_id) && <UserContainer>
                     <h1>Update</h1>
