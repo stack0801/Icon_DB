@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from "styled-components";
 import { ThemeProvider, Button } from '@material-ui/core';
 import { theme } from "../theme";
+import { FavoriteBorderIcon } from '@mui/icons-material';
 import axios from 'axios';
 
 export default function App() {
@@ -26,12 +27,11 @@ export default function App() {
     const [liked, setLiked] = useState(false);
 
     const onLikedHandler = () => {
-        
         setLiked(!liked)
     };
 
     const url = () => {
-        window.open('https://webservicegraduationproject.s3.amazonaws.com/img/' + data.filename, '_blank')
+        window.open('http://localhost:5000/download/' + data.filename)
     }
 
     return (
@@ -42,7 +42,7 @@ export default function App() {
                 <ThemeProvider theme={theme}>
                     {liked === false
                 ? <Button variant="outlined" color="secondary" onClick={onLikedHandler}>Like</Button>
-                : <Button variant="outlined" color="primary" onClick={onLikedHandler}>Like</Button>
+                : <Button variant="outlined" color="primary" onClick={onLikedHandler}>Liked!</Button>
                 
             }
                 </ThemeProvider>

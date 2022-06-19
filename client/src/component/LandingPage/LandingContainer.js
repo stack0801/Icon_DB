@@ -12,6 +12,18 @@ export default function Main() {
     const [page, setPage] = useState(0);
     const loading_size = 10;
 
+    const [profiledata, setProfileData] = useState({});
+
+    useEffect(() => {
+        axios({
+            method: 'post',
+            url: '/get_user'
+        })
+            .then((res) => {
+                setProfileData(res.data[0]);
+                console.log(res.data[0]);
+            })
+    }, []);
     useEffect(() => {
         setLoading(true);
         axios

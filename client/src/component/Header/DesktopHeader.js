@@ -8,7 +8,6 @@ import axios from 'axios';
 
 export default function App() {
 
-
     // 유저 로그인 여부
     const [sign, setSign] = useState(null)
     useEffect(() => {
@@ -19,7 +18,6 @@ export default function App() {
     }, []);
 
     const signOut = () => {
-        console.log("!!")
         axios
             .post('/sign_out')
             .then((res) => {
@@ -52,7 +50,7 @@ export default function App() {
                 ? <Link to = "/sign_in"><LinkButton text="Sign in" /></Link>
                 : <ul>
                     <li><Link to ="/profile"><LinkButton text="Profile" /></Link></li>
-                    <li><LinkButton onClick={signOut} text="Sign out" /></li>
+                    <li><LinkButton onClick={signOut} text="Logout" /></li>
                 </ul>}
         </DesktopHeader>
     )

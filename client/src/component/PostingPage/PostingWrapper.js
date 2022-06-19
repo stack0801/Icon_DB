@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ImageUploader from 'react-images-uploading';
 import styled from "styled-components";
 import ImageContainer from "../ImageContainer";
@@ -22,6 +22,16 @@ export default function App() {
             alert("이미지는 1개까지만 첨부할 수 있습니다")
         }
     }
+
+    useEffect(() => {
+        axios.post('/get_auth')
+        .then((res) => {
+            if(res.data === null) {
+                alert("로그인을 해주세요");
+                window.location.href = '/sign_in'
+            }
+        })
+    }, []);
 
     const [Message, setMessagebox] = useState("");
     const onMessageHandler = (e) => { setMessagebox(e.currentTarget.value) }
@@ -53,10 +63,10 @@ export default function App() {
                 onError={onError}>
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
                     <ImageWrapper>
-                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="70%" heigth="70%"/>}
+                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="50%" heigth="50%"/>}
                         {imageList.map((image, index) => (
                             <div key={index}>
-                                <ImageContainer src={image['data_url']} alt="" width="70%">
+                                <ImageContainer src={image['data_url']} alt="" width="50%">
                                 </ImageContainer>
                                 <ul>
                                     <li><StyledButton width="100%" height="35px" text="Update" onClick={() => onImageUpdate(index)} /></li>
