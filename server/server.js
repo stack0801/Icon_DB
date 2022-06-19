@@ -275,6 +275,8 @@ app.post('/setLike', (req, res) => {
 
     sql_likeupdate = `UPDATE content SET content.like = content.like${liked ? '-' : '+'}1 WHERE content_id = ?`
 
+    console.log(liked);
+
     if (liked)
         sql_liketableupdate = 'DELETE FROM likefunction WHERE id = ? AND content_idx = ?'
     else
