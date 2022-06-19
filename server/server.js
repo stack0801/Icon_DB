@@ -236,12 +236,12 @@ app.post('/content_delete', (req, res) => {
             res.send("success")
     })
 
-    s3.deleteObject({
-        Bucket: 'webservicegraduationproject',
-        Key: 'img/' + content_id + '.png'
-    }, (err, data) => {
-        if (err) { throw err; }
-    });
+    // s3.deleteObject({
+    //     Bucket: 'webservicegraduationproject',
+    //     Key: 'img/' + content_id + '.png'
+    // }, (err, data) => {
+    //     if (err) { throw err; }
+    // });
 })
 
 app.post('/content_update', (req, res) => {
@@ -270,21 +270,36 @@ app.post('/content_update', (req, res) => {
 app.post('/setLike', (req, res) => {
     const content_id = req.body.content_id
     const id = req.session.sign
+    const liked = req.body.liked
+    let sql_likeupdate, sql_liketableupdate
 
-    const sql_likeinsert = 'INSERT INTO likefunction(id, content_idx) VALUES (?,?)'
-    sql_pool.query(sql_likeinsert, [id, content_id], (err_likeinsert, result_likeinsert) => {
-        if (err_likeinsert) {
-            console.log(err_likeinsert)
-            console.log("이미 좋아요를 누르셨습니다!")
+    sql_likeupdate = `UPDATE content SET content.like = content.like${liked ? '-' : '+'}1 WHERE content_id = ?`
+
+    if (liked)
+        sql_liketableupdate = 'DELETE FROM likefunction WHERE id = ? AND content_idx = ?'
+    else
+        sql_liketableupdate = 'INSERT INTO likefunction(id, content_idx) VALUES (?,?)'
+
+    sql_pool.query(sql_likeupdate, [content_id], (err_likeupdate, result_likeupdate) => {
+        if (err_likeupdate) {
+            console.log(err_likeupdate)
         }
-        else {
-            const sql_likeupdate = 'UPDATE content SET content.like = content.like+1 WHERE content_id = ?'
-            sql_pool.query(sql_likeupdate, [content_id], (err_likeupdate, result_likeupdate) => {
-                if (err_likeupdate) {
-                    console.log(err_likeupdate)
-                }
-            })
-        }
+    })
+
+    sql_pool.query(sql_liketableupdate, [id, content_id], (err_liketableupdate, result_liketableupdate) => {
+        if (err_liketableupdate)
+            console.log(err_liketableupdate)
+    })
+})
+
+app.post('/check_liked', (req, res) => {
+    const content_id = req.body.content_id
+    const id = req.session.sign
+
+    const sql_likecheck = 'SELECT * FROM likefunction WHERE id = ? AND content_idx = ?'
+    sql_pool.query(sql_likecheck, [id, content_id], (err_likecheck, result_likecheck) => {
+        if (result_likecheck.length == 1)
+            res.send('Unliked')
     })
 })
 

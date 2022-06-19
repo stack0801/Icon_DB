@@ -10,6 +10,7 @@ export default function App() {
 
     let { id } = useParams();
     const [data, setData] = useState({});
+    const [liked, setLiked] = useState(false);
 
     useEffect(() => {
         axios({
@@ -22,16 +23,27 @@ export default function App() {
             .then((res) => {
                 setData(res.data[0]);
             })
+        axios({
+            method: 'post',
+            url: '/check_liked',
+            data: {
+                content_id: id
+            }
+        })
+            .then((res) => {
+                console.log(res.data)
+                if(res.data === 'Unliked')
+                    setLiked(!liked)
+            })
     }, []);
-
-    const [liked, setLiked] = useState(false);
 
     const onLikedHandler = () => {
         axios({
             method: 'post',
             url: '/setLike',
             data: {
-                content_id: id
+                content_id: id,
+                liked: liked
             }
         })
         setLiked(!liked)
@@ -48,10 +60,10 @@ export default function App() {
             <Title>
                 <ThemeProvider theme={theme}>
                     {liked === false
-                ? <Button variant="outlined" color="secondary" onClick={onLikedHandler}>Like</Button>
-                : <Button variant="outlined" color="primary" onClick={onLikedHandler}>Liked!</Button>
-                
-            }
+                        ? <Button variant="outlined" color="secondary" onClick={onLikedHandler}>Like</Button>
+                        : <Button variant="outlined" color="primary" onClick={onLikedHandler}>Liked!</Button>
+
+                    }
                 </ThemeProvider>
                 <ThemeProvider theme={theme}>
                     <Button variant="outlined" color="secondary" onClick={url}>Download</Button>
