@@ -58,8 +58,8 @@ app.post('/sign_in', (req, res) => {
 })
 
 app.post('/sign_out', (req, res) => {
-    req.session.destroy(function(err){
-        if(err) throw err;
+    req.session.destroy(function (err) {
+        if (err) throw err;
         console.log('세션 삭제하고 로그아웃됨');
         res.send("success")
     });
@@ -265,6 +265,27 @@ app.post('/content_update', (req, res) => {
 
         upload.single('img')
     }
+})
+
+app.post('/setLike', (req, res) => {
+    const content_id = req.body.content_id
+    const id = req.session.sign
+
+    const sql_likeinsert = 'INSERT INTO likefunction(id, content_idx) VALUES (?,?)'
+    sql_pool.query(sql_likeinsert, [id, content_id], (err_likeinsert, result_likeinsert) => {
+        if (err_likeinsert) {
+            console.log(err_likeinsert)
+            console.log("이미 좋아요를 누르셨습니다!")
+        }
+        else {
+            const sql_likeupdate = 'UPDATE content SET content.like = content.like+1 WHERE content_id = ?'
+            sql_pool.query(sql_likeupdate, [content_id], (err_likeupdate, result_likeupdate) => {
+                if (err_likeupdate) {
+                    console.log(err_likeupdate)
+                }
+            })
+        }
+    })
 })
 
 app.listen(5000)

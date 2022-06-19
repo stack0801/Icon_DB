@@ -27,6 +27,13 @@ export default function App() {
     const [liked, setLiked] = useState(false);
 
     const onLikedHandler = () => {
+        axios({
+            method: 'post',
+            url: '/setLike',
+            data: {
+                content_id: id
+            }
+        })
         setLiked(!liked)
     };
 
