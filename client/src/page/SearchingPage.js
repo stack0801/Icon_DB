@@ -31,7 +31,9 @@ export default function App() {
             <SearchBox width="60vw" fontSize="40px"/>
             <SearchTitle>Your Results : {keyword}</SearchTitle>
             <ImageListWrapper>
-            {data.map((list, idx) => (
+            {(data.length === 0) ? 
+            <h1>no results</h1> :
+            data.map((list, idx) => (
                 <div key={idx}>
                     <Link to={"/post/" + list.content_id}>
                         <IconContainer>
