@@ -12,18 +12,6 @@ export default function Main() {
     const [page, setPage] = useState(0);
     const loading_size = 10;
 
-    const [profiledata, setProfileData] = useState({});
-
-    useEffect(() => {
-        axios({
-            method: 'post',
-            url: '/get_user'
-        })
-            .then((res) => {
-                setProfileData(res.data[0]);
-                console.log(res.data[0]);
-            })
-    }, []);
     useEffect(() => {
         setLoading(true);
         axios
@@ -63,13 +51,13 @@ export default function Main() {
                             ? <Link to={"/post/" + list.content_id}>
                                 <IconContainer>
                                     <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260" ref={lastElRef} />
-                                    <ShowTitle><Text>Title</Text></ShowTitle>
+                                    <ShowTitle><Text>Show Detail</Text></ShowTitle>
                                 </IconContainer>
                             </Link>
                             : <Link to={"/post/" + list.content_id}>
                                 <IconContainer>
                                     <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260" />
-                                    <ShowTitle><Text>Title</Text></ShowTitle>
+                                    <ShowTitle><Text>Show Detail</Text></ShowTitle>
                                 </IconContainer>
                             </Link>}
                     </div>
@@ -81,7 +69,6 @@ export default function Main() {
 }
 
 const LandingContainer = styled.div`
-    postion:absolute;
 `;
 
 const ImageListWrapper = styled.div`
@@ -103,7 +90,7 @@ const IconList = styled.img`
 
 const ShowTitle = styled.div`
     position: relative;
-    top: -264px;
+    top: -263px;
     bottom: 0;
     left: 0;
     width: 260px;

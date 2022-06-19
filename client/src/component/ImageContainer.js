@@ -8,6 +8,10 @@ export default function App({ width, height, src, alt, borderRadius }) {
 }
 
 const ImageContainer = styled.img`
+    display: grid;
+    place-items: center;
+    place-content: center;
+    
     width: ${(props) => (props.width || "auto")};
     height: ${(props) => (props.height || "auto")};
     border-radius: ${(props) => (props.borderRadius || "0")};

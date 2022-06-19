@@ -30,7 +30,7 @@ export default function App() {
             <Logo />
             {sign === null
                 ? <Link to = "/sign_in"><FaUser className = "header_user" size = "20" /></Link>
-                : <Link to = "/user"><FaUser className = "header_user" size = "20" /></Link>
+                : <Link to = "/profile"><FaUser className = "header_user" size = "20" /></Link>
             }
         </MobileHeader>
     )
@@ -40,7 +40,7 @@ const MobileHeader = styled.div`
   position:fixed;
   background:#9ed1d9;
   width:100vw;
-  height:40px;
+  height:55px;
   font-size: 18px;
   display: grid;   
   grid-template-columns: 20% 1fr 20%;

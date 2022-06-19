@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import styled from "styled-components";
 import { ThemeProvider, Button } from '@material-ui/core';
 import { theme } from "../theme";
-import { FavoriteBorderIcon } from '@mui/icons-material';
 import axios from 'axios';
 
 export default function App() {
@@ -56,21 +55,19 @@ export default function App() {
     return (
         <ImageDetail>
             <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + data.filename} alt="no_img" />
-            <div />
             <Title>
                 <ThemeProvider theme={theme}>
                     {liked === false
                         ? <Button variant="outlined" color="secondary" onClick={onLikedHandler}>Like</Button>
                         : <Button variant="outlined" color="primary" onClick={onLikedHandler}>Liked!</Button>
-
                     }
                 </ThemeProvider>
                 <ThemeProvider theme={theme}>
                     <Button variant="outlined" color="secondary" onClick={url}>Download</Button>
                 </ThemeProvider>
-                Title : {data.message}
+                <div>Title : {data.message}</div>
                 <div>ID : {data.user_id}</div>
-                <div>Date : {data.date}</div>
+                <div>{data.date}</div>
             </Title>
         </ImageDetail>
     );
@@ -78,7 +75,9 @@ export default function App() {
 
 const ImageDetail = styled.div`
     display: grid;
-    grid-template-columns: 2fr 0.3fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    place-items: center;
+    padding-bottom: 5%;
 `;
 
 const Title = styled.div`

@@ -60,7 +60,7 @@ const DesktopHeader = styled.div`
     position:fixed;
     background:#9ed1d9;
     width:100vw;
-    height:40px;
+    height:55px;
     font-size: 18px;
     display: grid;    
     grid-template-columns: 15% 1fr 15%;
