@@ -9,8 +9,9 @@ import axios from 'axios';
 
 export default function App() {
 
-    // 유저 로그인 여부
     let { id } = useParams();
+
+    // 유저 로그인 여부
     const [data, setData] = useState({});
     const [sign, setSign] = useState(null);
     const [liked, setLiked] = useState(false);
@@ -21,6 +22,19 @@ export default function App() {
                 setSign(res.data)
                 console.log(res.data)
             })
+
+        axios({
+            method: 'post',
+            url: '/check_liked',
+            data: {
+                content_id: id
+            }
+        })
+            .then((res) => {
+                if (res.data === 'Unliked')
+                    setLiked(!liked)
+            })
+
         axios({
             method: 'post',
             url: '/get_content',
@@ -50,10 +64,13 @@ export default function App() {
             method: 'post',
             url: '/setLike',
             data: {
-                content_id: id
+                content_id: id,
+                liked: liked
             }
         })
-        setLiked(!liked)
+            .then((res) => {
+                setLiked(!liked)
+            })
     };
 
     const [message, setMessage] = useState("");
