@@ -63,15 +63,15 @@ export default function App() {
                 onError={onError}>
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
                     <ImageWrapper>
-                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="50%" heigth="50%"/>}
+                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="260px"/>}
                         {imageList.map((image, index) => (
                             <div key={index}>
-                                <ImageContainer src={image['data_url']} alt="" width="50%">
+                                <ImageContainer src={image['data_url']} alt="" width="260px" height="50%">
                                 </ImageContainer>
-                                <ul>
-                                    <li><StyledButton width="100%" height="35px" text="Update" onClick={() => onImageUpdate(index)} /></li>
-                                    <li><StyledButton width="100%" height="35px" text="Delete" onClick={() => onImageRemove(index)} /></li>
-                                </ul>
+                                <ButtonList>
+                                    <StyledButton width="100%" height="35px" text="Update" onClick={() => onImageUpdate(index)} />
+                                    <StyledButton width="100%" height="35px" text="Delete" onClick={() => onImageRemove(index)} />
+                                </ButtonList>
                             </div>
 
                         ))}
@@ -97,14 +97,24 @@ const PostingWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+    width: 140%;
+    height: 80%;
     border: solid 2px #f5d7cb;
     border-radius: 5px;
     display: grid;
     grid-template-rows: 3fr 1fr;
-    place-items:center;
+    place-items: center;
+    place-content: center;
     padding: 5%;
 `;
 
 const TitleImgUpload = styled(PostingWrapper)`
-    gap: 20px;
+    gap: 10px;
+`;
+
+const ButtonList = styled.div`
+    display: grid;
+    place-items:center;
+    place-content: center;
+    gap: 8%;
 `;

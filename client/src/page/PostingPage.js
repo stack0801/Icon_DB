@@ -14,7 +14,7 @@ export default function App() {
 
 const PostingPage = styled.div`
     position:absolute;
-    top: 40px;
+    top: 55px;
     width: 100vw;
     height: 100vh;
     display: grid;

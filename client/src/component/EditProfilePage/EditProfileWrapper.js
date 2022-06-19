@@ -65,14 +65,14 @@ function App({ classes }) {
                 dataURLKey="data_url">
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
                     <ImageWrapper>
-                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="70%" heigth="70%" borderRadius="50%" />}
+                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="260px" heigth="260px" />}
                         {imageList.map((image, index) => (
                             <div key={index}>
-                                <ImageContainer src={image['data_url']} alt="" width="70%" borderRadius="50%"/>
-                                <ul>
-                                    <li><StyledButton width="100%" height="35px" text="Update" onClick={() => onImageUpdate(index)} /></li>
-                                    <li><StyledButton width="100%" height="35px" text="Delete" onClick={() => onImageRemove(index)} /></li>
-                                </ul>
+                                <ImageContainer src={image['data_url']} alt="" width="260px" />
+                                <>
+                                    <StyledButton width="100%" height="35px" text="Update" onClick={() => onImageUpdate(index)} />
+                                    <StyledButton width="100%" height="35px" text="Delete" onClick={() => onImageRemove(index)} />
+                                </>
                             </div>
                         ))}
                          {imageList.length !== 0
@@ -113,12 +113,13 @@ const EditProfileWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+    width: 140%;
     border: solid 2px #f5d7cb;
     border-radius: 5px;
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    gap: 20px;
     place-items:center;
-    padding: 3%;
+    padding: 5%;
 `;
 
 const User = styled(EditProfileWrapper)`
