@@ -12,6 +12,8 @@ export default function App() {
 }
 
 const EditProfileContainer = styled.div`
+    position: absolute;
+    top: 40px;
     display: grid;
     place-items: center;
     place-content: center;

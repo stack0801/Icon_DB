@@ -75,6 +75,12 @@ function App({ classes }) {
                                 </ul>
                             </div>
                         ))}
+                         {imageList.length !== 0
+                                ? <StyledButton width="100%" height="35px" text="Upload" onClick={boardtest} />
+                                : <>
+                                    <StyledButton width="60%" height="35px" text="Add" onClick={onImageUpload} />
+                                    <StyledButton width="60%" height="35px" text="Upload" onClick={boardtest} />
+                                </>}
                         <User>
                             <TextField className={classes.TextField}
                                 variant="outlined"
