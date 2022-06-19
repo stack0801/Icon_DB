@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import SearchBox from "../SearchBox";
-import top_image from "../../img/watercolor.jpg";
+import top_image from "../../img/Background.jpg";
 
-export default function App({text}){
+export default function App(){
     return(
         <Top>
             <TopImage src={top_image} alt="top_img" />
             <div/>
-            {text}
+            <h1>GET FREE ICON</h1>
             <SearchBox width="600px" height="60px" fontSize="30px"/>
         </Top>
     );

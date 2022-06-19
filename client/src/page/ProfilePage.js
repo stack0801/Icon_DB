@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../component/Header/Header";
 import ImageContainer from "../component/ImageContainer";
-import { withStyles, TextField } from "@material-ui/core";
 import axios from "axios"
 import NoImg from "../img/NoImage.png";
 
-function App({ classes }) {
+export default function App() {
     const [profiledata, setProfileData] = useState({});
     const [sign, setSign] = useState(null);
 
@@ -32,8 +31,8 @@ function App({ classes }) {
             <ProfilePage>
                 <ProfileWrapper>
                     <ImageContainer src={NoImg} alt="" width="60%" borderRadius="50%" />
-                    <TextField className={classes.TextField}variant="outlined" label={profiledata.nickname} disabled/>
-                    <EditButton href="editprofile">Edit</EditButton>
+                    <h1>{profiledata.nickname}</h1>
+                    <EditButton href="editprofile">Edit Profile</EditButton>
                 </ProfileWrapper>
             </ProfilePage>
             <FavoritePage>
@@ -42,34 +41,35 @@ function App({ classes }) {
         </UserPage>
     </>);
 }
+
 const UserPage = styled.div`
-position:absolute;
+    position:absolute;
     top: 55px;
     width:100vw;
-    height: 100vh;
+    height: 94vh;
     display: grid;
     grid-template-columns:1fr 3fr;
 `;
 const ProfilePage = styled.div` 
-display: grid;
-padding: 10%;
-border-right: solid 2px black;
+    display: grid;
+    padding: 10%;
+    border-right: solid 2px black;
 `;
 
 const ProfileWrapper = styled.div`
-height:40%;
-display: grid;
-place-items: center;
-padding: 5%
-border: solid 2px black;
+    height:40%;
+    display: grid;
+    place-items: center;
+    padding: 5%
+    border: solid 2px black;
 `;
 
 const EditButton = styled.a`
-    display: grid;
-    place-items: center;
-    width: 50%;
     background: #f5a282;
     color: #ececec;
+    width: 80%;
+    display: grid;
+    place-items: center;
     font-size: 30px;
     border: none;
     border-radius: 40px;
@@ -86,25 +86,3 @@ const EditButton = styled.a`
 const FavoritePage = styled(ProfilePage)`
 border:none;
 `;
-
-
-const styles = () => ({
-    TextField: {
-        "& .MuiOutlinedInput-root": {
-            "&.Mui-disabled": {
-                border: "solid 1px black"
-            },
-            "& .MuiInputBase-input ": {
-                fontFamily: "VodafoneRegular",
-                fontSize: 16,
-                fontWeight: "normal",
-                fontStretch: "normal",
-                fontStyle: "normal",
-                lineHeight: "normal",
-                letterSpacing: "normal"
-            }
-        }
-    }
-})
-
-export default withStyles(styles)(App);

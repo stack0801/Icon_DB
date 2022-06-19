@@ -63,10 +63,10 @@ export default function App() {
                 onError={onError}>
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
                     <ImageWrapper>
-                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="260px"/>}
+                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="260px" height="260px"/>}
                         {imageList.map((image, index) => (
                             <div key={index}>
-                                <ImageContainer src={image['data_url']} alt="" width="260px" height="50%">
+                                <ImageContainer src={image['data_url']} alt="" width="260px" height="260px">
                                 </ImageContainer>
                                 <ButtonList>
                                     <StyledButton width="100%" height="35px" text="Update" onClick={() => onImageUpdate(index)} />
@@ -114,6 +114,7 @@ const TitleImgUpload = styled(PostingWrapper)`
 
 const ButtonList = styled.div`
     display: grid;
+    grid-template-columns: repeat(2,1fr);
     place-items:center;
     place-content: center;
     gap: 8%;

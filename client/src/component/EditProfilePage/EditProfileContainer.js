@@ -12,12 +12,13 @@ export default function App() {
 }
 
 const EditProfileContainer = styled.div`
-display: grid;
-place-items: center;
-place-content: center;
+    display: grid;
+    place-items: center;
+    place-content: center;
 `;
 
 const EditProfile = styled.h1`
-display: grid;
-color: #f5a282;
+    display: grid;
+    place-items: center;
+    color: gray;
 `;

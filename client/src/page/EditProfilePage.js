@@ -15,7 +15,7 @@ const EditProfilePage = styled.div`
     position: absolute;
     top: 55px;
     width: 100vw;
-    height: 100vh;
+    height: 93vh;
     display: grid;
     place-items: center;
     place-content: center;

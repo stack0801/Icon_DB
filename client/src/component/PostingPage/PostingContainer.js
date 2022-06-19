@@ -19,6 +19,5 @@ const PostingContainer = styled.div`
 const PostingMessage = styled.h1`
     display: grid;
     place-items: center;
-    place-content: center;
-    color: #f5a282;
+    color: gray;
 `;

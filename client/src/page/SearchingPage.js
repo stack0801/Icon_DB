@@ -28,8 +28,8 @@ export default function App() {
     return (<>
         <Header />
         <SearchingPage>
-            <SearchBox width="60vw" fontSize="40px"/>
-            <SearchTitle>Your Results : {keyword}</SearchTitle>
+        <SearchBox width="60vw" fontSize="40px"/>
+            <h1>Your Results : {keyword}</h1>
             <ImageListWrapper>
             {(data.length === 0) ? 
             <h1>no results</h1> :
@@ -54,13 +54,8 @@ const SearchingPage = styled.div`
     top: 55px;
     left:20%;
     display: grid;
-    place-items: center;
     place-content: center;
     padding-top: 50px;
-`;
-
-const SearchTitle = styled.h1`
-
 `;
 
 const IconContainer = styled.div`
@@ -77,7 +72,6 @@ const ImageListWrapper = styled.div`
     grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
     grid-template-rows: repeat(auto-fit,minmax(300px,1fr));
     gap: 5px;
-    justify-items: center;
 `;
 
 

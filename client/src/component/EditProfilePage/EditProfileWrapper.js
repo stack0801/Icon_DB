@@ -69,18 +69,18 @@ function App({ classes }) {
                         {imageList.map((image, index) => (
                             <div key={index}>
                                 <ImageContainer src={image['data_url']} alt="" width="260px" />
-                                <>
+                                <ButtonList>
                                     <StyledButton width="100%" height="35px" text="Update" onClick={() => onImageUpdate(index)} />
                                     <StyledButton width="100%" height="35px" text="Delete" onClick={() => onImageRemove(index)} />
-                                </>
+                                </ButtonList>
                             </div>
                         ))}
                          {imageList.length !== 0
                                 ? <StyledButton width="100%" height="35px" text="Upload" onClick={boardtest} />
-                                : <>
-                                    <StyledButton width="60%" height="35px" text="Add" onClick={onImageUpload} />
-                                    <StyledButton width="60%" height="35px" text="Upload" onClick={boardtest} />
-                                </>}
+                                : <ButtonList>
+                                    <StyledButton width="100%" height="35px" text="Add" onClick={onImageUpload} />
+                                    <StyledButton width="100%" height="35px" text="Upload" onClick={boardtest} />
+                                </ButtonList>}
                         <User>
                             <TextField className={classes.TextField}
                                 variant="outlined"
@@ -98,7 +98,7 @@ function App({ classes }) {
                                 label={profiledata.password}
                                 required />
                             {(sign === profiledata.id) &&
-                                <StyledButton width="75%" height="60px" text="Update" onClick={profile_update} />
+                                <StyledButton width="100%" height="45px" text="Update" onClick={profile_update} />
                             }
                         </User>
                     </ImageWrapper>
@@ -123,7 +123,16 @@ const ImageWrapper = styled.div`
 `;
 
 const User = styled(EditProfileWrapper)`
-    gap: 5px;
+    gap: 10px;
+`;
+
+
+const ButtonList = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    place-items: center;
+    place-content: center;
 `;
 
 const styles = () => ({

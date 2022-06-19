@@ -88,5 +88,6 @@ const Title = styled.div`
     font-weight: 600;
     color: #9ed1d9;
     place-content: center;
+    place-items: center;
 `;
 

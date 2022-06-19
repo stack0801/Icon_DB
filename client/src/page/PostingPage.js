@@ -16,7 +16,7 @@ const PostingPage = styled.div`
     position:absolute;
     top: 55px;
     width: 100vw;
-    height: 100vh;
+    height: 93vh;
     display: grid;
     grid-template-rows: 0.5fr 1fr;
     place-items: center;

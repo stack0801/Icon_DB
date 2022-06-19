@@ -86,11 +86,12 @@ const IconContainer = styled.div`
 
 const IconList = styled.img`
     height: 260px;
+    border-radius: 10px;
 `;
 
 const ShowTitle = styled.div`
     position: relative;
-    top: -263px;
+    top: -264px;
     bottom: 0;
     left: 0;
     width: 260px;
@@ -98,6 +99,7 @@ const ShowTitle = styled.div`
     opacity:0;
     transition: .5s ease;
     background-color: #9ed1d9;
+    border-radius: 10px;
     &:hover { 
         opacity: 0.9;
     }
