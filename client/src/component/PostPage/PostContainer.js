@@ -99,8 +99,13 @@ export default function App() {
     }
     
     const url = () => {
-        window.open('http://localhost:5000/download/' + data.filename)
+        window.open(process.env.REACT_APP_URL + ':5000/download/' + data.filename)
     }
+
+    const edit = () => {
+        window.open(process.env.REACT_APP_URL + ':5000/download/' + data.filename)
+    }
+
     return (
         <PostContainer>
             <ImageDetail>

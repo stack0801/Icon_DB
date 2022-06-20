@@ -3,14 +3,12 @@ import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import axios from 'axios';
 
-const clientId = "355939420782-kojnll410kevd1nhmu4972qdve9qa8di.apps.googleusercontent.com";
-
 export default function GoogleButton({ onSocial }){
 
     useEffect(() => {
         function start() {
             gapi.client.init({
-                clientId: "355939420782-kojnll410kevd1nhmu4972qdve9qa8di.apps.googleusercontent.com",
+                clientId: process.env.REACT_APP_clientId,
                 scope: 'email',
             });
         }
@@ -41,7 +39,7 @@ export default function GoogleButton({ onSocial }){
     return(
         <div>
             <GoogleLogin
-                clientId={clientId}
+                clientId={process.env.REACT_APP_clientId}
                 onSuccess={onSuccess}
                 onFailure={onFailure}/>
         </div>
