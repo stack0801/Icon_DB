@@ -6,7 +6,7 @@ export default function App() {
     return (
         <PostingContainer>
             <PostingMessage>Post Your Icon</PostingMessage>
-            <PostingWrapper />
+            <PostingWrapper/>
         </PostingContainer>
     );
 }

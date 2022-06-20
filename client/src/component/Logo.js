@@ -6,20 +6,20 @@ import { Link } from 'react-router-dom';
 const Logo = styled.div``;
 
 const Svg = styled(SvgLogo)`
-   text {
-       fill: #ececec;
-       transition-duration: 0.3s;
-   }
+    text {
+        fill: #ececec;
+        transition-duration: 0.3s;
+    }
     &:hover {
         text {
             fill: white;
         }
-   }
-   &:active{
-       text{
-           fill:#f5a282;
-       }
-   }
+    }
+    &:active{
+        text{
+            fill:#f5a282;
+        }
+    }
 `;
 
 export default function App(){

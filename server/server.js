@@ -14,7 +14,6 @@ app.use(session_stream)
 
 app.get('/download/:key', (req, res) => {
     const key = req.params.key
-    console.log(key)
     download(req, res, key);
 })
 
@@ -59,9 +58,8 @@ app.post('/sign_in', (req, res) => {
 
 app.post('/sign_out', (req, res) => {
     req.session.destroy(function (err) {
-        if (err) throw err;
-        console.log('세션 삭제하고 로그아웃됨');
-        res.send("success")
+        if (err) 
+            throw err;
     });
 })
 
@@ -140,9 +138,6 @@ app.post('/get_content', (req, res) => {
 })
 
 app.post('/boardtest', upload.single('img'), (req, res) => {
-
-    console.log(req.filedirectory)
-
     const id = req.session.sign
     const message = req.body.message
     const filename = req.filedirectory
@@ -158,6 +153,7 @@ app.post('/boardtest', upload.single('img'), (req, res) => {
 
 app.post('/search', (req, res) => {
     const sql = 'SELECT * FROM content where message LIKE' + " '%" + req.body.searchbox + "%' "
+
     sql_pool.query(sql, (err, result) => {
         if (err)
             throw err
@@ -174,7 +170,6 @@ app.post('/tag_insert', (req, res) => {
     sql_pool.query(sql_Hashtag, [tag_context], (err_Hash, result_Hash) => {
         if (result_Hash.length == 0) {
             const sql_InsertHash = "INSERT INTO Hash(Hashtag) VALUES ('" + tag_context + "')"
-            console.log(sql_InsertHash)
             sql_pool.query(sql_InsertHash, (err_InsertHash, result_InsertHash) => {
                 if (err_InsertHash) {
                     console.log(err_InsertHash)
@@ -186,7 +181,6 @@ app.post('/tag_insert', (req, res) => {
             const sql_content_tag = 'INSERT INTO content_has_hash(content_idx, Hash_idx) VALUES (?,?)'
             sql_pool.query(sql_content_tag, [content_id, Hash_idx], (err_content_tag, result_content_tag) => {
                 if (err_content_tag) {
-                    console.log("중복된 값")
                     res.send("duplication")
                 }
                 else {

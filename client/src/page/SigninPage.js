@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SigninContainer from '../component/SigninPage/SigninContainer';
 import Logo from '../component/Logo';
 
 export default function App() {
+
+    const [isMobile, setisMobile] = useState(false);
+    const resizingHandler = () => { setisMobile(window.innerWidth <= 600);};
+
+    useEffect(() => {
+        resizingHandler();        
+        window.addEventListener("resize", resizingHandler);
+        return () => { window.removeEventListener("resize", resizingHandler);};
+    }, []);
+
     return (
         <SigninPage>
             <Logo/>
-            <SigninContainer width="400px" height="300px" padding="30px"/>
+            <SigninContainer width={isMobile ? "80vw" : "400px"} height="300px" padding="30px"/>
         </SigninPage>
     )
 }
