@@ -17,4 +17,3 @@ sql_pool.query(sql_searchHash, [tag_context], (err, rows, result) => {
         })
     }
 })
-
