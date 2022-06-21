@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import styled from "styled-components";
 import StyledButton from "../../component/StyledButton";
 import StyledInput from "../../component/StyledInput";
@@ -12,11 +12,13 @@ export default function App() {
     let { id } = useParams();
     let url_id = id;
 
-    const [data, setData] = useState({});
+    const [data, setData] = useState({filename: "NoImage.png"});
     const [sign, setSign] = useState(null);
     const [liked, setLiked] = useState(false);
     const [isMobile, setisMobile] = useState(false);
     const [likes, setLikes] = useState(0);
+    const [tags, setTags] = useState(["1", "2", "3"]);
+    const [tagInsert, setTagInsert] = useState("");
 
     useEffect(() => {
         axios.post('/get_auth')
@@ -32,7 +34,7 @@ export default function App() {
             }
         })
 
-        resizingHandler();        
+        resizingHandler();
         window.addEventListener("resize", resizingHandler);
         return () => { window.removeEventListener("resize", resizingHandler);};
     }, [url_id]);
@@ -49,7 +51,22 @@ export default function App() {
             setData(res.data[0]);
             setLikes(res.data[0].like)
         })
+        getTags(url_id)
+
     }, [url_id]);
+
+    const getTags = (url_id) => {
+        axios({
+            method: 'post',
+            url: '/get_tags',
+            data: {
+                content_id: url_id
+            }
+        })
+        .then((res) => {
+            setTags(res.data)
+        })
+    }
 
     const resizingHandler = () => { setisMobile(window.innerWidth <= 600);};
 
@@ -117,6 +134,23 @@ export default function App() {
         window.open(process.env.REACT_APP_URL + ':5000/download/' + data.filename)
     }
 
+    const TagInsertHandler = (event) => { setTagInsert(event.currentTarget.value); }
+    const TagInsert = () => {
+        if(tagInsert.length > 1) {
+            axios.post('/tag_insert', {
+                content_id: url_id,
+                tag_context: tagInsert
+            })
+            .then((res) => {
+                console.log(res)
+                getTags(url_id)
+            })
+        }
+        else {
+            alert("태그는 2글자 이상입니다");
+        }
+    }
+
     return (
         <PostContainer columns = {isMobile ? "1fr" : "1fr 300px"}>
             <ImageDetail>
@@ -138,6 +172,18 @@ export default function App() {
                     <ThemeProvider theme={theme}>
                         <Button variant="outlined" color="secondary" onClick={downloadUrl}>Download</Button>
                     </ThemeProvider>
+                    <h3>tags</h3>
+                    <PostTags>
+                        {tags.map((tag, idx) => (
+                            <Tag key={idx}>
+                                <Link to = {"/search/" + tag.Hashtag}>
+                                    {tag.Hashtag}
+                                </Link>
+                            </Tag>
+                        ))}
+                    </PostTags>
+                    <StyledInput width="95%" placeholder="Tag" onChange={TagInsertHandler}/>
+                    <StyledButton width="50%" text="Add Tag" onClick={TagInsert}/>
                 </Information>
 
                 {(sign === data.user_id) && <UserContainer>
@@ -150,6 +196,15 @@ export default function App() {
         </PostContainer>
     );
 }
+
+const PostTags = styled.div`
+`
+const Tag = styled.div`
+    background-color: #F5A282;
+    color: #FFFFFF;
+    display: inline;
+    margin: 2px;
+`;
 
 const PostContainer = styled.div`
 

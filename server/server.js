@@ -313,7 +313,7 @@ app.post('/setLike', (req, res) => {
 app.post('/get_tags', (req, res) => {
     const content_id = req.body.content_id
     const sql_gettag = `SELECT Hash.Hashtag FROM content_has_hash INNER JOIN Hash ON 
-                        content_has_hash.Hash_idx = Hash.Hash_id WHERE content_has_hash.content_idx = ?`
+content_has_hash.Hash_idx = Hash.Hash_id WHERE content_has_hash.content_idx = ?`
     sql_pool.query(sql_gettag, [content_id], (err_get, rows_get, result_get) => {
         if (err_get)
             console.log(err_get)
