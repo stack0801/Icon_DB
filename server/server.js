@@ -283,18 +283,28 @@ app.post('/setLike', (req, res) => {
     const sql_likecheck = 'SELECT * FROM likefunction WHERE id = ? AND content_idx = ?'
     sql_pool.query(sql_likecheck, [id, content_id], (err_likecheck, result_likecheck) => {
         let sql_liketableupdate
+        let sql_likeupdate = `UPDATE content SET content.like = content.like-1 WHERE content_id = ?`
         let like = result_likecheck.length > 0
 
-        if (like)
+        if (like) {
+            sql_likeupdate = `UPDATE content SET content.like = content.like-1 WHERE content_id = ?`
             sql_liketableupdate = 'DELETE FROM likefunction WHERE id = ? AND content_idx = ?'
-        else
+        }
+        else {
+            sql_likeupdate = `UPDATE content SET content.like = content.like+1 WHERE content_id = ?`
             sql_liketableupdate = 'INSERT INTO likefunction(id, content_idx) VALUES (?,?)'
+        }
 
-        sql_pool.query(sql_liketableupdate, [id, content_id], (err_liketableupdate, result_liketableupdate) => {
-            if (err_liketableupdate)
-                console.log(err_liketableupdate)
+        sql_pool.query(sql_likeupdate, [content_id], (err_likeupdate, result_likeupdate) => {
+            if (err_likeupdate)
+                console.log(err_likeupdate)
             else {
-                res.send(!like)
+                sql_pool.query(sql_liketableupdate, [id, content_id], (err_liketableupdate, result_liketableupdate) => {
+                    if (err_liketableupdate)
+                        console.log(err_liketableupdate)
+                    else 
+                        res.send(!like)
+                })
             }
         })
     })
