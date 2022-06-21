@@ -186,7 +186,8 @@ export default function App() {
                     <StyledButton width="50%" text="Add Tag" onClick={TagInsert}/>
                 </Information>
 
-                {(sign === data.user_id) && <UserContainer>
+                {(sign === data.user_id) && 
+                <UserContainer>
                     <h1>Update</h1>
                     <StyledInput width="95%" placeholder="MESSAGE" onChange={onMassageHandler} />
                     <StyledButton width="50%" text="Delete" onClick={content_delete} />
@@ -201,9 +202,11 @@ const PostTags = styled.div`
 `
 const Tag = styled.div`
     background-color: #F5A282;
+    border-radius: 5px;
     color: #FFFFFF;
     display: inline;
     margin: 2px;
+    padding: 2px;
 `;
 
 const PostContainer = styled.div`
@@ -230,7 +233,7 @@ const Title = styled.div`
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: repeat(2,1fr);
+    grid-template-rows: 2fr 1fr;
     font-size: 16px;
     font-weight: 600;
     color: #9ed1d9;
