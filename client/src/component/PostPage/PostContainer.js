@@ -176,7 +176,7 @@ export default function App() {
                     <PostTags>
                         {tags.map((tag, idx) => (
                             <Tag key={idx}>
-                                <Link to = {"/search/" + tag.Hashtag}>
+                                <Link to = {"/searchingTag/" + tag.Hashtag}>
                                     {tag.Hashtag}
                                 </Link>
                             </Tag>
