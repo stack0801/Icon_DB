@@ -33,6 +33,25 @@ const upload = multer({
     })
 })
 
+const profile_upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: 'webservicegraduationproject',
+        contentType: (req, file, cb) => {
+            if(path.extname(file.originalname) === '.svg')
+                cb(null, 'image/svg+xml')
+            else
+                cb(null, 'application/octet-stream')
+        },
+        acl: 'public-read-write',
+        key:(req, file, cb) => {
+            req.filedirectory = Date.now().toString() + path.extname(file.originalname)
+            cb(null, 'userprofile/' + req.filedirectory);
+        },
+        limits: { fileSize: 1000 * 1000 * 10 }
+    })
+})
+
 const download = (req, res, key) => {
 
     const params = {
@@ -47,5 +66,6 @@ const download = (req, res, key) => {
 
 module.exports = {
     upload: upload,
-    download: download
+    download: download,
+    profile_upload: profile_upload
 }

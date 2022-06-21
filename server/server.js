@@ -3,6 +3,7 @@ const sql_pool = require('./src/mysql')
 const session_stream = require('./src/session')
 const upload = require('./src/aws_multer').upload;
 const download = require('./src/aws_multer').download;
+const upload = require('./src/aws_multer').profile_upload
 
 const app = express()
 
@@ -20,6 +21,18 @@ app.post('/get_profile', (req, res) => {
             throw err
         else
             res.send(result)
+    })
+})
+
+app.post('/upload_profile', upload.single('img'), (req, res) => {
+    const filename = req.filedirectory
+
+    const sql = 'insert into user(profilename) values (?)'
+    sql_pool.query(sql, [filename], (err, result) => {
+        if (err)
+            throw err
+        else
+            res.send("success")
     })
 })
 
