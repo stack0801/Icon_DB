@@ -10,67 +10,72 @@ import axios from 'axios';
 export default function App() {
 
     let { id } = useParams();
+    let url_id = id;
 
     // 유저 로그인 여부
     const [data, setData] = useState({});
     const [sign, setSign] = useState(null);
     const [liked, setLiked] = useState(false);
+    const [isMobile, setisMobile] = useState(false);
 
     useEffect(() => {
         axios.post('/get_auth')
-            .then((res) => {
-                setSign(res.data)
-                console.log(res.data)
-            })
-
-        axios({
-            method: 'post',
-            url: '/check_liked',
-            data: {
-                content_id: id
+        .then((res) => {
+            setSign(res.data)
+            if(res.data) {
+                axios.post('/check_liked', {
+                    content_id: url_id
+                })
+                .then((res) => {
+                    setLiked((res.data === 'liked'))
+                })
             }
         })
-            .then((res) => {
-                if (res.data === 'Unliked')
-                    setLiked(!liked)
-            })
 
+        resizingHandler();        
+        window.addEventListener("resize", resizingHandler);
+        return () => { window.removeEventListener("resize", resizingHandler);};
+    }, [url_id]);
+
+    useEffect(() => {
         axios({
             method: 'post',
             url: '/get_content',
             data: {
-                id: id
+                content_id: url_id
             }
         })
-            .then((res) => {
-                setData(res.data[0]);
-            })
-        axios({
-            method: 'post',
-            url: '/check_liked',
-            data: {
-                content_id: id
-            }
+        .then((res) => {
+            setData(res.data[0]);
         })
-            .then((res) => {
-                console.log(res.data)
-                if (res.data === 'Unliked')
-                    setLiked(!liked)
-            })
+    }, [url_id]);
+
+    const resizingHandler = () => { setisMobile(window.innerWidth <= 600);};
+
+    useEffect(() => {
+        resizingHandler();        
+        window.addEventListener("resize", resizingHandler);
+        return () => { window.removeEventListener("resize", resizingHandler);};
     }, []);
 
     const onLikedHandler = () => {
-        axios({
-            method: 'post',
-            url: '/setLike',
-            data: {
-                content_id: id,
-                liked: liked
-            }
-        })
-            .then((res) => {
-                setLiked(!liked)
+        if(sign === null) {
+            alert("로그인 후 사용 가능한 서비스 입니다.");
+            window.location.href = '/sign_in';
+        }
+        else {
+            axios({
+                method: 'post',
+                url: '/setLike',
+                data: {
+                    content_id: url_id,
+                }
             })
+            .then((res) => {
+                console.log(res.data)
+                setLiked(res.data)
+            })
+        }
     };
 
     const [message, setMessage] = useState("");
@@ -78,50 +83,50 @@ export default function App() {
 
     const content_delete = () => {
         axios.post('/content_delete', {
-            content_id: id
+            content_id: url_id
         })
-            .then((res) => {
-                console.log(res)
-                window.location.href = '/';
-            })
+        .then((res) => {
+            console.log(res)
+            window.location.href = '/';
+        })
     }
 
     const content_update = () => {
         axios.post('/content_update', {
-            content_id: id,
+            content_id: url_id,
             content_message: message,
             image: null
         })
-            .then((res) => {
-                console.log(res)
-                window.location.href = '/';
-            })
+        .then((res) => {
+            console.log(res)
+            window.location.href = '/';
+        })
     }
     
-    const url = () => {
+    const downloadUrl = () => {
         window.open(process.env.REACT_APP_URL + ':5000/download/' + data.filename)
     }
 
     return (
-        <PostContainer>
+        <PostContainer columns = {isMobile ? "1fr" : "1fr 300px"}>
             <ImageDetail>
-                <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + data.filename} alt="no_img" width="600px" />
+                <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + data.filename} alt="no_img" width="50%"/>
             </ImageDetail>
 
             <Title>
                 <Information>
+                    <div>Comment : {data.message}</div>
+                    <div>ID : {data.user_id}</div>
+                    <div>{data.date}</div>
                     <ThemeProvider theme={theme}>
-                        {liked === false
-                            ? <Button variant="outlined" color="secondary" onClick={onLikedHandler}>Like</Button>
-                            : <Button variant="outlined" color="primary" onClick={onLikedHandler}>Liked!</Button>
+                        {liked ? 
+                            <Button variant="outlined" color="primary" onClick={onLikedHandler}>Liked!</Button> :
+                            <Button variant="outlined" color="secondary" onClick={onLikedHandler}>Like</Button>
                         }
                     </ThemeProvider>
                     <ThemeProvider theme={theme}>
-                        <Button variant="outlined" color="secondary" onClick={url}>Download</Button>
+                        <Button variant="outlined" color="secondary" onClick={downloadUrl}>Download</Button>
                     </ThemeProvider>
-                    <div>Title : {data.message}</div>
-                    <div>ID : {data.user_id}</div>
-                    <div>{data.date}</div>
                 </Information>
 
                 {(sign === data.user_id) && <UserContainer>
@@ -136,12 +141,14 @@ export default function App() {
 }
 
 const PostContainer = styled.div`
-    width: 100vw;
-    height: 100vh;
+
+    padding-top: 55px;
+
+    width: 95vw;
+    height: 90vh;
+
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    place-items: center;
-    place-content: center;
+    grid-template-columns: ${(props) => (props.columns || "1fr")};
 `;
 
 const ImageDetail = styled.div`
@@ -150,6 +157,10 @@ const ImageDetail = styled.div`
 `;
 
 const Title = styled.div`
+
+    border-left: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+
     width: 100%;
     height: 100%;
     display: grid;
@@ -160,11 +171,13 @@ const Title = styled.div`
     place-content: center;
     place-items: center;
 `;
+
 const Information = styled.div`
     display: grid;
     place-content: center;
     gap: 15px;
 `;
+
 const UserContainer = styled.div`
     display: grid;
     place-items: center;

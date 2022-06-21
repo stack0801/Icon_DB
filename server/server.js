@@ -128,7 +128,7 @@ app.post('/get_contents', (req, res) => {
 })
 
 app.post('/get_content', (req, res) => {
-    const id = req.body.id
+    const id = req.body.content_id
 
     const sql = 'SELECT * FROM content where content_id = ?'
     sql_pool.query(sql, [id], (err, result) => {
@@ -263,38 +263,40 @@ app.post('/content_update', (req, res) => {
     }
 })
 
-app.post('/setLike', (req, res) => {
-    const content_id = req.body.content_id
-    const id = req.session.sign
-    const liked = req.body.liked
-    let sql_liketableupdate
-
-    const sql_likeupdate = `UPDATE content SET content.like = content.like${liked ? '-' : '+'}1 WHERE content_id = ?`
-    if (liked)
-        sql_liketableupdate = 'DELETE FROM likefunction WHERE id = ? AND content_idx = ?'
-    else
-        sql_liketableupdate = 'INSERT INTO likefunction(id, content_idx) VALUES (?,?)'
-
-    sql_pool.query(sql_likeupdate, [content_id], (err_likeupdate, result_likeupdate) => {
-        if (err_likeupdate) {
-            console.log(err_likeupdate)
-        }
-    })
-
-    sql_pool.query(sql_liketableupdate, [id, content_id], (err_liketableupdate, result_liketableupdate) => {
-        if (err_liketableupdate)
-            console.log(err_liketableupdate)
-    })
-})
-
 app.post('/check_liked', (req, res) => {
     const content_id = req.body.content_id
     const id = req.session.sign
 
     const sql_likecheck = 'SELECT * FROM likefunction WHERE id = ? AND content_idx = ?'
     sql_pool.query(sql_likecheck, [id, content_id], (err_likecheck, result_likecheck) => {
-        if (result_likecheck.length == 1)
-            res.send('Unliked')
+        if (result_likecheck.length > 0)
+            res.send('liked')
+        else
+            res.send('unliked')
+    })
+})
+
+app.post('/setLike', (req, res) => {
+    const content_id = req.body.content_id
+    const id = req.session.sign
+
+    const sql_likecheck = 'SELECT * FROM likefunction WHERE id = ? AND content_idx = ?'
+    sql_pool.query(sql_likecheck, [id, content_id], (err_likecheck, result_likecheck) => {
+        let sql_liketableupdate
+        let like = result_likecheck.length > 0
+
+        if (like)
+            sql_liketableupdate = 'DELETE FROM likefunction WHERE id = ? AND content_idx = ?'
+        else
+            sql_liketableupdate = 'INSERT INTO likefunction(id, content_idx) VALUES (?,?)'
+
+        sql_pool.query(sql_liketableupdate, [id, content_id], (err_liketableupdate, result_liketableupdate) => {
+            if (err_liketableupdate)
+                console.log(err_liketableupdate)
+            else {
+                res.send(!like)
+            }
+        })
     })
 })
 
