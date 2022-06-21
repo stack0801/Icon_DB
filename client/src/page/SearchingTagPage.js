@@ -37,7 +37,7 @@ export default function App() {
                 <div key={idx}>
                     <Link to={"/post/" + list.content_id}>
                         <IconContainer>
-                            <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
+                            <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" width="260"/>
                             <ShowTitle><Text>Show Detail</Text></ShowTitle>
                         </IconContainer>
                     </Link>
@@ -58,15 +58,6 @@ const SearchingTagPage = styled.div`
     padding-top: 50px;
 `;
 
-const IconContainer = styled.div`
-    display: inline-block;
-    height: 260px;
-`;
-
-const IconList = styled.img`
-    height: 260px;
-`;
-
 const ImageListWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
@@ -74,10 +65,22 @@ const ImageListWrapper = styled.div`
     gap: 5px;
 `;
 
+const IconContainer = styled.div`
+    background-color : #ffffff;
+    display: inline-block;
+    height: 260px;
+    border: 3px solid #9ed1d9;
+    border-radius: 10px;
+`;
+
+const IconList = styled.img`
+    height: 260px;
+    border-radius: 10px;
+`;
 
 const ShowTitle = styled.div`
     position: relative;
-    top: -263px;
+    top: -264px;
     bottom: 0;
     left: 0;
     width: 260px;
@@ -96,8 +99,6 @@ const Text = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
 `;

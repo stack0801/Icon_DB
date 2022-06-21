@@ -82,12 +82,11 @@ const ImageListWrapper = styled.div`
 `;
 
 const IconContainer = styled.div`
-    border: 3px solid #9ED1D9;
-    background-color : #FFFFFF;
-    border-radius: 10px;
+    background-color : #ffffff;
     display: inline-block;
     height: 260px;
-    background
+    border: 3px solid #9ed1d9;
+    border-radius: 10px;
 `;
 
 const IconList = styled.img`
@@ -117,8 +116,6 @@ const Text = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
 `;
