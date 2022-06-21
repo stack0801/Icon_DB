@@ -24,6 +24,8 @@ export default function App({ width, height, padding }) {
                 console.log(res.data)
                 if (res.data === 'success')
                     window.location.href = '/';
+                else
+                    alert("아이디와 비밀번호를 확인해 주십시오.");
             })
         }
         else {
