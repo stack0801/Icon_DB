@@ -12,19 +12,6 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     text-decoration: none;
   }
-  ul{
-    display: grid;
-    place-items: center;
-    place-content: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    color: white;
-    list-style: none;
-    padding-inline-start: 0;
-    gap: 15px;
-  }
-  li{
-    float: left;
-  }
 `;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -102,10 +102,6 @@ export default function App() {
         window.open(process.env.REACT_APP_URL + ':5000/download/' + data.filename)
     }
 
-    const edit = () => {
-        window.open(process.env.REACT_APP_URL + ':5000/download/' + data.filename)
-    }
-
     return (
         <PostContainer>
             <ImageDetail>

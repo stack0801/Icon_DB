@@ -60,6 +60,8 @@ app.post('/sign_out', (req, res) => {
     req.session.destroy(function (err) {
         if (err) 
             throw err;
+        else
+            res.send("success");
     });
 })
 
