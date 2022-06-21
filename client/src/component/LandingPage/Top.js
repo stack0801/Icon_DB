@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SearchBox from "../SearchBox";
-import top_image from "../../img/Background.jpg";
+import top_image from "../../img/watercolor.jpg";
 
 export default function App(){
     return(

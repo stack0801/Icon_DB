@@ -1,4 +1,5 @@
 client/node_modules
 server/node_modules
+svgedit/node_modules
 icons/
 .env
