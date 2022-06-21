@@ -80,8 +80,12 @@ const ImageListWrapper = styled.div`
 `;
 
 const IconContainer = styled.div`
+    border: 3px solid #9ED1D9;
+    background-color : #FFFFFF;
+    border-radius: 10px;
     display: inline-block;
     height: 260px;
+    background
 `;
 
 const IconList = styled.img`
