@@ -35,7 +35,7 @@ export default function App() {
 
     const [Message, setMessagebox] = useState("");
     const onMessageHandler = (e) => { setMessagebox(e.currentTarget.value) }
-    const boardtest = () => {
+    const insert_content = () => {
 
         const formData = new FormData()
         formData.append("img", images[0].file)
@@ -43,7 +43,7 @@ export default function App() {
 
         axios({
             method: 'post',
-            url: '/boardtest',
+            url: '/insert_content',
             header: { 'content-type': 'multipart/form-data' },
             data: formData
         })
@@ -78,10 +78,10 @@ export default function App() {
                         <TitleImgUpload>
                             <StyledIuput width="95%" height="35px" placeholder="Message" onChange={onMessageHandler} />
                             {imageList.length !== 0
-                                ? <StyledButton width="100%" height="35px" text="Upload" onClick={boardtest} />
+                                ? <StyledButton width="100%" height="35px" text="Upload" onClick={insert_content} />
                                 : <>
                                     <StyledButton width="60%" height="35px" text="Add" onClick={onImageUpload} />
-                                    <StyledButton width="60%" height="35px" text="Upload" onClick={boardtest} />
+                                    <StyledButton width="60%" height="35px" text="Upload" onClick={insert_content} />
                                 </>}
                         </TitleImgUpload>
                     </ImageWrapper>
