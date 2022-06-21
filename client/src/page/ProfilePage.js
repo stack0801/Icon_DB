@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams} from 'react-router-dom';
 import styled from "styled-components";
 import Header from "../component/Header/Header";
 import ImageContainer from "../component/ImageContainer";
@@ -7,23 +8,18 @@ import NoImg from "../img/NoImage.png";
 
 export default function App() {
     const [profiledata, setProfileData] = useState({});
-    const [sign, setSign] = useState(null);
+    let {user} = useParams();
 
     useEffect(() => {
-        axios.post('/get_auth')
-            .then((res) => {
-                setSign(res.data)
-                console.log(res.data)
-            })
-        axios({
-            method: 'post',
-            url: '/get_user'
+        console.log(user);
+        axios.post('/get_profile', {
+            user: user
         })
-            .then((res) => {
-                setProfileData(res.data[0]);
-                console.log(res.data[0]);
-            })
-    }, []);
+        .then((res) => {
+            setProfileData(res.data[0]);
+            console.log(res.data);
+        });
+    }, [user]);
 
     return (<>
         <Header />

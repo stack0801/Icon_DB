@@ -18,7 +18,7 @@ function App() {
         <Route exact path = "/sign_in" element={<SigninPage/>}/>
         <Route exact path = "/sign_up" element={<SignupPage/>} />
         <Route exact path = "/post/:id" element={<PostPage/>} />
-        <Route exact path = "/profile" element={<ProfilePage/>} />
+        <Route exact path = "/profile/:user" element={<ProfilePage/>} />
         <Route exact path = "/editprofile" element={<EditProfilePage/>} />
       </Routes>
     </Router>

@@ -20,7 +20,6 @@ export default function Main() {
                 count: loading_size
             })
             .then((res) => {
-                console.log(res.data)
                 setIcons((prevIcons) => [...prevIcons, ...res.data]);
             });
         setLoading(false);

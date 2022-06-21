@@ -17,7 +17,7 @@ export default function App() {
     const [liked, setLiked] = useState(false);
     const [isMobile, setisMobile] = useState(false);
     const [likes, setLikes] = useState(0);
-    const [tags, setTags] = useState(["1", "2", "3"]);
+    const [tags, setTags] = useState([]);
     const [tagInsert, setTagInsert] = useState("");
 
     useEffect(() => {

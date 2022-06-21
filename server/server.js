@@ -12,6 +12,17 @@ app.use(session_stream)
 
 //api
 
+app.post('/get_profile', (req, res) => {
+    const user = req.body.user
+    const sql = 'SELECT * FROM user where id = ?'
+    sql_pool.query(sql, [user], (err, result) => {
+        if (err)
+            throw err
+        else
+            res.send(result)
+    })
+})
+
 app.get('/download/:key', (req, res) => {
     const key = req.params.key
     download(req, res, key);

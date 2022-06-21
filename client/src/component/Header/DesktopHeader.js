@@ -55,7 +55,7 @@ export default function App() {
             }
             <Link to = "/posting"><LinkButton text="Posting" /></Link>
             <LinkButton text="Edit" onClick={openEditor}/>
-            {sign !== null && <Link to ="/profile"><LinkButton text="Profile" /></Link>}
+            {sign !== null && <Link to ={"/profile/" + sign}><LinkButton text="Profile" /></Link>}
             {sign === null ? 
                 <Link to = "/sign_in"><LinkButton text="Sign in" /></Link> :
                 <LinkButton onClick={signOut} text="sign out"/>
