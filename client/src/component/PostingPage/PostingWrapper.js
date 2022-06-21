@@ -47,11 +47,11 @@ export default function App() {
             header: { 'content-type': 'multipart/form-data' },
             data: formData
         })
-            .then((res) => {
-                alert(res.data)/*
-            if (res.data == 'success') 
-                window.location.href = '/'*/
-            })
+        .then((res) => {
+            alert(res.data)
+        if (res.data == 'success') 
+            window.location.href = '/'
+        })
     }
     return (
         <PostingWrapper>

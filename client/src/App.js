@@ -5,6 +5,7 @@ import SignupPage  from './page/SignupPage';
 import PostPage  from './page/PostPage';
 import PostingPage  from './page/PostingPage';
 import SearchingPage  from './page/SearchingPage';
+import SearchingTagPage  from './page/SearchingTagPage';
 import EditProfilePage from './page/EditProfilePage';
 import ProfilePage from './page/ProfilePage';
 
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route exact path = "/" element = {<LandingPage/>} />
         <Route exact path = "/searching/:keyword" element={<SearchingPage/>}/>
+        <Route exact path = "/searchingTag/:keyword" element={<SearchingTagPage/>}/>
         <Route exact path = "/posting" element={<PostingPage/>}/>
         <Route exact path = "/sign_in" element={<SigninPage/>}/>
         <Route exact path = "/sign_up" element={<SignupPage/>} />
