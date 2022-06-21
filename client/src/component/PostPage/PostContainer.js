@@ -12,11 +12,11 @@ export default function App() {
     let { id } = useParams();
     let url_id = id;
 
-    // 유저 로그인 여부
     const [data, setData] = useState({});
     const [sign, setSign] = useState(null);
     const [liked, setLiked] = useState(false);
     const [isMobile, setisMobile] = useState(false);
+    const [likes, setLikes] = useState(0);
 
     useEffect(() => {
         axios.post('/get_auth')
@@ -47,6 +47,7 @@ export default function App() {
         })
         .then((res) => {
             setData(res.data[0]);
+            setLikes(res.data[0].like)
         })
     }, [url_id]);
 
@@ -72,8 +73,17 @@ export default function App() {
                 }
             })
             .then((res) => {
-                console.log(res.data)
                 setLiked(res.data)
+                axios({
+                    method: 'post',
+                    url: '/get_content',
+                    data: {
+                        content_id: url_id
+                    }
+                })
+                .then((res) => {
+                    setLikes(res.data[0].like)
+                })
             })
         }
     };
@@ -118,6 +128,7 @@ export default function App() {
                     <div>Comment : {data.message}</div>
                     <div>ID : {data.user_id}</div>
                     <div>{data.date}</div>
+                    <div>{likes} likes</div>
                     <ThemeProvider theme={theme}>
                         {liked ? 
                             <Button variant="outlined" color="primary" onClick={onLikedHandler}>Liked!</Button> :
