@@ -18,7 +18,7 @@ export default function App({width, height, fontSize}) {
 
     return (
         <SearchBox width = {width} height = {height}>
-            <SearchInput placeholder = "keyword" onChange = {onSearchHandler} fontSize = {fontSize}/>
+            <SearchInput width = {width} placeholder = "keyword" onChange = {onSearchHandler} fontSize = {fontSize}/>
             <FaSearch size = "20" color = "#9ed1d9" cursor = "pointer" onClick = {onSubmit}/>
         </SearchBox>
     );
@@ -42,5 +42,6 @@ const SearchInput = styled.input`
     border-radius: 5px 0 0 5px;
     outline: none;
 
+    width: 90%;
     font-size: ${(props) => props.fontSize || "20px"};
 `;

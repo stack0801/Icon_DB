@@ -1,15 +1,25 @@
-import React from "react";
 import styled from "styled-components";
+import React, { useEffect, useState } from "react";
 import SearchBox from "../SearchBox";
 import top_image from "../../img/watercolor.jpg";
 
 export default function App(){
+
+    const [isMobile, setisMobile] = useState(false);
+    const resizingHandler = () => { setisMobile(window.innerWidth <= 800);};
+
+    useEffect(() => {
+        resizingHandler();        
+        window.addEventListener("resize", resizingHandler);
+        return () => { window.removeEventListener("resize", resizingHandler);};
+    }, []);
+
     return(
         <Top>
             <TopImage src={top_image} alt="top_img" />
             <div/>
             <h1>GET FREE ICON</h1>
-            <SearchBox width="600px" height="60px" fontSize="30px"/>
+            <SearchBox width={isMobile ? "90%" : "600px"} height="60px" fontSize="30px"/>
         </Top>
     );
 }

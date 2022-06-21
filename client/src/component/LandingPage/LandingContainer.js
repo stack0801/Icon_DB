@@ -69,6 +69,9 @@ export default function Main() {
 }
 
 const LandingContainer = styled.div`
+    border-top: 3px solid #F5A282;
+    background-color: #F7ECDE;
+    padding-top: 20px;
 `;
 
 const ImageListWrapper = styled.div`
