@@ -205,29 +205,19 @@ app.post('/tag_insert', (req, res) => {
 })
 
 app.post('/tag_search', (req, res) => {
-    const search_tag = req.body.search_tag
+    const search_tag = req.body.Hashtag
     const sql_Hashtag = 'SELECT Hash_id FROM Hash WHERE Hashtag = ?'
     sql_pool.query(sql_Hashtag, [search_tag], (err_tag, rows_tag, result_tag) => {
         if (err_tag)
             console.log(err_tag)
         else {
-            const Hash_id = rows_tag[0].Hash_id
-            const sql_content_idx = 'SELECT content_idx FROM content_has_hash WHERE Hash_idx = ?'
-            sql_pool.query(sql_content_idx, [Hash_id], (err_idx, rows_idx, result_idx) => {
-                if (err_idx)
-                    console.log(err_idx)
-                else {
-                    for (var i = 0; i < rows_idx.length; i++) {
-                        const sql_message = 'SELECT message FROM content WHERE content_id = ?'
-                        sql_pool.query(sql_message, [rows_idx[i].content_idx], (err_content, result_content) => {
-                            if (err_content)
-                                console.log(err_content)
-                            else {
-                                res.send("success")
-                            }
-                        })
-                    }
-                }
+            const sql_getcontent = `SELECT content.* FROM content_has_hash INNER JOIN content ON 
+            content_has_hash.content_idx = content.content_id WHERE content_has_hash.Hash_idx = ?`
+            sql_pool.query(sql_getcontent, [rows_tag[0].Hash_id], (err_get, rows_get, result_get) => {
+                if (err_get)
+                    console.log(err_get)
+                else
+                    res.send(rows_get)
             })
         }
     })
