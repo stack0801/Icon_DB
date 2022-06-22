@@ -35,7 +35,7 @@ export default function App() {
             }
             <nav className={togglebar ? "nav-menu active" : "nav-menu"}>
             <ToggleList>
-              <li><SearchBox/></li>
+              <li><SearchBox width="130%" fontSize="23px"/></li>
               <li><Link to = "/posting">Posting</Link></li>
               <li><Link to = "/#">Edit</Link></li>
             </ToggleList>
@@ -55,16 +55,17 @@ const MobileHeader = styled.div`
   place-items:center;
   place-content:center;
   z-index: 999;
-    .header_user {
-      color: #ececec;
-      transition-duration: 0.3s;
-      &:hover {
-        color: white;
-      }
-      &:active {
-        color: #f5a282;
-      }
+  
+  .header_user {
+    color: #ececec;
+    transition-duration: 0.3s;
+    &:hover {
+      color: white;
     }
+    &:active {
+      color: #f5a282;
+    }
+  }
 
   .animated {
       -webkit-animation-duration: 1s;
@@ -151,7 +152,7 @@ const MobileHeader = styled.div`
 
     .nav-menu {
       background-color: gray;
-      width: 40%;
+      width: 100%;
       height: 100vh;
       display: flex;
       position: fixed;
@@ -170,8 +171,9 @@ const ToggleButton = styled.button`
     color: #ececec;
     border: none;
     cursor: pointer;
-    &:hover
-        color: white;
+    transition-duration: 0.3s;
+    &:hover {
+      color: white;
     }
 `;
 
