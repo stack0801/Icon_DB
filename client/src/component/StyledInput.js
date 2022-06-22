@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function App({ width, height, placeholder, type, fontSize, onChange}) {
+export default function App({ width, height, placeholder, type, fontSize, onChange, value}) {
     return (
         <StyledInput 
             width = {width} 
@@ -9,7 +9,8 @@ export default function App({ width, height, placeholder, type, fontSize, onChan
             placeholder = {placeholder} 
             fontSize = {fontSize} 
             onChange = {onChange}
-            type = {type}>
+            type = {type}
+            >
         </StyledInput>
     )
 }

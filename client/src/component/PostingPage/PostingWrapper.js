@@ -49,7 +49,7 @@ export default function App() {
         })
         .then((res) => {
             alert(res.data)
-        if (res.data == 'success') 
+        if (res.data === 'success') 
             window.location.href = '/'
         })
     }

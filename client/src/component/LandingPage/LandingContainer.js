@@ -87,7 +87,6 @@ const IconContainer = styled.div`
     border-radius: 10px;
     display: inline-block;
     height: 260px;
-    background
 `;
 
 const IconList = styled.img`

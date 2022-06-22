@@ -24,10 +24,25 @@ app.post('/get_profile', (req, res) => {
     })
 })
 
-app.post('/upload_profile', profile_upload.single('img'), (req, res) => {
+app.post('/update_profile_img', profile_upload.single('img'), (req, res) => {
     const filename = req.filedirectory
-    const sql = 'insert into user(profilename) values (?)'
-    sql_pool.query(sql, [filename], (err, result) => {
+    const id = req.session.sign
+
+    const sql = 'UPDATE user SET profilename = ? WHERE id = ?'
+    sql_pool.query(sql, [filename, id], (err, result) => {
+        if (err)
+            throw err
+        else
+            res.send("success")
+    })
+})
+
+app.post('/update_profile_nickname', (req, res) => {
+    const nickname = req.body.nickname
+    const id = req.session.sign
+
+    const sql = 'UPDATE user SET nickname = ? WHERE id = ?'
+    sql_pool.query(sql, [nickname, id], (err, result) => {
         if (err)
             throw err
         else

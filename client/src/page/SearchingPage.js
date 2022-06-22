@@ -21,9 +21,8 @@ export default function App() {
         })
             .then((res) => {
                 setData(res.data)
-                console.log(res.data) //아직 받는 데이터 없음(server.js에서 추후 수정)
             })
-    }, []);
+    }, [keyword]);
 
     return (<>
         <Header />
@@ -37,7 +36,7 @@ export default function App() {
                 <div key={idx}>
                     <Link to={"/post/" + list.content_id}>
                         <IconContainer>
-                            <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" />
+                            <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} width="260" alt="no_img" />
                             <ShowTitle><Text>Show Detail</Text></ShowTitle>
                         </IconContainer>
                     </Link>
@@ -59,12 +58,16 @@ const SearchingPage = styled.div`
 `;
 
 const IconContainer = styled.div`
+    border: 3px solid #9ED1D9;
+    background-color : #FFFFFF;
+    border-radius: 10px;
     display: inline-block;
     height: 260px;
 `;
 
 const IconList = styled.img`
     height: 260px;
+    border-radius: 10px;
 `;
 
 const ImageListWrapper = styled.div`
