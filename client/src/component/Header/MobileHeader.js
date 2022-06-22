@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import SearchBox from "../SearchBox";
 import Logo from "../Logo";
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import axios from 'axios';
@@ -16,22 +17,29 @@ export default function App() {
             })
     }, []);
 
-    const [HambergerBar, setHambergerBar] = useState(false);
-    const showBar = () => setHambergerBar(!HambergerBar);
+    const [togglebar, setTogglebar] = useState(false);
+    const showMenu = () => setTogglebar(!togglebar);
 
     return (
         <MobileHeader>
-            <Toggle>
-                {HambergerBar === false
-                    ? <FaBars className = "menubar-open animated" size = "18" onClick={showBar} />
-                    : <FaTimes className = "menubar-open animated" size = "20" onClick={showBar} />
+            <ToggleButton>
+                {togglebar === false
+                    ? <FaBars className = "menubar-open animated" size = "18" onClick={showMenu} />
+                    : <FaTimes className = "menubar-open animated" size = "20" onClick={showMenu} />
                 }
-            </Toggle>
+            </ToggleButton>
             <Logo />
             {sign === null
                 ? <Link to = "/sign_in"><FaUser className = "header_user" size = "20" /></Link>
                 : <Link to = "/profile"><FaUser className = "header_user" size = "20" /></Link>
             }
+            <nav className={togglebar ? "nav-menu active" : "nav-menu"}>
+            <ToggleList>
+              <li><SearchBox/></li>
+              <li><Link to = "/posting">Posting</Link></li>
+              <li><Link to = "/#">Edit</Link></li>
+            </ToggleList>
+            </nav>
         </MobileHeader>
     )
 }
@@ -140,16 +148,36 @@ const MobileHeader = styled.div`
       -webkit-animation-name: flipInX;
       animation-name: flipInX
     }
+
+    .nav-menu {
+      background-color: gray;
+      width: 40%;
+      height: 100vh;
+      display: flex;
+      position: fixed;
+      top: 55px;
+      left: -100%;
+      transition-duration: 0.35s;
+      &.active{
+          left: 0;
+      }
+  }
 }`;
 
-const Toggle = styled.button`
+const ToggleButton = styled.button`
     background-color: #9ed1d9;
     height: 40px;
     color: #ececec;
     border: none;
     cursor: pointer;
-    transition-duratio: 0.3s;
-    &:hover{
+    &:hover
         color: white;
     }
+`;
+
+const ToggleList = styled.ul`
+  list-style:none;
+  display: grid;
+  place-content: top;
+  padding: 5%;
 `;
