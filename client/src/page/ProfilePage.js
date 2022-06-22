@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ImageUploader from 'react-images-uploading';
 import styled from "styled-components";
 import Header from "../component/Header/Header";
@@ -15,6 +15,9 @@ export default function App() {
     const [followed, setFollowed] = useState(false);
     const [sign, setSign] = useState(null);
 
+    //프로필 정보
+    const [profileContent, setProfileContent] = useState([]);
+
     useEffect(() => {
         axios.post('/get_auth')
         .then((res) => {
@@ -28,6 +31,14 @@ export default function App() {
                 })
             }
         })
+
+        axios.post('/get_usercontent', {
+            id : user
+        })
+        .then((res) => {
+            setProfileContent(res.data)
+        })
+
     }, [user]);
 
     useEffect(() => {
@@ -37,6 +48,8 @@ export default function App() {
         .then((res) => {
             setProfileData(res.data[0]);
         });
+
+
     }, [user]);
 
     const onFollowHandler = () => {
@@ -134,8 +147,9 @@ export default function App() {
             </ProfilePage>
 
             <FavoritePage>
-                <div>favorite list</div>
-            </FavoritePage>
+                <div>Made Icon List</div> 
+                <div>Follower's Icon List</div>
+           </FavoritePage>
         </UserPage>
     </>);
 }

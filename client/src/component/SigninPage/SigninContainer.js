@@ -13,9 +13,8 @@ export default function App({ width, height, padding }) {
     const onIdHandler = (event) => { setId(event.currentTarget.value); }
     const onPasswordHandler = (event) => { setPassword(event.currentTarget.value); }
 
-    const onKeyPress =(e)=>{
-         if(e.key==='Enter') {onSubmit()}
-    }
+    const onKeyPress =(e)=>{ if(e.key==='Enter') onSubmit() }
+    
     const onSubmit = () => {
         if (id.length > 0 && password.length > 0) {
             axios

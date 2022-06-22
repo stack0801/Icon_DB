@@ -22,7 +22,6 @@ export default function App() {
             user: data
           })
           .then((res) => {
-            console.log(res.data[0])
             setProfileData(res.data[0])
           })
         })

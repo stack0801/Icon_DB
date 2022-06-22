@@ -22,11 +22,20 @@ export default function App() {
           user: data
         })
         .then((res) => {
-          console.log(res.data[0])
           setProfileData(res.data[0])
         })
       })
   }, []);
+
+  const signOut = () => {
+    axios
+        .post('/sign_out')
+        .then((res) => {
+            console.log(res.data)
+            if (res.data === 'success')
+                window.location.href = '/';
+        })
+}
 
   const [togglebar, setTogglebar] = useState(false);
   const showMenu = () => setTogglebar(!togglebar);
@@ -51,6 +60,7 @@ export default function App() {
           <li><SearchBox width="80%" fontSize="23px" /></li>
           <li><Link to="/posting">Posting</Link></li>
           <li><Link to="/#">Edit</Link></li>
+          <li><Link to = "#" onClick={signOut}>Logout</Link></li>
         </ToggleList>
       </nav>
     </MobileHeader>
