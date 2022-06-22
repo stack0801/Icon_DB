@@ -36,7 +36,7 @@ export default function App() {
                 <div key={idx}>
                     <Link to={"/post/" + list.content_id}>
                         <IconContainer>
-                            <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.content_id + ".png"} alt="no_img" width="260"/>
+                            <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260"/>
                             <ShowTitle><Text>Show Detail</Text></ShowTitle>
                         </IconContainer>
                     </Link>

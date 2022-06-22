@@ -7,33 +7,38 @@ import axios from 'axios';
 
 export default function App() {
 
-    // 유저 로그인 여부
-    const [sign, setSign] = useState(null)
-    useEffect(() => {
-        axios.post('/get_auth')
-            .then((res) => {
-                setSign(res.data)
-            })
-    }, []);
+  // 유저 로그인 여부
+  const [sign, setSign] = useState(null)
+  useEffect(() => {
+    axios.post('/get_auth')
+      .then((res) => {
+        setSign(res.data)
+      })
+  }, []);
 
-    const [HambergerBar, setHambergerBar] = useState(false);
-    const showBar = () => setHambergerBar(!HambergerBar);
+  const [Togglebar, setToggleBar] = useState(false);
+  const showBar = () => setToggleBar(!Togglebar);
 
-    return (
-        <MobileHeader>
-            <Toggle>
-                {HambergerBar === false
-                    ? <FaBars className = "menubar-open animated" size = "18" onClick={showBar} />
-                    : <FaTimes className = "menubar-open animated" size = "20" onClick={showBar} />
-                }
-            </Toggle>
-            <Logo />
-            {sign === null
-                ? <Link to = "/sign_in"><FaUser className = "header_user" size = "20" /></Link>
-                : <Link to = "/profile"><FaUser className = "header_user" size = "20" /></Link>
+  return (
+    <MobileHeader>
+      <ToggleBar>
+        {Togglebar === false
+          ? <FaBars className="menubar-open animated" size="18" onClick={showBar} />
+          : <FaTimes className="menubar-open animated" size="20" onClick={showBar} />
+        }
+      </ToggleBar>
+      <Logo />
+      {sign === null
+        ? <Link to="/sign_in"><FaUser className="header_user" size="20" /></Link>
+        : <Link to="/profile"><FaUser className="header_user" size="20" /></Link>
+      }
+      {Togglebar === false
+        ? <ToggleMenu />
+        : <ToggleMenuActive />
+
             }
-        </MobileHeader>
-    )
+    </MobileHeader>
+  )
 }
 
 const MobileHeader = styled.div`
@@ -142,14 +147,30 @@ const MobileHeader = styled.div`
     }
 }`;
 
-const Toggle = styled.button`
+const ToggleBar = styled.button`
     background-color: #9ed1d9;
     height: 40px;
     color: #ececec;
     border: none;
     cursor: pointer;
-    transition-duratio: 0.3s;
+    transition-duration: 0.3s;
     &:hover{
         color: white;
     }
+`;
+
+const ToggleMenu = styled.div`
+position: absolute;
+top: 55px;
+left: -40%;
+width: 40%;
+height: 100vh;
+background-color: white;
+opacity: 0.8;
+transition-duration: 0.3s;
+`;
+
+const ToggleMenuActive = styled(ToggleMenu)`
+    position: absolute;
+    left: 0;
 `;
