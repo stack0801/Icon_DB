@@ -201,18 +201,26 @@ export default function App() {
                 <div>
                     <h2>Following</h2>
                     <MyList>
-                        {/* {profileFollow.map((list, idx) => (
+                        {profileFollow.map((list, idx) => (
                             <div key={idx}>
-                                <Link to={"/profile/" + list.content_id}>
+                                <Link to={"/profile/" + list.id}>
                                     <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + list.profilename} alt="no_img" width="100"/>
                                 </Link>
                             </div>
-                        ))} */}
+                        ))}
                     </MyList>
                 </div>
                 <div>
                     <h2>Follower</h2>
-                    <MyList></MyList>
+                    <MyList>
+                        {profileFollower.map((list, idx) => (
+                            <div key={idx}>
+                                <Link to={"/profile/" + list.id}>
+                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + list.profilename} alt="no_img" width="100"/>
+                                </Link>
+                            </div>
+                        ))}
+                    </MyList>
                 </div>
            </FavoritePage>
         </UserPage>
