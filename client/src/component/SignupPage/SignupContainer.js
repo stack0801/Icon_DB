@@ -14,6 +14,8 @@ export default function App({ width, height, padding }) {
     const onIdHandler = (e) => { setId(e.currentTarget.value) }
     const onPasswordHandler = (e) => { setPassword(e.currentTarget.value) }
 
+    const onKeyPress =(e)=>{ if(e.key==='Enter') onSubmit() }
+
     const onSubmit = () => {
         if (id.length > 0 && password.length > 0 && name.length > 0) {
             axios
@@ -38,7 +40,7 @@ export default function App({ width, height, padding }) {
         <StyledContianer width = {width} height = {height} padding = {padding}>
             <StyledInput width = "95%" placeholder = "Name" onChange = {onNameHandler}/>
             <StyledInput width = "95%" placeholder = "ID" onChange = {onIdHandler}/>
-            <StyledInput width = "95%" placeholder = "Password" type = "password" onChange = {onPasswordHandler}/>
+            <StyledInput width = "95%" placeholder = "Password" type = "password" onChange = {onPasswordHandler} onKeyPress = {onKeyPress}/>
             <StyledButton width = "100%" text = "Sign Up" onClick = {onSubmit}/>
             <Msg>Already have an account? <Link to = "/sign_in"><LinkMsg>Sign in</LinkMsg></Link></Msg>
         </StyledContianer>

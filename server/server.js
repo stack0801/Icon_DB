@@ -177,6 +177,17 @@ app.post('/get_content', (req, res) => {
     })
 })
 
+app.post('/get_usercontent', (req, res) => {
+    const id = req.body.id
+    const sql_getcontent = `SELECT * FROM content WHERE user_id = ?`
+    sql_pool.query(sql_getcontent, [id], (err_get, rows_get, result_get) => {
+        if (err_get)
+            console.log(err_get)
+        else
+            res.send(rows_get)
+    })
+})
+
 app.post('/insert_content', upload.single('img'), (req, res) => {
     const id = req.session.sign
     const message = req.body.message
@@ -211,21 +222,18 @@ app.post('/tag_insert', (req, res) => {
         if (result_Hash.length == 0) {
             const sql_InsertHash = "INSERT INTO Hash(Hashtag) VALUES ('" + tag_context + "')"
             sql_pool.query(sql_InsertHash, (err_InsertHash, result_InsertHash) => {
-                if (err_InsertHash) {
+                if (err_InsertHash) 
                     console.log(err_InsertHash)
-                }
             })
         }
         sql_pool.query(sql_Hashtag, [tag_context], (err_Hash, rows_Hash, result_Hash) => {
             const Hash_idx = rows_Hash[0].Hash_id
             const sql_content_tag = 'INSERT INTO content_has_hash(content_idx, Hash_idx) VALUES (?,?)'
             sql_pool.query(sql_content_tag, [content_id, Hash_idx], (err_content_tag, result_content_tag) => {
-                if (err_content_tag) {
+                if (err_content_tag) 
                     res.send("duplication")
-                }
-                else {
+                else 
                     res.send(result_content_tag)
-                }
             })
         })
     })

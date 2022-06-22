@@ -13,6 +13,9 @@ export default function App({ width, height, padding }) {
     const onIdHandler = (event) => { setId(event.currentTarget.value); }
     const onPasswordHandler = (event) => { setPassword(event.currentTarget.value); }
 
+    const onKeyPress =(e)=>{
+         if(e.key==='Enter') {onSubmit()}
+    }
     const onSubmit = () => {
         if (id.length > 0 && password.length > 0) {
             axios
@@ -36,7 +39,7 @@ export default function App({ width, height, padding }) {
     return (
         <StyledContianer width = {width} height = {height} padding = {padding}>
             <StyledInput width = "95%" placeholder = "ID" onChange = {onIdHandler}/>
-            <StyledInput width = "95%" placeholder = "Password" type = "password" onChange = {onPasswordHandler}/>
+            <StyledInput width = "95%" placeholder = "Password" type = "password" onChange = {onPasswordHandler} onKeyPress = {onKeyPress}/>
             <StyledButton width = "100%" text = "Sign In" onClick = {onSubmit}/>
             <GoogleButton/>
             <Msg>Not a Member? <Link to = "/sign_up"><LinkMsg>Sign up</LinkMsg></Link></Msg>

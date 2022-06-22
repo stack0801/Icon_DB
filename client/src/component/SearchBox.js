@@ -7,6 +7,8 @@ export default function App({width, height, fontSize}) {
 
     const onSearchHandler = (e) => { setSearchbox(e.currentTarget.value) }
 
+    const onKeyPress =(e)=>{ if(e.key==='Enter') onSubmit() }
+
     const onSubmit = () => {
         if(searchbox.length <= 1){
             alert("2글자 이상 입력해주세요")
@@ -18,7 +20,7 @@ export default function App({width, height, fontSize}) {
 
     return (
         <SearchBox width = {width} height = {height}>
-            <SearchInput width = {width} placeholder = "keyword" onChange = {onSearchHandler} fontSize = {fontSize}/>
+            <SearchInput width = {width} placeholder = "keyword" fontSize = {fontSize} onChange = {onSearchHandler} onKeyPress={onKeyPress}/>
             <FaSearch size = "20" color = "#9ed1d9" cursor = "pointer" onClick = {onSubmit}/>
         </SearchBox>
     );
