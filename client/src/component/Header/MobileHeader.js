@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import ImageContainer from "../ImageContainer";
 import SearchBox from "../SearchBox";
 import Logo from "../Logo";
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
@@ -10,38 +11,50 @@ export default function App() {
 
   // 유저 로그인 여부
   const [sign, setSign] = useState(null)
+  const [profiledata, setProfileData] = useState({profilename: "Anonymous.png", nickname: "Anonymous"});
+
   useEffect(() => {
     axios.post('/get_auth')
       .then((res) => {
-        setSign(res.data)
+        let data = res.data
+        setSign(data)
+        axios.post('/get_profile', {
+          user: data
+        })
+        .then((res) => {
+          console.log(res.data[0])
+          setProfileData(res.data[0])
+        })
       })
   }, []);
 
-    const [togglebar, setTogglebar] = useState(false);
-    const showMenu = () => setTogglebar(!togglebar);
+  const [togglebar, setTogglebar] = useState(false);
+  const showMenu = () => setTogglebar(!togglebar);
 
-    return (
-        <MobileHeader>
-            <ToggleButton>
-                {togglebar === false
-                    ? <FaBars className = "menubar-open animated" size = "18" onClick={showMenu} />
-                    : <FaTimes className = "menubar-open animated" size = "20" onClick={showMenu} />
-                }
-            </ToggleButton>
-            <Logo />
-            {sign === null
-                ? <Link to = "/sign_in"><FaUser className = "header_user" size = "20" /></Link>
-                : <Link to = "/profile"><FaUser className = "header_user" size = "20" /></Link>
-            }
-            <nav className={togglebar ? "nav-menu active" : "nav-menu"}>
-            <ToggleList>
-              <li><SearchBox width="130%" fontSize="23px"/></li>
-              <li><Link to = "/posting">Posting</Link></li>
-              <li><Link to = "/#">Edit</Link></li>
-            </ToggleList>
-            </nav>
-        </MobileHeader>
-    )
+  return (
+    <MobileHeader>
+      <ToggleButton>
+        {togglebar === false
+          ? <FaBars className="menubar-open animated" size="18" onClick={showMenu} />
+          : <FaTimes className="menubar-open animated" size="20" onClick={showMenu} />
+        }
+      </ToggleButton>
+      <Logo />
+      {sign === null
+        ? <Link to="/sign_in"><FaUser className="header_user" size="20" /></Link>
+        : <Link to={"/profile/" + sign}>
+              <ImageContainer src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + profiledata.profilename} alt="" width="45px" height="45px" borderRadius="50%" />
+          </Link>}
+
+      <nav className={togglebar ? "nav-menu active" : "nav-menu"}>
+        <ToggleList>
+          <li><SearchBox width="80%" fontSize="23px" /></li>
+          <li><Link to="/posting">Posting</Link></li>
+          <li><Link to="/#">Edit</Link></li>
+        </ToggleList>
+      </nav>
+    </MobileHeader>
+  )
 }
 
 const MobileHeader = styled.div`

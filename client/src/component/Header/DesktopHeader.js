@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import ImageContainer from "../ImageContainer";
 import LinkButton from "../LinkButton";
 import Logo from "../Logo";
 import SearchBox from "../SearchBox";
@@ -9,22 +10,33 @@ import axios from 'axios';
 export default function App() {
 
     // 유저 로그인 여부
-    const [sign, setSign] = useState(null)
+    const [sign, setSign] = useState(null);
+    const [profiledata, setProfileData] = useState({profilename: "Anonymous.png", nickname: "Anonymous"});
+  
     useEffect(() => {
-        axios.post('/get_auth')
-            .then((res) => {
-                setSign(res.data)
-            })
+      axios.post('/get_auth')
+        .then((res) => {
+          let data = res.data
+          setSign(data)
+          axios.post('/get_profile', {
+            user: data
+          })
+          .then((res) => {
+            console.log(res.data[0])
+            setProfileData(res.data[0])
+          })
+        })
     }, []);
+  
 
     const signOut = () => {
         axios
-        .post('/sign_out')
-        .then((res) => {
-            console.log(res.data)
-            if (res.data === 'success')
-                window.location.href = '/';
-        })
+            .post('/sign_out')
+            .then((res) => {
+                console.log(res.data)
+                if (res.data === 'success')
+                    window.location.href = '/';
+            })
     }
 
     const [scroll, setScroll] = useState(false);
@@ -48,17 +60,19 @@ export default function App() {
 
     return (
         <DesktopHeader>
-            <Logo/>
-            {scroll === false ? 
-                <div/> : 
+            <Logo />
+            {scroll === false ?
+                <div /> :
                 <SearchBox width="450px" height="30px" />
             }
-            <Link to = "/posting"><LinkButton text="Posting" /></Link>
-            <LinkButton text="Edit" onClick={openEditor}/>
-            {sign !== null && <Link to ={"/profile/" + sign}><LinkButton text="Profile" /></Link>}
-            {sign === null ? 
-                <Link to = "/sign_in"><LinkButton text="Sign in" /></Link> :
-                <LinkButton onClick={signOut} text="sign out"/>
+            <Link to="/posting"><LinkButton text="Posting" /></Link>
+            <LinkButton text="Edit" onClick={openEditor} />
+            {sign !== null && <Link to={"/profile/" + sign}>
+                <ImageContainer src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + profiledata.profilename} alt="" width="45px" height="45px" borderRadius="50%" />
+                </Link>}
+            {sign === null ?
+                <Link to="/sign_in"><LinkButton text="Sign in" /></Link> :
+                <LinkButton onClick={signOut} text="sign out" />
             }
 
         </DesktopHeader>
