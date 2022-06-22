@@ -12,15 +12,23 @@ export default function App() {
 
     let {user} = useParams();
     const [profiledata, setProfileData] = useState({profilename: "Anonymous.png", nickname: "Anonymous"});
-    const [follow, setFollow] = useState(false);
+    const [followed, setFollowed] = useState(false);
     const [sign, setSign] = useState(null);
 
     useEffect(() => {
         axios.post('/get_auth')
         .then((res) => {
             setSign(res.data)
+            if(res.data) {
+                axios.post('/check_followed', {
+                    id: user
+                })
+                .then((res) => {
+                    setFollowed((res.data === 'followed'))
+                })
+            }
         })
-    }, []);
+    }, [user]);
 
     useEffect(() => {
         axios.post('/get_profile', {
@@ -32,14 +40,24 @@ export default function App() {
     }, [user]);
 
     const onFollowHandler = () => {
-        if(sign === null) {
+        if(sign === null){
             alert("로그인 후 사용 가능한 서비스 입니다.");
             window.location.href = '/sign_in';
         }
         else {
-            console.log("111");
+            axios({
+                method : 'post',
+                url: '/setFollow',
+                data: {
+                    id: user
+                }
+            })
+            .then((res) => {
+                setFollowed(res.data)
+            })
         }
-    };
+    }
+
     //프로필 업로드
     const [images, setImages] = useState([]);
     const [nickname, updateNickname] = useState();
@@ -105,7 +123,11 @@ export default function App() {
                             <StyledInput placeholder = {profiledata.nickname} onChange={onNicknameHandler}/>
                             <StyledButton width = "90%" text = "Edit Profile" onClick={() => onImageUpdate(0)}/>
                             <StyledButton width = "90%" text = "Update" onClick={insert_content}/></>
-                        : <StyledButton width = "90%" text = "Follow" onClick={onFollowHandler}/>}
+                        :<>{followed ?
+                        <StyledButton width = "90%" text = "Follow" onClick={onFollowHandler}/>
+                       : <StyledButton width = "90%" text = "Unfollow" onClick={onFollowHandler}/>   
+                    }</>
+                }
                         </>
                     )}
                 </ImageUploader>

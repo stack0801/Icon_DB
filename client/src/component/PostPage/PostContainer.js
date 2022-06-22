@@ -9,8 +9,7 @@ import axios from 'axios';
 
 export default function App() {
 
-    let { id } = useParams();
-    let url_id = id;
+    let { url_id } = useParams();
 
     const [data, setData] = useState({filename: "NoImage.png"});
     const [sign, setSign] = useState(null);
@@ -160,7 +159,7 @@ export default function App() {
             <Title>
                 <Information>
                     <div>Comment : {data.message}</div>
-                    <div>ID : {data.user_id}</div>
+                    <Link  to = {"/profile/" + data.user_id}><div>ID : {data.user_id}</div></Link>
                     <div>{data.date}</div>
                     <div>{likes} likes</div>
                     <ThemeProvider theme={theme}>
