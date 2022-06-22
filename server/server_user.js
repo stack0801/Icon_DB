@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const sql_pool = require('./src/mysql')
-const download = require('./src/aws_multer').download;
 const profile_upload = require('./src/aws_multer').profile_upload
 
 router.post('/get_profile', (req, res) => {
@@ -39,11 +38,6 @@ router.post('/update_profile_nickname', (req, res) => {
         else
             res.send("success")
     })
-})
-
-router.get('/download/:key', (req, res) => {
-    const key = req.params.key
-    download(req, res, key);
 })
 
 router.post('/sign_up', (req, res) => {
