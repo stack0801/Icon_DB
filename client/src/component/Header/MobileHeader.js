@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import SearchBox from "../SearchBox";
 import Logo from "../Logo";
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import axios from 'axios';
@@ -16,29 +17,31 @@ export default function App() {
       })
   }, []);
 
-  const [Togglebar, setToggleBar] = useState(false);
-  const showBar = () => setToggleBar(!Togglebar);
+    const [togglebar, setTogglebar] = useState(false);
+    const showMenu = () => setTogglebar(!togglebar);
 
-  return (
-    <MobileHeader>
-      <ToggleBar>
-        {Togglebar === false
-          ? <FaBars className="menubar-open animated" size="18" onClick={showBar} />
-          : <FaTimes className="menubar-open animated" size="20" onClick={showBar} />
-        }
-      </ToggleBar>
-      <Logo />
-      {sign === null
-        ? <Link to="/sign_in"><FaUser className="header_user" size="20" /></Link>
-        : <Link to="/profile"><FaUser className="header_user" size="20" /></Link>
-      }
-      {Togglebar === false
-        ? <ToggleMenu />
-        : <ToggleMenuActive />
-
+    return (
+        <MobileHeader>
+            <ToggleButton>
+                {togglebar === false
+                    ? <FaBars className = "menubar-open animated" size = "18" onClick={showMenu} />
+                    : <FaTimes className = "menubar-open animated" size = "20" onClick={showMenu} />
+                }
+            </ToggleButton>
+            <Logo />
+            {sign === null
+                ? <Link to = "/sign_in"><FaUser className = "header_user" size = "20" /></Link>
+                : <Link to = "/profile"><FaUser className = "header_user" size = "20" /></Link>
             }
-    </MobileHeader>
-  )
+            <nav className={togglebar ? "nav-menu active" : "nav-menu"}>
+            <ToggleList>
+              <li><SearchBox width="130%" fontSize="23px"/></li>
+              <li><Link to = "/posting">Posting</Link></li>
+              <li><Link to = "/#">Edit</Link></li>
+            </ToggleList>
+            </nav>
+        </MobileHeader>
+    )
 }
 
 const MobileHeader = styled.div`
@@ -52,16 +55,17 @@ const MobileHeader = styled.div`
   place-items:center;
   place-content:center;
   z-index: 999;
-    .header_user {
-      color: #ececec;
-      transition-duration: 0.3s;
-      &:hover {
-        color: white;
-      }
-      &:active {
-        color: #f5a282;
-      }
+  
+  .header_user {
+    color: #ececec;
+    transition-duration: 0.3s;
+    &:hover {
+      color: white;
     }
+    &:active {
+      color: #f5a282;
+    }
+  }
 
   .animated {
       -webkit-animation-duration: 1s;
@@ -145,32 +149,37 @@ const MobileHeader = styled.div`
       -webkit-animation-name: flipInX;
       animation-name: flipInX
     }
+
+    .nav-menu {
+      background-color: gray;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      position: fixed;
+      top: 55px;
+      left: -100%;
+      transition-duration: 0.35s;
+      &.active{
+          left: 0;
+      }
+  }
 }`;
 
-const ToggleBar = styled.button`
+const ToggleButton = styled.button`
     background-color: #9ed1d9;
     height: 40px;
     color: #ececec;
     border: none;
     cursor: pointer;
     transition-duration: 0.3s;
-    &:hover{
-        color: white;
+    &:hover {
+      color: white;
     }
 `;
 
-const ToggleMenu = styled.div`
-position: absolute;
-top: 55px;
-left: -40%;
-width: 40%;
-height: 100vh;
-background-color: white;
-opacity: 0.8;
-transition-duration: 0.3s;
-`;
-
-const ToggleMenuActive = styled(ToggleMenu)`
-    position: absolute;
-    left: 0;
+const ToggleList = styled.ul`
+  list-style:none;
+  display: grid;
+  place-content: top;
+  padding: 5%;
 `;
