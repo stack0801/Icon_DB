@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const sql_pool = require('./src/mysql')
-const download = require('./src/aws_multer').download;
 const profile_upload = require('./src/aws_multer').profile_upload
 
 router.post('/get_profile', (req, res) => {
