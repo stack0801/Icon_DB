@@ -158,5 +158,5 @@ const ProfilePage = styled.div`
 `;
 
 const FavoritePage = styled(ProfilePage)`
-border:none;
+    border:none;
 `;
