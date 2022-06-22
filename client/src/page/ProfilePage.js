@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import ImageUploader from 'react-images-uploading';
 import styled from "styled-components";
 import Header from "../component/Header/Header";
 import ImageContainer from "../component/ImageContainer";
 import StyledInput from "../component/StyledInput";
 import StyledButton from "../component/StyledButton";
+import { ThemeProvider, Button } from '@material-ui/core';
+import { theme } from "../component/theme";
 import axios from "axios"
 
 export default function App() {
@@ -17,6 +19,9 @@ export default function App() {
 
     //프로필 정보
     const [profileContent, setProfileContent] = useState([]);
+    const [profileLiked, setProfileLiked] = useState([]);
+    const [profileFollow, setProfileFollow] = useState([]);
+    const [profileFollower, setProfileFollower] = useState([]);
 
     useEffect(() => {
         axios.post('/get_auth')
@@ -37,6 +42,28 @@ export default function App() {
         })
         .then((res) => {
             setProfileContent(res.data)
+        })
+
+        axios.post('/get_userlike', {
+            id : user
+        })
+        .then((res) => {
+            setProfileLiked(res.data)
+        })
+
+        axios.post('/get_Following', {
+            id : user
+        })
+        .then((res) => {
+            setProfileFollow(res.data)
+            console.log((res.data))
+        })
+
+        axios.post('/get_Follower', {
+            id : user
+        })
+        .then((res) => {
+            setProfileFollower(res.data)
         })
 
     }, [user]);
@@ -124,31 +151,69 @@ export default function App() {
                     maxNumber={maxNumber}
                     dataURLKey="data_url"
                     onError={onError}>
-                    {({ imageList, onImageUpdate}) => (
-                        <>
+                    {({ imageList, onImageUpdate}) => (<>
                         {imageList.length === 0 && <ImageContainer src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + profiledata.profilename} alt="" width="60%" borderRadius="50%"/>}
                         {imageList.map((image, index) => (
                             <ImageContainer key={index} src={image['data_url']} alt="" width="60%" borderRadius="50%"/>
                         ))}
                         <h1>{profiledata.nickname}</h1>
-                        {sign === user 
-                        ? <>
+                        {sign === user ? 
+                        <>
                             <StyledInput placeholder = {profiledata.nickname} onChange={onNicknameHandler}/>
                             <StyledButton width = "90%" text = "Edit Profile" onClick={() => onImageUpdate(0)}/>
-                            <StyledButton width = "90%" text = "Update" onClick={insert_content}/></>
-                        :<>{followed ?
-                        <StyledButton width = "90%" text = "Follow" onClick={onFollowHandler}/>
-                       : <StyledButton width = "90%" text = "Unfollow" onClick={onFollowHandler}/>   
-                    }</>
-                }
-                        </>
-                    )}
+                            <StyledButton width = "90%" text = "Update" onClick={insert_content}/>
+                        </>:
+                        <ThemeProvider theme={theme}>
+                            {!followed ?
+                            <Button variant="outlined" color="primary" onClick={onFollowHandler}>Follow</Button> :
+                            <Button variant="outlined" color="secondary" onClick={onFollowHandler}>Following</Button>}
+                        </ThemeProvider>
+                        }
+                    </>)}
                 </ImageUploader>
             </ProfilePage>
 
             <FavoritePage>
-                <div>Made Icon List</div> 
-                <div>Follower's Icon List</div>
+                <div>
+                    <h2>My Icon List</h2>
+                    <MyList>
+                        {profileContent.map((list, idx) => (
+                            <div key={idx}>
+                                <Link to={"/post/" + list.content_id}>
+                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="100"/>
+                                </Link>
+                            </div>
+                        ))}
+                    </MyList>
+                </div> 
+                <div>
+                    <h2>Liked Icon List</h2>
+                    <MyList>
+                        {profileLiked.map((list, idx) => (
+                            <div key={idx}>
+                                <Link to={"/post/" + list.content_id}>
+                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="100"/>
+                                </Link>
+                            </div>
+                        ))}
+                    </MyList>
+                </div>
+                <div>
+                    <h2>Following</h2>
+                    <MyList>
+                        {/* {profileFollow.map((list, idx) => (
+                            <div key={idx}>
+                                <Link to={"/profile/" + list.content_id}>
+                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + list.profilename} alt="no_img" width="100"/>
+                                </Link>
+                            </div>
+                        ))} */}
+                    </MyList>
+                </div>
+                <div>
+                    <h2>Follower</h2>
+                    <MyList></MyList>
+                </div>
            </FavoritePage>
         </UserPage>
     </>);
@@ -171,6 +236,19 @@ const ProfilePage = styled.div`
     border-right: solid 2px #dddddd;
 `;
 
-const FavoritePage = styled(ProfilePage)`
-    border:none;
+const FavoritePage = styled.div`
+    padding: 10px;
+    display: grid;
+    grid-template-rows: repeat(auto-fit, 1fr);
+`;
+
+const MyList = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(100px, 150px));
+`;
+
+const IconList = styled.img`
+    height: 100px;
+    border: 2px solid #9ED1D9;
+    border-radius: 10px;
 `;
