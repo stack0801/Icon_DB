@@ -41,7 +41,8 @@ router.post('/setFollow', (req, res) => {
 router.post('/get_Following', (req, res) => {
     const id = req.body.id
 
-    const sql_get = 'SELECT * FROM WHERE Follower = ?'
+    const sql_get = `SELECT user.* FROM Follow INNER JOIN user ON 
+    user.id = Follow.Following WHERE Follower = ?`
     sql_pool.query(sql_get, [id], (err, rows, result)=> {
         if(err)
             console.log(err)
@@ -53,7 +54,8 @@ router.post('/get_Following', (req, res) => {
 router.post('/get_Follower', (req, res) => {
     const id = req.body.id
 
-    const sql_get = 'SELECT * FROM WHERE Following = ?'
+    const sql_get = `SELECT user.* FROM Follow INNER JOIN user ON 
+    user.id = Follow.Follower WHERE Following = ?`
     sql_pool.query(sql_get, [id], (err, rows, result)=> {
         if(err)
             console.log(err)

@@ -46,7 +46,7 @@ router.post('/sign_up', (req, res) => {
     const name = req.body.name
 
     if (id && password && name) {
-        const sql = 'INSERT INTO user VALUES(?, ?, ?)'
+        const sql = 'INSERT INTO user(id, password, nickname) VALUES(?, ?, ?)'
         sql_pool.query(sql, [id, password, name], (err, result) => {
             if (err)
                 res.send("fail")

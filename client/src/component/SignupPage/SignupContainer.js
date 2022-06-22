@@ -20,7 +20,7 @@ export default function App({ width, height, padding }) {
         if (id.length > 0 && password.length > 0 && name.length > 0) {
             axios
             .post('/sign_up', {
-                naem: name,
+                name: name,
                 id: id,
                 pw: password
             })
@@ -28,6 +28,9 @@ export default function App({ width, height, padding }) {
                 console.log(res.data)
                 if (res.data === 'success') {
                     window.location.href = '/'
+                }
+                else if (res.data === 'fail') {
+                    alert("다른 아이디를 입력해주세요!")
                 }
             })
         }
