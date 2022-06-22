@@ -39,11 +39,27 @@ router.post('/setFollow', (req, res) => {
 })
 
 router.post('/get_Following', (req, res) => {
+    const id = req.body.id
 
+    const sql_get = 'SELECT * FROM WHERE Follower = ?'
+    sql_pool.query(sql_get, [id], (err, rows, result)=> {
+        if(err)
+            console.log(err)
+        else
+            res.send(rows)
+    })
 })
 
 router.post('/get_Follower', (req, res) => {
+    const id = req.body.id
 
+    const sql_get = 'SELECT * FROM WHERE Following = ?'
+    sql_pool.query(sql_get, [id], (err, rows, result)=> {
+        if(err)
+            console.log(err)
+        else
+            res.send(rows)
+    })
 })
 
 module.exports = router

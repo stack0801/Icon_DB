@@ -105,4 +105,9 @@ router.post('/content_update', (req, res) => {
     }
 })
 
+router.get('/download/:key', (req, res) => { 
+    const key = req.params.key
+    download(req, res, key);
+})
+
 module.exports = router

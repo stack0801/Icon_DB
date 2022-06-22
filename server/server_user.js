@@ -41,11 +41,6 @@ router.post('/update_profile_nickname', (req, res) => {
     })
 })
 
-router.get('/download/:key', (req, res) => {
-    const key = req.params.key
-    download(req, res, key);
-})
-
 router.post('/sign_up', (req, res) => {
     const id = req.body.id
     const password = req.body.pw
