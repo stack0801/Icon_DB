@@ -132,7 +132,7 @@ export default function App() {
     }
 
     const downloadUrl = () => {
-        window.open(process.env.REACT_APP_URL + ':5000/download/' + data.filename)
+        window.open(process.env.REACT_APP_URL_s + ':5000/download/' + data.filename)
     }
 
     const TagInsertHandler = (event) => { setTagInsert(event.currentTarget.value); }
@@ -152,6 +152,10 @@ export default function App() {
         }
     }
 
+    const OpenEditor = () => {
+        window.open(process.env.REACT_APP_URL + ':8000/src/editor/'+ data.filename.split('.')[0])
+    }
+
     return (
         <PostContainer columns={isMobile ? "1fr" : "1fr 300px"}>
             <ImageDetail>
@@ -169,9 +173,9 @@ export default function App() {
                             <Button variant="outlined" color="primary" onClick={onLikedHandler}>Liked!</Button> :
                             <Button variant="outlined" color="secondary" onClick={onLikedHandler}>Like</Button>
                         }
-                    </ThemeProvider>
-                    <ThemeProvider theme={theme}>
                         <Button variant="outlined" color="secondary" onClick={downloadUrl}>Download</Button>
+                        {data.filename.split('.')[1] === 'svg' &&
+                            <Button variant="outlined" color="secondary" onClick={OpenEditor}>Edit</Button>}
                     </ThemeProvider>
                     <h3>tags</h3>
                     <PostTags>

@@ -54,7 +54,7 @@ export default function App() {
     };
 
     const openEditor = () => {
-        window.open('http://icondb.art:8000/src/editor/')
+        window.open(process.env.REACT_APP_URL + ':8000/src/editor/')
     }
 
     return (
