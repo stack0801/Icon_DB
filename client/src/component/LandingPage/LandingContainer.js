@@ -41,6 +41,7 @@ export default function Main() {
         },
         [loading]
     );
+
     return (
         <LandingContainer>
             <ImageListWrapper>

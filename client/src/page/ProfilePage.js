@@ -7,8 +7,9 @@ import ImageContainer from "../component/ImageContainer";
 import StyledInput from "../component/StyledInput";
 import StyledButton from "../component/StyledButton";
 import { ThemeProvider, Button } from '@material-ui/core';
-import AddIcon from '@mui/icons-material/Add';
 import { theme } from "../component/theme";
+import AddIcon from '@mui/icons-material/Add';
+import CheckIcon from '@mui/icons-material/Check';
 import axios from "axios"
 
 export default function App() {
@@ -166,8 +167,8 @@ export default function App() {
                         </>:
                         <ThemeProvider theme={theme}>
                             {!followed ?
-                            <Button variant="outlined" color="primary" onClick={onFollowHandler}><AddIcon/> Follow</Button> :
-                            <Button variant="outlined" color="secondary" onClick={onFollowHandler}>Following</Button>}
+                            <Button variant="outlined" color="primary" onClick={onFollowHandler}><AddIcon fontSize="small"/>&nbsp;Follow</Button> :
+                            <Button variant="outlined" color="secondary" onClick={onFollowHandler}><CheckIcon fontSize="small"/>&nbsp;Following</Button>}
                         </ThemeProvider>
                         }
                     </>)}

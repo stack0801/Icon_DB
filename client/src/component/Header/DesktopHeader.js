@@ -14,6 +14,7 @@ export default function App() {
     const [profiledata, setProfileData] = useState({profilename: "Anonymous.png", nickname: "Anonymous"});
   
     useEffect(() => {
+        console.log(sign);
       axios.post('/get_auth')
         .then((res) => {
           let data = res.data
@@ -58,7 +59,7 @@ export default function App() {
     }
 
     return (
-        <DesktopHeader>
+        <DesktopHeader sign={sign}>
             <Logo />
             {scroll === false ?
                 <div /> :
@@ -73,7 +74,6 @@ export default function App() {
                 <Link to="/sign_in"><LinkButton text="Sign in" /></Link> :
                 <LinkButton onClick={signOut} text="sign out" />
             }
-
         </DesktopHeader>
     )
 }
@@ -85,7 +85,7 @@ const DesktopHeader = styled.div`
     height:55px;
     font-size: 18px;
     display: grid;    
-    grid-template-columns: 150px 1fr 100px 100px 100px 100px;
+    grid-template-columns: ${(props)=>(props.sign === null ? "15% 1fr repeat(3,10%)" : "15% 1fr repeat(4,10%)")};
     place-items:center;
     place-content:center;
     z-index: 999;

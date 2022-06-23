@@ -6,6 +6,10 @@ import StyledInput from "../../component/StyledInput";
 import Linkdiv from "../Linkdiv";
 import { ThemeProvider, Button } from '@material-ui/core';
 import { theme } from "../theme";
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import DownloadIcon from '@mui/icons-material/Download';
+import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 
 export default function App() {
@@ -170,12 +174,12 @@ export default function App() {
                     <div>{likes} likes</div>
                     <ThemeProvider theme={theme}>
                         {liked ?
-                            <Button variant="outlined" color="primary" onClick={onLikedHandler}>Liked!</Button> :
-                            <Button variant="outlined" color="secondary" onClick={onLikedHandler}>Like</Button>
+                            <Button variant="outlined" color="primary" onClick={onLikedHandler}><ThumbUpAltIcon fontSize='small' />&nbsp;Liked!</Button> :
+                            <Button variant="outlined" color="secondary" onClick={onLikedHandler}><ThumbUpOffAltIcon fontSize='small' />&nbsp;Like</Button>
                         }
-                        <Button variant="outlined" color="secondary" onClick={downloadUrl}>Download</Button>
+                        <Button variant="outlined" color="secondary" onClick={downloadUrl}><DownloadIcon fontSize='small'/>&nbsp;Download</Button>
                         {data.filename.split('.')[1] === 'svg' &&
-                            <Button variant="outlined" color="secondary" onClick={OpenEditor}>Edit</Button>}
+                            <Button variant="outlined" color="secondary" onClick={OpenEditor}><EditIcon fontSize='small'/>&nbsp;Edit</Button>}
                     </ThemeProvider>
                     <h3>tags</h3>
                     <PostTags>
