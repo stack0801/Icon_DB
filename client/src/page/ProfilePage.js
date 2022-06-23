@@ -18,6 +18,7 @@ export default function App() {
     const [profiledata, setProfileData] = useState({profilename: "Anonymous.png", nickname: "Anonymous"});
     const [followed, setFollowed] = useState(false);
     const [sign, setSign] = useState(null);
+    const [isMobile, setisMobile] = useState(false);
 
     //프로필 정보
     const [profileContent, setProfileContent] = useState([]);
@@ -36,6 +37,9 @@ export default function App() {
                 .then((res) => {
                     setFollowed((res.data === 'followed'))
                 })
+                resizingHandler();
+                window.addEventListener("resize", resizingHandler);
+                return () => { window.removeEventListener("resize", resizingHandler); };
             }
         })
 
@@ -80,6 +84,13 @@ export default function App() {
 
 
     }, [user]);
+
+    const resizingHandler = () => { setisMobile(window.innerWidth <= 600); };
+    useEffect(() => {
+        resizingHandler();
+        window.addEventListener("resize", resizingHandler);
+        return () => { window.removeEventListener("resize", resizingHandler); };
+    }, []);
 
     const onFollowHandler = () => {
         if(sign === null){
@@ -145,7 +156,7 @@ export default function App() {
 
     return (<>
         <Header />
-        <UserPage>
+        <UserPage columns={isMobile ? "1fr" : "400px 1fr"}>
             <ProfilePage>
                 <ImageUploader
                     value={images}
@@ -234,7 +245,7 @@ const UserPage = styled.div`
     width:100vw;
     height: 90vh;
     display: grid;
-    grid-template-columns:400px 1fr;
+    grid-template-columns: ${(props) => (props.columns || "1fr")};
 `;
 
 const ProfilePage = styled.div` 
