@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FaBars, FaTimes, FaUser } from "react-icons/fa";
 import styled from "styled-components";
-import ImageContainer from "../ImageContainer";
 import SearchBox from "../SearchBox";
+import ImageContainer from "../ImageContainer";
 import Logo from "../Logo";
-import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import axios from 'axios';
 
 export default function App() {
 
   // 유저 로그인 여부
   const [sign, setSign] = useState(null)
-  const [profiledata, setProfileData] = useState({profilename: "Anonymous.png", nickname: "Anonymous"});
+  const [profiledata, setProfileData] = useState({ profilename: "Anonymous.png", nickname: "Anonymous" });
 
   useEffect(() => {
     axios.post('/get_auth')
@@ -21,28 +21,32 @@ export default function App() {
         axios.post('/get_profile', {
           user: data
         })
-        .then((res) => {
-          setProfileData(res.data[0])
-        })
+          .then((res) => {
+            setProfileData(res.data[0])
+          })
       })
   }, []);
 
+  //Sign out
   const signOut = () => {
     axios
-        .post('/sign_out')
-        .then((res) => {
-            console.log(res.data)
-            if (res.data === 'success')
-                window.location.href = '/';
-        })
-}
+      .post('/sign_out')
+      .then((res) => {
+        console.log(res.data)
+        if (res.data === 'success')
+          window.location.href = '/';
+      })
+  }
 
+  //Togglebar 나타내기
   const [togglebar, setTogglebar] = useState(false);
   const showMenu = () => setTogglebar(!togglebar);
- 
+
+  //Open Editor
   const openEditor = () => {
     window.open(process.env.REACT_APP_URL + ':8000/src/editor/')
   }
+
   return (
     <MobileHeader>
       <ToggleButton>
@@ -55,15 +59,15 @@ export default function App() {
       {sign === null
         ? <Link to="/sign_in"><FaUser className="header_user" size="20" /></Link>
         : <Link to={"/profile/" + sign}>
-              <ImageContainer src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + profiledata.profilename} alt="" width="45px" height="45px" borderRadius="50%" />
-          </Link>}
+          <ImageContainer src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + profiledata.profilename} alt="" width="45px" height="45px" borderRadius="50%" />
+        </Link>}
 
       <nav className={togglebar ? "nav-menu active" : "nav-menu"}>
         <ToggleList>
           <li><SearchBox width="80%" fontSize="23px" /></li>
           <li><Link to="/posting">Posting</Link></li>
           <li><Link to="#" onClick={openEditor}>Edit</Link></li>
-          <li><Link to = "#" onClick={signOut}>Logout</Link></li>
+          <li><Link to="#" onClick={signOut}>Logout</Link></li>
         </ToggleList>
       </nav>
     </MobileHeader>
@@ -71,15 +75,18 @@ export default function App() {
 }
 
 const MobileHeader = styled.div`
-  position:fixed;
-  background:#9ed1d9;
-  width:100vw;
-  height:55px;
-  font-size: 18px;
+  position: fixed;
+  width: 100vw;
+  height: 55px;
+  
   display: grid;   
   grid-template-columns: 20% 1fr 20%;
-  place-items:center;
-  place-content:center;
+  place-items: center;
+  place-content: center;
+  
+  background: #9ed1d9;
+  font-size: 18px;
+  
   z-index: 999;
   
   .header_user {
@@ -192,19 +199,23 @@ const MobileHeader = styled.div`
 }`;
 
 const ToggleButton = styled.button`
-    background-color: #9ed1d9;
-    height: 40px;
-    color: #ececec;
-    border: none;
-    cursor: pointer;
-    transition-duration: 0.3s;
-    &:hover {
-      color: white;
-    }
+  height: 40px;    
+  
+  background-color: #9ed1d9;
+  color: #ececec;
+  border: none;
+  
+  cursor: pointer;
+  
+  transition-duration: 0.3s;
+  &:hover {
+    color: white;
+  }
 `;
 
 const ToggleList = styled.ul`
   list-style:none;
+  
   display: grid;
   place-content: top;
   padding: 5%;

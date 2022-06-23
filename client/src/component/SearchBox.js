@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import styled from "styled-components";
 
 export default function App({width, height, fontSize}) {
     const [searchbox, setSearchbox] = useState("");
@@ -27,23 +27,26 @@ export default function App({width, height, fontSize}) {
 }
 
 const SearchBox = styled.div`
-    background: white;
-    border-radius: 5px;
     display: grid;
     grid-template-columns: 9fr 1fr;
-    place-items: center;
+    place-items: center;    
+    
+    background: white;
     border: solid 2px #9ed1d9;
+    border-radius: 5px;
 
     width: ${(props) => props.width || "auto"};
     height: ${(props) => props.height || "auto"};
 `;
 
 const SearchInput = styled.input`
+    width: 90%;
+
     text-align: center;
+
     border: solid 1px white;
     border-radius: 5px 0 0 5px;
     outline: none;
 
-    width: 90%;
     font-size: ${(props) => props.fontSize || "20px"};
 `;

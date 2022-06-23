@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import StyledButton from "../../component/StyledButton";
 import StyledInput from "../../component/StyledInput";
@@ -16,10 +16,10 @@ export default function App() {
 
     let { url_id } = useParams();
 
-    const [data, setData] = useState({ filename: "NoImage.png" });
     const [sign, setSign] = useState(null);
-    const [liked, setLiked] = useState(false);
+    const [data, setData] = useState({ filename: "NoImage.png" });
     const [isMobile, setisMobile] = useState(false);
+    const [liked, setLiked] = useState(false);
     const [likes, setLikes] = useState(0);
     const [tags, setTags] = useState([]);
     const [tagInsert, setTagInsert] = useState("");
@@ -173,13 +173,13 @@ export default function App() {
                     <div>{data.date}</div>
                     <div>{likes} likes</div>
                     <ThemeProvider theme={theme}>
-                        {liked ?
-                            <Button variant="outlined" color="primary" onClick={onLikedHandler}><ThumbUpAltIcon fontSize='small' />&nbsp;Liked!</Button> :
-                            <Button variant="outlined" color="secondary" onClick={onLikedHandler}><ThumbUpOffAltIcon fontSize='small' />&nbsp;Like</Button>
+                        {liked 
+                        ? <Button variant="outlined" color="primary" onClick={onLikedHandler}><ThumbUpAltIcon fontSize='small' />&nbsp;Liked!</Button>
+                        : <Button variant="outlined" color="secondary" onClick={onLikedHandler}><ThumbUpOffAltIcon fontSize='small' />&nbsp;Like</Button>
                         }
                         <Button variant="outlined" color="secondary" onClick={downloadUrl}><DownloadIcon fontSize='small'/>&nbsp;Download</Button>
-                        {data.filename.split('.')[1] === 'svg' &&
-                            <Button variant="outlined" color="secondary" onClick={OpenEditor}><EditIcon fontSize='small'/>&nbsp;Edit</Button>}
+                        {data.filename.split('.')[1] === 'svg' && 
+                        <Button variant="outlined" color="secondary" onClick={OpenEditor}><EditIcon fontSize='small'/>&nbsp;Edit</Button>}
                     </ThemeProvider>
                     <h3>tags</h3>
                     <PostTags>
@@ -205,21 +205,20 @@ export default function App() {
     );
 }
 
-const PostTags = styled.div`
-`
+const PostTags = styled.div``;
+
 const Tag = styled.div`
-    background-color: #F5A282;
-    border-radius: 5px;
-    color: #FFFFFF;
     display: inline;
     margin: 2px;
     padding: 2px;
+    
+    background-color: #F5A282;
+    border-radius: 5px;
+    color: #FFFFFF;
 `;
 
 const PostContainer = styled.div`
-
     padding-top: 55px;
-
     width: 95vw;
     height: 90vh;
 
@@ -233,19 +232,21 @@ const ImageDetail = styled.div`
 `;
 
 const Title = styled.div`
+    width: 100%;
+    height: 100%;
 
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    place-content: center;
+    place-items: center;
+
+    
     border-left: 1px solid #dddddd;
     border-top: 1px solid #dddddd;
 
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: 2fr 1fr;
     font-size: 16px;
     font-weight: 600;
     color: #9ed1d9;
-    place-content: center;
-    place-items: center;
 `;
 
 const Information = styled.div`

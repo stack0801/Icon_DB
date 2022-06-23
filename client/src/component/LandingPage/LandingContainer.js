@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Loading from "../Loading";
-import axios from 'axios';
+import axios from "axios";
 
 export default function Main() {
 
@@ -69,9 +69,10 @@ export default function Main() {
 }
 
 const LandingContainer = styled.div`
-    border-top: 3px solid #F5A282;
-    background-color: #F7ECDE;
     padding-top: 20px;
+        
+    background-color: #F7ECDE;
+    border-top: 3px solid #F5A282;
 `;
 
 const ImageListWrapper = styled.div`
@@ -83,15 +84,18 @@ const ImageListWrapper = styled.div`
 `;
 
 const IconContainer = styled.div`
-    background-color : #ffffff;
+    height: 260px;    
+    
     display: inline-block;
-    height: 260px;
+
+    background-color : #ffffff;
     border: 3px solid #9ed1d9;
     border-radius: 10px;
 `;
 
 const IconList = styled.img`
     height: 260px;
+
     border-radius: 10px;
 `;
 
@@ -102,22 +106,27 @@ const ShowTitle = styled.div`
     left: 0;
     width: 260px;
     height: 260px;
-    opacity:0;
-    transition: .5s ease;
+
     background-color: #9ed1d9;
     border-radius: 10px;
+
+    opacity:0;
+    transition: .5s ease;
     &:hover { 
         opacity: 0.9;
     }
 `;
 
 const Text = styled.div`
-    width: fit-content;
-    font-size: 16px;
-    position: absolute;
+    position: absolute;    
     top: 50%;
     left: 50%;
+    width: fit-content;
+    
+    font-size: 16px;
+    
     transform: translate(-50%, -50%);
+    
     text-align: center;
 `;
 

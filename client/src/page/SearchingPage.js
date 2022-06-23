@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from 'react-router-dom';
 import styled from "styled-components";
-import SearchBox from "../component/SearchBox";
 import Header from "../component/Header/Header";
+import SearchBox from "../component/SearchBox";
 import TopButton from "../component/TopButton";
-import axios from 'axios';
+import axios from "axios";
 
 export default function App() {
 
@@ -52,6 +52,7 @@ const SearchingPage = styled.div`
     position:absolute;
     top: 55px;
     left:20%;
+
     display: grid;
     place-content: center;
     padding-top: 50px;
@@ -65,15 +66,18 @@ const ImageListWrapper = styled.div`
 `;
 
 const IconContainer = styled.div`
-    background-color : #ffffff;
-    display: inline-block;
     height: 260px;
+
+    display: inline-block;
+
+    background-color : #ffffff;     
     border: 3px solid #9ed1d9;
     border-radius: 10px;
 `;
 
 const IconList = styled.img`
     height: 260px;
+
     border-radius: 10px;
 `;
 
@@ -84,20 +88,26 @@ const ShowTitle = styled.div`
     left: 0;
     width: 260px;
     height: 260px;
+
+    background-color: #9ed1d9;
+
     opacity:0;
     transition: .5s ease;
-    background-color: #9ed1d9;
+    
     &:hover { 
         opacity: 0.9;
     }
 `;
 
 const Text = styled.div`
-    width: fit-content;
-    font-size: 16px;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 50%;    
+    width: fit-content;
+
     text-align: center;
+
+    font-size: 16px;
+        
+    transform: translate(-50%, -50%);    
 `;

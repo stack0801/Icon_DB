@@ -12,5 +12,5 @@ export default function App() {
         setScreenWidth(window.innerWidth);
     }, []);
 
-    return (screenWidth < 900 ? <MobileHeader /> : <DesktopHeader />)
+    return (screenWidth < 900 ? <MobileHeader /> : <DesktopHeader />);
 }

@@ -15,10 +15,11 @@ export default function App({ width, height, text, fontSize, onClick }) {
 
 const StyledButton = styled.button`
     background: #f5a282;
-    color: #ececec;
-    border-radius: 40px;
-    cursor: pointer;
     border: none;
+    border-radius: 40px;
+    color: #ececec;
+
+    cursor: pointer;
     transition-duration: 0.2s;
     &:hover {
         color: white;

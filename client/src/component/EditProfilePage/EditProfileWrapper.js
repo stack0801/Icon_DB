@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import ImageUploader from 'react-images-uploading';
+import ImageUploader from "react-images-uploading";
 import styled from "styled-components";
 import ImageContainer from "../ImageContainer";
 import StyledButton from "../StyledButton";
 import { withStyles, TextField } from "@material-ui/core";
-import axios from "axios"
+import axios from "axios";
 import NoImg from "../../img/NoImage.png";
 
 function App({ classes }) {

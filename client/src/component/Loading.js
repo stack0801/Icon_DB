@@ -1,10 +1,9 @@
 import React from "react";
+import {FaSpinner} from "react-icons/fa";
 import styled from "styled-components";
-import {FaSpinner} from "react-icons/fa"
+
 export default function App(){
-    return(
-        <Loading><FaSpinner className="spinner" size="60px" color="gray"/></Loading>
-    );
+    return( <Loading><FaSpinner className="spinner" size="60px" color="gray"/></Loading> );
 }
 
 const Loading = styled.div`

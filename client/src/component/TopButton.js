@@ -1,6 +1,6 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState} from "react";
 import styled from "styled-components";
-import { FaArrowUp } from 'react-icons/fa';
+import { FaArrowUp } from "react-icons/fa";
 
 export default function App() {
      // 스크롤 위치
@@ -20,19 +20,22 @@ export default function App() {
              behavior: 'smooth' 
          });
      };
-     return(scrollPosition > 500 && <TopButton onClick={scrollTop}><FaArrowUp size="26" color="white" /></TopButton>);
+     return( scrollPosition > 500 && <TopButton onClick={scrollTop}><FaArrowUp size="26" color="white" /></TopButton> );
 }
 
 const TopButton = styled.button`
-    background: #9ed1d9;
-    position: fixed;
-    display: flex;
+    position: fixed;    
     bottom: 1.5rem;
     right: 1.5rem;
-    border: 1.5px solid white;
-    border-radius: 50%;
     padding: 0.5rem;
+
+    display: flex;
+
+    background: #9ed1d9;
+    border: 1.5px solid white;
+    border-radius: 50%;    
     font-size: 2rem;
     box-shadow: -1px 0 4px rgba(14, 55, 63, 0.15);
+        
     cursor: pointer;
 `;

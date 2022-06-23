@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { GoogleLogin } from 'react-google-login';
-import { gapi } from 'gapi-script';
-import axios from 'axios';
+import React, { useEffect } from "react";
+import { GoogleLogin } from "react-google-login";
+import { gapi } from "gapi-script";
+import axios from "axios";
 
 export default function GoogleButton({ onSocial }){
 

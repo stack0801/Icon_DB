@@ -1,7 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import  {ReactComponent as SvgLogo} from '../img/logo3.svg'
-import { Link } from 'react-router-dom';
+import  {ReactComponent as SvgLogo} from "../img/logo3.svg";
+
+export default function App(){
+    return (
+        <Logo>
+            <Link to = "/">
+                <Svg src = {SvgLogo} alt = "logo" />
+            </Link>
+        </Logo>
+    );
+}
 
 const Logo = styled.div``;
 
@@ -21,13 +31,3 @@ const Svg = styled(SvgLogo)`
         }
     }
 `;
-
-export default function App(){
-    return (
-        <Logo>
-            <Link to = "/">
-                <Svg src = {SvgLogo} alt = "logo" />
-            </Link>
-        </Logo>
-    );
-}

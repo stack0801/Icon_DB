@@ -16,10 +16,12 @@ export default function App({ width, height, placeholder, type, fontSize, onChan
 }
 
 const StyledInput = styled.input`
+    padding-left: 10px;
+    
     background: white;
     border: solid 2px #9ed1d9;
     border-radius: 5px;
-    padding-left: 10px;
+    
 
     width: ${(props) => props.width || "auto"};
     height: ${(props) => props.height || "auto"};

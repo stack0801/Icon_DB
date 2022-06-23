@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import ImageUploader from 'react-images-uploading';
+import React, { useState, useEffect } from "react";
+import ImageUploader from "react-images-uploading";
 import styled from "styled-components";
 import ImageContainer from "../ImageContainer";
 import StyledButton from "../StyledButton";
 import StyledIuput from "../StyledInput";
-import NoImg from "../../img/NoImage.png";
 import axios from 'axios';
+import NoImg from "../../img/NoImage.png";
 
 export default function App() {
 
@@ -25,14 +25,15 @@ export default function App() {
 
     useEffect(() => {
         axios.post('/get_auth')
-        .then((res) => {
-            if(res.data === null) {
-                alert("로그인을 해주세요");
-                window.location.href = '/sign_in'
-            }
-        })
+            .then((res) => {
+                if (res.data === null) {
+                    alert("로그인을 해주세요");
+                    window.location.href = '/sign_in'
+                }
+            })
     }, []);
 
+    //Title Message
     const [Message, setMessagebox] = useState("");
     const onMessageHandler = (e) => { setMessagebox(e.currentTarget.value) }
     const insert_content = () => {
@@ -47,12 +48,13 @@ export default function App() {
             header: { 'content-type': 'multipart/form-data' },
             data: formData
         })
-        .then((res) => {
-            alert(res.data)
-        if (res.data === 'success') 
-            window.location.href = '/'
-        })
+            .then((res) => {
+                alert(res.data)
+                if (res.data === 'success')
+                    window.location.href = '/'
+            })
     }
+
     return (
         <PostingWrapper>
             <ImageUploader
@@ -63,7 +65,7 @@ export default function App() {
                 onError={onError}>
                 {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
                     <ImageWrapper>
-                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="260px" height="260px"/>}
+                        {imageList.length === 0 && <ImageContainer src={NoImg} alt="" width="260px" height="260px" />}
                         {imageList.map((image, index) => (
                             <div key={index}>
                                 <ImageContainer src={image['data_url']} alt="" width="260px" height="260px">
@@ -82,7 +84,8 @@ export default function App() {
                                 : <>
                                     <StyledButton width="60%" height="35px" text="Add" onClick={onImageUpload} />
                                     <StyledButton width="60%" height="35px" text="Upload" onClick={insert_content} />
-                                </>}
+                                </>
+                            }
                         </TitleImgUpload>
                     </ImageWrapper>
                 )}
@@ -99,13 +102,15 @@ const PostingWrapper = styled.div`
 const ImageWrapper = styled.div`
     width: 140%;
     height: 80%;
-    border: solid 2px #f5d7cb;
-    border-radius: 5px;
+    
     display: grid;
     grid-template-rows: 3fr 1fr;
     place-items: center;
     place-content: center;
     padding: 5%;
+
+    border: solid 2px #f5d7cb;
+    border-radius: 5px;
 `;
 
 const TitleImgUpload = styled(PostingWrapper)`
@@ -115,7 +120,7 @@ const TitleImgUpload = styled(PostingWrapper)`
 const ButtonList = styled.div`
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    place-items:center;
+    place-items: center;
     place-content: center;
     gap: 8%;
 `;

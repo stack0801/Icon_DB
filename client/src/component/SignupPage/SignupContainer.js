@@ -51,13 +51,14 @@ export default function App({ width, height, padding }) {
 }
 
 const StyledContianer = styled.div`
-    border: solid 2px #ececee;
-    background: white;
-    border-radius: 15px;
     display: grid;
     justify-items: center;
-    gap: 7px;
+    gap: 7px;    
 
+    background: white;
+    border: solid 2px #ececee;
+    border-radius: 15px;
+    
     width: ${(props) => (props.width || "auto")};
     height: ${(props) => (props.height || "auto")};
     padding: ${(props) => (props.padding || "5%")};
@@ -65,13 +66,14 @@ const StyledContianer = styled.div`
 
 const LinkMsg = styled.div`
     font-weight: 700;
-    text-decoration: none;
     color: #f5a282;
+    text-decoration: none;
 `;
 
 const Msg = styled.div`
-    font-size: 20px;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 10px
+    gap: 10px;
+
+    font-size: 20px;
 `;

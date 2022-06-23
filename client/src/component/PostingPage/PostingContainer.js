@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 import PostingWrapper from "./PostingWrapper";
 
@@ -19,5 +19,6 @@ const PostingContainer = styled.div`
 const PostingMessage = styled.h1`
     display: grid;
     place-items: center;
+    
     color: gray;
 `;

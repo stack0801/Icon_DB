@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import PostingContainer from "../component/PostingPage/PostingContainer"
 import Header from "../component/Header/Header";
+import PostingContainer from "../component/PostingPage/PostingContainer";
 
 export default function App() {
     return (<>
         <Header />
         <PostingPage>
-        <PostingContainer/>
-    </PostingPage>
+            <PostingContainer />
+        </PostingPage>
     </>);
 }
 
@@ -17,6 +17,7 @@ const PostingPage = styled.div`
     top: 55px;
     width: 100vw;
     height: 93vh;
+    
     display: grid;
     grid-template-rows: 0.5fr 1fr;
     place-items: center;
