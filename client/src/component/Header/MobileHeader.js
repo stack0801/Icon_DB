@@ -39,7 +39,10 @@ export default function App() {
 
   const [togglebar, setTogglebar] = useState(false);
   const showMenu = () => setTogglebar(!togglebar);
-
+ 
+  const openEditor = () => {
+    window.open(process.env.REACT_APP_URL + ':8000/src/editor/')
+  }
   return (
     <MobileHeader>
       <ToggleButton>
@@ -59,7 +62,7 @@ export default function App() {
         <ToggleList>
           <li><SearchBox width="80%" fontSize="23px" /></li>
           <li><Link to="/posting">Posting</Link></li>
-          <li><Link to="/#">Edit</Link></li>
+          <li><Link to="#" onClick={openEditor}>Edit</Link></li>
           <li><Link to = "#" onClick={signOut}>Logout</Link></li>
         </ToggleList>
       </nav>

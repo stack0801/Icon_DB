@@ -7,6 +7,7 @@ import ImageContainer from "../component/ImageContainer";
 import StyledInput from "../component/StyledInput";
 import StyledButton from "../component/StyledButton";
 import { ThemeProvider, Button } from '@material-ui/core';
+import AddIcon from '@mui/icons-material/Add';
 import { theme } from "../component/theme";
 import axios from "axios"
 
@@ -165,7 +166,7 @@ export default function App() {
                         </>:
                         <ThemeProvider theme={theme}>
                             {!followed ?
-                            <Button variant="outlined" color="primary" onClick={onFollowHandler}>Follow</Button> :
+                            <Button variant="outlined" color="primary" onClick={onFollowHandler}><AddIcon/> Follow</Button> :
                             <Button variant="outlined" color="secondary" onClick={onFollowHandler}>Following</Button>}
                         </ThemeProvider>
                         }
@@ -204,7 +205,7 @@ export default function App() {
                         {profileFollow.map((list, idx) => (
                             <div key={idx}>
                                 <Link to={"/profile/" + list.id}>
-                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + list.profilename} alt="no_img" width="100"/>
+                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + list.profilename} alt="no_img" width="100" height="100" />
                                 </Link>
                             </div>
                         ))}
@@ -216,7 +217,7 @@ export default function App() {
                         {profileFollower.map((list, idx) => (
                             <div key={idx}>
                                 <Link to={"/profile/" + list.id}>
-                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + list.profilename} alt="no_img" width="100"/>
+                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + list.profilename} alt="no_img" width="100" height="100" />
                                 </Link>
                             </div>
                         ))}
