@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const sql_pool = require('./src/mysql')
-const upload = require('./src/aws_multer').upload;
+const upload = require('./src/aws_multer').upload
+const download = require('./src/aws_multer').download
 
 router.post('/get_contents', (req, res) => {
     const id = req.body.id

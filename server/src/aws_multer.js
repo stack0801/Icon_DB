@@ -64,8 +64,27 @@ const download = (req, res, key) => {
     fileStream.pipe(res);
 };
 
+const svg = async(req, res, key) => {
+
+    var convert = require('xml-js');
+
+    const params = {
+        Bucket: 'webservicegraduationproject',
+        Key: 'img/' + key
+    }
+
+    const data = await s3.getObject(params).promise();
+
+    let l1 = convert.xml2json(data.Body, {compact: true, spaces: 4})
+    let l2 = convert.json2xml(l1, {compact: true, spaces: 4})
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.send({xml : l2})
+};
+
 module.exports = {
     upload: upload,
     download: download,
+    svg : svg,
     profile_upload: profile_upload
 }

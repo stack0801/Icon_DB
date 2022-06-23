@@ -1109,6 +1109,21 @@ class Editor extends EditorStartup {
    */
   loadFromString (str, { noAlert } = {}) {
     return this.ready(async () => {
+
+      const key = window.location.href.split('/').pop();
+      if(key !== '') {
+        let url = "https://icondb.art:5000/get_xml/" + key
+
+        await fetch(url)
+        .then(res => res.json())  //응답 결과를 json으로 파싱
+        .then(data => { 
+          str = data.xml
+        })
+        .catch(err => { // 오류 발생시 오류를 담아서 보여줌
+            console.log('Fetch Error', err);
+        });
+      }
+
       try {
         await this.loadSvgString(str, { noAlert })
       } catch (err) {

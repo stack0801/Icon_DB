@@ -31,4 +31,10 @@ app.use(server_like)
 app.use(server_content)
 app.use(server_follow)
 
+const svg = require('./src/aws_multer').svg
+app.get('/get_xml/:key', async(req, res) => {
+    const key = req.params.key + '.svg'
+    svg(req, res, key)
+})
+
 https.createServer(options, app).listen(HTTPS_PORT)
