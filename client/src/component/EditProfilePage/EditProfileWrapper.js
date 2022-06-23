@@ -114,12 +114,14 @@ const EditProfileWrapper = styled.div`
 
 const ImageWrapper = styled.div`
     width: 140%;
-    border: solid 2px #f5d7cb;
-    border-radius: 5px;
+    
     display: grid;
-    gap: 20px;
     place-items:center;
     padding: 5%;
+    gap: 20px;
+    
+    border: solid 2px #f5d7cb;
+    border-radius: 5px;
 `;
 
 const User = styled(EditProfileWrapper)`
@@ -130,9 +132,9 @@ const User = styled(EditProfileWrapper)`
 const ButtonList = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
     place-items: center;
     place-content: center;
+    gap: 15px;
 `;
 
 const styles = () => ({

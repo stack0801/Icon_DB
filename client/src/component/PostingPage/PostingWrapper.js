@@ -13,14 +13,11 @@ export default function App() {
     const [images, setImages] = useState([]);
     const maxNumber = 1;
 
-    const onChange = (imageList) => {
-        setImages(imageList);
-    }
+    const onChange = (imageList) => { setImages(imageList); }
 
     const onError = (errors) => {
-        if (errors) {
-            alert("이미지는 1개까지만 첨부할 수 있습니다")
-        }
+        if (errors)
+            alert("이미지는 1개까지만 첨부할 수 있습니다");
     }
 
     useEffect(() => {

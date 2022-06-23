@@ -28,6 +28,7 @@ export default function App() {
             })
     }, []);
 
+    //Logout
     const signOut = () => {
         axios
             .post('/sign_out')

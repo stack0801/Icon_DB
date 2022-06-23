@@ -3,23 +3,20 @@ import styled from "styled-components";
 import { FaArrowUp } from "react-icons/fa";
 
 export default function App() {
-     // 스크롤 위치
      const [scrollPosition, setScrollPosition] = useState(0);
-     // 스크롤의 위치를 저장
-     const updateScroll = () => {
-         setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-     }
+     const updateScroll = () => { setScrollPosition(window.scrollY || document.documentElement.scrollTop); }
+
+     const scrollTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+        });
+    };
+
      useEffect(() => {
          window.addEventListener('scroll', updateScroll);
      });
-     
-     // 맨 위로 올라가게 함
-     const scrollTop = () => {
-         window.scrollTo({
-             top: 0,
-             behavior: 'smooth' 
-         });
-     };
+            
      return( scrollPosition > 500 && <TopButton onClick={scrollTop}><FaArrowUp size="26" color="white" /></TopButton> );
 }
 

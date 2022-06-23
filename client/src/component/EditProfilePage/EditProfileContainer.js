@@ -20,5 +20,6 @@ const EditProfileContainer = styled.div`
 const EditProfile = styled.h1`
     display: grid;
     place-items: center;
+    
     color: gray;
 `;

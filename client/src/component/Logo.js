@@ -6,9 +6,7 @@ import  {ReactComponent as SvgLogo} from "../img/logo3.svg";
 export default function App(){
     return (
         <Logo>
-            <Link to = "/">
-                <Svg src = {SvgLogo} alt = "logo" />
-            </Link>
+            <Link to = "/"><Svg src = {SvgLogo} alt = "logo" /></Link>
         </Logo>
     );
 }

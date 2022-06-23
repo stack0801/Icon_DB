@@ -12,12 +12,12 @@ export default function App({ width, height, placeholder, type, fontSize, onChan
             onKeyPress = {onKeyPress}
             type = {type}>
         </StyledInput>
-    )
+    );
 }
 
 const StyledInput = styled.input`
     padding-left: 10px;
-    
+
     background: white;
     border: solid 2px #9ed1d9;
     border-radius: 5px;

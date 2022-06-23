@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 export default function App({ width, height, src, alt, borderRadius, border }) {
-    return (
-        <ImageContainer  src={src} alt={alt} width={width} height={height} borderRadius={borderRadius} border = {border}/>
-    );
+    return ( <ImageContainer  src={src} alt={alt} width={width} height={height} borderRadius={borderRadius} border = {border}/> );
 }
 
 const ImageContainer = styled.img`

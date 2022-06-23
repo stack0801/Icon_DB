@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 export default function App({ fontSize, onClick, text}) {
-    return (
-        <LinkButton fontSize={fontSize} onClick={onClick}>{text}</LinkButton>
-    );
+    return ( <LinkButton fontSize={fontSize} onClick={onClick}>{text}</LinkButton> );
 }
 
 const LinkButton = styled.button`

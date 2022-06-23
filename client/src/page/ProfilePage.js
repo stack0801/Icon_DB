@@ -18,7 +18,6 @@ export default function App() {
     const [profiledata, setProfileData] = useState({ profilename: "Anonymous.png", nickname: "Anonymous" });
     const [followed, setFollowed] = useState(false);
     const [sign, setSign] = useState(null);
-    const [isMobile, setisMobile] = useState(false);
 
     //프로필 정보
     const [profileContent, setProfileContent] = useState([]);
@@ -85,7 +84,9 @@ export default function App() {
 
     }, [user]);
 
+    const [isMobile, setisMobile] = useState(false);
     const resizingHandler = () => { setisMobile(window.innerWidth <= 600); };
+    
     useEffect(() => {
         resizingHandler();
         window.addEventListener("resize", resizingHandler);
@@ -272,7 +273,7 @@ const MyList = styled.div`
 
 const IconList = styled.img`
     height: 100px;
-    
+
     border: 2px solid #9ED1D9;
     border-radius: 10px;
 `;

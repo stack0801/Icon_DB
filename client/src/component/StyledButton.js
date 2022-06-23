@@ -10,7 +10,7 @@ export default function App({ width, height, text, fontSize, onClick }) {
             onClick = {onClick}>
             {text}
         </StyledButton>
-    )
+    );
 }
 
 const StyledButton = styled.button`

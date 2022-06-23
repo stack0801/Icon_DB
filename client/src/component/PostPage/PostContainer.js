@@ -15,7 +15,6 @@ import axios from 'axios';
 export default function App() {
 
     let { url_id } = useParams();
-
     const [sign, setSign] = useState(null);
     const [data, setData] = useState({ filename: "NoImage.png" });
     const [isMobile, setisMobile] = useState(false);
