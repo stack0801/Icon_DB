@@ -14,7 +14,7 @@ AWS.config.update({
 
 const s3 = new AWS.S3()
 
-const upload = multer({
+const upload = multer({ //aws에 파일을 업로드하기 위한 모듈
     storage: multerS3({
         s3: s3,
         bucket: 'webservicegraduationproject',
@@ -33,7 +33,7 @@ const upload = multer({
     })
 })
 
-const profile_upload = multer({
+const profile_upload = multer({ //aws에 프로필 사진을 업로드하기 위한 모듈
     storage: multerS3({
         s3: s3,
         bucket: 'webservicegraduationproject',
@@ -52,7 +52,7 @@ const profile_upload = multer({
     })
 })
 
-const download = (req, res, key) => {
+const download = (req, res, key) => { //aws의 파일을 다운로드 하기 위한 모듈
 
     const params = {
         Bucket: 'webservicegraduationproject',
@@ -64,7 +64,7 @@ const download = (req, res, key) => {
     fileStream.pipe(res);
 };
 
-const svg = async(req, res, key) => {
+const svg = async(req, res, key) => { //aws에 svg파일을 받아올 수 있는 모듈
 
     var convert = require('xml-js');
 
