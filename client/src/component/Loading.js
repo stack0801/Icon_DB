@@ -3,6 +3,7 @@ import {FaSpinner} from "react-icons/fa";
 import styled from "styled-components";
 
 export default function App(){
+  //무한스크롤 시 loading 기능
     return( <Loading><FaSpinner className="spinner" size="60px" color="gray"/></Loading> );
 }
 

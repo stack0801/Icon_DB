@@ -5,6 +5,7 @@ import axios from "axios";
 
 export default function GoogleButton({ onSocial }){
 
+    //Google Login
     useEffect(() => {
         function start() {
             gapi.client.init({

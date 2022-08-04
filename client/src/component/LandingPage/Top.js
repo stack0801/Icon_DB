@@ -5,7 +5,7 @@ import top_image from "../../img/watercolor.jpg";
 
 export default function App(){
 
-    //Mobile
+    //Mobile 버전
     const [isMobile, setisMobile] = useState(false);
     const resizingHandler = () => { setisMobile(window.innerWidth <= 800);};
 

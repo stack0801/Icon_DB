@@ -17,7 +17,7 @@ export default function App() {
     let { url_id } = useParams();
     const [sign, setSign] = useState(null);
     const [data, setData] = useState({ filename: "NoImage.png" });
-    const [isMobile, setisMobile] = useState(false);
+    const [isMobile, setisMobile] = useState(false); 
     const [liked, setLiked] = useState(false);
     const [likes, setLikes] = useState(0);
     const [tags, setTags] = useState([]);
@@ -72,6 +72,7 @@ export default function App() {
             })
     }
 
+    //Mobile 버전
     const resizingHandler = () => { setisMobile(window.innerWidth <= 600); };
 
     useEffect(() => {
@@ -80,6 +81,7 @@ export default function App() {
         return () => { window.removeEventListener("resize", resizingHandler); };
     }, []);
 
+    //좋아요 기능
     const onLikedHandler = () => {
         if (sign === null) {
             alert("로그인 후 사용 가능한 서비스 입니다.");
@@ -134,10 +136,12 @@ export default function App() {
             })
     }
 
+    //Download URL
     const downloadUrl = () => {
         window.open(process.env.REACT_APP_URL_s + ':5000/download/' + data.filename)
     }
 
+    //HashTag 기능
     const TagInsertHandler = (event) => { setTagInsert(event.currentTarget.value); }
     const TagInsert = () => {
         if (tagInsert.length > 1) {
@@ -155,6 +159,7 @@ export default function App() {
         }
     }
 
+    //Editor 기능
     const OpenEditor = () => {
         window.open(process.env.REACT_APP_URL + ':8000/src/editor/'+ data.filename.split('.')[0])
     }

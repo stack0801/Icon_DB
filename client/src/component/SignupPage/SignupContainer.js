@@ -17,7 +17,7 @@ export default function App({ width, height, padding }) {
 
     const onKeyPress =(e)=>{ if(e.key==='Enter') onSubmit() }
 
-    //등록된 정보 전송
+    //정보 전송
     const onSubmit = () => {
         if (id.length > 0 && password.length > 0 && name.length > 0) {
             axios

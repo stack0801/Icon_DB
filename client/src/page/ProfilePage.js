@@ -19,7 +19,7 @@ export default function App() {
     const [followed, setFollowed] = useState(false);
     const [sign, setSign] = useState(null);
 
-    //프로필 정보
+    // Profile 정보
     const [profileContent, setProfileContent] = useState([]);
     const [profileLiked, setProfileLiked] = useState([]);
     const [profileFollow, setProfileFollow] = useState([]);
@@ -84,6 +84,7 @@ export default function App() {
 
     }, [user]);
 
+    //Mobile 버전
     const [isMobile, setisMobile] = useState(false);
     const resizingHandler = () => { setisMobile(window.innerWidth <= 600); };
     
@@ -93,6 +94,7 @@ export default function App() {
         return () => { window.removeEventListener("resize", resizingHandler); };
     }, []);
 
+    //Follow 기능
     const onFollowHandler = () => {
         if (sign === null) {
             alert("로그인 후 사용 가능한 서비스 입니다.");
@@ -112,7 +114,7 @@ export default function App() {
         }
     }
 
-    //프로필 업로드
+    //Profile Upload
     const [images, setImages] = useState([]);
     const [nickname, updateNickname] = useState();
     const onNicknameHandler = (e) => { updateNickname(e.currentTarget.value) }
