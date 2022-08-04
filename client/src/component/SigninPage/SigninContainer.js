@@ -7,14 +7,17 @@ import GoogleButton from "../GoogleButton";
 import axios from "axios";
 
 export default function App({ width, height, padding }) {
+    //ID, 비밀번호
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
 
     const onIdHandler = (event) => { setId(event.currentTarget.value); }
     const onPasswordHandler = (event) => { setPassword(event.currentTarget.value); }
 
+    //Enter키 입력시 클릭과 동일한 작동
     const onKeyPress =(e)=>{ if(e.key==='Enter') onSubmit() }
     
+    //등록된 정보 전송
     const onSubmit = () => {
         if (id.length > 0 && password.length > 0) {
             axios

@@ -11,7 +11,7 @@ export default function App() {
 
     //이미지 업로드
     const [images, setImages] = useState([]);
-    const maxNumber = 1;
+    const maxNumber = 1; //maxNumber 1로 인해 여러 개의 포스팅 불가능
 
     const onChange = (imageList) => { setImages(imageList); }
 

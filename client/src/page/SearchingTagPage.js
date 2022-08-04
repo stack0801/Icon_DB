@@ -8,6 +8,7 @@ import axios from "axios";
 
 export default function App() {
 
+    //검색된 해쉬태그 출력
     let { keyword } = useParams();
     const [data, setData] = useState([]);
 

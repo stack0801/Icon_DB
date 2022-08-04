@@ -6,6 +6,7 @@ import StyledInput from "../StyledInput";
 import axios from "axios";
 
 export default function App({ width, height, padding }) {
+    //이름, ID, 비밀번호
     const [name, setName] = useState("");
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
@@ -16,6 +17,7 @@ export default function App({ width, height, padding }) {
 
     const onKeyPress =(e)=>{ if(e.key==='Enter') onSubmit() }
 
+    //등록된 정보 전송
     const onSubmit = () => {
         if (id.length > 0 && password.length > 0 && name.length > 0) {
             axios

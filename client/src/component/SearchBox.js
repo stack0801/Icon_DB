@@ -9,6 +9,7 @@ export default function App({width, height, fontSize}) {
 
     const onKeyPress =(e)=>{ if(e.key==='Enter') onSubmit() }
 
+    //검색된 단어 전송
     const onSubmit = () => {
         if(searchbox.length <= 1){
             alert("2글자 이상 입력해주세요")

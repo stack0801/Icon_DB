@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { FaArrowUp } from "react-icons/fa";
 
 export default function App() {
+
+    //맨 위로 올라가기
      const [scrollPosition, setScrollPosition] = useState(0);
      const updateScroll = () => { setScrollPosition(window.scrollY || document.documentElement.scrollTop); }
 

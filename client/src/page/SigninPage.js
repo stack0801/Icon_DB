@@ -5,6 +5,7 @@ import Logo from "../component/Logo";
 
 export default function App() {
 
+    //모바일 화면
     const [isMobile, setisMobile] = useState(false);
     const resizingHandler = () => { setisMobile(window.innerWidth <= 600);};
 

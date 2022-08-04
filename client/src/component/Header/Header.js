@@ -3,7 +3,7 @@ import DesktopHeader from "./DesktopHeader";
 import MobileHeader from "./MobileHeader";
 
 export default function App() {
-    //스크린 가로
+    
     const [screenWidth, setScreenWidth] = useState(0);
     useEffect(() => {
         window.addEventListener('resize', () => {setScreenWidth(window.innerWidth)});
@@ -12,5 +12,5 @@ export default function App() {
         setScreenWidth(window.innerWidth);
     }, []);
 
-    return (screenWidth < 900 ? <MobileHeader /> : <DesktopHeader />);
+    return (screenWidth < 900 ? <MobileHeader /> : <DesktopHeader />); // PC버전과 모바일버전의 Header 구분
 }
