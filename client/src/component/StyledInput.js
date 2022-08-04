@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+// styled-component를 사용하여 Component화, 다른 파일에도 사용 가능
 
 export default function App({ width, height, placeholder, type, fontSize, onChange, onKeyPress}) {
     return (

@@ -8,8 +8,9 @@ import axios from "axios";
 import NoImg from "../../img/NoImage.png";
 
 function App({ classes }) {
+    //유저 로그인 여부
+    const [sign, setSign] = useState(null); 
     const [profiledata, setProfileData] = useState({});
-    const [sign, setSign] = useState(null);
 
     useEffect(() => {
         axios.post('/get_auth')
@@ -27,16 +28,17 @@ function App({ classes }) {
             })
     }, []);
 
-    //이미지 업로드
+    //Image Upload
     const [images, setImages] = useState([]);
     const maxNumber = 1;
 
+    //Image 수정
     const onChange = (imageList) => {
         setImages(imageList);
     }
 
+    //Image를 등록
     const boardtest = () => {
-
         const formData = new FormData()
         formData.append("img", images[0].file)
 
@@ -57,6 +59,7 @@ function App({ classes }) {
 
     }
     return (
+        //react-images-uploading 모듈 사용
         <EditProfileWrapper>
             <ImageUploader
                 value={images}
@@ -82,22 +85,23 @@ function App({ classes }) {
                                     <StyledButton width="100%" height="35px" text="Upload" onClick={boardtest} />
                                 </ButtonList>}
                         <User>
-                            <TextField className={classes.TextField}
+                            <TextField className={classes.TextField} //@material-ui/core 모듈의 TextField를 사용하여 자연스러운 효과
                                 variant="outlined"
                                 fullWidth
                                 label={profiledata.nickname}
                                 required />
-                            <TextField className={classes.TextField}
+                            <TextField className={classes.TextField} //@material-ui/core 모듈의 TextField를 사용하여 자연스러운 효과
                                 variant="outlined"
                                 fullWidth
                                 label={profiledata.id}
                                 required />
-                            <TextField className={classes.TextField}
+                            <TextField className={classes.TextField} //@material-ui/core 모듈의 TextField를 사용하여 자연스러운 효과
                                 variant="outlined"
                                 fullWidth
                                 label={profiledata.password}
                                 required />
-                            {(sign === profiledata.id) &&
+
+                            {(sign === profiledata.id) && //sign의 정보와 profiledata에 있는 id의 정보가 같을 때 Profile Update
                                 <StyledButton width="100%" height="45px" text="Update" onClick={profile_update} />
                             }
                         </User>

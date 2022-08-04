@@ -15,6 +15,7 @@ export default function App({ width, height, padding }) {
     const onIdHandler = (e) => { setId(e.currentTarget.value) }
     const onPasswordHandler = (e) => { setPassword(e.currentTarget.value) }
 
+    //Enter키 입력시 클릭과 동일한 작동
     const onKeyPress =(e)=>{ if(e.key==='Enter') onSubmit() }
 
     //정보 전송

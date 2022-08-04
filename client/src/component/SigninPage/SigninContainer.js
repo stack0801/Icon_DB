@@ -29,11 +29,11 @@ export default function App({ width, height, padding }) {
                 console.log(res.data)
                 if (res.data === 'success')
                     window.location.href = '/';
-                else
+                else //로그인 실패할 시 Error
                     alert("아이디와 비밀번호를 확인해 주십시오.");
             })
         }
-        else {
+        else { //ID 혹은 비밀번호에 아무것도 적지 않았을 경우 Error
             alert("아이디와 비밀번호를 확인해 주십시오.");
         }
     }

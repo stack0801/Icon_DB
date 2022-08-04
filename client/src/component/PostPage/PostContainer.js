@@ -17,11 +17,11 @@ export default function App() {
     let { url_id } = useParams();
     const [sign, setSign] = useState(null);
     const [data, setData] = useState({ filename: "NoImage.png" });
-    const [isMobile, setisMobile] = useState(false); 
-    const [liked, setLiked] = useState(false);
-    const [likes, setLikes] = useState(0);
-    const [tags, setTags] = useState([]);
-    const [tagInsert, setTagInsert] = useState("");
+    const [isMobile, setisMobile] = useState(false); //Mobile버전 나타내기
+    const [liked, setLiked] = useState(false); //좋아요 여부 나타내기
+    const [likes, setLikes] = useState(0); //좋아요의 갯수 확인
+    const [tags, setTags] = useState([]); //HashTag 확인
+    const [tagInsert, setTagInsert] = useState(""); //HashTag 입력
 
     useEffect(() => {
         axios.post('/get_auth')

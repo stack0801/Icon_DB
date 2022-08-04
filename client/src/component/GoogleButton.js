@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
 import axios from "axios";
+//styled-component를 사용하여 Component화, 다른 파일에도 사용 가능
 
 export default function GoogleButton({ onSocial }){
 
@@ -16,6 +17,7 @@ export default function GoogleButton({ onSocial }){
         gapi.load('client:auth2', start);
     }, []);
 
+    //로그인 성공 시
     const onSuccess = async(response) => {
 
         const { googleId, profileObj : { email, name } } = response;
@@ -33,6 +35,7 @@ export default function GoogleButton({ onSocial }){
         })
     }
     
+    //로그인 실패 시 Error
     const onFailure = (error) => {
         console.log(error);
     }

@@ -13,13 +13,16 @@ export default function App() {
     const [images, setImages] = useState([]);
     const maxNumber = 1; //maxNumber 1로 인해 여러 개의 포스팅 불가능
 
+    //이미지 변경
     const onChange = (imageList) => { setImages(imageList); }
 
+    //여러개의 아이콘 생성 시도할 시, Error
     const onError = (errors) => {
         if (errors)
             alert("이미지는 1개까지만 첨부할 수 있습니다");
     }
 
+    //로그인 여부
     useEffect(() => {
         axios.post('/get_auth')
             .then((res) => {
@@ -54,7 +57,7 @@ export default function App() {
 
     return (
         <PostingWrapper>
-            <ImageUploader
+            <ImageUploader //react-images-uploading 모듈 사용
                 value={images}
                 onChange={onChange}
                 maxNumber={maxNumber}

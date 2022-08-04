@@ -48,6 +48,7 @@ export default function App() {
         };
     }, []);
 
+    //setScroll의 boolean값을 변경하여 반응형 SearchBox 생성
     const handleScroll = () => {
         if (window.scrollY >= 500)
             setScroll(true);
@@ -63,7 +64,7 @@ export default function App() {
     return (
         <DesktopHeader sign={sign}>
             <Logo />
-            {scroll === false 
+            {scroll === false
             ? <div /> 
             : <SearchBox width="450px" height="30px" />
             }
