@@ -53,7 +53,7 @@ MIT &copy; [NoHack](mailto:lbjp114@gmail.com)
 
 <!-- Stack Icon Refernces -->
 
-[js]: /images/stack/javascript.svg
-[ts]: /images/stack/typescript.svg
-[react]: /client//public/logo192.png
-[node]: /images/stack/node.svg
+[js]: /client/public/javascript.svg
+[css]: /client/public/css.svg
+[react]: /client/public/react.svg
+[node]: /client/public/node.svg
