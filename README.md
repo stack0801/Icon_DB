@@ -55,5 +55,5 @@ MIT &copy; [NoHack](mailto:lbjp114@gmail.com)
 
 [js]: /images/stack/javascript.svg
 [ts]: /images/stack/typescript.svg
-[react]: /images/stack/react.svg
+[react]: /client//public/logo192.png
 [node]: /images/stack/node.svg
