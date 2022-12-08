@@ -14,7 +14,9 @@ IconDB는 아이콘 무료 배포 웹사이트입니다. 웹사이트 내에서 
 </p>
 
 <p align="center">
-GIF Images
+  <br>
+  <img src="/client/public/main.png">
+  <br>
 </p>
 
 <br>
@@ -29,13 +31,13 @@ GIF Images
 
 ## 구현 기능
 
-### 기능 1
+### 로그인(소셜 로그인) 및 회원가입
 
-### 기능 2
+### 사용자들 간의 팔로우
 
-### 기능 3
+### 해쉬태그로 검색
 
-### 기능 4
+### 이미지 파일 확장자가 SVG인 경우, 웹페이지 내에서 아이콘 변경 가능
 
 <br>
 
@@ -47,9 +49,6 @@ GIF Images
 
 <br>
 
-## 라이센스
-
-MIT &copy; [NoHack](mailto:lbjp114@gmail.com)
 
 <!-- Stack Icon Refernces -->
 
