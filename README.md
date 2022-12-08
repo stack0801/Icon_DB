@@ -14,7 +14,9 @@ IconDB는 아이콘 무료 배포 웹사이트입니다. 웹사이트 내에서 
 </p>
 
 <p align="center">
-GIF Images
+  <br>
+  <img src="/client/public/pc.png">
+  <br>
 </p>
 
 <br>
