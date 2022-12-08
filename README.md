@@ -21,9 +21,9 @@ GIF Images
 
 ## 기술 스택
 
-| JavaScript | TypeScript |  React   |  Node   |
+| JavaScript | CSS |  React   |  Node   |
 | :--------: | :--------: | :------: | :-----: |
-|   ![js]    |   ![ts]    | ![react] | ![node] |
+|   ![js]    |   ![css]    | ![react] | ![node] |
 
 <br>
 
