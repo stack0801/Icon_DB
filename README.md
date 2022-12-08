@@ -21,9 +21,9 @@ GIF Images
 
 ## 기술 스택
 
-| JavaScript | CSS |  React   |  Node   |
-| :--------: | :--------: | :------: | :-----: |
-|   ![js]    |   ![css]    | ![react] | ![node] |
+| JavaScript | CSS |  React   |  Node   | Notion |
+| :--------: | :----: | :------: | :-----: | :-------: |
+|   ![js]    |   ![css]    | ![react] | ![node] | ![Notion] |
 
 <br>
 
@@ -57,3 +57,4 @@ MIT &copy; [NoHack](mailto:lbjp114@gmail.com)
 [css]: /client/public/css.svg
 [react]: /client/public/react.svg
 [node]: /client/public/node.svg
+[Notion]: /client/public/notion.svg
