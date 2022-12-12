@@ -62,5 +62,5 @@ React의 기능을 100% 활용 못 한것에 대한 아쉬움이 남았습니다
 [js]: /client/public/javascript.svg
 [css]: /client/public/css.svg
 [react]: /client/public/react.svg
-[node]: /client/public/node.svg
+[node]: /client/public/nodedotjs.svg
 [Notion]: /client/public/notion.svg
