@@ -18,7 +18,7 @@ IconDB는 아이콘 무료 배포 웹사이트입니다. 웹사이트 내에서 
 ## 기술 스택
 
 | JavaScript | CSS |  React   |  Node   | Notion |
-| :--------: | :----: | :------: | :-----: | :-------: |
+| :--------: | :----: | :------: | :-------: | :-------: |
 |   ![js]    |   ![css]    | ![react] | ![node] | ![Notion] |
 
 <br>
@@ -62,5 +62,5 @@ React의 기능을 100% 활용 못 한것에 대한 아쉬움이 남았습니다
 [js]: /client/public/javascript.svg
 [css]: /client/public/css.svg
 [react]: /client/public/react.svg
-[node]: /client/public/node.svg
+[node]: /client/public/nodedotjs.svg
 [Notion]: /client/public/notion.svg
