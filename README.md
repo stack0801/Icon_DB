@@ -2,7 +2,7 @@
 
 <p align="center">
   <br>
-  <img src="/client/src/img/logo3.svg">
+  <img src="/client/public/github_logo.png">
   <br>
 </p>
 
