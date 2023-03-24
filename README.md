@@ -26,7 +26,8 @@ IconDB는 아이콘을 무료로 배포하고 제작하는 웹사이트입니다
 ## 구현 기능
 
 ### 메인화면
-
+![Main](https://user-images.githubusercontent.com/89950902/227500136-5bbcd2de-8ac3-4115-8051-a3059cba8957.PNG)
+![Main(Mobile)](https://user-images.githubusercontent.com/89950902/227500164-908740ce-bd62-41e6-9cd1-276e1125e4ae.PNG)
 ### 로그인(소셜 로그인) 및 회원가입
 
 ### 원하는 사용자들 간의 팔로우
