@@ -32,12 +32,19 @@ IconDB는 아이콘을 무료로 배포하고 제작하는 웹사이트입니다
 #### Mobile
 ![Main(Mobile)](https://user-images.githubusercontent.com/89950902/227500164-908740ce-bd62-41e6-9cd1-276e1125e4ae.PNG)
 
-### 로그인(소셜 로그인) 및 회원가입
+### 아이콘 추가 및 업데이트
+![Icon Update](https://user-images.githubusercontent.com/89950902/227500881-ce9ff7f7-48fd-4893-b7bc-90fe5f58a276.PNG)
+
 
 ### 원하는 사용자들 간의 팔로우
+#### My Profile
+![My Profile](https://user-images.githubusercontent.com/89950902/227500804-d4dacb51-d9b1-4f2a-8ccc-647ae7f2ef09.PNG)
+#### Other's Profile
+![Other's Profile](https://user-images.githubusercontent.com/89950902/227500830-4d8c6806-6a54-4712-b164-30c9e27be666.PNG)
 
 ### 해쉬태그로 검색
-
+![My Icon](https://user-images.githubusercontent.com/89950902/227500848-592d4ea2-a328-40bf-9f6a-fd292ae871e1.PNG)
+![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)
 ### 이미지 파일 확장자가 SVG인 경우, 웹페이지 내에서 아이콘 변경 가능
 
 <br>
