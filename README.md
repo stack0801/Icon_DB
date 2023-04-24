@@ -1,11 +1,9 @@
 # IconDB
-----------
 <p align="center">
   <br>
   <img src="/client/public/github_logo.png">
   <br>
 </p>
-
 
 ## 프로젝트 소개
 
@@ -13,7 +11,7 @@
 
 <br>
 
-## 기술 스택
+## Skills
 
 | JavaScript | CSS |  React   |  Node   | Notion |
 | :--------: | :----: | :------: | :-----: | :-------: |
