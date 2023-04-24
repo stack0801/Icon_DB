@@ -1,31 +1,53 @@
-# IconDB
-<p align="center">
-  <br>
-  <img src="/client/public/github_logo.png">
-  <br>
-</p>
+<div align="center">
 
-## 프로젝트 소개
+  ![header](https://capsule-render.vercel.app/api?type=soft&color=auto&height=300&section=header&text=IconDB&fontSize=90)
+  
+</div>
 
-> IconDB는 아이콘을 무료로 배포하고 제작하는 웹사이트입니다. 사용자는 원하는 아이콘을 선택하여 사용 목적에 맞게 수정할 수 있습니다. 또한, 마음에 드는 사용자를 팔로우하거나 해시태그를 이용하여 원하는 아이콘을 찾을 수 있어 사용자의 목적에 부합하는 아이콘을 손쉽게 찾아 제작할 수 있습니다.
+<br><br>
+
+## Introducing Our Project
+IconDB는 아이콘을 무료로 배포하고 제작하는 웹사이트입니다. 사용자는 원하는 아이콘을 선택하여 사용 목적에 맞게 수정할 수 있습니다. 또한, 마음에 드는 사용자를 팔로우하거나 해시태그를 이용하여 원하는 아이콘을 찾을 수 있어 사용자의 목적에 부합하는 아이콘을 손쉽게 찾아 제작할 수 있습니다.
 
 <br>
 
 ## Skills
 
-| JavaScript | CSS |  React   |  Node   | Notion |
-| :--------: | :----: | :------: | :-----: | :-------: |
-|   ![js]    |   ![css]    | ![react] | ![node] | ![Notion] |
+<br><br>
 
-<br>
+<div align="center">
+
+  ### 📌 Frontend Stack
+  <img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/>
+  <img src="https://img.shields.io/badge/styled-components-DB7093?style=flat-square&logo=styledcomponents&logoColor=white"/>
+  <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white"/>
+  
+  <br><br>
+  
+  ### 📌 Backend Stack
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white"/>
+  <br><br>
+  
+  ### 📌 Cowork Tools
+  <img src="https://img.shields.io/badge/VSCode-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white"/>
+  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white"/>
+</div>
+
+<br><br>
 
 ## 구현 기능
-> 반응형 웹사이트로, PC 및 모바일 버전이 분리되어 있습니다.
 
 <br>
 
-### 메인화면
----------
+### 1. 메인화면
+--------
 1. 상단 Header에 로그인 / 회원가입 기능 
     + 로그인이 되어있을 시, 포스팅 / 편집 / 마이페이지 / 로그아웃 기능으로 변경
     + 일정 스크롤이 내려가면 상단 Header에 검색 기능 추가
@@ -36,9 +58,9 @@
 #### Mobile
 ![Main(Mobile)](https://user-images.githubusercontent.com/89950902/227500164-908740ce-bd62-41e6-9cd1-276e1125e4ae.PNG)
 
-<br>
+<br><br>
 
-### 아이콘 추가 및 업데이트
+### 2. 아이콘 추가 및 업데이트
 ----------
 1. 아이콘을 추가하거나 업데이트할 수 있는 기능
     + 로그인이 되어있을 때만 사용 가능
@@ -47,9 +69,9 @@
 
 ![Icon Update](https://user-images.githubusercontent.com/89950902/227500881-ce9ff7f7-48fd-4893-b7bc-90fe5f58a276.PNG)
 
-<br>
+<br><br>
 
-### 원하는 사용자들 간의 팔로우
+### 3. 원하는 사용자들 간의 팔로우
 ----------
 1. 자신의 Profile 방문 시, 프로필 업데이트 기능
     + 다른 사람의 프로필 방문 시, 해당 기능 불가
@@ -63,9 +85,9 @@
 #### Other's Profile
 ![Other's Profile](https://user-images.githubusercontent.com/89950902/227500830-4d8c6806-6a54-4712-b164-30c9e27be666.PNG)
 
-<br>
+<br><br>
 
-### 아이콘 상세페이지
+### 4. 아이콘 상세페이지
 --------
 1.  아이콘의 상세설명 추가
     + 아이콘 등록자
@@ -84,7 +106,7 @@
 #### Icon(PNG)
 ![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)
 
-<br>
+<br><br>
 
 ## 긍정적 요소 & 아쉬운 요소
 
