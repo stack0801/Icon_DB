@@ -24,15 +24,16 @@ export default function Main() {
                 setLoading(false);
             });
     }, [page]);
-
-    //Instersection Observer 사용
+    
     const observer = useRef();
     const lastElRef = useCallback(
         (event) => {
             if (loading) return;
             if (observer.current) observer.current.disconnect();
             observer.current = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) setPage((prevPage) => prevPage + loading_size);
+                if (entries[0].isIntersecting) {
+                    setPage((prevPage) => prevPage + loading_size);
+                }
             });
             if (event) observer.current.observe(event);
         },

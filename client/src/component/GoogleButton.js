@@ -1,51 +1,47 @@
-import React, { useEffect } from "react";
+import React, { useCallback } from "react";
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
 import axios from "axios";
-//styled-component를 사용하여 Component화, 다른 파일에도 사용 가능
 
 export default function GoogleButton({ onSocial }){
 
-    //Google Login
-    useEffect(() => {
-        function start() {
-            gapi.client.init({
-                clientId: process.env.REACT_APP_clientId,
-                scope: 'email',
-            });
-        }
-        gapi.load('client:auth2', start);
+    const handleGoogleInit = useCallback(() => {
+        gapi.client.init({
+            clientId: process.env.REACT_APP_clientId,
+            scope: 'email',
+        });
     }, []);
 
-    //로그인 성공 시
-    const onSuccess = async(response) => {
+    useCallback(handleGoogleInit, []);
 
+    const handleGoogleSuccess = (response) => {
         const { googleId, profileObj : { email, name } } = response;
 
-        axios
-        .post('/google_sign_in', {
+        axios.post('/google_sign_in', {
             id: email,
             pw: googleId,
             name: name
-        })
-        .then((res) => {
-            console.log(res.data)
-            if (res.data === 'success')
+        }).then((res) => {
+            console.log(res.data);
+            if (res.data === 'success') {
                 window.location.href = '/';
-        })
+            }
+        }).catch((error) => {
+            console.error(error);
+            alert("서버에 오류가 발생했습니다.");
+        });
     }
-    
-    //로그인 실패 시 Error
-    const onFailure = (error) => {
-        console.log(error);
+
+    const handleGoogleFailure = (error) => {
+        alert("로그인에 실패했습니다.");
     }
 
     return(
         <div>
             <GoogleLogin
                 clientId={process.env.REACT_APP_clientId}
-                onSuccess={onSuccess}
-                onFailure={onFailure}/>
+                onSuccess={handleGoogleSuccess}
+                onFailure={handleGoogleFailure} />
         </div>
     )
 }

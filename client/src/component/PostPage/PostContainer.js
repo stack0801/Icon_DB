@@ -215,7 +215,6 @@ const Tag = styled.div`
     display: inline;
     margin: 2px;
     padding: 2px;
-    
     background-color: #F5A282;
     border-radius: 5px;
     color: #FFFFFF;
@@ -225,8 +224,8 @@ const PostContainer = styled.div`
     padding-top: 55px;
     width: 95vw;
     height: 90vh;
-
     display: grid;
+
     grid-template-columns: ${(props) => (props.columns || "1fr")};
 `;
 
@@ -238,19 +237,15 @@ const ImageDetail = styled.div`
 const Title = styled.div`
     width: 100%;
     height: 100%;
-
     display: grid;
     grid-template-rows: 2fr 1fr;
     place-content: center;
     place-items: center;
-
-    
-    border-left: 1px solid #dddddd;
-    border-top: 1px solid #dddddd;
-
+    border-left: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
     font-size: 16px;
     font-weight: 600;
-    color: #9ed1d9;
+    color: #9ED1D9;
 `;
 
 const Information = styled.div`

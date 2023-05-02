@@ -13,81 +13,63 @@ import CheckIcon from '@mui/icons-material/Check';
 import axios from "axios";
 
 export default function App() {
-
     let { user } = useParams();
-    const [profiledata, setProfileData] = useState({ profilename: "Anonymous.png", nickname: "Anonymous" });
+    //User Data
+    const [profiledata, setProfileData] = useState({
+        profilename: "Anonymous.png",
+        nickname: "Anonymous"
+    });
     const [followed, setFollowed] = useState(false);
     const [sign, setSign] = useState(null);
 
-    // Profile 정보
+    //Profile information
     const [profileContent, setProfileContent] = useState([]);
     const [profileLiked, setProfileLiked] = useState([]);
     const [profileFollow, setProfileFollow] = useState([]);
     const [profileFollower, setProfileFollower] = useState([]);
 
     useEffect(() => {
-        axios.post('/get_auth')
-            .then((res) => {
-                setSign(res.data)
-                if (res.data) {
-                    axios.post('/check_followed', {
-                        id: user
-                    })
-                        .then((res) => {
-                            setFollowed((res.data === 'followed'))
-                        })
-                    resizingHandler();
-                    window.addEventListener("resize", resizingHandler);
-                    return () => { window.removeEventListener("resize", resizingHandler); };
-                }
-            })
+        axios.post('/get_auth').then((res) => {
+            setSign(res.data)
+            if (res.data) {
+                axios.post('/check_followed', { id: user }).then((res) => {
+                    setFollowed((res.data === 'followed'))
+                });
+                window.addEventListener("resize", resizingHandler);
+                return () => {
+                    window.removeEventListener("resize", resizingHandler);
+                };
+            };
+        });
 
-        axios.post('/get_usercontent', {
-            id: user
-        })
-            .then((res) => {
-                setProfileContent(res.data)
-            })
+        axios.post('/get_usercontent', { id: user }).then((res) => {
+            setProfileContent(res.data);
+        });
 
-        axios.post('/get_userlike', {
-            id: user
-        })
-            .then((res) => {
-                setProfileLiked(res.data)
-            })
+        axios.post('/get_userlike', { id: user }).then((res) => {
+            setProfileLiked(res.data);
+        });
 
-        axios.post('/get_Following', {
-            id: user
-        })
-            .then((res) => {
-                setProfileFollow(res.data)
-                console.log((res.data))
-            })
+        axios.post('/get_Following', { id: user }).then((res) => {
+            setProfileFollow(res.data);
+        });
 
-        axios.post('/get_Follower', {
-            id: user
-        })
-            .then((res) => {
-                setProfileFollower(res.data)
-            })
+        axios.post('/get_Follower', { id: user }).then((res) => {
+            setProfileFollower(res.data);
+        });
 
     }, [user]);
 
     useEffect(() => {
-        axios.post('/get_profile', {
-            user: user
-        })
-            .then((res) => {
-                setProfileData(res.data[0]);
-            });
-
-
+        axios.post('/get_profile', { user: user }).then((res) => {
+            setProfileData(res.data[0]);
+        });
     }, [user]);
 
     //Mobile 버전
     const [isMobile, setisMobile] = useState(false);
     const resizingHandler = () => { setisMobile(window.innerWidth <= 600); };
-    
+
     useEffect(() => {
         resizingHandler();
         window.addEventListener("resize", resizingHandler);
@@ -98,64 +80,68 @@ export default function App() {
     const onFollowHandler = () => {
         if (sign === null) {
             alert("로그인 후 사용 가능한 서비스 입니다.");
-            window.location.href = '/sign_in';
-        }
-        else {
-            axios({
-                method: 'post',
-                url: '/setFollow',
-                data: {
+            window.location.href = "/sign_in";
+        } else {
+            axios
+                .post("/setFollow", {
                     id: user
-                }
-            })
-                .then((res) => {
-                    setFollowed(res.data)
                 })
+                .then((res) => {
+                    setFollowed(res.data);
+                });
         }
-    }
+    };
 
     //Profile Upload
     const [images, setImages] = useState([]);
     const [nickname, updateNickname] = useState();
-    const onNicknameHandler = (e) => { updateNickname(e.currentTarget.value) }
     const maxNumber = 1;
+
     const onChange = (imageList) => {
-        setImages(imageList);
-    }
+        setImages(imageList.slice(0, maxNumber));
+    };
+
+    const onNicknameHandler = (e) => {
+        updateNickname(e.currentTarget.value);
+    };
+
     const onError = (errors) => {
         if (errors)
             alert("이미지는 1개까지만 첨부할 수 있습니다")
     }
 
-    const insert_content = () => {
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const formData = new FormData();
         if (images.length > 0) {
-            const formData = new FormData()
-            formData.append("img", images[0].file)
+            formData.append("img", images[0].file);
             axios({
                 method: 'post',
                 url: '/update_profile_img',
                 header: { 'content-type': 'multipart/form-data' },
-                data: formData
+                data: formData,
             })
                 .then((res) => {
-                    alert(res.data)
-                    if (res.data === 'success')
-                        window.location.href = '/profile/' + user
+                    alert(res.data);
+                    if (res.data === 'success') {
+                        window.location.href = `/profile/${user}`;
+                    }
                 })
+                .catch((err) => console.log(err));
         }
 
         if (nickname.length > 0) {
             axios
-                .post('/update_profile_nickname', {
-                    nickname: nickname
-                })
+                .post('/update_profile_nickname', { nickname })
                 .then((res) => {
-                    alert(res.data)
-                    if (res.data === 'success')
-                        window.location.href = '/profile/' + user
+                    alert(res.data);
+                    if (res.data === 'success') {
+                        window.location.href = `/profile/${user}`;
+                    }
                 })
+                .catch((err) => console.log(err));
         }
-    }
+    };
 
     return (<>
         <Header />
@@ -177,7 +163,7 @@ export default function App() {
                             ? <>
                                 <StyledInput placeholder={profiledata.nickname} onChange={onNicknameHandler} />
                                 <StyledButton width="90%" text="Edit Profile" onClick={() => onImageUpdate(0)} />
-                                <StyledButton width="90%" text="Update" onClick={insert_content} />
+                                <StyledButton width="90%" text="Update" onClick={handleFormSubmit} />
                             </>
                             : <ThemeProvider theme={theme}>
                                 {!followed ?

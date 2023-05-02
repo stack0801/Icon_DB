@@ -6,7 +6,6 @@ import StyledInput from "../StyledInput";
 import axios from "axios";
 
 export default function App({ width, height, padding }) {
-    //이름, ID, 비밀번호
     const [name, setName] = useState("");
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
@@ -14,15 +13,11 @@ export default function App({ width, height, padding }) {
     const onNameHandler = (e) => { setName(e.currentTarget.value) }
     const onIdHandler = (e) => { setId(e.currentTarget.value) }
     const onPasswordHandler = (e) => { setPassword(e.currentTarget.value) }
-
-    //Enter키 입력시 클릭과 동일한 작동
     const onKeyPress =(e)=>{ if(e.key==='Enter') onSubmit() }
 
-    //정보 전송
     const onSubmit = () => {
-        if (id.length > 0 && password.length > 0 && name.length > 0) {
-            axios
-            .post('/sign_up', {
+        if (id && password && name) {
+            axios.post('/sign_up', {
                 name: name,
                 id: id,
                 pw: password
@@ -31,16 +26,14 @@ export default function App({ width, height, padding }) {
                 console.log(res.data)
                 if (res.data === 'success') {
                     window.location.href = '/'
-                }
-                else if (res.data === 'fail') {
-                    alert("다른 아이디를 입력해주세요!")
+                } else if (res.data === 'fail') {
+                    alert("다른 아이디를 입력해주세요!");
                 }
             })
-        }
-        else {
+        } else {
             alert("입력 칸을 알맞게 입력해주십시오.");
         }
-    }
+    };
 
     return (
         <StyledContianer width = {width} height = {height} padding = {padding}>
@@ -57,9 +50,8 @@ const StyledContianer = styled.div`
     display: grid;
     justify-items: center;
     gap: 7px;    
-
     background: white;
-    border: solid 2px #ececee;
+    border: solid 2px #ECECEC;
     border-radius: 15px;
     
     width: ${(props) => (props.width || "auto")};
@@ -69,7 +61,7 @@ const StyledContianer = styled.div`
 
 const LinkMsg = styled.div`
     font-weight: 700;
-    color: #f5a282;
+    color: #F5A282;
     text-decoration: none;
 `;
 
@@ -77,6 +69,5 @@ const Msg = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 10px;
-
     font-size: 20px;
 `;

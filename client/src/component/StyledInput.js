@@ -18,18 +18,16 @@ export default function App({ width, height, placeholder, type, fontSize, onChan
 
 const StyledInput = styled.input`
     padding-left: 10px;
-
     background: white;
-    border: solid 2px #9ed1d9;
+    border: solid 2px #9ED1D9;
     border-radius: 5px;
-    
 
     width: ${(props) => props.width || "auto"};
     height: ${(props) => props.height || "auto"};
     font-size: ${(props) => props.fontSize || "20px"};
     type: ${(props) => props.type ? props.type : "text"};
     &:focus {
-        border-color: #f5a382;
+        border-color: #F5A382;
         outline: none;
     }
 `;

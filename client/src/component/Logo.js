@@ -1,31 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import  {ReactComponent as SvgLogo} from "../img/logo3.svg";
+import { ReactComponent as SvgLogo } from "../img/logo3.svg";
 
-export default function App(){
+export default function App() {
     return (
-        <Logo>
-            <Link to = "/"><Svg src = {SvgLogo} alt = "logo" /></Link>
-        </Logo>
+        <Container>
+            <Link to="/">
+                <Svg src={SvgLogo} alt="logo" />
+            </Link>
+        </Container>
     );
 }
 
-const Logo = styled.div``;
+const Container = styled.div`
+    display: flex;
+    align-items: center;
+`;
 
 const Svg = styled(SvgLogo)`
     text {
-        fill: #ececec;
+        fill: #ECECEC;
         transition-duration: 0.3s;
     }
+
     &:hover {
         text {
             fill: white;
         }
     }
-    &:active{
-        text{
-            fill:#f5a282;
+    &:active {
+        text {
+            fill:#F5A282;
         }
     }
 `;

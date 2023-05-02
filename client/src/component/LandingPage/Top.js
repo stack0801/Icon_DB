@@ -19,7 +19,7 @@ export default function App() {
         };
     }, [isMobile]);
 
-    const [isTopImageLoaded, setIsTopImageLoaded] = useState(false);
+    const [isTopImageLoaded, setIsTopImageLoaded] = useState();
 
     return (
         <Top style={{ visibility: isTopImageLoaded ? "visible" : "hidden" }}>
@@ -36,7 +36,6 @@ export default function App() {
 
 const Top = styled.div`
     height: 100vh;
-    
     display: grid;
     grid-template-rows: 1fr 100px 100px 1fr;
     place-items: center;
@@ -48,6 +47,5 @@ const TopImage = styled.img`
     left: 0;
     width: 100%;
     height: 100%;
-
     z-index: -1;
 `;
