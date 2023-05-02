@@ -41,28 +41,27 @@ export default function Main() {
 
     return (
         <LandingContainer>
-      <ImageListWrapper>
-        {icons.map((list, idx) => (
-          <div key={idx}>
-            <Link to={"/post/" + list.content_id}>
-              <IconContainer>
-                <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260" ref={idx + 1 === icons.length ? lastElRef : null} />
-                <ShowTitle>
-                  <Text>Show Detail</Text>
-                </ShowTitle>
-              </IconContainer>
-            </Link>
-          </div>
-        ))}
-      </ImageListWrapper>
-      {!loading && <Loading />}
-    </LandingContainer>
+            <ImageListWrapper>
+                {icons.map((list, idx) => (
+                    <div key={idx}>
+                        <Link to={"/post/" + list.content_id}>
+                            <IconContainer>
+                                <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260" ref={idx + 1 === icons.length ? lastElRef : null} />
+                                <ShowTitle>
+                                    <Text>Show Detail</Text>
+                                </ShowTitle>
+                            </IconContainer>
+                        </Link>
+                    </div>
+                ))}
+            </ImageListWrapper>
+            {!loading && <Loading />}
+        </LandingContainer>
     );
 }
 
 const LandingContainer = styled.div`
     padding-top: 20px;
-        
     background-color: #F7ECDE;
     border-top: 3px solid #F5A282;
 `;
@@ -77,9 +76,7 @@ const ImageListWrapper = styled.div`
 
 const IconContainer = styled.div`
     height: 260px;    
-    
     display: inline-block;
-
     background-color : #ffffff;
     border: 3px solid #9ed1d9;
     border-radius: 10px;
@@ -87,7 +84,6 @@ const IconContainer = styled.div`
 
 const IconList = styled.img`
     height: 260px;
-
     border-radius: 10px;
 `;
 
@@ -98,10 +94,8 @@ const ShowTitle = styled.div`
     left: 0;
     width: 260px;
     height: 260px;
-
     background-color: #9ed1d9;
     border-radius: 10px;
-
     opacity:0;
     transition: .5s ease;
 
@@ -115,11 +109,8 @@ const Text = styled.div`
     top: 50%;
     left: 50%;
     width: fit-content;
-    
     font-size: 16px;
-    
     transform: translate(-50%, -50%);
-    
     text-align: center;
 `;
 
