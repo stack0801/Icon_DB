@@ -13,5 +13,5 @@ export default function App() {
         setScreenWidth(window.innerWidth);
     }, []);
 
-    return (screenWidth < 900 ? <MobileHeader /> : <DesktopHeader />); // screenWidth를 900 기준으로 PC버전과 Mobile버전의 Header 구분
+    return (screenWidth < 1600 ? <MobileHeader /> : <DesktopHeader />); // screenWidth를 900 기준으로 PC버전과 Mobile버전의 Header 구분
 }

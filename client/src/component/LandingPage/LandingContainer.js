@@ -21,8 +21,8 @@ export default function Main() {
             })
             .then((res) => {
                 setIcons((prevIcons) => [...prevIcons, ...res.data]);
+                setLoading(false);
             });
-        setLoading(false);
     }, [page]);
 
     //Instersection Observer 사용
@@ -30,41 +30,33 @@ export default function Main() {
     const lastElRef = useCallback(
         (event) => {
             if (loading) return;
-            if (observer.current)
-                observer.current.disconnect();
+            if (observer.current) observer.current.disconnect();
             observer.current = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting)
-                    setPage((prevPage) => prevPage + loading_size);
+                if (entries[0].isIntersecting) setPage((prevPage) => prevPage + loading_size);
             });
-            if (event)
-                observer.current.observe(event);
+            if (event) observer.current.observe(event);
         },
         [loading]
     );
 
     return (
         <LandingContainer>
-            <ImageListWrapper>
-                {icons.map((list, idx) => (
-                    <div key={idx}>
-                        {idx + 1 === icons.length
-                            ? <Link to={"/post/" + list.content_id}>
-                                <IconContainer>
-                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260" ref={lastElRef} />
-                                    <ShowTitle><Text>Show Detail</Text></ShowTitle>
-                                </IconContainer>
-                            </Link>
-                            : <Link to={"/post/" + list.content_id}>
-                                <IconContainer>
-                                    <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260" />
-                                    <ShowTitle><Text>Show Detail</Text></ShowTitle>
-                                </IconContainer>
-                            </Link>}
-                    </div>
-                ))}
-            </ImageListWrapper>
-            {!loading && <Loading />}
-        </LandingContainer>
+      <ImageListWrapper>
+        {icons.map((list, idx) => (
+          <div key={idx}>
+            <Link to={"/post/" + list.content_id}>
+              <IconContainer>
+                <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260" ref={idx + 1 === icons.length ? lastElRef : null} />
+                <ShowTitle>
+                  <Text>Show Detail</Text>
+                </ShowTitle>
+              </IconContainer>
+            </Link>
+          </div>
+        ))}
+      </ImageListWrapper>
+      {!loading && <Loading />}
+    </LandingContainer>
     );
 }
 
@@ -112,6 +104,7 @@ const ShowTitle = styled.div`
 
     opacity:0;
     transition: .5s ease;
+
     &:hover { 
         opacity: 0.9;
     }
