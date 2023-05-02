@@ -84,20 +84,13 @@ const MobileHeader = styled.div`
   place-items: center;
   place-content: center;
   
-  background: #9ed1d9;
+  background: #9ED1D9;
   font-size: 18px;
   
   z-index: 999;
   
   .header_user {
-    color: #ececec;
-    transition-duration: 0.3s;
-    &:hover {
-      color: white;
-    }
-    &:active {
-      color: #f5a282;
-    }
+    color: #292929;
   }
 
   .animated {

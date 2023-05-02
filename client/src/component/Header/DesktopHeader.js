@@ -8,8 +8,6 @@ import Logo from "../Logo";
 import axios from 'axios';
 
 export default function App() {
-
-    // 유저 로그인 여부
     const [sign, setSign] = useState(null);
     const [profiledata, setProfileData] = useState({ profilename: "Anonymous.png", nickname: "Anonymous" });
 
@@ -28,7 +26,6 @@ export default function App() {
             })
     }, []);
 
-    //Logout
     const signOut = () => {
         axios
             .post('/sign_out')
@@ -38,8 +35,7 @@ export default function App() {
                     window.location.href = '/';
             })
     }
-
-    //반응형 SearchBox 
+ 
     const [scroll, setScroll] = useState(false);
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -48,7 +44,6 @@ export default function App() {
         };
     }, []);
 
-    //setScroll의 boolean값을 변경하여 반응형 SearchBox 생성
     const handleScroll = () => {
         if (window.scrollY >= 500)
             setScroll(true);
@@ -62,7 +57,8 @@ export default function App() {
     }
 
     return (
-        <DesktopHeader sign={sign}>
+        <Page sign={sign}>
+            <Container>
             <Logo />
             {scroll === false
             ? <div /> 
@@ -77,24 +73,26 @@ export default function App() {
                 <Link to="/sign_in"><LinkButton text="Sign in" /></Link> :
                 <LinkButton onClick={signOut} text="sign out" />
             }
-        </DesktopHeader>
+            </Container>
+        </Page>
     )
 }
 
-const DesktopHeader = styled.div`
+const Page = styled.div`
     position: fixed;
     width: 100vw;
     height: 55px;
-
-    background-color: #9ed1d9;
-
+    background: #9ED1D9;
     font-size: 18px;
-
-    display: grid;    
+    display: grid;
     place-items: center;
     place-content: center;
-    
     z-index: 999;
-
-    grid-template-columns: ${(props) => (props.sign === null ? "15% 1fr repeat(3,10%)" : "15% 1fr repeat(4,10%)")};
 }`;
+
+const Container = styled.div`
+    width: 1200px;
+    display: grid;
+    place-items: center;
+    grid-template-columns: ${(props) => (props.sign === null ? "15% 1fr repeat(3,10%)" : "15% 1fr repeat(4,10%)")};
+`;

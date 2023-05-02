@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Loading from "../Loading";
 import axios from "axios";
+import { Container } from "@material-ui/core";
 
 export default function Main() {
 
@@ -41,7 +42,8 @@ export default function Main() {
     );
 
     return (
-        <LandingContainer>
+        <Page>
+            <Container>
             <ImageListWrapper>
                 {icons.map((list, idx) => (
                     <div key={idx}>
@@ -57,51 +59,53 @@ export default function Main() {
                 ))}
             </ImageListWrapper>
             {!loading && <Loading />}
-        </LandingContainer>
+            </Container>
+        </Page>
     );
 }
 
-const LandingContainer = styled.div`
+const Page = styled.div`
     padding-top: 20px;
-    background-color: #F7ECDE;
-    border-top: 3px solid #F5A282;
+    background-color: #9ED1D9;
 `;
 
 const ImageListWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
-    grid-template-rows: repeat(auto-fit,minmax(300px,1fr));
-    gap: 5px;
+    grid-template-columns: repeat(auto-fit,minmax(282px,1fr));
+    gap: 24px;
     justify-items: center;
 `;
 
 const IconContainer = styled.div`
-    height: 260px;    
+    width: 282px;
+    height: 282px;    
     display: inline-block;
-    background-color : #ffffff;
-    border: 3px solid #9ed1d9;
+    background: #FFFFFF;
+    border: none;
     border-radius: 10px;
 `;
 
 const IconList = styled.img`
-    height: 260px;
+    width: 282px;
+    height: 282px;
     border-radius: 10px;
 `;
 
 const ShowTitle = styled.div`
     position: relative;
-    top: -264px;
+    top: -286px;
     bottom: 0;
     left: 0;
-    width: 260px;
-    height: 260px;
-    background-color: #9ed1d9;
+    width: 282px;
+    height: 282px;
+    background: #F3EFEF;
+    color: #292929;
     border-radius: 10px;
-    opacity:0;
+    opacity: 0;
     transition: .5s ease;
 
     &:hover { 
-        opacity: 0.9;
+        opacity: 0.8;
     }
 `;
 

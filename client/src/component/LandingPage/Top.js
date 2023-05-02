@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SearchBox from "../SearchBox";
-import top_image from "../../img/watercolor.jpg";
 
 export default function App() {
-
-    //Mobile 버전
     const [isMobile, setisMobile] = useState();
 
     useEffect(() => {
@@ -18,34 +15,28 @@ export default function App() {
             window.removeEventListener("resize", resizingHandler);
         };
     }, [isMobile]);
-
-    const [isTopImageLoaded, setIsTopImageLoaded] = useState();
-
+  
     return (
-        <Top style={{ visibility: isTopImageLoaded ? "visible" : "hidden" }}>
-            <TopImage
-                src={top_image}
-                alt="top_img"
-                onLoad={() => setIsTopImageLoaded(true)} />
-            <div />
-            <h1>GET FREE ICON</h1>
+        <Page>
+            <div/>
+            <TitleWrapper>
+            <h1>ICON LIBRARY</h1>
+            <h1>AVAILABLE FOR FREE</h1>
+            </TitleWrapper>
             <SearchBox width={isMobile ? "90%" : "600px"} height="60px" fontSize="30px" />
-        </Top>
+        </Page>
     );
 }
 
-const Top = styled.div`
+const Page = styled.div`
+    width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 100px 100px 1fr;
+    grid-template-rows: 20% 20% 30% 1fr;
     place-items: center;
+    background: #9ED1D9;
 `;
-
-const TopImage = styled.img`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+const TitleWrapper = styled.div`
+    display: grid;
+    place-items: center;
 `;
