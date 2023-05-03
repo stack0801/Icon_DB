@@ -20,7 +20,6 @@ const StyledInput = styled.input`
     padding-left: 10px;
     background: white;
     border: solid 2px #9ED1D9;
-    border-radius: 5px;
 
     width: ${(props) => props.width || "auto"};
     height: ${(props) => props.height || "auto"};

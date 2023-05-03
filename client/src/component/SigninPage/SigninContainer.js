@@ -33,7 +33,7 @@ export default function App({ width, height, padding }) {
     }
 
     return (
-        <StyledContianer width={width} height={height} padding={padding}>
+        <StyledContianer width={width} height={height} padding="10%">
             <StyledInput width="95%" placeholder="ID" onChange={onIdHandler} />
             <StyledInput width="95%" placeholder="Password" type="password" onChange={onPasswordHandler} onKeyPress={onKeyPress} />
             <StyledButton width="100%" text="Sign In" onClick={onSubmit} />
@@ -48,12 +48,12 @@ const StyledContianer = styled.div`
     justify-items: center;
     gap: 14px;
     background: white;
-    border: solid 2px #ECECEC;
-    border-radius: 15px;
-
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
     width: ${(props) => (props.width || "auto")};
     height: ${(props) => (props.height || "auto")};
     padding: ${(props) => (props.padding || "5%")};
+    
 `;
 
 const LinkMsg = styled.div`

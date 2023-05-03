@@ -82,13 +82,11 @@ const IconContainer = styled.div`
     display: inline-block;
     background: #FFFFFF;
     border: none;
-    border-radius: 10px;
 `;
 
 const IconList = styled.img`
     width: 282px;
     height: 282px;
-    border-radius: 10px;
 `;
 
 const ShowTitle = styled.div`
@@ -100,7 +98,6 @@ const ShowTitle = styled.div`
     height: 282px;
     background: #F3EFEF;
     color: #292929;
-    border-radius: 10px;
     opacity: 0;
     transition: .5s ease;
 

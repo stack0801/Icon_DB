@@ -19,7 +19,7 @@ export default function App() {
         profilename: "Anonymous.png",
         nickname: "Anonymous"
     });
-    const [followed, setFollowed] = useState(false);
+    const [followed, setFollowed] = useState();
     const [sign, setSign] = useState(null);
 
     //Profile information

@@ -148,7 +148,7 @@ const styles = () => ({
         },
         "& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {
-                border: "solid 1px #9ed1d9"
+                border: "solid 1px #9ED1D9"
             },
             "& .MuiInputBase-input ": {
                 fontFamily: "VodafoneRegular",

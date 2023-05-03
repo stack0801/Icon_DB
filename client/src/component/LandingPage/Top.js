@@ -30,7 +30,7 @@ export default function App() {
 
 const Page = styled.div`
     width: 100vw;
-    height: 100vh;
+    height: 85vh;
     display: grid;
     grid-template-rows: 20% 20% 30% 1fr;
     place-items: center;

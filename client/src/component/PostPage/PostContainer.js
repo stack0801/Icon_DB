@@ -10,18 +10,20 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DownloadIcon from '@mui/icons-material/Download';
 import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
+import CheckIcon from '@mui/icons-material/Check';
 import axios from 'axios';
 
 export default function App() {
-
     let { url_id } = useParams();
     const [sign, setSign] = useState(null);
     const [data, setData] = useState({ filename: "NoImage.png" });
-    const [isMobile, setisMobile] = useState(false); //Mobile버전 나타내기
-    const [liked, setLiked] = useState(false); //좋아요 여부 나타내기
+    const [isMobile, setisMobile] = useState(); //Mobile버전 나타내기
+    const [liked, setLiked] = useState(); //좋아요 여부 나타내기
     const [likes, setLikes] = useState(0); //좋아요의 갯수 확인
     const [tags, setTags] = useState([]); //HashTag 확인
     const [tagInsert, setTagInsert] = useState(""); //HashTag 입력
+    const [followed, setFollowed] = useState();
 
     useEffect(() => {
         axios.post('/get_auth')
@@ -37,7 +39,7 @@ export default function App() {
                         })
                 }
             })
-           
+
         resizingHandler();
         window.addEventListener("resize", resizingHandler);
         return () => { window.removeEventListener("resize", resizingHandler); };
@@ -161,102 +163,123 @@ export default function App() {
 
     //Editor 기능
     const OpenEditor = () => {
-        window.open(process.env.REACT_APP_URL + ':8000/src/editor/'+ data.filename.split('.')[0])
+        window.open(process.env.REACT_APP_URL + ':8000/src/editor/' + data.filename.split('.')[0])
     }
 
     return (
-        <PostContainer columns={isMobile ? "1fr" : "1fr 300px"}>
-            <ImageDetail>
-                <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + data.filename} alt="no_img" width="50%" />
-            </ImageDetail>
-
-            <Title>
-                <Information>
-                        <div>ID : <Linkdiv to={"/profile/" + data.user_id} color="#9ed1d9" text={data.user_id} /></div>
-                    <div>Comment : {data.message}</div>
-                    <div>{data.date}</div>
-                    <div>{likes} likes</div>
-                    <ThemeProvider theme={theme}>
-                        {liked 
-                        ? <Button variant="outlined" color="primary" onClick={onLikedHandler}><ThumbUpAltIcon fontSize='small' />&nbsp;Liked!</Button>
-                        : <Button variant="outlined" color="secondary" onClick={onLikedHandler}><ThumbUpOffAltIcon fontSize='small' />&nbsp;Like</Button>
-                        }
-                        <Button variant="outlined" color="secondary" onClick={downloadUrl}><DownloadIcon fontSize='small'/>&nbsp;Download</Button>
-                        {data.filename.split('.')[1] === 'svg' && 
-                        <Button variant="outlined" color="secondary" onClick={OpenEditor}><EditIcon fontSize='small'/>&nbsp;Edit</Button>}
-                    </ThemeProvider>
-                    <h3>tags</h3>
-                    <PostTags>
-                        {tags.map((tag, idx) => (
-                            <Tag key={idx}>
-                                <Linkdiv to={"/searchingTag/" + tag.Hashtag} text={tag.Hashtag} color="white" />
-                            </Tag>
-                        ))}
-                    </PostTags>
-                    <StyledInput width="95%" placeholder="Tag" onChange={TagInsertHandler} />
-                    <StyledButton width="50%" text="Add Tag" onClick={TagInsert} />
-                </Information>
-
-                {(sign === data.user_id) &&
-                    <UserContainer>
-                        <h1>Update</h1>
-                        <StyledInput width="95%" placeholder="MESSAGE" onChange={onMassageHandler} />
-                        <StyledButton width="50%" text="Delete" onClick={content_delete} />
-                        <StyledButton width="50%" text="Update" onClick={content_update} />
-                    </UserContainer>}
-            </Title>
-        </PostContainer>
+        <Page>
+            <Container columns={isMobile ? "1fr" : "1fr 300px"}>
+                <ImageContainer>
+                    <img src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + data.filename} alt="no_img" width="50%" />
+                </ImageContainer>
+                <Title>
+                    <Information>
+                        <h1>{data.message}</h1>
+                        <ThemeProvider theme={theme}>
+                            <DownloadWrapper>
+                                <Button variant="outlined" color="primary" onClick={downloadUrl}><DownloadIcon fontSize='small' />&nbsp;Download</Button>
+                                {liked
+                                ? <Button variant="outlined" color="secondary" onClick={onLikedHandler}><ThumbUpAltIcon fontSize='small' />&nbsp;Liked!</Button>
+                                : <Button variant="outlined" color="primary" onClick={onLikedHandler}><ThumbUpOffAltIcon fontSize='small' />&nbsp;Like</Button>
+                            }
+                            </DownloadWrapper>
+                            {data.filename.split('.')[1] === 'svg' &&
+                                    <Button variant="outlined" color="primary" onClick={OpenEditor}><EditIcon fontSize='small' />&nbsp;Edit</Button>}
+                        </ThemeProvider>
+                     
+                        <div>{likes} likes</div>
+                        <PostTags>
+                            {tags.map((tag, idx) => (
+                                <Tag key={idx}>
+                                    <Linkdiv to={"/searchingTag/" + tag.Hashtag} text={tag.Hashtag} color="#9ED1D9" />
+                                </Tag>
+                            ))}
+                        </PostTags>
+                        <StyledInput width="95%" placeholder="Please enter a tag" onChange={TagInsertHandler} />
+                        <StyledButton width="50%" text="Add Tag" onClick={TagInsert} />
+                    </Information>
+                    {(sign === data.user_id) ?
+                        <UserContainer>
+                            <h1>Update</h1>
+                            <StyledInput width="95%" placeholder="MESSAGE" onChange={onMassageHandler} />
+                            <StyledButton width="50%" text="Delete" onClick={content_delete} />
+                            <StyledButton width="50%" text="Update" onClick={content_update} />
+                        </UserContainer> :
+                        <UserWrapper>
+                        <Linkdiv to={"/profile/" + data.user_id} color="#3C3C3C" text={data.user_id} />
+                        </UserWrapper>}
+                </Title>
+            </Container>
+        </Page>
     );
 }
 
-const PostTags = styled.div``;
+const PostTags = styled.div`
+`;
 
 const Tag = styled.div`
     display: inline;
     margin: 2px;
-    padding: 2px;
-    background-color: #F5A282;
-    border-radius: 5px;
-    color: #FFFFFF;
+    padding: 8px;
+    background: #F3EFEF;
+    border-radius: 20px;
 `;
 
-const PostContainer = styled.div`
+const Page = styled.div`
+    display: grid;
+    place-items: center;
+`;
+
+const Container = styled.div`
     padding-top: 55px;
-    width: 95vw;
-    height: 90vh;
+    width: 1200px;
+    height: 94vh;
     display: grid;
 
     grid-template-columns: ${(props) => (props.columns || "1fr")};
 `;
 
-const ImageDetail = styled.div`
+const ImageContainer = styled.div`
     display: grid;
     place-items: center;
 `;
+
 
 const Title = styled.div`
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
     place-content: center;
     place-items: center;
     border-left: 1px solid #DDDDDD;
-    border-top: 1px solid #DDDDDD;
     font-size: 16px;
     font-weight: 600;
-    color: #9ED1D9;
 `;
 
 const Information = styled.div`
     display: grid;
     place-content: center;
-    gap: 15px;
+    place-items: center;
+    gap: 20px;
+    padding: 5px;
+`;
+
+const DownloadWrapper = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    gap: 20px;
 `;
 
 const UserContainer = styled.div`
+Padding: 5%;
     display: grid;
     place-items: center;
     place-content: center;
     gap: 15px;
+`;
+
+const UserWrapper = styled(DownloadWrapper)`
+    grid-template-columns: 1fr;
 `;

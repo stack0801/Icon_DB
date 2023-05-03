@@ -16,7 +16,6 @@ export default function App({ width, height, text, fontSize, onClick }) {
 const StyledButton = styled.button`
     background: #F5A282;
     border: none;
-    border-radius: 40px;
     color: #ECECEC;
     cursor: pointer;
     transition-duration: 0.2s;
