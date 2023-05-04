@@ -65,8 +65,7 @@ export default function Main() {
 }
 
 const Page = styled.div`
-    padding-top: 20px;
-    background-color: #9ED1D9;
+    background-color: #F7ECDC;
 `;
 
 const ImageListWrapper = styled.div`

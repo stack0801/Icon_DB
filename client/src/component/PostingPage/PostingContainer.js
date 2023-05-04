@@ -12,13 +12,16 @@ export default function App() {
 }
 
 const PostingContainer = styled.div`
+    padding-top: 55px;
+    width: 100vw;
+    height: 94vh;
     display: grid;
     place-items: center;
     place-content: center;
+    background: #F3EFEF;
 `;
 const PostingMessage = styled.h1`
+    width: 1200px;
     display: grid;
     place-items: center;
-    
-    color: gray;
 `;

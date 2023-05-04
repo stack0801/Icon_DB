@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
-import styled from "styled-components";
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
+
 
 export default function App({ width, height, fontSize }) {
     const [searchbox, setSearchbox] = useState("");
@@ -14,36 +17,20 @@ export default function App({ width, height, fontSize }) {
     }
 
     return (
-        <SearchBox width={width} height={height}>
-            <SearchInput width={width}
-                placeholder="keyword"
-                fontSize={fontSize}
+        <Paper
+            component="form"
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
+        >
+            <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                placeholder="Search Your Icons"
+                inputProps={{ 'aria-label': 'search your icons' }}
                 onChange={(e) => setSearchbox(e.currentTarget.value)}
                 onKeyPress={onKeyPress}
             />
-            <FaSearch size="20" color="#9ED1D9" cursor="pointer" onClick={onSubmit} />
-        </SearchBox>
+            <IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={onSubmit}>
+                <SearchIcon />
+            </IconButton>
+        </Paper>
     );
 }
-
-const SearchBox = styled.div`
-    display: grid;
-    grid-template-columns: 9fr 1fr;
-    place-items: center;    
-    background: white;
-    border: solid 2px #9ED1D9;
-    border-radius: 5px;
-
-    width: ${(props) => props.width || "auto"};
-    height: ${(props) => props.height || "auto"};
-`;
-
-const SearchInput = styled.input`
-    width: 90%;
-    text-align: center;
-    border: solid 1px white;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-
-    font-size: ${(props) => props.fontSize || "20px"};
-`;

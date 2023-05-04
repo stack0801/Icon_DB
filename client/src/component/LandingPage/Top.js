@@ -7,7 +7,7 @@ export default function App() {
 
     useEffect(() => {
         const resizingHandler = () => {
-            setisMobile(window.innerWidth <= 800);
+            setisMobile(window.innerWidth <= 768);
         };
         resizingHandler();
         window.addEventListener("resize", resizingHandler);
@@ -29,12 +29,12 @@ export default function App() {
 }
 
 const Page = styled.div`
-    width: 100vw;
+    padding-top: 55px;
     height: 85vh;
     display: grid;
     grid-template-rows: 20% 20% 30% 1fr;
     place-items: center;
-    background: #9ED1D9;
+    background: #F7ECDC;
 `;
 const TitleWrapper = styled.div`
     display: grid;

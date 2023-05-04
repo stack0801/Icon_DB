@@ -5,10 +5,12 @@ import LandingContainer from "../component/LandingPage/LandingContainer";
 import TopButton from "../component/TopButton";
 
 export default function Main() {
-    return (<>
-        <Header />
-        <Top text="GET FREE ICONS" />
-        <LandingContainer />
-        <TopButton />
-    </>);
+    return (
+        <>
+            <Header />
+            <Top text="GET FREE ICONS" />
+            <LandingContainer />
+            <TopButton />
+        </>
+    );
 }

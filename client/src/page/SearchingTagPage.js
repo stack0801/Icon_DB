@@ -20,40 +20,40 @@ export default function App() {
                 Hashtag: keyword
             }
         })
-        .then((res) => {
-            setData(res.data)
-        })
+            .then((res) => {
+                setData(res.data)
+            })
     }, [keyword]);
 
-    return (<>
-        <Header />
-        <SearchingPage>
-        <SearchBox width="60vw" fontSize="40px"/>
-            <h1>Your Results : {keyword}</h1>
-            <ImageListWrapper>
-            {(data.length === 0) ? 
-            <h1>no results</h1> :
-            data.map((list, idx) => (
-                <div key={idx}>
-                    <Link to={"/post/" + list.content_id}>
-                        <IconContainer>
-                            <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260"/>
-                            <ShowTitle><Text>Show Detail</Text></ShowTitle>
-                        </IconContainer>
-                    </Link>
-                </div>
-            ))}
-            </ImageListWrapper>
-            <TopButton />
-        </SearchingPage>
-    </>);
+    return (
+        <>
+            <Header />
+            <SearchingPage>
+                <SearchBox width="60vw" fontSize="40px" />
+                <h1>Your Results : {keyword}</h1>
+                <ImageListWrapper>
+                    {(data.length === 0) ?
+                        <h1>no results</h1> :
+                        data.map((list, idx) => (
+                            <div key={idx}>
+                                <Link to={"/post/" + list.content_id}>
+                                    <IconContainer>
+                                        <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260" />
+                                        <ShowTitle><Text>Show Detail</Text></ShowTitle>
+                                    </IconContainer>
+                                </Link>
+                            </div>
+                        ))}
+                </ImageListWrapper>
+                <TopButton />
+            </SearchingPage>
+        </>
+    );
 }
 
 const SearchingPage = styled.div`
-    position:absolute;
-    top: 55px;
+    padding-top: 55px;
     left:20%;
-
     display: grid;
     place-content: center;
     padding-top: 50px;
@@ -68,9 +68,7 @@ const ImageListWrapper = styled.div`
 
 const IconContainer = styled.div`
     height: 260px;
-        
     display: inline-block;
-    
     background-color : #ffffff;
     border: 3px solid #9ed1d9;
     border-radius: 10px;
@@ -78,7 +76,6 @@ const IconContainer = styled.div`
 
 const IconList = styled.img`
     height: 260px;
-
     border-radius: 10px;
 `;
 
@@ -89,11 +86,10 @@ const ShowTitle = styled.div`
     left: 0;
     width: 260px;
     height: 260px;
-
     background-color: #9ed1d9;
-
     opacity:0;
     transition: .5s ease;
+
     &:hover { 
         opacity: 0.9;
     }
@@ -104,10 +100,7 @@ const Text = styled.div`
     top: 50%;
     left: 50%;
     width: fit-content;
-
     text-align: center;
-
     font-size: 16px;
-    
     transform: translate(-50%, -50%);
 `;

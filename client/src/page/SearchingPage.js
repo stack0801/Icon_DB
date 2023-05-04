@@ -25,28 +25,30 @@ export default function App() {
             })
     }, [keyword]);
 
-    return (<>
-        <Header />
-        <SearchingPage>
-        <SearchBox width="60vw" fontSize="40px"/>
-            <h1>Your Results : {keyword}</h1>
-            <ImageListWrapper>
-            {(data.length === 0) ? 
-            <h1>no results</h1> :
-            data.map((list, idx) => (
-                <div key={idx}>
-                    <Link to={"/post/" + list.content_id}>
-                        <IconContainer>
-                            <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} width="260" alt="no_img" />
-                            <ShowTitle><Text>Show Detail</Text></ShowTitle>
-                        </IconContainer>
-                    </Link>
-                </div>
-            ))}
-            </ImageListWrapper>
-            <TopButton />
-        </SearchingPage>
-    </>);
+    return (
+        <>
+            <Header />
+            <SearchingPage>
+                <SearchBox width="60vw" fontSize="40px" />
+                <h1>Your Results : {keyword}</h1>
+                <ImageListWrapper>
+                    {(data.length === 0) ?
+                        <h1>no results</h1> :
+                        data.map((list, idx) => (
+                            <div key={idx}>
+                                <Link to={"/post/" + list.content_id}>
+                                    <IconContainer>
+                                        <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} width="260" alt="no_img" />
+                                        <ShowTitle><Text>Show Detail</Text></ShowTitle>
+                                    </IconContainer>
+                                </Link>
+                            </div>
+                        ))}
+                </ImageListWrapper>
+                <TopButton />
+            </SearchingPage>
+        </>
+    );
 }
 
 const SearchingPage = styled.div`

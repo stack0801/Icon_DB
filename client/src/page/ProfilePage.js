@@ -143,10 +143,12 @@ export default function App() {
         }
     };
 
-    return (<>
+    return (
+    <>
         <Header />
-        <UserPage columns={isMobile ? "1fr" : "400px 1fr"}>
-            <ProfilePage>
+        <Container>
+            <Wrapper columns={isMobile ? "1fr" : "378px 1fr"}>
+            <ProfileContainer>
                 <ImageUploader
                     value={images}
                     onChange={onChange}
@@ -173,8 +175,7 @@ export default function App() {
                         }
                     </>)}
                 </ImageUploader>
-            </ProfilePage>
-
+            </ProfileContainer>
             <FavoritePage>
                 <div>
                     <h2>My Icon List</h2>
@@ -225,38 +226,43 @@ export default function App() {
                     </MyList>
                 </div>
             </FavoritePage>
-        </UserPage>
-    </>);
+            </Wrapper>
+        </Container>
+    </>
+    );
 }
 
-const UserPage = styled.div`
-    padding-top : 60px;
-    width:100vw;
-    height: 90vh;
-
+const Container = styled.div`
+    padding-top : 55px;
     display: grid;
+    place-items: center;
+    background: #F3EFEF;
+`;
 
+const Wrapper = styled.div`
+    width: 1200px;
+    height: 100%;
+    display: grid;
+    
     grid-template-columns: ${(props) => (props.columns || "1fr")};
 `;
 
-const ProfilePage = styled.div` 
+const ProfileContainer = styled.div` 
     display: grid;
     grid-template-rows:300px 100px 50px 50px 50px;
     place-items: center;
     padding: 10%;
-    
-    border-right: solid 2px #dddddd;
 `;
 
 const FavoritePage = styled.div`
     display: grid;
-    grid-template-rows: repeat(auto-fit, 1fr);
-    padding: 10px;
+    padding-left: 102px;
 `;
 
 const MyList = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(100px, 150px));
+    grid-template-columns: repeat(auto-fill,minmax(100px, 1fr));
+    gap: 30px;
 `;
 
 const IconList = styled.img`

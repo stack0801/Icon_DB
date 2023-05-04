@@ -7,7 +7,7 @@ export default function App() {
 
     //Mobile 버전
     const [isMobile, setisMobile] = useState(false);
-    const resizingHandler = () => { setisMobile(window.innerWidth <= 600);};
+    const resizingHandler = () => { setisMobile(window.innerWidth <= 768);};
 
     useEffect(() => {
         resizingHandler();        
@@ -20,15 +20,13 @@ export default function App() {
             <Logo/>
             <SigninContainer width={isMobile ? "80vw" : "400px"} height="300px" padding="30px"/>
         </SigninPage>
-    )
+    );
 }
 
 const SigninPage = styled.div`
     height: 100vh;
-
     display: grid;
     place-items:center;
     place-content:center;
-
     background: #9ed1d9;
 `;
