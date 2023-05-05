@@ -43,7 +43,7 @@ export default function Main() {
 
     return (
         <Page>
-            <Container>
+            <Container> 
             <ImageListWrapper>
                 {icons.map((list, idx) => (
                     <div key={idx}>
@@ -51,7 +51,7 @@ export default function Main() {
                             <IconContainer>
                                 <IconList src={"https://webservicegraduationproject.s3.amazonaws.com/img/" + list.filename} alt="no_img" width="260" ref={idx + 1 === icons.length ? lastElRef : null} />
                                 <ShowTitle>
-                                    <Text>Show Detail</Text>
+                                    <Text>{list.message}</Text>
                                 </ShowTitle>
                             </IconContainer>
                         </Link>
