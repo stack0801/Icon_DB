@@ -234,6 +234,7 @@ export default function App() {
 
 const Container = styled.div`
     padding-top : 55px;
+    height: 94vh;
     display: grid;
     place-items: center;
     background: #F3EFEF;

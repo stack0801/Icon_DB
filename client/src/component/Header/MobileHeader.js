@@ -90,7 +90,7 @@ const MobileHeader = styled.div`
   z-index: 999;
   
   .header_user {
-    color: #292929;
+    color: #F7ECDC;
   }
 
   .animated {

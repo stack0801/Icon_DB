@@ -35,7 +35,7 @@ export default function App() {
                     window.location.href = '/';
             })
     }
- 
+
     const [scroll, setScroll] = useState(false);
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -59,20 +59,20 @@ export default function App() {
     return (
         <Page sign={sign}>
             <Container>
-            <Logo />
-            {scroll === false
-            ? <div /> 
-            : <SearchBox width="450px" height="30px" />
-            }
-            <Link to="/posting"><LinkButton text="Posting" /></Link>
-            <LinkButton text="Edit" onClick={openEditor} />
-            {sign !== null && <Link to={"/profile/" + sign}>
-                <ImageContainer src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + profiledata.profilename} alt="" width="45px" height="45px" borderRadius="50%" />
-            </Link>}
-            {sign === null ?
-                <Link to="/sign_in"><LinkButton text="Sign in" /></Link> :
-                <LinkButton onClick={signOut} text="sign out" />
-            }
+                <Logo />
+                {scroll === false
+                    ? <div />
+                    : <SearchBox width="450px" height="30px" />
+                }
+                <Link to="/posting"><LinkButton text="Posting" /></Link>
+                <LinkButton text="Edit" onClick={openEditor} />
+                {sign !== null && <Link to={"/profile/" + sign}>
+                    <ImageContainer src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + profiledata.profilename} alt="" width="45px" height="45px" borderRadius="50%" />
+                </Link>}
+                {sign === null ?
+                    <Link to="/sign_in"><LinkButton text="Sign in" /></Link> :
+                    <LinkButton onClick={signOut} text="sign out" />
+                }
             </Container>
         </Page>
     )
@@ -86,12 +86,11 @@ const Page = styled.div`
     font-size: 18px;
     display: grid;
     place-items: center;
-    place-content: center;
     z-index: 999;
 }`;
 
 const Container = styled.div`
-    width: 1200px;
+    width: 1800px;
     display: grid;
     place-items: center;
     grid-template-columns: ${(props) => (props.sign === null ? "15% 1fr repeat(3,10%)" : "15% 1fr repeat(4,10%)")};
