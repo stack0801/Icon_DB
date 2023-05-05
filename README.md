@@ -11,6 +11,23 @@ IconDB는 아이콘을 무료로 배포하고 제작하는 웹사이트입니다
 
 <br>
 
+## Getting Started
+
+### 1. Client
+    cd client
+    npm i
+    npm run start
+    
+### 2. Server
+    cd server
+    npm i
+    npm run dev
+
+### 3. svgedit
+    cd svgedit
+    npm i
+    npm run start
+
 ## Skills
 
 <br><br>
@@ -46,64 +63,68 @@ IconDB는 아이콘을 무료로 배포하고 제작하는 웹사이트입니다
 
 <br>
 
-### 1. 메인화면
+### 1. MainPage
 --------
 1. 상단 Header에 로그인 / 회원가입 기능 
     + 로그인이 되어있을 시, 포스팅 / 편집 / 마이페이지 / 로그아웃 기능으로 변경
-    + 일정 스크롤이 내려가면 상단 Header에 검색 기능 추가
-    + 모바일 버전에 맞는 Header 조정
+    + 스크롤이 내려가면 Header에 SearchBox가 나타나는 기능 추가
+    + 모바일 버전에 맞는 반응형 Header
+
+2. Intersection Observer를 사용한 Infinite Scroll 구현
 
 #### PC
 ![Main](https://user-images.githubusercontent.com/89950902/227500136-5bbcd2de-8ac3-4115-8051-a3059cba8957.PNG)
+
 #### Mobile
 ![Main(Mobile)](https://user-images.githubusercontent.com/89950902/227500164-908740ce-bd62-41e6-9cd1-276e1125e4ae.PNG)
 
 <br><br>
 
-### 2. 아이콘 추가 및 업데이트
+### 2. Posting Page
 ----------
 1. 아이콘을 추가하거나 업데이트할 수 있는 기능
     + 로그인이 되어있을 때만 사용 가능
-    + 간단한 설명 기능
+    + 로그인이 되어 있지 않을 시, 로그인 페이지로 이동
     + 여러개의 아이콘 등록 불가
 
+#### Posting Page
 ![Icon Update](https://user-images.githubusercontent.com/89950902/227500881-ce9ff7f7-48fd-4893-b7bc-90fe5f58a276.PNG)
 
 <br><br>
 
-### 3. 원하는 사용자들 간의 팔로우
+### 3. Profile Page
 ----------
-1. 자신의 Profile 방문 시, 프로필 업데이트 기능
-    + 다른 사람의 프로필 방문 시, 해당 기능 불가
+1. 자신의 Profile Page 방문 시, 프로필 업데이트 기능
 
 2. 다른 사람의 Profile 방문 시, 팔로우 기능
 
-3. 자신의 아이콘, 좋아요한 아이콘, 팔로워, 팔로잉을 리스트로 표시
+3. 자신의 아이콘, 좋아요한 아이콘, 팔로워, 팔로잉을 테이블 리스트로 표시
 
-#### My Profile
+#### My Profile Page
 ![My Profile](https://user-images.githubusercontent.com/89950902/227500804-d4dacb51-d9b1-4f2a-8ccc-647ae7f2ef09.PNG)
-#### Other's Profile
+
+#### Other's Profile Page
 ![Other's Profile](https://user-images.githubusercontent.com/89950902/227500830-4d8c6806-6a54-4712-b164-30c9e27be666.PNG)
 
 <br><br>
 
-### 4. 아이콘 상세페이지
+### 4. Detail Page
 --------
 1.  아이콘의 상세설명 추가
-    + 아이콘 등록자
-    + 간단한 설명
-    + 업로드 날짜
-    + 좋아요 갯수
+    + Title
+    + Like's Number
+    + Owner
 
 2.  좋아요 기능 
 3.  다운로드 기능
-4.  파일의 확장자가 SVG일 시, 편집 기능 추가(PNG, JPG 불가)
-5.  간단한 설명 업데이트 및 삭제 기능
-6.  해쉬태그를 추가하여 해쉬태그를 이용한 검색 기능
+4.  파일의 확장자가 SVG일 시, EDIT 버튼을 통해 편집 기능(PNG, JPG 불가)
+5.  Title 업데이트 및 삭제 기능
+6.  Hashtag를 추가하여 Hashtag를 이용한 검색 기능
 
-#### Icon(SVG)
+#### Detail Page(SVG) EDIT 사용 가능
 ![My Icon](https://user-images.githubusercontent.com/89950902/227500848-592d4ea2-a328-40bf-9f6a-fd292ae871e1.PNG)
-#### Icon(PNG)
+
+#### Detail Page(PNG) EDIT 사용 불가
 ![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)
 
 <br><br>
