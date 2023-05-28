@@ -5,7 +5,7 @@ import ImageContainer from "../ImageContainer";
 import StyledButton from "../StyledButton";
 import { withStyles, TextField } from "@material-ui/core";
 import axios from "axios";
-import NoImg from "../../img/NoImage.png";
+import NoImg from "../../assets/image/NoImage.png";
 
 function App({ classes }) {
     //유저 로그인 여부

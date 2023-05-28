@@ -8,7 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import axios from 'axios';
-import NoImg from "../../img/NoImage.png";
+import NoImg from "../../assets/image/NoImage.png";
 
 export default function App() {
     const [state, setState] = useState({
