@@ -77,7 +77,7 @@ export default function App() {
 const MobileHeader = styled.div`
   position: fixed;
   width: 100vw;
-  height: 55px;
+  height: 65px;
   
   display: grid;   
   grid-template-columns: 20% 1fr 20%;
