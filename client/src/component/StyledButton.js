@@ -10,23 +10,20 @@ export default function App({ width, height, text, fontSize, onClick }) {
             onClick = {onClick}>
             {text}
         </StyledButton>
-    );
+    )
 }
 
 const StyledButton = styled.button`
-    background: #F5A282;
-    border: none;
-    color: #ECECEC;
+    background: #f5a282;
+    color: #FFFFFF;
     cursor: pointer;
+    border: none;
     transition-duration: 0.2s;
 
     &:hover {
-        color: white;
+        background: #f28962;
     }
-    &:active {
-        background: #F28962;
-    }
-    
+
     width: ${(props) => (props.width || "auto")};
     height: ${(props) => (props.height || "auto")};
     font-size: ${(props) => (props.fontSize || "20px")};

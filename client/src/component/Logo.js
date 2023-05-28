@@ -20,18 +20,7 @@ const Container = styled.div`
 
 const Svg = styled(SvgLogo)`
     text {
-        fill: #ECECEC;
+        fill: #000000;
         transition-duration: 0.3s;
-    }
-
-    &:hover {
-        text {
-            fill: white;
-        }
-    }
-    &:active {
-        text {
-            fill:#F5A282;
-        }
     }
 `;

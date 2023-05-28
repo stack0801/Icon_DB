@@ -35,6 +35,9 @@ const Page = styled.div`
     grid-template-rows: 20% 20% 30% 1fr;
     place-items: center;
     background: #F7ECDC;
+    background-image: url(https://miricanvas.zendesk.com/hc/article_attachments/900002143783/___________________4_.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 `;
 const TitleWrapper = styled.div`
     display: grid;

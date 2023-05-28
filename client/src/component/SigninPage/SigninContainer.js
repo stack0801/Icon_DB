@@ -36,7 +36,7 @@ export default function App({ width, height, padding }) {
         <StyledContianer width={width} height={height} padding="10%">
             <StyledInput width="95%" placeholder="ID" onChange={onIdHandler} />
             <StyledInput width="95%" placeholder="Password" type="password" onChange={onPasswordHandler} onKeyPress={onKeyPress} />
-            <StyledButton width="100%" text="Sign In" onClick={onSubmit} />
+            <StyledButton width="99%" text="Sign In" onClick={onSubmit} />
             <GoogleButton />
             <Msg>Not a Member? <Link to="/sign_up"><LinkMsg>Sign up</LinkMsg></Link></Msg>
         </StyledContianer>

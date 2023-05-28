@@ -19,14 +19,15 @@ export default function App({ width, height, placeholder, type, fontSize, onChan
 const StyledInput = styled.input`
     padding-left: 10px;
     background: white;
-    border: solid 2px #9ED1D9;
+    border: solid 1px #9ED1D9;
 
     width: ${(props) => props.width || "auto"};
     height: ${(props) => props.height || "auto"};
     font-size: ${(props) => props.fontSize || "20px"};
     type: ${(props) => props.type ? props.type : "text"};
-    &:focus {
-        border-color: #F5A382;
+
+    &:hover {
+        border: solid 3px #9ED1D9;
         outline: none;
     }
 `;

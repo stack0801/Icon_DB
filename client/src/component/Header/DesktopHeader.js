@@ -64,7 +64,7 @@ export default function App() {
                     ? <div />
                     : <SearchBox width="450px" height="30px" />
                 }
-                <Link to="/posting"><LinkButton text="Posting" /></Link>
+                <Link to="/posting"><LinkButton color="#9ED1D9" text="Posting" /></Link>
                 <LinkButton text="Edit" onClick={openEditor} />
                 {sign !== null && <Link to={"/profile/" + sign}>
                     <ImageContainer src={"https://webservicegraduationproject.s3.amazonaws.com/userprofile/" + profiledata.profilename} alt="" width="45px" height="45px" borderRadius="50%" />
@@ -81,8 +81,9 @@ export default function App() {
 const Page = styled.div`
     position: fixed;
     width: 100vw;
-    height: 55px;
-    background: #9ED1D9;
+    height: 65px;
+    background: rgba(255,255,255,0.4);
+    border-bottom: solid 1px #000000;
     font-size: 18px;
     display: grid;
     place-items: center;
