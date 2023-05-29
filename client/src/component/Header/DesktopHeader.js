@@ -87,6 +87,7 @@ const Page = styled.div`
     display: grid;
     place-items: center;
     z-index: 999;
+    
 }`;
 
 const Container = styled.div`

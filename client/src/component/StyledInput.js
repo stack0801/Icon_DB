@@ -25,6 +25,7 @@ const StyledInput = styled.input`
     height: ${(props) => props.height || "auto"};
     font-size: ${(props) => props.fontSize || "20px"};
     type: ${(props) => props.type ? props.type : "text"};
+    
     &:focus {
         border-color: #F5A382;
         outline: none;
