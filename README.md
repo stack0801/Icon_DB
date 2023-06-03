@@ -7,8 +7,11 @@
 <br><br>
 
 ## Introducing Our Project
-IconDB는 아이콘을 무료로 배포하고 제작하는 웹사이트입니다. 사용자는 원하는 아이콘을 선택하여 사용 목적에 맞게 수정할 수 있습니다. 또한, 마음에 드는 사용자를 팔로우하거나 해시태그를 이용하여 원하는 아이콘을 찾을 수 있어 사용자의 목적에 부합하는 아이콘을 손쉽게 찾아 제작할 수 있습니다.
+IconDB는 무료로 아이콘을 배포하고 제작할 수 있는 웹사이트입니다. 사용자는 원하는 아이콘을 선택하고 해당 아이콘을 사용 목적에 맞게 수정할 수 있습니다. 이렇게 제작한 아이콘은 무료로 사용할 수 있습니다.
 
+또한, IconDB는 팔로우 기능을 제공하여 마음에 드는 사용자를 팔로우할 수 있습니다. 이를 통해 해당 사용자가 제작한 아이콘을 쉽게 확인하고 사용할 수 있습니다. 또한, 해시태그를 이용하여 원하는 아이콘을 검색할 수도 있습니다. 이 기능을 활용하면 사용자의 목적에 부합하는 아이콘을 빠르게 찾아 제작할 수 있습니다.
+
+IconDB를 이용하면 다양한 아이콘을 찾고, 필요에 맞게 수정하여 사용할 수 있습니다.
 <br>
 
 ## Getting Started
@@ -65,12 +68,11 @@ IconDB는 아이콘을 무료로 배포하고 제작하는 웹사이트입니다
 
 ### 1. MainPage
 --------
-1. 상단 Header에 로그인 / 회원가입 기능 
-    + 로그인이 되어있을 시, 포스팅 / 편집 / 마이페이지 / 로그아웃 기능으로 변경
-    + 스크롤이 내려가면 Header에 SearchBox가 나타나는 기능 추가
+1. Header 업로드 / 로그인 / 회원가입 등 다양한 기능 제공
+    + 스크롤을 내릴 시에 SearchBox 생성으로 인한 사용자 편의 증가
     + 모바일 버전에 맞는 반응형 Header
 
-2. Intersection Observer를 사용한 Infinite Scroll 구현
+2. Icon들을 한번에 볼 수 있도록 화면에 따라 최적화된 List로 표시
 
 #### PC
 ![Main](https://user-images.githubusercontent.com/89950902/227500136-5bbcd2de-8ac3-4115-8051-a3059cba8957.PNG)
@@ -82,9 +84,8 @@ IconDB는 아이콘을 무료로 배포하고 제작하는 웹사이트입니다
 
 ### 2. Posting Page
 ----------
-1. 아이콘을 추가하거나 업데이트할 수 있는 기능
+1. 아이콘을 추가하거나 업데이트하는 페이지
     + 로그인이 되어있을 때만 사용 가능
-    + 로그인이 되어 있지 않을 시, 로그인 페이지로 이동
     + 여러개의 아이콘 등록 불가
 
 #### Posting Page
@@ -110,16 +111,9 @@ IconDB는 아이콘을 무료로 배포하고 제작하는 웹사이트입니다
 
 ### 4. Detail Page
 --------
-1.  아이콘의 상세설명 추가
-    + Title
-    + Like's Number
-    + Owner
-
-2.  좋아요 기능 
-3.  다운로드 기능
-4.  파일의 확장자가 SVG일 시, EDIT 버튼을 통해 편집 기능(PNG, JPG 불가)
-5.  Title 업데이트 및 삭제 기능
-6.  Hashtag를 추가하여 Hashtag를 이용한 검색 기능
+1.  아이콘의 상세설명 및 다운로드 / 좋아요 페이지
+      * 파일의 확장자가 SVG일 시, EDIT 버튼을 통해 편집 기능(PNG, JPG 불가)
+      * Hashtag를 이용한 검색
 
 #### Detail Page(SVG) EDIT 사용 가능
 ![My Icon](https://user-images.githubusercontent.com/89950902/227500848-592d4ea2-a328-40bf-9f6a-fd292ae871e1.PNG)
@@ -134,25 +128,14 @@ IconDB는 아이콘을 무료로 배포하고 제작하는 웹사이트입니다
 <p align="justify">
 
 ### 긍정적 요소
-+ React의 컴포넌트 기능을 사용해서 중복코드를 없앨 수 있었습니다.
++ React의 공통 컴포넌트를 사용함으로써 개발 효율성 증가
   
-+ 팀 프로젝트인만큼 팀원간의 의사소통이 중요하다는 것을 알았습니다.
-  
-+ Notion을 이용한 진척도 및 회의 내용을 기록하여 제출 기간내에 완성할 수 있었습니다.
++ 팀원간의 커뮤니케이션 및 일정 관리의 중요성 인지
 
 ### 아쉬운 요소
-+ React의 기능을 100% 활용 못 한것에 대한 아쉬움이 남았습니다.
++ TypeScript 및 Redux 사용 미흡
   
-+ 웹 디자이너의 부재로 디자인 측면에서 아쉬움이 있습니다.
++ 디자인 미흡
 </p>
 
 <br>
-
-
-<!-- Stack Icon Refernces -->
-
-[js]: /client/public/javascript.svg
-[css]: /client/public/css.svg
-[react]: /client/public/react.svg
-[node]: /client/public/nodedotjs.svg
-[Notion]: /client/public/notion.svg
