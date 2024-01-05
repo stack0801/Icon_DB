@@ -20,7 +20,7 @@
 
 ### Installation
 ```bash
-$ git clone
+$ git clone https://github.com/stack0801/Icon_DB.git
 ```
 
 ### Frontend
