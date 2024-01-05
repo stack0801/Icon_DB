@@ -1,65 +1,82 @@
-<div align="center">
+#ICON_DB
 
-  ![header](https://capsule-render.vercel.app/api?type=soft&color=auto&height=300&section=header&text=IconDB&fontSize=90)
-  
-</div>
+## 프로젝트 정보
 
-<br><br>
+### 개발 기간
+<p>
+  2022.03 ~ 2022.07 약 4개월동안 진행<br/><br/>
+</p>
 
-## Introducing Our Project
-IconDB는 무료로 아이콘을 배포하고 제작할 수 있는 웹사이트입니다. 사용자는 원하는 아이콘을 선택하고 해당 아이콘을 사용 목적에 맞게 수정할 수 있습니다. 이렇게 제작한 아이콘은 무료로 사용할 수 있습니다.
+### 프로젝트 소개
+<p>
+  IconDB는 무료로 아이콘을 배포하고 제작할 수 있는 웹사이트입니다. 사용자는 원하는 아이콘을 선택하고 해당 아이콘을 사용 목적에 맞게 수정할 수 있습니다. 이렇게 제작한 아이콘은 무료로 사용할 수 있습니다.
 
-또한, IconDB는 팔로우 기능을 제공하여 마음에 드는 사용자를 팔로우할 수 있습니다. 이를 통해 해당 사용자가 제작한 아이콘을 쉽게 확인하고 사용할 수 있습니다. 또한, 해시태그를 이용하여 원하는 아이콘을 검색할 수도 있습니다. 이 기능을 활용하면 사용자의 목적에 부합하는 아이콘을 빠르게 찾아 제작할 수 있습니다.
+  또한, IconDB는 팔로우 기능을 제공하여 마음에 드는 사용자를 팔로우할 수 있습니다. 이를 통해 해당 사용자가 제작한 아이콘을 쉽게 확인하고 사용할 수 있습니다. 또한, 해시태그를 이용하여 원하는 아이콘을 검색할 수도 있습니다. 이 기능을 활용하면 사용자의 목적에 부합하는 아이콘을 빠르게 찾아 제작할 수 있습니다.
 
-IconDB를 이용하면 다양한 아이콘을 찾고, 필요에 맞게 수정하여 사용할 수 있습니다.
-<br>
+  IconDB를 이용하면 다양한 아이콘을 찾고, 필요에 맞게 수정하여 사용할 수 있습니다.<br/><br/>
+</p>
 
-## Getting Started
+## 시작 가이드
 
-### 1. Client
-    cd client
-    npm i
-    npm run start
-    
-### 2. Server
-    cd server
-    npm i
-    npm run dev
+### Installation
+```bash
+$ git clone
+```
+
+### 1. Frontend
+```
+cd client
+npm install
+npm run start
+```
+
+### 2. Backend
+```
+cd server
+npm i
+npm run dev
+```
 
 ### 3. svgedit
-    cd svgedit
-    npm i
-    npm run start
+```
+cd svgedit
+npm install
+npm run start
+```
+<br/><br/>
 
-## Skills
+## Stacks
 
-<br><br>
+### Environment
 
-<div align="center">
 
-  ### 📌 Frontend Stack
+
+### Config
+<p>
+  <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white"/>
+</p>
+
+### Development
+<p>
   <img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
   <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/>
-  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black"/>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/>
   <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=flat-square&logo=styledcomponents&logoColor=white"/>
-  <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white"/>
-  
-  <br><br>
-  
-  ### 📌 Backend Stack
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white"/>
-  <br><br>
-  
-  ### 📌 Cowork Tools
-  <img src="https://img.shields.io/badge/VSCode-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white"/>
-  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white"/>
-</div>
+</p>
 
+### 📌 Backend Stack
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
+<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white"/>
+<img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white"/>
+<br><br>
+
+### 📌 Cowork Tools
+<img src="https://img.shields.io/badge/VSCode-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white"/>
+<img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/>
+<img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"/>
+<img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white"/>
+  
 <br><br>
 
 ## 구현 기능
