@@ -50,8 +50,8 @@ npm run start
 ### Environment
 <p>
   <img src="https://img.shields.io/badge/VSCode-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white"/>
-  
-  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=Github&logoColor=white"/>
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
   <img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white"/>
 </p>
@@ -68,30 +68,42 @@ npm run start
   <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black"/>
   <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/>
-  <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=flat-square&logo=styledcomponents&logoColor=white"/><br/>
+  <img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styledcomponents&logoColor=white"/><br/>
   <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white"/>
 </p>
 
 ### Communication 
 <p>
   <img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white"/><br/><br/>
+  <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Microsoft Teams-6264A7?style=flat-square&logo=Microsoft Teams&logoColor=white"/><br/><br/>
 </p>
 
 
-## 구현 기능
+## 중요 기능
 
-<br>
+### 소셜 로그인
+<p>
+  소셜 로그인을 통해 로그인 및 회원가입의 불편함을 줄였습니다.
+</p>
 
-### 1. MainPage
---------
-1. Header 업로드 / 로그인 / 회원가입 등 다양한 기능 제공
-    + 스크롤을 내릴 시에 SearchBox 생성으로 인한 사용자 편의 증가
-    + 모바일 버전에 맞는 반응형 Header
+### 아이콘 업로드 및 다운로드
+<p>
+  마음에 드는 아이콘을 업로드 및 다운로드하여 이용자들에게 공유할 수 있습니다.
+</p>
 
-2. Icon들을 한번에 볼 수 있도록 화면에 따라 최적화된 List로 표시
+### 사용자들 간의 팔로우
+<p>
+  사용자들 간 팔로우 및 팔로잉이 가능하여 마음에 드는 사용자의 아이콘을 한눈에 볼 수 있도록 제작하였습니다.
+</p>
 
-#### PC
+### 해쉬태그 및 좋아요
+<p>
+  해쉬태그 기능을 추가하여 
+</p>
+
+
+
 ![Main](https://user-images.githubusercontent.com/89950902/227500136-5bbcd2de-8ac3-4115-8051-a3059cba8957.PNG)
 
 #### Mobile
