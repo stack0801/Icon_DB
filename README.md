@@ -23,21 +23,21 @@
 $ git clone
 ```
 
-### 1. Frontend
+### Frontend
 ```
 cd client
 npm install
 npm run start
 ```
 
-### 2. Backend
+### Backend
 ```
 cd server
 npm i
 npm run dev
 ```
 
-### 3. svgedit
+### svgedit
 ```
 cd svgedit
 npm install
