@@ -33,7 +33,7 @@ npm run start
 ### Backend
 ```
 cd server
-npm i
+npm install
 npm run dev
 ```
 
