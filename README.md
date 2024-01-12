@@ -108,9 +108,6 @@ npm run start
 ![Main](https://user-images.githubusercontent.com/89950902/227500136-5bbcd2de-8ac3-4115-8051-a3059cba8957.PNG)
 
 ### 아이콘 업데이트 페이지
-<p>
- 로그인이 되어있을 때만 표시되는 페이지입니다.
-</p>
 
 ![Icon Update](https://user-images.githubusercontent.com/89950902/227500881-ce9ff7f7-48fd-4893-b7bc-90fe5f58a276.PNG)
 
@@ -123,10 +120,14 @@ npm run start
 ![Other's Profile](https://user-images.githubusercontent.com/89950902/227500830-4d8c6806-6a54-4712-b164-30c9e27be666.PNG)
 
 
-### 상세 페이지(SVG) EDIT 사용 가능
+### 상세 페이지
+
+![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)
+
+### 상세 페이지(SVG)
+<p>
+ EDIT 버튼 추가
+</p>
 
 ![My Icon](https://user-images.githubusercontent.com/89950902/227500848-592d4ea2-a328-40bf-9f6a-fd292ae871e1.PNG)
 
-### 상세 페이지 EDIT 사용 불가
-
-![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)
