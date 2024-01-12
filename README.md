@@ -1,4 +1,4 @@
-# ICON_DB
+8# ICON_DB
 
 ## 프로젝트 정보
 
@@ -149,22 +149,3 @@ npm run start
 
 #### Detail Page(PNG) EDIT 사용 불가
 ![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)
-
-<br><br>
-
-## 긍정적 요소 & 아쉬운 요소
-
-<p align="justify">
-
-### 긍정적 요소
-+ React의 공통 컴포넌트를 사용함으로써 개발 효율성 증가
-  
-+ 팀원간의 커뮤니케이션 및 일정 관리의 중요성 인지
-
-### 아쉬운 요소
-+ TypeScript 및 Redux 사용 미흡
-  
-+ 디자인 미흡
-</p>
-
-<br>
