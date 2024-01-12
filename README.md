@@ -1,4 +1,4 @@
-8# ICON_DB
+# ICON_DB
 
 ## 프로젝트 정보
 
@@ -99,53 +99,34 @@ npm run start
 
 ### 해쉬태그 및 좋아요
 <p>
-  해쉬태그 기능을 추가하여 
+  해쉬태그 기능을 추가하여 더욱 정밀한 검색이 가능하도록 개발하였습니다. 또한, 좋아요 기능을 통해 마음에 드는 아이콘을 한눈에 볼 수 있도록 개발하였습니다.<br/><br/>
 </p>
 
+## 웹 페이지 구성
 
-
+### 메인 페이지
 ![Main](https://user-images.githubusercontent.com/89950902/227500136-5bbcd2de-8ac3-4115-8051-a3059cba8957.PNG)
 
-#### Mobile
-![Main(Mobile)](https://user-images.githubusercontent.com/89950902/227500164-908740ce-bd62-41e6-9cd1-276e1125e4ae.PNG)
+### 아이콘 업데이트 페이지
+<p>
+ 로그인이 되어있을 때만 표시되는 페이지입니다.
+</p>
 
-<br><br>
-
-### 2. Posting Page
-----------
-1. 아이콘을 추가하거나 업데이트하는 페이지
-    + 로그인이 되어있을 때만 사용 가능
-    + 여러개의 아이콘 등록 불가
-
-#### Posting Page
 ![Icon Update](https://user-images.githubusercontent.com/89950902/227500881-ce9ff7f7-48fd-4893-b7bc-90fe5f58a276.PNG)
 
-<br><br>
+### 마이프로필 페이지
 
-### 3. Profile Page
-----------
-1. 자신의 Profile Page 방문 시, 프로필 업데이트 기능
-
-2. 다른 사람의 Profile 방문 시, 팔로우 기능
-
-3. 자신의 아이콘, 좋아요한 아이콘, 팔로워, 팔로잉을 테이블 리스트로 표시
-
-#### My Profile Page
 ![My Profile](https://user-images.githubusercontent.com/89950902/227500804-d4dacb51-d9b1-4f2a-8ccc-647ae7f2ef09.PNG)
 
-#### Other's Profile Page
+### 다른 사용자의 프로필 페이지
+
 ![Other's Profile](https://user-images.githubusercontent.com/89950902/227500830-4d8c6806-6a54-4712-b164-30c9e27be666.PNG)
 
-<br><br>
 
-### 4. Detail Page
---------
-1.  아이콘의 상세설명 및 다운로드 / 좋아요 페이지
-      * 파일의 확장자가 SVG일 시, EDIT 버튼을 통해 편집 기능(PNG, JPG 불가)
-      * Hashtag를 이용한 검색
+### 상세 페이지(SVG) EDIT 사용 가능
 
-#### Detail Page(SVG) EDIT 사용 가능
 ![My Icon](https://user-images.githubusercontent.com/89950902/227500848-592d4ea2-a328-40bf-9f6a-fd292ae871e1.PNG)
 
-#### Detail Page(PNG) EDIT 사용 불가
+### 상세 페이지 EDIT 사용 불가
+
 ![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)
