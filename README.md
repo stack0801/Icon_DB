@@ -136,4 +136,83 @@ npm run start
 
 ![My Icon](https://user-images.githubusercontent.com/89950902/227500848-592d4ea2-a328-40bf-9f6a-fd292ae871e1.PNG)
 
+<br/><br/>
 
+## 아키텍처
+
+### 디렉토리 구조
+
+```bash
+├── README.md
+├── package-lock.json
+├── package.json
+├── server : 백엔드 
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── server.js : 서버, 데이터베이스 관련 정보
+│   ├── server_user.js : 사용자 관련 코드
+│   ├── server_tag.js : 해시태그 관련 코드
+│   ├── server_like.js : 좋아요 유무 및 좋아요 수 코드
+│   ├── server_follow.js : 팔로워 관련 코드
+│   ├── server_content.js : 아이콘 정보 관련 코드
+│   └── src
+│       ├── aws_multer.js
+│       ├── mysql.js
+│       └── session.js
+├── client : 프론트엔드
+│   ├── README.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│       ├── assets
+│           ├── images
+│       ├── components
+│           ├── Header
+│               ├── DesktopHeader.js
+│               ├── MobileHeader.js
+│               └── Header.js
+│           ├── EditProfilePage
+│               ├── EditProfileContainer.js
+│               └── EditProfileWrapper.js
+│           ├── LandingPage
+│               ├── LandingContainer.js
+│               └── Top.js : 클릭 시 창의 최상단으로 가는 기능을 가진 코드
+│           ├── PostingPage
+│               ├── PostingContainer.js
+│               └── PostingWrapper.js
+│           ├── PostContainer
+│               └── PostContainer.js
+│           ├── SigninPage
+│               └── SigninContainer.js
+│           ├── SignupContainer
+│               └── SignupConatiner.js
+│           ├── GoogleButton.js
+│           ├── ImageContainer.js
+│           ├── LinkButton.js
+│           ├── Linkdiv.js
+│           ├── Loading.js
+│           ├── Logo.js
+│           ├── SearchBox.js
+│           ├── StyledButton.js
+│           ├── StyledInput.js
+│           ├── theme.js
+│           └── TopButton.js
+│       ├── pages
+│           ├── EditProfilePage.js
+│           ├── LandingPage.js
+│           ├── PostingPage.js
+│           ├── PostPage.js
+│           ├── ProfilePage.js
+│           ├── SearchingPage.js
+│           ├── SearchingTagPage.js
+│           ├── SigninPage.js
+│           └── SignupPage.js
+│       ├── App.js
+│       └── index.js
+│   └── public
+│       ├── favicon
+│       ├── manifext.json
+│       └── index.html
+└── svgedit : svg 형식의 파일의 아이콘을 사용자의 필요성에 맞도록 색 및 모양을 바꿀 수 있는 폴더
+
+```
