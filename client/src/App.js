@@ -1,13 +1,13 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import LandingPage from './page/LandingPage';
-import SigninPage from './page/SigninPage';
-import SignupPage  from './page/SignupPage';
-import PostPage  from './page/PostPage';
-import PostingPage  from './page/PostingPage';
-import SearchingPage  from './page/SearchingPage';
-import SearchingTagPage  from './page/SearchingTagPage';
-import EditProfilePage from './page/EditProfilePage';
-import ProfilePage from './page/ProfilePage';
+import LandingPage from './pages/Main/index';
+import SigninPage from './pages/SigninPage';
+import SignupPage  from './pages/SignupPage';
+import PostPage  from './pages/PostPage';
+import PostingPage  from './pages/PostingPage';
+import SearchingPage  from './pages/SearchingPage';
+import SearchingTagPage  from './pages/SearchingTagPage';
+import EditProfilePage from './pages/EditProfilePage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
