@@ -18,15 +18,16 @@ export default function App({ width, height, placeholder, type, fontSize, onChan
 const StyledInput = styled.input`
     padding-left: 10px;
     background: white;
-    border: solid 1px #9ED1D9;
+    border: solid 1px #424242;
+    border-radius: 3px;
 
     width: ${(props) => props.width || "auto"};
-    height: ${(props) => props.height || "auto"};
-    font-size: ${(props) => props.fontSize || "20px"};
+    height: ${(props) => props.height || "40px"};
+    font-size: ${(props) => props.fontSize || "13px"};
     type: ${(props) => props.type ? props.type : "text"};
 
     &:hover {
-        border: solid 3px #9ED1D9;
+        border: solid 1px #9ed1d9;
         outline: none;
     }
 `;

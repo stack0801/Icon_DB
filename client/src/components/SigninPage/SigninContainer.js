@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import StyledButton from "../StyledButton";
-import StyledInput from "../StyledInput";
-import GoogleButton from "../GoogleButton";
 import axios from "axios";
+
+import Logo from "@_components/Logo";
+import StyledInput from "@_components/StyledInput";
+import StyledButton from "@_components/StyledButton";
+import GoogleButton from "@_components/GoogleButton";
 
 export default function App({ width, height, padding }) {
     //ID, 비밀번호
@@ -33,38 +35,129 @@ export default function App({ width, height, padding }) {
     }
 
     return (
-        <StyledContianer width={width} height={height} padding="10%">
-            <StyledInput width="95%" placeholder="ID" onChange={onIdHandler} />
-            <StyledInput width="95%" placeholder="Password" type="password" onChange={onPasswordHandler} onKeyPress={onKeyPress} />
-            <StyledButton width="99%" text="Sign In" onClick={onSubmit} />
-            <GoogleButton />
-            <Msg>Not a Member? <Link to="/sign_up"><LinkMsg>Sign up</LinkMsg></Link></Msg>
-        </StyledContianer>
-    )
-}
+        <ContentContainer>
+            <ContentBox>
+                <LogoBox>
+                    <Logo />
+                </LogoBox>
+                <HeadingBox>
+                    <h5>로그인</h5>
+                </HeadingBox>
+                <LoginBox>
+                    <StyledInput width="100%" placeholder="ID" onChange={onIdHandler} />
+                    <StyledInput width="100%" placeholder="Password" type="password" onChange={onPasswordHandler} onKeyPress={onKeyPress} />
+                    <StyledButton width="100%" text="로그인" onClick={onSubmit} />
+                    <GoogleButton />
+                </LoginBox>
+                <NoAccountBox>
+                    <p>
+                        계정이 없습니까?
+                        <ToSignupLink to="/sign_up">가입하기</ToSignupLink>
+                    </p>
+                </NoAccountBox>
+                <IcondbBox />
+            </ContentBox>
+        </ContentContainer>
+    );
+};
 
-const StyledContianer = styled.div`
-    display: grid;
-    justify-items: center;
-    gap: 14px;
-    background: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
-    width: ${(props) => (props.width || "auto")};
-    height: ${(props) => (props.height || "auto")};
-    padding: ${(props) => (props.padding || "5%")};
-    
+const ContentContainer = styled.div`
+    padding: 40px 20px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @media only screen and (min-width: 768px) {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    @media only screen and (min-width: 992px) {
+        padding-left: 80px;
+        padding-right: 80px;
+        width: 480px;
+    }
 `;
 
-const LinkMsg = styled.div`
-    font-weight: 700;
-    color: #F5A282;
-    text-decoration: none;
-`
+const ContentBox = styled.div`
+    padding-top: 20px;
+    position: relative;
+    width: 320px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
-const Msg = styled.div`
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    > * {
+        width: 100%;
+    }
+`;
+
+const LogoBox = styled.div`
+    margin-top: 50px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media only screen and (min-width: 992px) {
+        margin-bottom: 70px !important;
+    }
+`;
+
+const HeadingBox = styled.div`
+    margin-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h5 {
+        margin-bottom: 2rem;
+        font-size: 1.3125rem;
+        font-weight: 600;
+    }
+`;
+
+const LoginBox = styled.div`
+    margin-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    font-size: 20px;
-`
+`;
+
+const NoAccountBox = styled.div`
+    width: 100%;
+
+    p {
+        font-size: .8125rem;
+        font-weight: 600;
+        text-align: center;
+    }
+`;
+
+const ToSignupLink = styled(Link)`
+    font-weight: 700;
+    color: #9ed1d9;
+`;
+
+const IcondbBox = styled.div`
+    margin-top: auto;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    visibility: hidden;
+    opacity: 0;
+`;

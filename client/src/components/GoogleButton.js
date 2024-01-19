@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import styled from "styled-components";
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
 import axios from "axios";
@@ -37,11 +38,17 @@ export default function GoogleButton({ onSocial }){
     }
 
     return(
-        <div>
+        <GoogleSignButton>
             <GoogleLogin
                 clientId={process.env.REACT_APP_clientId}
                 onSuccess={handleGoogleSuccess}
                 onFailure={handleGoogleFailure} />
-        </div>
+        </GoogleSignButton>
     )
 }
+
+const GoogleSignButton = styled.div`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+`;

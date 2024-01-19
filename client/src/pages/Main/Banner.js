@@ -18,31 +18,45 @@ export default function Banner() {
   }, [isMobile]);
 
   return (
-    <Page>
-      <div />
-      <TitleWrapper>
-        <h1>ICON LIBRARY</h1>
-        <h1>AVAILABLE FOR FREE</h1>
-      </TitleWrapper>
+    <BannerSection>
+      <InnerContentBox>
+        <Heading>ICON LIBRARY, AVAILABLE FOR FREE</Heading>
       <SearchBox
-        width={isMobile ? "90%" : "600px"}
-        height="60px"
+        width={isMobile ? "100%" : "600px"}
+        height="64px"
         fontSize="30px"
       />
-    </Page>
+      </InnerContentBox>
+    </BannerSection>
   );
 }
 
-const Page = styled.div`
-  padding-top: 60px;
-  height: 85vh;
-  display: grid;
-  grid-template-rows: 20% 20% 30% 1fr;
-  place-items: center;
-  background: #f7ecdc;
-  background-image: url(https://miricanvas.zendesk.com/hc/article_attachments/900002143783/___________________4_.png);
-  background-size: cover;
-  background-repeat: no-repeat;
+const BannerSection = styled.section`
+  padding-top: 54px;
+  position: relative;
+  text-align: center;
+  color: #000;
+`;
+
+const InnerContentBox = styled.div`
+  margin: auto;
+  padding: 80px 100px 40px;
+  max-width: 1024px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Heading = styled.h1`
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.25;
+
+  @media screen and (min-width: 768px) {
+    font-size: 44px;
+  }
 `;
 
 const TitleWrapper = styled.div`

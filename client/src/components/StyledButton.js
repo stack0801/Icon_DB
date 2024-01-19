@@ -14,17 +14,14 @@ export default function App({ width, height, text, fontSize, onClick }) {
 }
 
 const StyledButton = styled.button`
-    background: #f5a282;
-    color: #FFFFFF;
+    background: #9ed1d9;
+    color: #fff;
     cursor: pointer;
     border: none;
+    border-radius: 3px;
     transition-duration: 0.2s;
 
-    &:hover {
-        background: #f28962;
-    }
-
     width: ${(props) => (props.width || "auto")};
-    height: ${(props) => (props.height || "auto")};
-    font-size: ${(props) => (props.fontSize || "20px")};
+    height: ${(props) => (props.height || "40px")};
+    font-size: ${(props) => (props.fontSize || "18px")};
 `;

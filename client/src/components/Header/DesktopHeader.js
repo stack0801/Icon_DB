@@ -8,6 +8,8 @@ import ImageContainer from "../ImageContainer";
 import LinkButton from "../LinkButton";
 import Logo from "../Logo";
 
+import { FaRegUser } from "react-icons/fa6";
+
 export default function DesktopHeader() {
   const [sign, setSign] = useState(null);
   const [profiledata, setProfileData] = useState({
@@ -55,6 +57,16 @@ export default function DesktopHeader() {
     window.open(process.env.REACT_APP_URL + ":8000/src/editor/");
   };
 
+  const [screenWidth, setScreenWidth] = useState(0);
+
+  useEffect(() => {
+      window.addEventListener('resize', () => {setScreenWidth(window.innerWidth)});
+  });
+  
+  useEffect(() => {
+      setScreenWidth(window.innerWidth);
+  }, []);
+
   return (
     <Header id='header' sign={sign}>
       <HeaderMenuSection>
@@ -91,13 +103,20 @@ export default function DesktopHeader() {
             <LoginBox>
               <NotConnectedBox>
                 <LoginResisterBox>
-                <LoginLink href="/sign_in">
-                  {/* <LinkButton text="Login" /> */}
-                  로그인
-                </LoginLink>
-                <ResisterLink href="/sign_up">
-                  가입하기
-                </ResisterLink>
+                  { screenWidth > 1400 ? (
+                    <>
+                  <LoginLink href="/sign_in">
+                    로그인
+                  </LoginLink>
+                  <ResisterLink href="/sign_up">
+                    가입하기
+                  </ResisterLink>
+                  </>
+                  ) : (
+                  <UserLink href='/sign_in'>
+                    <FaRegUser fill='#000' size='16'/>
+                  </UserLink>
+                  )}
                 </LoginResisterBox>
               </NotConnectedBox>
             </LoginBox>
@@ -155,6 +174,7 @@ const LoginLink = styled.a`
   background-color: transparent;
   color: #000;
 `;
+
 const ResisterLink = styled.a`
   padding: 0 20px;
   position: relative;
@@ -184,6 +204,15 @@ const ResisterLink = styled.a`
     display: table;
     clear: both;
     content: "";
+  }
+`;
+
+const UserLink = styled.a`
+  display: block;
+  cursor: pointer;
+
+  @media screen and (min-width: 1400px) {
+    display: none;
   }
 `;
 
