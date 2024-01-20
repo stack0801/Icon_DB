@@ -8,7 +8,7 @@ import StyledInput from "@_components/StyledInput";
 import StyledButton from "@_components/StyledButton";
 import GoogleButton from "@_components/GoogleButton";
 
-export default function App({ width, height, padding }) {
+export default function Content() {
     //ID, 비밀번호
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
@@ -52,7 +52,7 @@ export default function App({ width, height, padding }) {
                 <NoAccountBox>
                     <p>
                         계정이 없습니까?
-                        <ToSignupLink to="/sign_up">가입하기</ToSignupLink>
+                        <ToSignupLink to="/sign_up"> 가입하기</ToSignupLink>
                     </p>
                 </NoAccountBox>
                 <IcondbBox />

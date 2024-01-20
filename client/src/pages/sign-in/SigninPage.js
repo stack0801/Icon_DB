@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import Background from "./Background";
-import SigninContainer from "@_components/SigninPage/SigninContainer";
-import Logo from "@_components/Logo";
+import SigninContainer from "@_pages/sign-in/ContentContainer";
 
-export default function App() {
+export default function Signin() {
 
     //Mobile 버전
     const [isMobile, setisMobile] = useState(false);
@@ -20,7 +19,7 @@ export default function App() {
     return (
         <SigninPage>
             <Background />
-            <SigninContainer width={isMobile ? "80vw" : "400px"} height="300px" padding="30px"/>
+            <SigninContainer />
         </SigninPage>
     );
 }

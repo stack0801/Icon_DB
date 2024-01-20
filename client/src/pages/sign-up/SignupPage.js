@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import SignupContainer from "@_components/SignupPage/SignupContainer";
-import Logo from "@_components/Logo";
+import Background from "./Background";
+import SignupContainer from "@_pages/sign-up/ContentContainer";
 
-export default function App() {
+export default function Signup() {
 
     //Mobile 버전
     const [isMobile, setisMobile] = useState(false);
@@ -18,16 +18,17 @@ export default function App() {
 
     return (
         <SignupPage>
-            <Logo/>
-            <SignupContainer width={isMobile ? "80vw" : "400px"} height="300px" padding="30px"/>
+            <Background />
+            <SignupContainer />
         </SignupPage>
     );
 }
 
 const SignupPage = styled.div`
+     width: 100vw;
     height: 100vh;
-    display: grid;
-    place-items:center;
-    place-content:center;
-    background: #9ed1d9;
+
+    @media screen and (min-width: 992px) {
+      display: flex;        
+    }
 `;
