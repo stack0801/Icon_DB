@@ -10,7 +10,7 @@ import SearchingTagPage  from './pages/SearchingTagPage';
 import EditProfilePage from './pages/EditProfilePage';
 import ProfilePage from './pages/ProfilePage';
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Routes>
@@ -26,6 +26,4 @@ function App() {
       </Routes>
     </Router>
   );
-}
-
-export default App;
+};
