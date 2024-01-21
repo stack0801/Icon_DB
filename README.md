@@ -1,5 +1,13 @@
 # ICON_DB
 
+<div align="center">
+  <br/><br/>
+  
+  ![logo3 (1)](https://github.com/stack0801/Icon_DB/assets/89950902/60edc9d5-cec0-4045-885a-bff21043fd2f)
+  
+  <br/><br/>
+</div>
+
 ## 프로젝트 정보
 
 ### 개발 기간
