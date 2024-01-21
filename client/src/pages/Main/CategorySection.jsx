@@ -18,12 +18,11 @@ export default function CategorySection() {
     return (
         <BannerSection>
             <ItemBox>
-                <div >
+                <div>
                     <div className="image-container">
                         <CircleBox>
                         </CircleBox>
                     </div>
-
                     <div className="text-container">
                         <Heading>아이콘</Heading>
                     </div>

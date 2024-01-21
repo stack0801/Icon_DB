@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
@@ -23,7 +24,7 @@ export default function App({ width, height, fontSize }) {
         >
             <InputBase
                 sx={{ ml: 1, flex: 1 }}
-                placeholder="Search Your Icons"
+                placeholder="아이콘을 검색해 주세요"
                 inputProps={{ 'aria-label': 'search your icons' }}
                 onChange={(e) => setSearchbox(e.currentTarget.value)}
                 onKeyPress={onKeyPress}
@@ -33,4 +34,4 @@ export default function App({ width, height, fontSize }) {
             </IconButton>
         </Paper>
     );
-}
+};
