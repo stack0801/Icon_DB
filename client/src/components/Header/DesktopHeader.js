@@ -139,7 +139,7 @@ const Header = styled.header`
 const HeaderMenuSection = styled.section`
   padding: 0 20px;
   height: 54px;
-  background-color: #9ed1d9;
+  background-color: #fff;
 `;
 
 const MenuBox = styled.div`
