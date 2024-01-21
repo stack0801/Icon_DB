@@ -1,5 +1,13 @@
 # ICON_DB
 
+<div align="center">
+  <br/><br/>
+  
+  ![logo3 (1)](https://github.com/stack0801/Icon_DB/assets/89950902/60edc9d5-cec0-4045-885a-bff21043fd2f)
+  
+  <br/><br/>
+</div>
+
 ## 프로젝트 정보
 
 ### 개발 기간
@@ -107,10 +115,19 @@ npm run start
   svg 형식의 파일인 경우, 웹사이트 내에서 자체적인 편집을 가능하도록 개발하여 아이콘의 모양 및 색을 사용자가 원하는 대로 변경할 수 있도록 하였습니다.<br/><br/>
 </p>
 
-## 웹 페이지 구성
+## 페이지 구성
 
 ### 메인 페이지
+
 ![Main](https://user-images.githubusercontent.com/89950902/227500136-5bbcd2de-8ac3-4115-8051-a3059cba8957.PNG)
+
+### 로그인 페이지
+
+![signin](https://github.com/stack0801/Icon_DB/assets/89950902/b320deff-ab4d-45b8-9c38-360d04d3d0ea)
+
+### 회원가입 페이지
+
+![signup](https://github.com/stack0801/Icon_DB/assets/89950902/50e01707-497b-42fc-be3f-76e5c5f410fc)
 
 ### 아이콘 업데이트 페이지
 
