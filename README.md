@@ -117,41 +117,26 @@ npm run start
 
 ## 페이지 구성
 
-### 메인 페이지
+|![Main](https://user-images.githubusercontent.com/89950902/227500136-5bbcd2de-8ac3-4115-8051-a3059cba8957.PNG)|
+|:---:|
+|메인 페이지|
 
-![Main](https://user-images.githubusercontent.com/89950902/227500136-5bbcd2de-8ac3-4115-8051-a3059cba8957.PNG)
+|![signin](https://github.com/stack0801/Icon_DB/assets/89950902/b320deff-ab4d-45b8-9c38-360d04d3d0ea)|![signup](https://github.com/stack0801/Icon_DB/assets/89950902/50e01707-497b-42fc-be3f-76e5c5f410fc)|
+|:---:|:---:|
+|로그인 페이지|회원가입 페이지|
 
-### 로그인 페이지
+|![Icon Update](https://user-images.githubusercontent.com/89950902/227500881-ce9ff7f7-48fd-4893-b7bc-90fe5f58a276.PNG)|
+|:---:|
+|업데이트 페이지|
 
-![signin](https://github.com/stack0801/Icon_DB/assets/89950902/b320deff-ab4d-45b8-9c38-360d04d3d0ea)
-
-### 회원가입 페이지
-
-![signup](https://github.com/stack0801/Icon_DB/assets/89950902/50e01707-497b-42fc-be3f-76e5c5f410fc)
-
-### 아이콘 업데이트 페이지
-
-![Icon Update](https://user-images.githubusercontent.com/89950902/227500881-ce9ff7f7-48fd-4893-b7bc-90fe5f58a276.PNG)
-
-### 마이프로필 페이지
-
-![My Profile](https://user-images.githubusercontent.com/89950902/227500804-d4dacb51-d9b1-4f2a-8ccc-647ae7f2ef09.PNG)
-
-### 다른 사용자의 프로필 페이지
-
-![Other's Profile](https://user-images.githubusercontent.com/89950902/227500830-4d8c6806-6a54-4712-b164-30c9e27be666.PNG)
+|![My Profile](https://user-images.githubusercontent.com/89950902/227500804-d4dacb51-d9b1-4f2a-8ccc-647ae7f2ef09.PNG)|![Other's Profile](https://user-images.githubusercontent.com/89950902/227500830-4d8c6806-6a54-4712-b164-30c9e27be666.PNG)|
+|:---:|:---:|
+|마이프로필 페이지|다른 사용자 프로필 페이지|
 
 
-### 상세 페이지
-
-![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)
-
-### 상세 페이지(SVG)
-<p>
- EDIT 버튼 추가
-</p>
-
-![My Icon](https://user-images.githubusercontent.com/89950902/227500848-592d4ea2-a328-40bf-9f6a-fd292ae871e1.PNG)
+|![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)|![My Icon](https://user-images.githubusercontent.com/89950902/227500848-592d4ea2-a328-40bf-9f6a-fd292ae871e1.PNG)|
+|:---:|:---:|
+|상세 페이지|상세 페이지(SVG)|
 
 <br/><br/>
 
