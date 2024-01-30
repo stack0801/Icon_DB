@@ -3,7 +3,8 @@
 <div align="center">
   <br/><br/>
   
-  ![logo3 (1)](https://github.com/stack0801/Icon_DB/assets/89950902/60edc9d5-cec0-4045-885a-bff21043fd2f)
+![logo](https://github.com/stack0801/Icon_DB/assets/89950902/b5c6de0a-1b87-4dd2-a64d-05be5a86c48f)
+
   
   <br/><br/>
 </div>
