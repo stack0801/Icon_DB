@@ -6,7 +6,7 @@ import axios from "axios";
 import Logo from "@_components/Logo";
 import StyledInput from "@_components/StyledInput";
 import StyledButton from "@_components/StyledButton";
-import GoogleButton from "@_components/GoogleButton";
+import GoogleButton from "@_components/ui/GoogleButton";
 
 export default function Content() {
     //ID, 비밀번호

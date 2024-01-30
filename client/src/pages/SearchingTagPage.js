@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 
-import Header from "@_components/Header/Header";
+import Header from "@_components/common/Header/Header";
 import SearchBox from "@_components/SearchBox";
 import TopButton from "@_components/TopButton";
 

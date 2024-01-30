@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios';
 
-import SearchBox from "../SearchBox";
-import ImageContainer from "../ImageContainer";
-import Logo from "../Logo";
+import SearchBox from "@_components/SearchBox";
+import ImageContainer from "../../ImageContainer";
+import Logo from "../../Logo";
 
 import { FaBars, FaTimes, FaUser } from "react-icons/fa";
 
@@ -189,7 +189,7 @@ const MobileHeader = styled.header`
           left: 0;
       }
   }
-}`;
+`;
 
 const ToggleButton = styled.button`
   height: 40px;    

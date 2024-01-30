@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-import SearchBox from "../SearchBox";
-import ImageContainer from "../ImageContainer";
-import LinkButton from "../LinkButton";
-import Logo from "../Logo";
+import SearchBox from "../../SearchBox";
+import ImageContainer from "../../ImageContainer";
+import LinkButton from "../../LinkButton";
+import Logo from "../../Logo";
 
 import { FaRegUser } from "react-icons/fa6";
 

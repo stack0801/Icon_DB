@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import ImageUploader from "react-images-uploading";
 import styled from "styled-components";
 
-import Header from "@_components/Header/Header";
+import Header from "@_components/common/Header/Header";
 import ImageContainer from "@_components/ImageContainer";
 import StyledInput from "@_components/StyledInput";
 import StyledButton from "@_components/StyledButton";
