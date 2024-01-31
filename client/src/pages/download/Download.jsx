@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
+import DownloadsSectionComponent from "./components/DownloadsSectionComponent";
+
 import Header from "@_components/common/Header/Header";
 import MenuListComponent from "@_components/ui/MenuListComponent";
 
@@ -12,6 +14,7 @@ export default function Download() {
       <Container>
         <Wrapper>
             <MenuListComponent />
+            <DownloadsSectionComponent />
         </Wrapper>
       </Container>
     </RootContainer>
