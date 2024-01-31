@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -66,8 +67,10 @@ export default function DesktopHeader() {
       setScreenWidth(window.innerWidth);
   }, []);
 
+  const location = useLocation();
+  const isHome = location.pathname === "/";
   return (
-    <Header id='header' sign={sign}>
+    <Header id='header' sign={sign} isHome={isHome}>
       <HeaderMenuSection>
         <MenuBox>
           <Logo />
@@ -129,7 +132,7 @@ export default function DesktopHeader() {
 }
 
 const Header = styled.header`
-  position: fixed;
+  position: ${({isHome}) => (isHome ? "fixed" : "static")};
   top: 0;
   left: 0;
   width: 100%;

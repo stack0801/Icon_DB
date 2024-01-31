@@ -6,7 +6,7 @@ import axios from "axios";
 import ImageContainer from "../ImageContainer";
 import StyledButton from "../ui/Button";
 
-import NoImg from "@_assets/images/NoImage.png";
+import NoImg from "@_assets/images/noimage.png";
 
 import { withStyles, TextField } from "@material-ui/core";
 

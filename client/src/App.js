@@ -9,6 +9,7 @@ import SearchingPage  from './pages/SearchingPage';
 import SearchingTagPage  from './pages/SearchingTagPage';
 import EditProfilePage from './pages/EditProfilePage';
 import ProfilePage from './pages/profile/Profile';
+import Download from "@_pages/download/Download";
 
 export default function App() {
   return (
@@ -21,7 +22,8 @@ export default function App() {
         <Route exact path = "/sign_in" element={<SigninPage/>}/>
         <Route exact path = "/sign_up" element={<SignupPage/>} />
         <Route exact path = "/post/:url_id" element={<PostPage/>} />
-        <Route exact path = "/profile/:user" element={<ProfilePage/>} />
+        <Route exact path = "/profile/me" element={<ProfilePage/>} />
+        <Route exact path = "/profile/my_downloads" element={<Download/>} />
         <Route exact path = "/editprofile" element={<EditProfilePage/>} />
       </Routes>
     </Router>

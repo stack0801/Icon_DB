@@ -3,10 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import ImageUploader from "react-images-uploading";
 import styled from "styled-components";
 
-import MenuListComponent from "../../components/ui/MenuListComponent";
-import SidebarComponent from "./components/SidebarComponent";
-import ProfileSectionComponent from "./components/ProfileSectionComponent";
-
+import SaveButtonComponent from "./SaveButtonComponent";
 import Header from "@_components/common/Header/Header";
 import ImageContainer from "@_components/ImageContainer";
 import StyledInput from "@_components/StyledInput";
@@ -17,15 +14,14 @@ import AddIcon from "@mui/icons-material/Add";
 import CheckIcon from "@mui/icons-material/Check";
 import axios from "axios";
 
-import TextField from "@mui/material/TextField";
-
-export default function App() {
+export default function ProfileSectionComponent() {
   let { user } = useParams();
 
   /** User Data */
   const [profiledata, setProfileData] = useState({
     profilename: "admin.png",
-    nickname: "admin",
+    nickname: "admin_username",
+    id:"admin_ID"
   });
   const [followed, setFollowed] = useState();
   const [sign, setSign] = useState(null);
@@ -192,199 +188,72 @@ useEffect(() => {
     }
   };
 
-  return (
-    <RootContainer>
-      <Header />
-      <Container>
-        <Wrapper>
-          <MenuListComponent />
-          <SidebarComponent />
-          <ProfileSectionComponent />
 
-          {/* <ProfileContainer>
-            <ImageUploader
-              value={images}
-              onChange={onChange}
-              maxNumber={maxNumber}
-              dataURLKey="data_url"
-              onError={onError}
-            >
-              {({ imageList, onImageUpdate }) => (
-                <>
-                  {imageList.length === 0 && (
-                    <ImageContainer
-                      src={
-                        "https://webservicegraduationproject.s3.amazonaws.com/userprofile/" +
-                        profiledata.profilename
-                      }
-                      alt=""
-                      width="60%"
-                      borderRadius="50%"
-                    />
-                  )}
-                  {imageList.map((image, index) => (
-                    <ImageContainer
-                      key={index}
-                      src={image["data_url"]}
-                      alt=""
-                      width="60%"
-                      borderRadius="50%"
-                    />
-                  ))}
-                  <h1>{profiledata.nickname}</h1>
-                  {sign === user ? (
-                    <>
-                      <StyledInput
-                        placeholder={profiledata.nickname}
-                        onChange={onNicknameHandler}
-                      />
-                      <StyledButton
-                        width="90%"
-                        text="Edit Profile"
-                        onClick={() => onImageUpdate(0)}
-                      />
-                      <StyledButton
-                        width="90%"
-                        text="Update"
-                        onClick={handleFormSubmit}
-                      />
-                    </>
-                  ) : (
-                    <ThemeProvider theme={theme}>
-                      {!followed ? (
-                        <Button
-                          variant="outlined"
-                          color="primary"
-                          onClick={onFollowHandler}
-                        >
-                          <AddIcon fontSize="small" />
-                          &nbsp;Follow
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="outlined"
-                          color="secondary"
-                          onClick={onFollowHandler}
-                        >
-                          <CheckIcon fontSize="small" />
-                          &nbsp;Following
-                        </Button>
-                      )}
-                    </ThemeProvider>
-                  )}
-                </>
-              )}
-            </ImageUploader>
-          </ProfileContainer>
-          <FavoritePage>
-            <div>
-              <h2>My Icon List</h2>
-              <MyList>
-                {profileContent.map((list, idx) => (
-                  <div key={idx}>
-                    <Link to={"/post/" + list.content_id}>
-                      <IconList
-                        src={
-                          "https://webservicegraduationproject.s3.amazonaws.com/img/" +
-                          list.filename
-                        }
-                        alt="no_img"
-                        width="100"
-                      />
-                    </Link>
-                  </div>
-                ))}
-              </MyList>
-            </div>
-            <div>
-              <h2>Liked Icon List</h2>
-              <MyList>
-                {profileLiked.map((list, idx) => (
-                  <div key={idx}>
-                    <Link to={"/post/" + list.content_id}>
-                      <IconList
-                        src={
-                          "https://webservicegraduationproject.s3.amazonaws.com/img/" +
-                          list.filename
-                        }
-                        alt="no_img"
-                        width="100"
-                      />
-                    </Link>
-                  </div>
-                ))}
-              </MyList>
-            </div>
-            <div>
-              <h2>Following</h2>
-              <MyList>
-                {profileFollow.map((list, idx) => (
-                  <div key={idx}>
-                    <Link to={"/profile/" + list.id}>
-                      <IconList
-                        src={
-                          "https://webservicegraduationproject.s3.amazonaws.com/userprofile/" +
-                          list.profilename
-                        }
-                        alt="no_img"
-                        width="100"
-                        height="100"
-                      />
-                    </Link>
-                  </div>
-                ))}
-              </MyList>
-            </div>
-            <div>
-              <h2>Follower</h2>
-              <MyList>
-                {profileFollower.map((list, idx) => (
-                  <div key={idx}>
-                    <Link to={"/profile/" + list.id}>
-                      <IconList
-                        src={
-                          "https://webservicegraduationproject.s3.amazonaws.com/userprofile/" +
-                          list.profilename
-                        }
-                        alt="no_img"
-                        width="100"
-                        height="100"
-                      />
-                    </Link>
-                  </div>
-                ))}
-              </MyList>
-            </div>
-          </FavoritePage> */}
-        </Wrapper>
-      </Container>
-    </RootContainer>
+  const handleInputChange = (e) => {
+    setProfileData({
+        ...profiledata,
+        nickname: e.target.value
+    });
+  }
+
+  const handleClearInput = () => {
+    setProfileData({
+        ...profiledata,
+        nickname: ''
+    });
+  }
+
+  return (
+    <ProfileSection>
+      <UserProfileBox>
+        <div>
+          <ProfileBlock>
+            <h3>계정 정보</h3>
+            <ProfileCol>
+              <input type="hidden" />
+              <InputGroupSpan>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  maxLength="60"
+                  autoComplete="off"
+                  tabIndex="1"
+                  value={profiledata.nickname}
+                  onChange={handleInputChange}
+                  className={profiledata.nickname ? "hascontent" : ""}
+                />
+                <InputGroupLabel for="username">Username</InputGroupLabel>
+                <InputGroupLink href="#" className="reset-input" onClick={handleClearInput}>
+                  ×
+                </InputGroupLink>
+              </InputGroupSpan>
+
+              <InputGroupSpan>
+                <input
+                  type="text"
+                  name="id"
+                  id="id"
+                  maxLength="60"
+                  autoComplete="off"
+                  tabIndex="1"
+                  value={profiledata.id}
+                  className="hascontent"
+                  disabled
+                />
+                <InputGroupLabel for="id">ID</InputGroupLabel>
+                <InputGroupLink href="#" className="reset-input" onClick={handleClearInput}>
+                  ×
+                </InputGroupLink>
+              </InputGroupSpan>
+            </ProfileCol>
+          </ProfileBlock>
+        </div>
+        <SaveButtonComponent />
+      </UserProfileBox>
+    </ProfileSection>
   );
 }
-
-const RootContainer = styled.div`
-  background-color: #f8fafb;
-  min-height: 100vh;
-  display: flex !important;
-  flex-direction: column;
-`;
-
-const Container = styled.div`
-  flex: 1;
-`;
-
-const Wrapper = styled.div`
-  margin: auto;
-  margin-top: 20px;
-  padding: 0 20px;
-  max-width: 1200px;
-
-  ::after {
-    clear: both;
-    content: "";
-    display: table;
-  }
-`;
 
 const ProfileSection = styled.section`
   margin-bottom: 2em;
@@ -447,6 +316,11 @@ const InputGroupSpan = styled.span`
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
     appearance: none;
     user-select: text;
+    
+    :disabled {
+        color: #b3b3b3;
+        cursor: no-drop;
+    }
 
     :hover {
       border-color: #ced0d4;
@@ -454,16 +328,32 @@ const InputGroupSpan = styled.span`
 
     :focus {
       border-color: #9ed1d9;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.06), 0 0 5px rgba(158, 209, 217, 0.7);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06),
+        0 0 5px rgba(158, 209, 217, 0.7);
       outline: none;
 
-        ~.reset-input {
+      ~ label {
+        padding: 0 0.3em;
+        top: 0;
+        color: #0b2239;
+        font-size: 0.8em;
+      }
+
+      ~ .reset-input {
         opacity: 1;
       }
     }
-  }
 
-  label {
+    &.hascontent ~ label {
+        padding: 0 0.3em;
+        top: 0;
+        color: #0b2239;
+        font-size: .8em;
+    }
+  }
+`;
+
+const InputGroupLabel = styled.label`
     position: absolute;
     top: 50%;
     left: 1em;
@@ -474,14 +364,6 @@ const InputGroupSpan = styled.span`
     transition: all 0.2s ease-in-out;
     cursor: text;
     pointer-events: none;
-  }
-
-  input.hascontent~label {
-    color: #0b2239;
-    top: 0;
-    font-size: .8em;
-    padding: 0 0.3em;
-  }
 `;
 
 const InputGroupLink = styled.a`
@@ -496,28 +378,4 @@ const InputGroupLink = styled.a`
   :hover {
     color: #9ed1d9;
   }
-`;
-const ProfileContainer = styled.div`
-  display: grid;
-  grid-template-rows: 300px 100px 50px 50px 50px;
-  place-items: center;
-  padding: 10%;
-`;
-
-const FavoritePage = styled.div`
-  display: grid;
-  padding-left: 102px;
-`;
-
-const MyList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 30px;
-`;
-
-const IconList = styled.img`
-  height: 100px;
-
-  border: 2px solid #9ed1d9;
-  border-radius: 10px;
 `;

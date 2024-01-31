@@ -30,9 +30,14 @@ const GlobalStyle = createGlobalStyle`
     transition: color .1s linear;
   }
 
-  h1, h2, h3, h4, h5, p {
+  h1, h2, h3, h4, h5 {
     margin: 0;
     padding: 0;
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-size: 1.75em;
   }
 
   ul, li {
@@ -41,10 +46,23 @@ const GlobalStyle = createGlobalStyle`
     list-style-type: none;
   }
 
+  input {
+    margin: 0;
+    position: relative;
+    font: inherit;
+    line-height: normal;
+    color: inherit;
+  }
+
+  input, label, select {
+    display: block;
+    font-size: 1em;
+  } 
+
   label {
-    font-weight: normal;
     margin-bottom: 0.375em;
     font-size: 1em;
+    font-weight: normal;
   }
 
   img {
