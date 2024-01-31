@@ -27,7 +27,8 @@ export default function Signin() {
 const SigninPage = styled.div`
     width: 100vw;
     height: 100vh;
-
+    color: #000;
+    
     @media screen and (min-width: 992px) {
       display: flex;        
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import background from '@_assets/images/watercolor.jpg'
+import background from '@_assets/images/watercolor.webp'
 
 export default function Background() {
     return (

@@ -5,7 +5,7 @@ import axios from "axios";
 
 import Logo from "@_components/Logo";
 import StyledInput from "@_components/StyledInput";
-import StyledButton from "@_components/StyledButton";
+import StyledButton from "@_components/ui/Button";
 
 export default function Content() {
     const [name, setName] = useState("");

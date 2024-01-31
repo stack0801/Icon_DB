@@ -6,8 +6,9 @@ import App from './App';
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    outline: none;
   }
 
   #header {
@@ -23,8 +24,10 @@ const GlobalStyle = createGlobalStyle`
   }
   
   a {
+    position: relative;
     color: white;
     text-decoration: none;
+    transition: color .1s linear;
   }
 
   h1, h2, h3, h4, h5, p {
@@ -36,6 +39,21 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     list-style-type: none;
+  }
+
+  label {
+    font-weight: normal;
+    margin-bottom: 0.375em;
+    font-size: 1em;
+  }
+
+  img {
+    border: 0;
+  }
+
+  img, picture {
+    margin: 0;
+    max-width: 100%;
   }
 `;
 

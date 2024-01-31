@@ -4,7 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 
 import ImageContainer from "../ImageContainer";
-import StyledButton from "../StyledButton";
+import StyledButton from "../ui/Button";
 
 import NoImg from "@_assets/images/NoImage.png";
 

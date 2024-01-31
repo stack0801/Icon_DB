@@ -8,7 +8,7 @@ import PostingPage  from './pages/PostingPage';
 import SearchingPage  from './pages/SearchingPage';
 import SearchingTagPage  from './pages/SearchingTagPage';
 import EditProfilePage from './pages/EditProfilePage';
-import ProfilePage from './pages/ProfilePage';
+import ProfilePage from './pages/profile/Profile';
 
 export default function App() {
   return (
