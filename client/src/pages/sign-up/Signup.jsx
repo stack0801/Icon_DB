@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import Background from "./Background.jsx";
-import SignupContainer from "@_pages/sign-up/ContentContainer";
+import Background from "@_components/ui/Background.jsx";
+import SignupContainer from "@_pages/sign-up/component/ContentContainer";
 
 export default function Signup() {
 

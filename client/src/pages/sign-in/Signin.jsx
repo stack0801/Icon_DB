@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import Background from "./Background";
-import SigninContainer from "@_pages/sign-in/ContentContainer";
+import Background from "@_components/ui/Background";
+import SigninContainer from "@_pages/sign-in/component/ContentContainer";
 
 export default function Signin() {
 
