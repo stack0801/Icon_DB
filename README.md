@@ -126,9 +126,9 @@ npm run start
 |:---:|:---:|
 |로그인 페이지|회원가입 페이지|
 
-|![Icon Update](https://user-images.githubusercontent.com/89950902/227500881-ce9ff7f7-48fd-4893-b7bc-90fe5f58a276.PNG)|
+|![upload](https://github.com/stack0801/Icon_DB/assets/89950902/16079b45-a22e-4d54-8c16-47fa38d1cfa3)|
 |:---:|
-|업데이트 페이지|
+|업로드 페이지|
 
 |![profile](https://github.com/stack0801/Icon_DB/assets/89950902/7fe6fb67-2057-4e14-8b04-3e54fd9973fb)|![downloads](https://github.com/stack0801/Icon_DB/assets/89950902/08bd0896-817f-4c4c-87ac-0625ced99cad)|
 |:---:|:---:|
