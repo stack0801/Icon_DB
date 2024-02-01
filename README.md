@@ -122,7 +122,7 @@ npm run start
 |:---:|
 |메인 페이지|
 
-|![signin](https://github.com/stack0801/Icon_DB/assets/89950902/b320deff-ab4d-45b8-9c38-360d04d3d0ea)|![signup](https://github.com/stack0801/Icon_DB/assets/89950902/50e01707-497b-42fc-be3f-76e5c5f410fc)|
+|![login](https://github.com/stack0801/Icon_DB/assets/89950902/0ea41e6f-a561-44b1-a08b-6ac90b842eb1.PNG)|![signup](https://github.com/stack0801/Icon_DB/assets/89950902/695943d5-110e-4c4c-a950-c71cccd83a84)|
 |:---:|:---:|
 |로그인 페이지|회원가입 페이지|
 
@@ -130,9 +130,9 @@ npm run start
 |:---:|
 |업데이트 페이지|
 
-|![My Profile](https://user-images.githubusercontent.com/89950902/227500804-d4dacb51-d9b1-4f2a-8ccc-647ae7f2ef09.PNG)|![Other's Profile](https://user-images.githubusercontent.com/89950902/227500830-4d8c6806-6a54-4712-b164-30c9e27be666.PNG)|
+|![profile](https://github.com/stack0801/Icon_DB/assets/89950902/7fe6fb67-2057-4e14-8b04-3e54fd9973fb)|![downloads](https://github.com/stack0801/Icon_DB/assets/89950902/08bd0896-817f-4c4c-87ac-0625ced99cad)|
 |:---:|:---:|
-|마이프로필 페이지|다른 사용자 프로필 페이지|
+|프로필 페이지|다운로드 페이지|
 
 
 |![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)|![My Icon](https://user-images.githubusercontent.com/89950902/227500848-592d4ea2-a328-40bf-9f6a-fd292ae871e1.PNG)|
