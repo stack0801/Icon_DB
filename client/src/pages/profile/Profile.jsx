@@ -9,7 +9,7 @@ import ProfileSectionComponent from "./components/ProfileSectionComponent";
 
 import Header from "@_components/common/Header/Header";
 import ImageContainer from "@_components/ImageContainer";
-import StyledInput from "@_components/StyledInput";
+import StyledInput from "@_components/Input";
 import StyledButton from "@_components/ui/Button";
 import { ThemeProvider, Button } from "@material-ui/core";
 import { theme } from "@_components/theme";

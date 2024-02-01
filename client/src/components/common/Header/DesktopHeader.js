@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import axios from "axios";
 
 import SearchBox from "../../SearchBox";
 import ImageContainer from "../../ImageContainer";
 import LinkButton from "../../LinkButton";
 import Logo from "../../Logo";
+
+import Avatar from '@_assets/images/noimage.png'
 
 import { FaRegUser } from "react-icons/fa6";
 
@@ -101,7 +103,7 @@ export default function DesktopHeader() {
             </li>
           )}
         </MenuList> */}
-          {sign === null ? (
+          {sign !== null ? (
             <LoginBox>
               <NotConnectedBox>
                 <LoginResisterBox>
@@ -123,7 +125,16 @@ export default function DesktopHeader() {
               </NotConnectedBox>
             </LoginBox>
           ) : (
-            <LinkButton onClick={signOut} text="Sign out" />
+            <UserBox>
+              <AvatarBox>
+                <AvatarButton>
+                  <img src={Avatar} alt="noimage"/>
+                </AvatarButton>
+                <ModalBox>
+
+                </ModalBox>
+              </AvatarBox>
+              </UserBox>
           )}
         </MenuBox>
       </HeaderMenuSection>
@@ -142,7 +153,7 @@ const Header = styled.header`
 const HeaderMenuSection = styled.section`
   padding: 0 20px;
   height: 54px;
-  background-color: #fff;
+  background-color: #b3b3b3;
 `;
 
 const MenuBox = styled.div`
@@ -218,9 +229,102 @@ const UserLink = styled.a`
   }
 `;
 
-const MenuList = styled.ul`
-  display: flex;
-  gap: 3vw;
+const UserBox = styled.div`
+  margin-left: auto;
+  font-size: 14px;
+
+  ::after {
+    transition: opacity 1ms cubic-bezier(1,0,0,1);
+    opacity: 0;
+    content: "";
+  }
 `;
 
+const AvatarBox = styled.div`
+  padding-right: 14px;
+  position: relative;
+  line-height: 1.5;
+  z-index: 4;
 
+  ::before {
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    width: 0;
+    height: 0;
+    border-left: 4px solid rgba(0,0,0,0);
+    border-right: 4px solid rgba(0,0,0,0);
+    border-top: 4px solid #fff;
+    transform: translateY(-50%);
+    content: "";
+  }
+`;
+
+const AvatarButton = styled.button`
+  padding: 0;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border: none;
+  outline: none;
+  background: none;
+  appearance: none;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  img {
+    border-radius: 50%;
+  }
+`;
+
+const ModalBox = styled.div`
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 360px;
+  max-width: 620px;
+  display: block;
+  border: 1px solid #e9eaec;
+  border-radius: 3px;
+  background: #fff;
+  color: #5f7d95;
+  line-height: 1.5;
+  overflow: visible;
+  box-shadow: 1px 1px 3px rgba(34,34,34,0.2);
+  animation: popover .2s ease-in-out;
+  z-index: 9;
+
+  ::before {
+    content: "";
+    position: absolute;
+    top: -0.45em;
+    right: 0.97em;
+    width: 0;
+    height: 0;
+    display: block;
+    border-right: 10px solid rgba(0,0,0,0);
+    border-left: 10px solid rgba(0,0,0,0);
+    border-bottom: 10px solid #999;
+    font-size: 1.4em;
+    pointer-events: none;
+  }
+
+  ::after {    
+    content: "";
+    position: absolute;
+    top: -0.45em;
+    right: 0.9  em;
+    width: 0;
+    height: 0;
+    display: block;
+    border-right: 12px solid rgba(0,0,0,0);
+    border-left: 12px solid rgba(0,0,0,0);
+    border-bottom: 12px solid #fff;
+    font-size: 1.4em;
+    pointer-events: none;
+  }
+`;

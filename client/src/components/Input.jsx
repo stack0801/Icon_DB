@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function App({ width, height, placeholder, type, fontSize, onChange, onKeyPress}) {
+export default function Input({ width, height, placeholder, type, fontSize, onChange, onKeyPress}) {
     return (
         <StyledInput 
             width = {width} 
@@ -16,18 +16,21 @@ export default function App({ width, height, placeholder, type, fontSize, onChan
 }
 
 const StyledInput = styled.input`
-    padding-left: 10px;
-    background: white;
-    border: solid 1px #424242;
+    display: block;
+    padding: 10px;
+    min-height: 24px;
+    border: none;
     border-radius: 3px;
+    background-color: #fff;
+    line-height: 24px;
+    box-shadow: inset 0 0 0 1px #c8c8c8;
+    transition: box-shadow 1ms cubic-bezier(1,0,0,1);
+    user-select: text;
+    outline: none;
 
     width: ${(props) => props.width || "auto"};
-    height: ${(props) => props.height || "40px"};
-    font-size: ${(props) => props.fontSize || "13px"};
-    type: ${(props) => props.type ? props.type : "text"};
-
-    &:hover {
-        border: solid 1px #9ed1d9;
-        outline: none;
+    
+    &:active, &:focus {
+        box-shadow: inset 0 0 0 2px #9ed1d9;
     }
 `;
