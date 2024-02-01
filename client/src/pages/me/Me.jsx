@@ -19,7 +19,7 @@ import axios from "axios";
 
 import TextField from "@mui/material/TextField";
 
-export default function App() {
+export default function Me() {
   let { user } = useParams();
 
   /** User Data */
