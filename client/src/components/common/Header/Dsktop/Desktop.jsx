@@ -88,12 +88,12 @@ export default function DesktopHeader() {
       <HeaderMenuSection>
         <MenuBox>
           <LogoLink href="/">
-          <Logo />
+            <Logo />
           </LogoLink>
           <Nav>
             <MenuToggle>
               <div>
-              <MdMenu size="20"/>
+                <MdMenu size="20" />
               </div>
             </MenuToggle>
           </Nav>
@@ -131,18 +131,18 @@ export default function DesktopHeader() {
           {sign === null ? (
             <LoginBox>
               <NotConnectedBox>
-                <LoginResisterBox>
                   {screenWidth > 1400 ? (
-                    <>
+                    <LoginResisterBox>
                       <LoginLink href="/sign_in">로그인</LoginLink>
                       <ResisterLink href="/sign_up">가입하기</ResisterLink>
-                    </>
+                    </LoginResisterBox>
                   ) : (
+                    <NotConnectedUserBox>
                     <UserLink href="/sign_in">
                       <FaRegUser fill="#000" size="16" />
                     </UserLink>
+                    </NotConnectedUserBox>
                   )}
-                </LoginResisterBox>
               </NotConnectedBox>
             </LoginBox>
           ) : (
@@ -175,7 +175,7 @@ const HeaderMenuSection = styled.section`
   height: 54px;
   background-color: #b3b3b3;
 
-  @media screen and (min-width: 992px) {
+  @media screen and (max-width: 992px) {
     padding: 0;
   }
 `;
@@ -189,14 +189,20 @@ const MenuBox = styled.div`
 `;
 
 const LogoLink = styled.a`
-  order: 1;
-  width: 150px;
-  margin-left: auto;
-  margin-right: auto;
+  @media screen and (max-width: 992px) {
+    order: 1;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const Nav = styled.nav`
-  @media screen and (min-width: 992px) {
+  padding: 0 20px;
+  flex: 1;
+  font-size: 13px;
+
+  @media screen and (max-width: 992px) {
     padding: 0;
     order: 0;
     flex: none;
@@ -205,10 +211,11 @@ const Nav = styled.nav`
 `;
 
 const MenuToggle = styled.label`
-  cursor: pointer;
   margin: 0;
+  display: none;
+  cursor: pointer;
 
-  @media screen and (min-width: 992px) {
+  @media screen and (max-width: 992px) {
     display: inherit !important;
   }
 
@@ -217,21 +224,32 @@ const MenuToggle = styled.label`
     height: 20px;
     text-align: center;
   }
-`
+`;
 
 const LoginBox = styled.div`
   margin-left: auto;
   min-width: 50px;
   font-size: 13px;
 
-  @media screen and (min-width: 992px) {
+  @media screen and (max-width: 992px) {
     order: 2;
     margin-left: 0 !important;
   }
-
 `;
 
 const NotConnectedBox = styled.div`
+  margin: 0;
+  min-width: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media screen and (min-width: 992px) {
+    height: 36px;
+  }
+`;
+
+const NotConnectedUserBox =styled.div`
   align-self: center;
 `;
 
