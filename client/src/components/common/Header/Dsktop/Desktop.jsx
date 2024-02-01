@@ -10,9 +10,10 @@ import ImageContainer from "../../../ImageContainer";
 import LinkButton from "../../../LinkButton";
 import Logo from "../../../Logo";
 
-import Avatar from '@_assets/images/noimage.png'
+import Avatar from "@_assets/images/noimage.png";
 
 import { FaRegUser } from "react-icons/fa6";
+import { MdMenu } from "react-icons/md";
 
 export default function DesktopHeader() {
   const [sign, setSign] = useState(null);
@@ -64,11 +65,13 @@ export default function DesktopHeader() {
   const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {
-      window.addEventListener('resize', () => {setScreenWidth(window.innerWidth)});
-  });
-  
-  useEffect(() => {
+    window.addEventListener("resize", () => {
       setScreenWidth(window.innerWidth);
+    });
+  });
+
+  useEffect(() => {
+    setScreenWidth(window.innerWidth);
   }, []);
 
   const location = useLocation();
@@ -81,11 +84,24 @@ export default function DesktopHeader() {
   };
 
   return (
-    <Header id='header' sign={sign} isHome={isHome}>
+    <Header id="header" sign={sign} isHome={isHome}>
       <HeaderMenuSection>
         <MenuBox>
+          <LogoLink href="/">
           <Logo />
-          {scroll === false ? <div /> : <SearchBox width="450px" height="30px" />}
+          </LogoLink>
+          <Nav>
+            <MenuToggle>
+              <div>
+              <MdMenu size="20"/>
+              </div>
+            </MenuToggle>
+          </Nav>
+          {scroll === false ? (
+            <div />
+          ) : (
+            <SearchBox width="450px" height="30px" />
+          )}
           {/* <MenuList>
           <li>
             <a href="/posting">
@@ -116,19 +132,15 @@ export default function DesktopHeader() {
             <LoginBox>
               <NotConnectedBox>
                 <LoginResisterBox>
-                  { screenWidth > 1400 ? (
+                  {screenWidth > 1400 ? (
                     <>
-                  <LoginLink href="/sign_in">
-                    로그인
-                  </LoginLink>
-                  <ResisterLink href="/sign_up">
-                    가입하기
-                  </ResisterLink>
-                  </>
+                      <LoginLink href="/sign_in">로그인</LoginLink>
+                      <ResisterLink href="/sign_up">가입하기</ResisterLink>
+                    </>
                   ) : (
-                  <UserLink href='/sign_in'>
-                    <FaRegUser fill='#000' size='16'/>
-                  </UserLink>
+                    <UserLink href="/sign_in">
+                      <FaRegUser fill="#000" size="16" />
+                    </UserLink>
                   )}
                 </LoginResisterBox>
               </NotConnectedBox>
@@ -137,11 +149,11 @@ export default function DesktopHeader() {
             <UserBox>
               <AvatarBox onClick={handleAvatarButtonClick}>
                 <AvatarButton>
-                  <img src={Avatar} alt="noimage"/>
+                  <img src={Avatar} alt="noimage" />
                 </AvatarButton>
                 {isModalOpen && <ModalBoxComponent isModalOpen={isModalOpen} />}
               </AvatarBox>
-              </UserBox>
+            </UserBox>
           )}
         </MenuBox>
       </HeaderMenuSection>
@@ -150,17 +162,22 @@ export default function DesktopHeader() {
 }
 
 const Header = styled.header`
-  position: ${({isHome}) => (isHome ? "fixed" : "static")};
+  position: ${({ isHome }) => (isHome ? "fixed" : "static")};
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 14;
+  display: block;
 `;
 
 const HeaderMenuSection = styled.section`
   padding: 0 20px;
   height: 54px;
   background-color: #b3b3b3;
+
+  @media screen and (min-width: 992px) {
+    padding: 0;
+  }
 `;
 
 const MenuBox = styled.div`
@@ -171,10 +188,47 @@ const MenuBox = styled.div`
   flex-wrap: wrap;
 `;
 
+const LogoLink = styled.a`
+  order: 1;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const Nav = styled.nav`
+  @media screen and (min-width: 992px) {
+    padding: 0;
+    order: 0;
+    flex: none;
+    font-size: 17px;
+  }
+`;
+
+const MenuToggle = styled.label`
+  cursor: pointer;
+  margin: 0;
+
+  @media screen and (min-width: 992px) {
+    display: inherit !important;
+  }
+
+  div {
+    width: 54px;
+    height: 20px;
+    text-align: center;
+  }
+`
+
 const LoginBox = styled.div`
   margin-left: auto;
   min-width: 50px;
   font-size: 13px;
+
+  @media screen and (min-width: 992px) {
+    order: 2;
+    margin-left: 0 !important;
+  }
+
 `;
 
 const NotConnectedBox = styled.div`
@@ -217,7 +271,7 @@ const ResisterLink = styled.a`
   cursor: pointer;
 
   :hover {
-    background: hsla(0, 0%, 100%, .1);
+    background: hsla(0, 0%, 100%, 0.1);
   }
 
   ::after {
@@ -241,7 +295,7 @@ const UserBox = styled.div`
   font-size: 14px;
 
   ::after {
-    transition: opacity 1ms cubic-bezier(1,0,0,1);
+    transition: opacity 1ms cubic-bezier(1, 0, 0, 1);
     opacity: 0;
     content: "";
   }
@@ -259,8 +313,8 @@ const AvatarBox = styled.div`
     right: 2px;
     width: 0;
     height: 0;
-    border-left: 4px solid rgba(0,0,0,0);
-    border-right: 4px solid rgba(0,0,0,0);
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
     border-top: 4px solid #fff;
     transform: translateY(-50%);
     content: "";
@@ -313,8 +367,8 @@ const ModalBox = styled.div`
   color: #5f7d95;
   line-height: 1.5;
   overflow: visible;
-  box-shadow: 1px 1px 3px rgba(34,34,34,0.2);
-  animation: ${popover} .2s ease-in-out;
+  box-shadow: 1px 1px 3px rgba(34, 34, 34, 0.2);
+  animation: ${popover} 0.2s ease-in-out;
   z-index: 9;
 
   ::before {
@@ -325,14 +379,14 @@ const ModalBox = styled.div`
     width: 0;
     height: 0;
     display: block;
-    border-right: 10px solid rgba(0,0,0,0);
-    border-left: 10px solid rgba(0,0,0,0);
+    border-right: 10px solid rgba(0, 0, 0, 0);
+    border-left: 10px solid rgba(0, 0, 0, 0);
     border-bottom: 10px solid #999;
     font-size: 1.4em;
     pointer-events: none;
   }
 
-  ::after {    
+  ::after {
     content: "";
     position: absolute;
     top: -0.45em;
@@ -340,8 +394,8 @@ const ModalBox = styled.div`
     width: 0;
     height: 0;
     display: block;
-    border-right: 12px solid rgba(0,0,0,0);
-    border-left: 12px solid rgba(0,0,0,0);
+    border-right: 12px solid rgba(0, 0, 0, 0);
+    border-left: 12px solid rgba(0, 0, 0, 0);
     border-bottom: 12px solid #fff;
     font-size: 1.4em;
     pointer-events: none;
