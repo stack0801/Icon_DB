@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import DesktopHeader from "./DesktopHeader";
+import DesktopHeader from "./Dsktop/Desktop";
 import MobileHeader from "./MobileHeader";
 
 export default function App() {

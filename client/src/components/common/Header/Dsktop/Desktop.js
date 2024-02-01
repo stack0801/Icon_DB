@@ -3,10 +3,12 @@ import { useLocation } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import axios from "axios";
 
-import SearchBox from "../../SearchBox";
-import ImageContainer from "../../ImageContainer";
-import LinkButton from "../../LinkButton";
-import Logo from "../../Logo";
+import ModalBoxComponent from "./components/ModalBoxComponent";
+
+import SearchBox from "../../../SearchBox";
+import ImageContainer from "../../../ImageContainer";
+import LinkButton from "../../../LinkButton";
+import Logo from "../../../Logo";
 
 import Avatar from '@_assets/images/noimage.png'
 
@@ -15,8 +17,8 @@ import { FaRegUser } from "react-icons/fa6";
 export default function DesktopHeader() {
   const [sign, setSign] = useState(null);
   const [profiledata, setProfileData] = useState({
-    profilename: "Anonymous.png",
-    nickname: "Anonymous",
+    profilename: "admin.png",
+    nickname: "admin",
   });
 
   useEffect(() => {
@@ -71,6 +73,13 @@ export default function DesktopHeader() {
 
   const location = useLocation();
   const isHome = location.pathname === "/";
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAvatarButtonClick = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <Header id='header' sign={sign} isHome={isHome}>
       <HeaderMenuSection>
@@ -103,7 +112,7 @@ export default function DesktopHeader() {
             </li>
           )}
         </MenuList> */}
-          {sign !== null ? (
+          {sign === null ? (
             <LoginBox>
               <NotConnectedBox>
                 <LoginResisterBox>
@@ -126,13 +135,11 @@ export default function DesktopHeader() {
             </LoginBox>
           ) : (
             <UserBox>
-              <AvatarBox>
+              <AvatarBox onClick={handleAvatarButtonClick}>
                 <AvatarButton>
                   <img src={Avatar} alt="noimage"/>
                 </AvatarButton>
-                <ModalBox>
-
-                </ModalBox>
+                {isModalOpen && <ModalBoxComponent isModalOpen={isModalOpen} />}
               </AvatarBox>
               </UserBox>
           )}
@@ -279,6 +286,18 @@ const AvatarButton = styled.button`
   }
 `;
 
+const popover = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 const ModalBox = styled.div`
   margin: 0;
   padding: 0;
@@ -295,7 +314,7 @@ const ModalBox = styled.div`
   line-height: 1.5;
   overflow: visible;
   box-shadow: 1px 1px 3px rgba(34,34,34,0.2);
-  animation: popover .2s ease-in-out;
+  animation: ${popover} .2s ease-in-out;
   z-index: 9;
 
   ::before {
@@ -317,7 +336,7 @@ const ModalBox = styled.div`
     content: "";
     position: absolute;
     top: -0.45em;
-    right: 0.9  em;
+    right: 0.9em;
     width: 0;
     height: 0;
     display: block;
@@ -326,5 +345,68 @@ const ModalBox = styled.div`
     border-bottom: 12px solid #fff;
     font-size: 1.4em;
     pointer-events: none;
+  }
+`;
+
+const ModalUserTop = styled.div`
+  padding: 16px;
+  border-bottom: 1px solid #cfd9e0;
+
+  ::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+`;
+
+const AvatarHolder = styled.div`
+  float: left;
+  margin-right: 10px;
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  overflow: hidden;
+`;
+
+const UserData = styled.div`
+  float: left;
+  width: 180px;
+
+  span {
+    margin-bottom: 10px;
+    max-width: 100%;
+    display: block;
+    color: #4a4a4a;
+    font-size: 16px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+  }
+`;
+
+const EditProfileLink = styled.a`
+  height: 22px;
+  line-height: 22px;
+  padding: 0 8px;
+  font-size: 10px;
+  background-color: #f5a282;
+  color: #fff !important;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  appearance: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+
+  :hover {
+    background-color: #f28962;
   }
 `;
