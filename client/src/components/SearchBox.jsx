@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
 
-export default function App() {
+export default function SearchBox() {
     const [searchbox, setSearchbox] = useState("");
     const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export default function App() {
     return (
         <Paper
             component="form"
-            sx={{ p: '0 10px', display: 'flex', alignItems: 'center', width: '90%', height: '64px', background: '#eff3f6', boxShadow: 'none', borderRadius: '3px' }}
+            sx={{ p: '0 10px', display: 'flex', alignItems: 'center', width: '100%', height: '44px', background: '#eff3f6', boxShadow: 'none', borderRadius: '3px' }}
         >
             <InputBase
                 sx={{ ml: 1, flex: 1 }}

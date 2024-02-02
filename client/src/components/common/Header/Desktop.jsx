@@ -3,12 +3,13 @@ import { useLocation } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import axios from "axios";
 
+import SearchSectionComponent from "./components/SearchSection";
 import ModalBoxComponent from "./components/ModalBoxComponent";
 
-import SearchBox from "../../../SearchBox";
-import ImageContainer from "../../../ImageContainer";
-import LinkButton from "../../../LinkButton";
-import Logo from "../../../Logo";
+import SearchBox from "../../SearchBox";
+import ImageContainer from "../../ImageContainer";
+import LinkButton from "../../LinkButton";
+import Logo from "../../Logo";
 
 import Avatar from "@_assets/images/noimage.png";
 
@@ -76,7 +77,7 @@ export default function DesktopHeader() {
 
   const location = useLocation();
   const isHome = location.pathname === "/";
-
+  const isDetail = location.pathname === "/post";
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleAvatarButtonClick = () => {
@@ -84,7 +85,7 @@ export default function DesktopHeader() {
   };
 
   return (
-    <Header id="header" sign={sign} isHome={isHome}>
+    <Header id="header" sign={sign} isHome={isHome} isDetail>
       <HeaderMenuSection>
         <MenuBox>
           <LogoLink href="/">
@@ -97,11 +98,6 @@ export default function DesktopHeader() {
               </div>
             </MenuToggle>
           </Nav>
-          {scroll === false ? (
-            <div />
-          ) : (
-            <SearchBox width="450px" height="30px" />
-          )}
           {/* <MenuList>
           <li>
             <a href="/posting">
@@ -131,18 +127,18 @@ export default function DesktopHeader() {
           {sign === null ? (
             <LoginBox>
               <NotConnectedBox>
-                  {screenWidth > 1400 ? (
-                    <LoginResisterBox>
-                      <LoginLink href="/sign_in">로그인</LoginLink>
-                      <ResisterLink href="/sign_up">가입하기</ResisterLink>
-                    </LoginResisterBox>
-                  ) : (
-                    <NotConnectedUserBox>
+                {screenWidth > 1400 ? (
+                  <LoginResisterBox>
+                    <LoginLink href="/sign_in">로그인</LoginLink>
+                    <ResisterLink href="/sign_up">가입하기</ResisterLink>
+                  </LoginResisterBox>
+                ) : (
+                  <NotConnectedUserBox>
                     <UserLink href="/sign_in">
                       <FaRegUser fill="#000" size="16" />
                     </UserLink>
-                    </NotConnectedUserBox>
-                  )}
+                  </NotConnectedUserBox>
+                )}
               </NotConnectedBox>
             </LoginBox>
           ) : (
@@ -151,18 +147,19 @@ export default function DesktopHeader() {
                 <AvatarButton>
                   <img src={Avatar} alt="noimage" />
                 </AvatarButton>
-                {isModalOpen && <ModalBoxComponent isModalOpen={isModalOpen} />}
+                {isModalOpen && <ModalBoxComponent isModalOpen={isModalOpen} isDetail={isDetail} />}
               </AvatarBox>
             </UserBox>
           )}
         </MenuBox>
       </HeaderMenuSection>
+      <SearchSectionComponent />
     </Header>
   );
 }
 
 const Header = styled.header`
-  position: ${({ isHome }) => (isHome ? "fixed" : "static")};
+  position: ${({ isHome, isDetail }) => (isHome || isDetail ? "fixed" : "static")};
   top: 0;
   left: 0;
   width: 100%;
@@ -249,7 +246,7 @@ const NotConnectedBox = styled.div`
   }
 `;
 
-const NotConnectedUserBox =styled.div`
+const NotConnectedUserBox = styled.div`
   align-self: center;
 `;
 

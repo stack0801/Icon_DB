@@ -9,6 +9,16 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: none;
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+  }
+  
+  #viewport {
+    padding-top: 118px;
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    background-color: #fff;
   }
 
   #header {
@@ -22,6 +32,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
   
   a {

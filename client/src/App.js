@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Main from './pages/Main/Main';
 import Signin from './pages/sign-in/Signin';
 import Signup  from './pages/sign-up/Signup';
-import PostPage  from './pages/PostPage';
+import Detail  from './pages/detail/PostPage';
 import Upload  from './pages/upload/Upload';
 import SearchingPage  from './pages/SearchingPage';
 import SearchingTagPage  from './pages/SearchingTagPage';
@@ -21,7 +21,7 @@ export default function App() {
         <Route exact path = "/upload" element={<Upload />}/>
         <Route exact path = "/sign_in" element={<Signin />}/>
         <Route exact path = "/sign_up" element={<Signup />} />
-        <Route exact path = "/post/:url_id" element={<PostPage/>} />
+        <Route exact path = "/post" element={<Detail />} />
         <Route exact path = "/profile/me" element={<Me />} />
         <Route exact path = "/profile/my_downloads" element={<Download/>} />
         <Route exact path = "/editprofile" element={<EditProfilePage/>} />

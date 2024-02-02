@@ -43,4 +43,6 @@ const TopButton = styled.button`
     font-size: 2rem;
     box-shadow: -1px 0 4px rgba(14, 55, 63, 0.15);
     cursor: pointer;
+
+    z-index: 999;
 `;
