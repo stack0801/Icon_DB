@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Main from './pages/Main/Main';
 import Signin from './pages/sign-in/Signin';
 import Signup  from './pages/sign-up/Signup';
-import Detail  from './pages/detail/PostPage';
+import Detail  from './pages/detail/Detail';
 import Upload  from './pages/upload/Upload';
 import SearchingPage  from './pages/SearchingPage';
 import SearchingTagPage  from './pages/SearchingTagPage';

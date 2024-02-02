@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import Linkdiv from "../../../components/Linkdiv";
-import { ThemeProvider, Button, TextField } from "@material-ui/core";
-import { theme } from "../../../components/theme";
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-import DownloadIcon from "@mui/icons-material/Download";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
+
+import ImageSectionComponent from "./ImageSection";
+
+import noimg from '@_assets/images/noimage.png';
 
 export default function App() {
   let { url_id } = useParams();
@@ -179,23 +174,7 @@ export default function App() {
     <DetailSection>
       <div>
         <Container>
-          <ImageSection>
-            <ImageContainer>
-              <ImageWrapper>
-                <ImageBox>
-                  <img
-                    src={
-                      "https://webservicegraduationproject.s3.amazonaws.com/img/" +
-                      data.filename
-                    }
-                    alt="no_img"
-                    width="256"
-                    height="256"
-                  />
-                </ImageBox>
-              </ImageWrapper>
-            </ImageContainer>
-          </ImageSection>
+         <ImageSectionComponent />
           <DetailSidebar>
             <TitleBox>
               <h1>No Image</h1>
@@ -227,7 +206,23 @@ export default function App() {
                 </IsLikeBox>
               </DownloadBox>
             </DownloadContainer>
-            <InformationWrapper>
+            <AuthorSection>
+              <AuthorContainer>
+                <FlexRow>
+                  <AuthorWrraper>
+                    <FlexRowLink>
+                      <span>
+                        <img src={noimg} alt="noimg" />
+                      </span>
+                      <AuthorInformationBox>
+                        <span>admin</span>
+                      </AuthorInformationBox>
+                    </FlexRowLink>
+                  </AuthorWrraper>
+                </FlexRow>
+              </AuthorContainer>
+            </AuthorSection>
+            {/* <InformationWrapper>
               <h1>{data.message}</h1>
               {data.filename.split(".")[1] === "svg" && (
                 <Button
@@ -303,7 +298,7 @@ export default function App() {
                   text={data.user_id}
                 />
               </UserWrapper>
-            )}
+            )} */}
           </DetailSidebar>
         </Container>
       </div>
@@ -330,34 +325,6 @@ const Container = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   border-bottom: none;
-`;
-
-const ImageSection = styled.section`
-  border-radius: 12px;
-  background-color: #f7f7f7;
-  text-align: center;
-`;
-
-const ImageContainer = styled.div`
-  height: 100% !important;
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1;
-  touch-action: auto !important;
-`;
-
-const ImageWrapper = styled.div`
-  padding: 0 5px;
-  position: relative;
-  flex: 1;
-`;
-
-const ImageBox = styled.div`
-  padding: 90px;
-
-  img {
-    height: auto;
-  }
 `;
 
 const DetailSidebar = styled.aside`
@@ -466,6 +433,58 @@ const IsLikeButtonBox = styled.button`
 
   :hover {
     background: #d8d8d8;
+  }
+`;
+
+const AuthorSection = styled.div`
+  padding: 10px 0;
+  border-top: 1px solid #e5e5e5;
+`;
+
+const AuthorContainer = styled.div`
+  font-size: 13px;
+`;
+
+const FlexRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
+const AuthorWrraper = styled.div`
+  padding: 0 5px;
+  position: relative;
+  flex: 1;
+`;
+
+const FlexRowLink = styled.a`
+  display: flex;
+  flex-wrap: wrap;
+  color: #0a152f;
+  align-items: center;
+
+  > span {
+    width: 54px;
+    height: 54px;
+    border-radius: 100%;
+    background-size: 100%;
+
+    img {
+      width: 100%;
+      border-radius: 100%;
+    }
+  }
+`;
+
+const AuthorInformationBox = styled.div`
+  margin-left: 10px !important;
+  padding: 0 5px;
+  position: relative;
+  flex: 1;
+
+  span {
+    font-weight: 600;
+    color: #142a5e;
   }
 `;
 const InformationWrapper = styled.div`
