@@ -134,11 +134,6 @@ npm run start
 |:---:|:---:|
 |프로필 페이지|다운로드 페이지|
 
-
-|![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)|![My Icon](https://user-images.githubusercontent.com/89950902/227500848-592d4ea2-a328-40bf-9f6a-fd292ae871e1.PNG)|
-|:---:|:---:|
-|상세 페이지|상세 페이지(SVG)|
-
 <br/><br/>
 
 ## 아키텍처
