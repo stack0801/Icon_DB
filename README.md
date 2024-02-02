@@ -118,7 +118,7 @@ npm run start
 
 ## 페이지 구성
 
-|![Main](https://user-images.githubusercontent.com/89950902/227500136-5bbcd2de-8ac3-4115-8051-a3059cba8957.PNG)|
+|![main](https://github.com/stack0801/Icon_DB/assets/89950902/6ea496c6-f532-4a30-8ed6-edd4fe4d91c9)|
 |:---:|
 |메인 페이지|
 
@@ -133,11 +133,6 @@ npm run start
 |![profile](https://github.com/stack0801/Icon_DB/assets/89950902/7fe6fb67-2057-4e14-8b04-3e54fd9973fb)|![downloads](https://github.com/stack0801/Icon_DB/assets/89950902/08bd0896-817f-4c4c-87ac-0625ced99cad)|
 |:---:|:---:|
 |프로필 페이지|다운로드 페이지|
-
-
-|![Icon Detail](https://user-images.githubusercontent.com/89950902/227500862-fdb4928c-199d-40dd-a319-4e3f261b4582.PNG)|![My Icon](https://user-images.githubusercontent.com/89950902/227500848-592d4ea2-a328-40bf-9f6a-fd292ae871e1.PNG)|
-|:---:|:---:|
-|상세 페이지|상세 페이지(SVG)|
 
 <br/><br/>
 
