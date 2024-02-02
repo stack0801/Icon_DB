@@ -118,7 +118,7 @@ npm run start
 
 ## 페이지 구성
 
-|![Main](https://user-images.githubusercontent.com/89950902/227500136-5bbcd2de-8ac3-4115-8051-a3059cba8957.PNG)|
+|![main](https://github.com/stack0801/Icon_DB/assets/89950902/6ea496c6-f532-4a30-8ed6-edd4fe4d91c9)|
 |:---:|
 |메인 페이지|
 
