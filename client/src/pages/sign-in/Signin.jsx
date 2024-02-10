@@ -6,15 +6,15 @@ import SigninContainer from "@_pages/sign-in/component/ContentContainer";
 
 export default function Signin() {
 
-    //Mobile 버전
-    const [isMobile, setisMobile] = useState(false);
-    const resizingHandler = () => { setisMobile(window.innerWidth <= 768);};
+    // //Mobile 버전
+    // const [isMobile, setisMobile] = useState(false);
+    // const resizingHandler = () => { setisMobile(window.innerWidth <= 768); };
 
-    useEffect(() => {
-        resizingHandler();        
-        window.addEventListener("resize", resizingHandler);
-        return () => { window.removeEventListener("resize", resizingHandler);};
-    }, []);
+    // useEffect(() => {
+    //     resizingHandler();
+    //     window.addEventListener("resize", resizingHandler);
+    //     return () => { window.removeEventListener("resize", resizingHandler); };
+    // }, []);
 
     return (
         <SigninPage>
@@ -30,6 +30,6 @@ const SigninPage = styled.div`
     color: #000;
     
     @media screen and (min-width: 992px) {
-      display: flex;        
+      display: flex;
     }
 `;

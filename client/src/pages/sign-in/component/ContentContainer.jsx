@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
@@ -25,7 +25,7 @@ export default function Content() {
     if (e.key === "Enter") onSubmit();
   };
 
-  const onSubmit = () => {
+  const onSubmit = useCallback(() => {
     if (id && password) {
       axios
         .post("/sign_in", {
@@ -33,14 +33,16 @@ export default function Content() {
           pw: password,
         })
         .then((res) => {
-          if (res.data === "success") window.location.href = "/";
-          //로그인 실패할 시 Error
-          else alert("아이디와 비밀번호를 확인해 주십시오.");
+          if (res.data === "success") {
+            window.location.href = "/"
+          } else {
+            alert("아이디와 비밀번호를 확인해 주십시오.");
+          }
         });
     } else {
       alert("아이디와 비밀번호를 확인해 주십시오.");
     }
-  };
+  }, [id, password]);
 
   return (
     <ContentContainer>
