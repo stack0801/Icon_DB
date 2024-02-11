@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Background from "@_components/ui/Background";
 import SigninContainer from "@_pages/sign-in/component/ContentContainer";
 
-export default function Signin() {
+function Signin() {
 
     // //Mobile 버전
     // const [isMobile, setisMobile] = useState(false);
@@ -23,6 +23,8 @@ export default function Signin() {
         </SigninPage>
     );
 }
+
+export default React.memo(Signin);
 
 const SigninPage = styled.div`
     width: 100vw;

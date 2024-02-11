@@ -1,21 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Input({ width, height, placeholder, type, fontSize, onChange, onKeyPress}) {
+const Input = React.memo(({ placeholder, type, fontSize, onChange }) => {
     return (
-        <StyledInput 
-            width = {width} 
-            height = {height} 
-            placeholder = {placeholder} 
-            fontSize = {fontSize} 
-            onChange = {onChange}
-            onKeyPress = {onKeyPress}
-            type = {type}>
+        <StyledInput
+            placeholder={placeholder}
+            fontSize={fontSize}
+            onChange={onChange}
+            type={type}>
         </StyledInput>
     );
-}
+});
 
-const StyledInput = styled.input`
+const StyledInput = styled.input.attrs(props => ({
+    type: props.type || "text",
+}))`
     display: block;
     padding: 10px;
     min-height: 24px;
@@ -28,9 +27,11 @@ const StyledInput = styled.input`
     user-select: text;
     outline: none;
 
-    width: ${(props) => props.width || "auto"};
-    
+    width: 100%;
+
     &:active, &:focus {
         box-shadow: inset 0 0 0 2px #9ed1d9;
     }
 `;
+
+export default Input;

@@ -10,20 +10,18 @@ import GoogleButton from "@_components/ui/GoogleButton";
 
 import { MdArrowBackIos } from "react-icons/md";
 
-export default function Content() {
+function Content() {
   //ID, 비밀번호
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  const onIdHandler = (event) => {
+  const onIdHandler = useCallback((event) => {
     setId(event.currentTarget.value);
-  };
-  const onPasswordHandler = (event) => {
+  }, []);
+
+  const onPasswordHandler = useCallback((event) => {
     setPassword(event.currentTarget.value);
-  };
-  const onKeyPress = (e) => {
-    if (e.key === "Enter") onSubmit();
-  };
+  }, []);
 
   const onSubmit = useCallback(() => {
     if (id && password) {
@@ -61,7 +59,6 @@ export default function Content() {
                   <Input
                     type="text"
                     name="id"
-                    width="100%"
                     onChange={onIdHandler}
                   />
                 </label>
@@ -72,12 +69,11 @@ export default function Content() {
                   <Input
                     type="password"
                     name="password"
-                    width="100%"
                     onChange={onPasswordHandler}
                   />
                 </label>
               </FormItem>
-              <Button text="로그인" fontWeight="600" onClick={onSubmit} />
+              <Button text="로그인" fontWeight="600" onClick={onSubmit} type="button" />
             </LoginForm>
           </LoginBox>
           <NoAccountBox>
@@ -92,6 +88,8 @@ export default function Content() {
     </ContentContainer>
   );
 }
+
+export default React.memo(Content);
 
 const ContentContainer = styled.div`
   padding: 40px 20px;
