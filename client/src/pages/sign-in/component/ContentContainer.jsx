@@ -6,8 +6,11 @@ import axios from "axios";
 import Logo from "@_components/Logo";
 import Input from "@_components/Input";
 import Button from "@_components/ui/Button";
+import GoogleButton from "@_components/ui/GoogleButton";
 
-export default function Content() {
+import { MdArrowBackIos } from "react-icons/md";
+
+function Content() {
   //ID, 비밀번호
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
@@ -16,15 +19,11 @@ export default function Content() {
     setId(event.currentTarget.value);
   }, []);
 
-  const onPasswordHandler = (event) => {
+  const onPasswordHandler = useCallback((event) => {
     setPassword(event.currentTarget.value);
-  };
+  }, []);
 
-  const onKeyPress = (e) => {
-    if (e.key === "Enter") onSubmit();
-  };
-
-  const onSubmit = () => {
+  const onSubmit = useCallback(() => {
     if (id && password) {
       axios
         .post("/sign_in", {
@@ -32,14 +31,16 @@ export default function Content() {
           pw: password,
         })
         .then((res) => {
-          if (res.data === "success") window.location.href = "/";
-          //로그인 실패할 시 Error
-          else alert("아이디와 비밀번호를 확인해 주십시오.");
+          if (res.data === "success") {
+            window.location.href = "/"
+          } else {
+            alert("아이디와 비밀번호를 확인해 주십시오.");
+          }
         });
     } else {
       alert("아이디와 비밀번호를 확인해 주십시오.");
     }
-  };
+  }, [id, password]);
 
   return (
     <ContentContainer>
@@ -58,7 +59,6 @@ export default function Content() {
                   <Input
                     type="text"
                     name="id"
-                    width="100%"
                     onChange={onIdHandler}
                   />
                 </label>
@@ -69,12 +69,11 @@ export default function Content() {
                   <Input
                     type="password"
                     name="password"
-                    width="100%"
                     onChange={onPasswordHandler}
                   />
                 </label>
               </FormItem>
-              <Button text="로그인" fontWeight="600" onClick={onSubmit} />
+              <Button text="로그인" fontWeight="600" onClick={onSubmit} type="button" />
             </LoginForm>
           </LoginBox>
           <NoAccountBox>
@@ -89,6 +88,8 @@ export default function Content() {
     </ContentContainer>
   );
 }
+
+export default React.memo(Content);
 
 const ContentContainer = styled.div`
   padding: 40px 20px;
