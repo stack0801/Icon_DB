@@ -45,3 +45,14 @@ img {
 #cky-consent.active {
     transform: translateY(0%);
 }
+
+html .font-h5 {
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+@media screen and (min-width: 640px) {
+    html .font-h5 {
+        font-size: 32px;
+    }
+}

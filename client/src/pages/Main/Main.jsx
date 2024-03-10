@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
 
 import Banner from "./component/Banner";
 import Popular from "./component/PopularSection";
+import LogoSection from "./component/LogoSection";
 import LandingContainer from "./component/LandingContainer";
+import TopIconSearch from "./component/TopIconSearch";
 import Desktop from "@_components/common/Header/Desktop";
 import TopButton from "@_components/TopButton";
 import Footer from "@_components/common/Footer/Footer";
@@ -24,7 +25,8 @@ export default function Main() {
       <main className="home-icons">
         <Banner />
         <Popular />
-        <LandingContainer />
+        <LogoSection />
+        <TopIconSearch />
       </main>
       <Footer />
     </>

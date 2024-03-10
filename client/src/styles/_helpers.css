@@ -46,3 +46,7 @@ h2 {
     touch-action: auto !important;
     flex: 1;
 }
+
+html .paragraph-readable--xs {
+    max-width: 480px;
+}

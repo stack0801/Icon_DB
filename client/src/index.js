@@ -49,8 +49,10 @@ const GlobalStyle = createGlobalStyle`
   
   html .mg-none { margin: 0; }
   html .mg-bottom-lv2 { margin-bottom: 10px; }
+  html .mg-bottom-lv3 { margin-bottom: 20px; }
   html .mg-bottom-lv4 { margin-bottom: 30px; }
   html .mg-bottom-lv4-i { margin-bottom: 30px !important; }
+  html .mg-bottom-lv5 { margin-bottom: 50px } 
   html .mg-left-lv2 { margin-left: 10px; }
   html .mg-left-lv2-i { margin-left: 10px !important; }
   html .mg-right-lv3 { margin-right: 20px; }
@@ -59,7 +61,6 @@ const GlobalStyle = createGlobalStyle`
   html .pd-top-lv5 { padding-top: 50px; }
   html .pd-top-lv3 { padding-top: 20px; }
   html .pd-bottom-lv2 { padding-bottom: 10px; }
-  html .mg-bottom-lv3 { padding-bottom: 20px; }
   html .pd-right-lv2-i { padding-right: 10px !important; }
   html .pd-lv4 { padding: 30px; }
 
@@ -72,10 +73,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html .font-sm, html .font-xs { font-size: 13px; }
+  html .font-md { font-size: 15px; }
   html .font-lg { font-size: 17px; }
   html .font-xl { font-size: 20px; }
-
-
 
   html .font-h6 {
     font-size: 20px;
@@ -107,10 +107,10 @@ const GlobalStyle = createGlobalStyle`
   main {
     flex: 1;
     overflow: hidden;
-  }
 
-  main section {
-    margin: 0 0 30px;
+    section {
+      margin: 0 0 30px;
+    }
   }
 
   h3 {
