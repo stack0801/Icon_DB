@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
-import wallpaper from '@_assets/images/main-wallpaper.png'
+import wallpaper from '@_assets/images/main-wallpaper.png';
 
 export default function Banner() {
   const [isMobile, setisMobile] = useState();
@@ -11,9 +11,9 @@ export default function Banner() {
       setisMobile(window.innerWidth <= 768);
     };
     resizingHandler();
-    window.addEventListener("resize", resizingHandler);
+    window.addEventListener('resize', resizingHandler);
     return () => {
-      window.removeEventListener("resize", resizingHandler);
+      window.removeEventListener('resize', resizingHandler);
     };
   }, [isMobile]);
 
@@ -56,7 +56,7 @@ const InnerContainer = styled.div`
 
   ::after {
     clear: both;
-    content: "";
+    content: '';
     display: table;
   }
 `;
@@ -128,7 +128,7 @@ const Button = styled.a`
 
   ::after {
     clear: both;
-    content: "";
+    content: '';
     display: table;
   }
 `;
@@ -144,6 +144,6 @@ const ImageSection = styled.div`
     top: -40%;
     left: 55%;
     bottom: 0;
-    filter: drop-shadow(12px 15px 40px rgba(207,217,224,.5));
+    filter: drop-shadow(12px 15px 40px rgba(207, 217, 224, 0.5));
   }
 `;
