@@ -3,14 +3,6 @@ const session_stream = require('./src/session')
 //express 모듈을 불러옴
 //로그인을 세션처리 할 수 있는 모듈을 불러옴
 
-const https = require('https')
-const fs = require('fs')
-//https(SSL인증서)를 사용하기 위한 모듈
-
-const options = {
-    key: fs.readFileSync('./key.pem'),
-    cert: fs.readFileSync('./cert.pem')
-} //key, cert 인증서를 다음과 같이 불러옴
 
 const server_user = require('./server_user')
 const server_tag = require('./server_tag')
@@ -20,10 +12,10 @@ const server_follow = require('./server_follow')
 //server에서 필요한 기능을 구동하기 위한 모듈들을 선언
 
 const app = express()
-const HTTPS_PORT = 5000
+const HTTP_PORT = 5000
 
 app.get('/', (req, res) => {
-    res.json({message: `Server is running on port ${req.secure ? HTTPS_PORT : HTTP_PORT}` })
+    res.json({message: `Server is running on port ${HTTP_PORT}` })
 })
 
 app.use(express.json())                                 //json 방식으로 통신
@@ -42,4 +34,4 @@ app.get('/get_xml/:key', async(req, res) => {
     svg(req, res, key)
 })
 
-https.createServer(options, app).listen(HTTPS_PORT)
+https.createServer(app).listen(HTTP_PORT)
