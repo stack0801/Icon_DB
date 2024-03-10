@@ -57,17 +57,17 @@ export default function SearchSectionComponent({ isModalOpen }) {
 
   return (
     <section className="header--search" id="header--search">
-        <InnerContainer>
-            <InnerBox>
-                <section>
-                    <SearchContainer>
-                        <SearchWrapper>
+        <div className="header--search__inner">
+            <div className="row row--vertical-center mg-none full-height">
+                <section className="search-holder col mg-none pd-none">
+                    <div className="fake-search row">
+                        <div className="tag-field col mg-none pd-none">
                             <SearchBox />
-                        </SearchWrapper>
-                    </SearchContainer>
+                        </div>
+                    </div>
                 </section>
-            </InnerBox>
-        </InnerContainer>
+            </div>
+        </div>
     </section>
   );
 }

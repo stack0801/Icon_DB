@@ -13,3 +13,13 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
+
+#gr_user_menu {
+    min-width: 60px;
+}
+
+@media screen and (min-width: 992px) {
+    #gr_user_menu {
+        height: 36px;
+    }
+}

@@ -16,3 +16,7 @@
 .text, p {
     margin: 0 0 20px;
 }
+
+.link--inverted, .link--inverted:hover, .link-inverted, .link-inverted:hover {
+    color: #fff;
+}

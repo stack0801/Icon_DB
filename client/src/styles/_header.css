@@ -23,3 +23,21 @@
     box-shadow: 0 0 0 1px #d8d8d8;
     background-color: #fff;
 }
+
+.header--menu__login {
+    min-width: 50px;
+}
+
+.header--menu__login #gr_not-connected .login-register-buttons-container {
+    display: none;
+}
+
+.header--search__inner {
+    padding: 10px 20px;
+}
+
+@media screen and (min-width: 1400px) {
+    .header--menu__login #gr_not-connected .login-register-buttons-container {
+        display: flex;
+    }
+}

@@ -9,7 +9,7 @@ import ModalBoxComponent from "./components/ModalBoxComponent";
 import SearchBox from "../../SearchBox";
 import ImageContainer from "../../ImageContainer";
 import LinkButton from "../../LinkButton";
-import Logo from "../../Logo";
+import logo from "../../../assets/brand/logo.svg";
 
 import Avatar from "@_assets/images/noimage.png";
 
@@ -87,10 +87,10 @@ export default function DesktopHeader() {
   return (
     <header id="header" className="header body-header" sign={sign} isHome={isHome} isDetail>
       <section className="header--menu" id="header-menu">
-        <MenuBox>
-          <LogoLink href="/">
-            <Logo />
-          </LogoLink>
+        <div className="row row--vertical-center mg-none full-height">
+          <a href="/" className="logo track" id="logo">
+            <img src={logo} title="ICONDB 로고" className="block" alt="ICONDB logo" />
+          </a>
           <Nav>
             <MenuToggle>
               <div>
@@ -125,13 +125,15 @@ export default function DesktopHeader() {
           )}
         </MenuList> */}
           {sign === null ? (
-            <LoginBox>
-              <NotConnectedBox>
+            <div className="push-right font-sm header--menu__login">
+              <div id="gr_user_menu" className="row mg-none">
                 {screenWidth > 1400 ? (
-                  <LoginResisterBox>
-                    <LoginLink href="/sign_in">로그인</LoginLink>
-                    <ResisterLink href="/sign_up">가입하기</ResisterLink>
-                  </LoginResisterBox>
+                  <div id="gr_not-connected" className="gr_not-connected col--center">
+                    <div className="row row--vertical-center mg-none login-register-buttons-container">
+                    <a href="/sign_in" className="btn-login track semibold link-inverted mg-right-lv3">로그인</a>
+                    <a href="/sign_up" className="btn-register bj-button bj-button--sm bj-button--outline bj-button--inverted track">가입하기</a>
+                    </div>
+                  </div>
                 ) : (
                   <NotConnectedUserBox>
                     <UserLink href="/sign_in">
@@ -139,8 +141,8 @@ export default function DesktopHeader() {
                     </UserLink>
                   </NotConnectedUserBox>
                 )}
-              </NotConnectedBox>
-            </LoginBox>
+              </div>
+            </div>
           ) : (
             <UserBox>
               <AvatarBox onClick={handleAvatarButtonClick}>
@@ -151,48 +153,12 @@ export default function DesktopHeader() {
               </AvatarBox>
             </UserBox>
           )}
-        </MenuBox>
+        </div>
       </section>
       <SearchSectionComponent />
     </header>
   );
 }
-
-const Header = styled.header`
-  position: ${({ isHome, isDetail }) => (isHome || isDetail ? "fixed" : "static")};
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 14;
-  display: block;
-`;
-
-const HeaderMenuSection = styled.section`
-  padding: 0 20px;
-  height: 54px;
-  background-color: #b3b3b3;
-
-  @media screen and (max-width: 992px) {
-    padding: 0;
-  }
-`;
-
-const MenuBox = styled.div`
-  margin: 0;
-  height: 100% !important;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-
-const LogoLink = styled.a`
-  @media screen and (max-width: 992px) {
-    order: 1;
-    width: 150px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-`;
 
 const Nav = styled.nav`
   padding: 0 20px;
@@ -223,77 +189,8 @@ const MenuToggle = styled.label`
   }
 `;
 
-const LoginBox = styled.div`
-  margin-left: auto;
-  min-width: 50px;
-  font-size: 13px;
-
-  @media screen and (max-width: 992px) {
-    order: 2;
-    margin-left: 0 !important;
-  }
-`;
-
-const NotConnectedBox = styled.div`
-  margin: 0;
-  min-width: 60px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  @media screen and (min-width: 992px) {
-    height: 36px;
-  }
-`;
-
 const NotConnectedUserBox = styled.div`
   align-self: center;
-`;
-
-const LoginResisterBox = styled.div`
-  margin: 0;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-
-const LoginLink = styled.a`
-  margin-right: 20px;
-  font-weight: 600;
-  background-color: transparent;
-  color: #000;
-`;
-
-const ResisterLink = styled.a`
-  padding: 0 20px;
-  position: relative;
-  min-width: 34px;
-  height: 34px;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  box-shadow: inset 0 0 0 2px #000;
-  color: #000;
-  border: none;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 34px;
-  text-align: center;
-  text-decoration: none;
-  transition: none;
-  cursor: pointer;
-
-  :hover {
-    background: hsla(0, 0%, 100%, 0.1);
-  }
-
-  ::after {
-    display: table;
-    clear: both;
-    content: "";
-  }
 `;
 
 const UserLink = styled.a`
@@ -352,130 +249,5 @@ const AvatarButton = styled.button`
 
   img {
     border-radius: 50%;
-  }
-`;
-
-const popover = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateY(-50%);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const ModalBox = styled.div`
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 50px;
-  right: 0;
-  width: 360px;
-  max-width: 620px;
-  display: block;
-  border: 1px solid #e9eaec;
-  border-radius: 3px;
-  background: #fff;
-  color: #5f7d95;
-  line-height: 1.5;
-  overflow: visible;
-  box-shadow: 1px 1px 3px rgba(34, 34, 34, 0.2);
-  animation: ${popover} 0.2s ease-in-out;
-  z-index: 9;
-
-  ::before {
-    content: "";
-    position: absolute;
-    top: -0.45em;
-    right: 0.97em;
-    width: 0;
-    height: 0;
-    display: block;
-    border-right: 10px solid rgba(0, 0, 0, 0);
-    border-left: 10px solid rgba(0, 0, 0, 0);
-    border-bottom: 10px solid #999;
-    font-size: 1.4em;
-    pointer-events: none;
-  }
-
-  ::after {
-    content: "";
-    position: absolute;
-    top: -0.45em;
-    right: 0.9em;
-    width: 0;
-    height: 0;
-    display: block;
-    border-right: 12px solid rgba(0, 0, 0, 0);
-    border-left: 12px solid rgba(0, 0, 0, 0);
-    border-bottom: 12px solid #fff;
-    font-size: 1.4em;
-    pointer-events: none;
-  }
-`;
-
-const ModalUserTop = styled.div`
-  padding: 16px;
-  border-bottom: 1px solid #cfd9e0;
-
-  ::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-`;
-
-const AvatarHolder = styled.div`
-  float: left;
-  margin-right: 10px;
-  display: block;
-  width: 64px;
-  height: 64px;
-  border-radius: 100%;
-  overflow: hidden;
-`;
-
-const UserData = styled.div`
-  float: left;
-  width: 180px;
-
-  span {
-    margin-bottom: 10px;
-    max-width: 100%;
-    display: block;
-    color: #4a4a4a;
-    font-size: 16px;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal;
-  }
-`;
-
-const EditProfileLink = styled.a`
-  height: 22px;
-  line-height: 22px;
-  padding: 0 8px;
-  font-size: 10px;
-  background-color: #f5a282;
-  color: #fff !important;
-  text-align: center;
-  cursor: pointer;
-  border: none;
-  border-radius: 3px;
-  appearance: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  display: inline-block;
-  font-weight: bold;
-  text-decoration: none;
-
-  :hover {
-    background-color: #f28962;
   }
 `;

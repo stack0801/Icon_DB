@@ -4,6 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import App from './App';
 
+import './styles/_search-bar.css';
 import './styles/_header.css';
 import './styles/_overrides-new-guide.css';
 import './styles/_component.css';
@@ -58,6 +59,25 @@ const GlobalStyle = createGlobalStyle`
     margin-right: auto;
   }
 
+  html .full-height {
+    height: 100% !important;
+  }
+
+  html .block {
+    display: block;
+  }
+
+  html .font-sm, html .font-xs {
+    font-size: 13px;
+  }
+
+  html .mg-right-lv3 {
+    margin-right: 20px;
+  }
+
+  html .semibold {
+    font-weight: 600;
+  }
   body>* {
     width: 100%;
   }
