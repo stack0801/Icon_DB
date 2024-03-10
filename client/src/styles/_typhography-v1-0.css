@@ -1,0 +1,18 @@
+#notification-cart .notification__close .link i, #notification-cart .notification__close a i, .link, .link #notification-cart .notification__close i, .link .icon, .link .notification--alert i, .notification--alert .link i, .notification--alert a i, a, a #notification-cart .notification__close i, a .icon, a .notification--alert i {
+    color: #9ed1d9;
+}
+
+.link, a {
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.copyright {
+    margin: 0;
+    font-size: 13px;
+}
+
+.text, p {
+    margin: 0 0 20px;
+}

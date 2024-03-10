@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
@@ -6,21 +6,20 @@ import axios from "axios";
 import Logo from "@_components/Logo";
 import Input from "@_components/Input";
 import Button from "@_components/ui/Button";
-import GoogleButton from "@_components/ui/GoogleButton";
-
-import { MdArrowBackIos } from "react-icons/md";
 
 export default function Content() {
   //ID, 비밀번호
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  const onIdHandler = (event) => {
+  const onIdHandler = useCallback((event) => {
     setId(event.currentTarget.value);
-  };
+  }, []);
+
   const onPasswordHandler = (event) => {
     setPassword(event.currentTarget.value);
   };
+
   const onKeyPress = (e) => {
     if (e.key === "Enter") onSubmit();
   };

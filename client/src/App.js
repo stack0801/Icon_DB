@@ -5,7 +5,7 @@ import Signin from './pages/sign-in/Signin';
 import Signup  from './pages/sign-up/Signup';
 import Detail  from './pages/detail/Detail';
 import Upload  from './pages/upload/Upload';
-import SearchingPage  from './pages/SearchingPage';
+import Search  from './pages/search/Search';
 import SearchingTagPage  from './pages/SearchingTagPage';
 import EditProfilePage from './pages/EditProfilePage';
 import Me from './pages/me/Me';
@@ -16,7 +16,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route exact path = "/" element = {<Main />} />
-        <Route exact path = "/searching/:keyword" element={<SearchingPage/>}/>
+        <Route exact path = "/search/:keyword" element={<Search />}/>
         <Route exact path = "/searchingTag/:keyword" element={<SearchingTagPage/>}/>
         <Route exact path = "/upload" element={<Upload />}/>
         <Route exact path = "/sign_in" element={<Signin />}/>

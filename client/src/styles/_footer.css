@@ -1,0 +1,19 @@
+#footer {
+    background-color: #9ed1d9;
+    color: #9c9c9c;
+    padding: 50px 0 0;
+    font-size: 13px;
+    margin: 0;
+    border: none;
+}
+
+#footer #ot-sdk-btn, #footer a:not(.btn):not(.bj-button) {
+    color: #fff;
+}
+
+#footer .copyright {
+    padding: 20px 0;
+    border-top: 1px solid #424242;
+    text-align: center;
+    margin-top: 20px;
+}

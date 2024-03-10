@@ -1,0 +1,47 @@
+html,
+body {
+    height: 100%;
+    display: block;
+}
+
+body {
+    overflow-y: scroll;
+}
+
+body.overflow-hidden #viewport {
+    filter: blur(5px);
+}
+
+body.overflow {
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    body.overflow--mobile {
+        overflow: hidden;
+    }
+}
+
+::selection {
+    background-color: rgba(0, 128, 0, 0.5);
+}
+
+img {
+    max-width: 100%;
+}
+
+#ot-sdk-btn-floating {
+    display: none;
+}
+
+/* performance CMP */
+#onetrust-banner-sdk.otFlat,
+#cky-consent {
+    transform: translateY(100%);
+    transition: transform 600ms ease-in;
+}
+
+#onetrust-banner-sdk.otFlat.active,
+#cky-consent.active {
+    transform: translateY(0%);
+}

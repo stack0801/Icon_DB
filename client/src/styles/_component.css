@@ -1,0 +1,27 @@
+.bj-button {
+    position: relative;
+    display: inline-block;
+    border: none;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0 30px;
+    min-width: 44px;
+    height: 44px;
+    font-size: 15px;
+    line-height: 44px;
+    transition: .25s linear;
+    color: #fff;
+}
+
+.bj-button:after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.bj-button--green {
+    background: #000;
+    color: #fff;
+}

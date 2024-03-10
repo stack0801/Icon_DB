@@ -1,0 +1,13 @@
+.container, .container.groups__item, .container.row, .countdown ul.container, .landing--register .container.separator, .profile-login .container.group {
+    max-width: 1520px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.countdown ul, .groups__item, .landing--register .separator, .profile-login .group, .row {
+    margin: 0;
+}
+
+.bj-button {
+    border-radius: 6px;
+}

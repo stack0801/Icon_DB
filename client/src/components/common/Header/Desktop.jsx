@@ -85,8 +85,8 @@ export default function DesktopHeader() {
   };
 
   return (
-    <Header id="header" sign={sign} isHome={isHome} isDetail>
-      <HeaderMenuSection>
+    <header id="header" className="header body-header" sign={sign} isHome={isHome} isDetail>
+      <section className="header--menu" id="header-menu">
         <MenuBox>
           <LogoLink href="/">
             <Logo />
@@ -152,9 +152,9 @@ export default function DesktopHeader() {
             </UserBox>
           )}
         </MenuBox>
-      </HeaderMenuSection>
+      </section>
       <SearchSectionComponent />
-    </Header>
+    </header>
   );
 }
 

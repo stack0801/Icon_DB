@@ -56,7 +56,7 @@ export default function SearchSectionComponent({ isModalOpen }) {
   }, []);
 
   return (
-    <SearchSection>
+    <section className="header--search" id="header--search">
         <InnerContainer>
             <InnerBox>
                 <section>
@@ -68,7 +68,7 @@ export default function SearchSectionComponent({ isModalOpen }) {
                 </section>
             </InnerBox>
         </InnerContainer>
-    </SearchSection>
+    </section>
   );
 }
 

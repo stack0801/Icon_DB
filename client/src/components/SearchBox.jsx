@@ -16,7 +16,7 @@ export default function SearchBox() {
 
     const onSubmit = () => {
         if(searchbox.trim().length >= 1){
-            navigate(`/searching/${searchbox}`);
+            navigate(`/search/${searchbox}`);
         } else {
             alert("검색하시려면 최소 1자를 입력하세요");
         }

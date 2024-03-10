@@ -1,0 +1,15 @@
+body {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: auto;
+    height: auto;
+    min-height: 100vh !important;
+    background-color: #fff;
+    color: #777;
+    font-family: var(--font-base);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
