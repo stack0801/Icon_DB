@@ -171,14 +171,14 @@ export default function App() {
   };
 
   return (
-    <DetailSection>
-      <div>
-        <Container>
+    <section id='detail' className="detail bobjoll new-detail loaded">
+      <div className="detail__inner detail--v2 gallery">
+        <div className="row detail__top mg-none">
          <ImageSectionComponent />
-          <DetailSidebar>
-            <TitleBox>
-              <h1>No Image</h1>
-            </TitleBox>
+          <aside className="detail__sidebar col--stretch">
+            <div className="pd-top-lv3 pd-bottom-lv2">
+              <h1 className="mg-none font-xl">No Image</h1>
+            </div>
             <DownloadContainer>
               <DownloadBox>
                 <ButtonBox>
@@ -206,22 +206,28 @@ export default function App() {
                 </IsLikeBox>
               </DownloadBox>
             </DownloadContainer>
-            <AuthorSection>
-              <AuthorContainer>
-                <FlexRow>
-                  <AuthorWrraper>
-                    <FlexRowLink>
-                      <span>
-                        <img src={noimg} alt="noimg" />
+            <div className="author__holder">
+              <div className="author">
+                <div className="row row--vertical-center mg-none">
+                  <div className="col mg-none">
+                    <input type="hidden" id="author-url" />
+                    <a className="row row--vertical-center mg-none">
+                      <span className="avatar avatar-60">
+                        <img src={noimg} alt="noimg" width="40" height="40" />
                       </span>
-                      <AuthorInformationBox>
-                        <span>admin</span>
-                      </AuthorInformationBox>
-                    </FlexRowLink>
-                  </AuthorWrraper>
-                </FlexRow>
-              </AuthorContainer>
-            </AuthorSection>
+                      <div className="col mg-none mg-left-lv2-i">
+                        <span className="username">admin</span>
+                      </div>
+                    </a>
+                  </div>
+                  <div>
+                    <button className="bj-button bj-button--sm bj-button--outline btn--follow js_follow mg-left-lv2" datatype="author">
+                      
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
             {/* <InformationWrapper>
               <h1>{data.message}</h1>
               {data.filename.split(".")[1] === "svg" && (
@@ -299,10 +305,10 @@ export default function App() {
                 />
               </UserWrapper>
             )} */}
-          </DetailSidebar>
-        </Container>
+          </aside>
+        </div>
       </div>
-    </DetailSection>
+    </section>
   );
 }
 

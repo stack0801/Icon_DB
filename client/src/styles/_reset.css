@@ -19,3 +19,18 @@ a {
 img {
     border: 0;
 }
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+input {
+    line-height: normal;
+}
+
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}

@@ -10,24 +10,23 @@ import Footer from "@_components/common/Footer/Footer";
 
 export default function Main() {
   useEffect(() => {
-    document.body.classList.add("hero--white")
-  })
+    document.body.classList.add("hero--white");
+
+    return () => {
+      document.body.classList.remove("hero--white");
+    };
+  }, []);
 
   return (
     <>
       <Desktop />
       <TopButton />
-      <HomeContainer>
+      <main className="home-icons">
         <Banner />
         <Popular />
         <LandingContainer />
-      </HomeContainer>
+      </main>
       <Footer />
-      </>
+    </>
   );
 }
-
-const HomeContainer = styled.main`
-  overflow: hidden;
-  color: #0a152f;
-`;

@@ -23,3 +23,8 @@ body {
         height: 36px;
     }
 }
+
+.detail__content .detail__icon__holder {
+    flex: 1;
+    position: relative;
+}

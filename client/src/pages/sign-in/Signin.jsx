@@ -5,7 +5,9 @@ import Background from "@_components/ui/Background";
 import SigninContainer from "@_pages/sign-in/component/ContentContainer";
 
 function Signin() {
-
+    useEffect(() => {
+        document.body.classList.add("theme--icondb")
+      })
     // //Mobile 버전
     // const [isMobile, setisMobile] = useState(false);
     // const resizingHandler = () => { setisMobile(window.innerWidth <= 768); };

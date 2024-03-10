@@ -1,0 +1,43 @@
+.home-icons {
+    color: #0a152f;
+}
+
+.home-icons .popular-styles__item p {
+    position: absolute;
+    padding: 25px 30px 20px;
+    color: #fff;
+}
+
+.countdown .home-icons .popular-styles ul,
+.home-icons .popular-styles .countdown ul,
+.home-icons .popular-styles .groups__item,
+.home-icons .popular-styles .landing--register .separator,
+.home-icons .popular-styles .profile-login .group,
+.home-icons .popular-styles .row,
+.landing--register .home-icons .popular-styles .separator,
+.profile-login .home-icons .popular-styles .group {
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    justify-content: center;
+}
+
+.countdown .home-icons .popular-styles ul>div,
+.home-icons .popular-styles .countdown ul>div,
+.home-icons .popular-styles .groups__item>div,
+.home-icons .popular-styles .landing--register .separator>div,
+.home-icons .popular-styles .profile-login .group>div,
+.home-icons .popular-styles .row>div,
+.landing--register .home-icons .popular-styles .separator>div,
+.profile-login .home-icons .popular-styles .group>div {
+    padding: 0 15px;
+    margin-bottom: 30px;
+}
+
+.home-icons .popular-styles__item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 260px;
+    box-shadow: 0 2px 8px rgba(55, 73, 87, .1), 0 15px 30px rgba(55, 73, 87, .15);
+    transition: all .2s ease-in-out;
+}

@@ -14,3 +14,11 @@
 .col--center {
     align-self: center;
 }
+
+.col--stretch, .group>*, .notification__state {
+    align-self: stretch;
+}
+
+.row--horizontal-center {
+    justify-content: center;
+}

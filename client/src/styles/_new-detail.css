@@ -1,0 +1,50 @@
+.detail.new-detail {
+    max-width: 1440px;
+    padding: 0 60px;
+    margin: 0 auto;
+}
+
+.detail.new-detail .detail__inner .detail__top {
+    padding-top: 30px;
+    border-bottom: none;
+}
+
+.detail.new-detail .detail__inner .detail__top .detail__content {
+    border-radius: 12px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.detail.new-detail .detail__inner .detail__top .detail__content .detail__content__inner {
+    height: 100%;
+    width: 100%;
+}
+
+.detail.new-detail .detail__inner .detail__top .detail__content__inner .detail__icon__holder .main-icon-without-slide {
+    padding: 90px;
+}
+
+.detail.new-detail .detail__inner .detail__top .detail__sidebar {
+    margin-left: 70px;
+    width: 441px;
+    position: relative;
+}
+
+.detail.new-detail .detail__inner .detail__top .detail__sidebar h1 {
+    font-size: 15px;
+}
+
+.detail.new-detail .detail__inner .detail__top .detail__sidebar .author__holder {
+    padding: 10px 0;
+}
+
+.countdown .detail.new-detail .detail__inner .detail__top .detail__sidebar .author__holder .author>ul,
+.detail.new-detail .detail__inner .detail__top .detail__sidebar .author__holder .author>.groups__item,
+.detail.new-detail .detail__inner .detail__top .detail__sidebar .author__holder .author>.row,
+.detail.new-detail .detail__inner .detail__top .detail__sidebar .author__holder .countdown .author>ul,
+.detail.new-detail .detail__inner .detail__top .detail__sidebar .author__holder .landing--register .author>.separator,
+.detail.new-detail .detail__inner .detail__top .detail__sidebar .author__holder .profile-login .author>.group,
+.landing--register .detail.new-detail .detail__inner .detail__top .detail__sidebar .author__holder .author>.separator,
+.profile-login .detail.new-detail .detail__inner .detail__top .detail__sidebar .author__holder .author>.group {
+    margin: 0;
+}

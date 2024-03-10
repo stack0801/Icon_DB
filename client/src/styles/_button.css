@@ -1,3 +1,17 @@
 .bj-button {
     transition: none;
 }
+
+button.btn--follow {
+    box-shadow: inset 0 0 0 2px #9ed1d9;
+    color: #9ed1d9;
+    background: none;
+}
+
+.btn, button, input[type=button], input[type=reset], input[type=submit] {
+    appearance: none;
+    background-color: #44b678;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+}

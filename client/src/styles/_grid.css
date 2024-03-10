@@ -1,3 +1,30 @@
-.countdown ul, .groups__item, .landing--register .separator, .profile-login .group, .row {
+.countdown ul,
+.groups__item,
+.landing--register .separator,
+.profile-login .group,
+.row {
     margin: 0 5px;
 }
+
+.countdown ul .col__xs--6, .groups__item .col__xs--6, .landing--register .separator .col__xs--6, .profile-login .group .col__xs--6, .row .col__xs--6 {
+    width: 50%;
+}
+
+@media screen and (min-width: 480px) {
+    .countdown ul .col__xl--2, .groups__item .col__xl--2, .landing--register .separator .col__xl--2, .profile-login .group .col__xl--2, .row .col__xl--2 {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    .countdown ul .col__xl--2, .groups__item .col__xl--2, .landing--register .separator .col__xl--2, .profile-login .group .col__xl--2, .row .col__xl--2 {
+        width: 33.33333%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .countdown ul .col__xl--2, .groups__item .col__xl--2, .landing--register .separator .col__xl--2, .profile-login .group .col__xl--2, .row .col__xl--2 {
+        width: 16.66667%;
+    }
+}
+

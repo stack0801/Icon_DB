@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import EmptySearch from "./components/EmptySearch";
 import Header from "@_components/common/Header/Header";
+import Footer from "@_components/common/Footer/Footer";
 import SearchBox from "@_components/SearchBox";
 import TopButton from "@_components/TopButton";
 
@@ -27,41 +28,42 @@ export default function Search() {
   }, [keyword]);
 
   return (
-    <section id="viewport">
+    <>
       <Header />
       <Container>
         <ListContentBox>
           <ResultSection>
-              <ImageListWrapper>
-                {data.length === 0 ? (
-                    <EmptySearch />
-                ) : (
-                  data.map((list, idx) => (
-                    <div key={idx}>
-                      <Link to={"/post/" + list.content_id}>
-                        <IconContainer>
-                          <IconList
-                            src={
-                              "https://webservicegraduationproject.s3.amazonaws.com/img/" +
-                              list.filename
-                            }
-                            width="260"
-                            alt="no_img"
-                          />
-                          <ShowTitle>
-                            <Text>Show Detail</Text>
-                          </ShowTitle>
-                        </IconContainer>
-                      </Link>
-                    </div>
-                  ))
-                )}
-              </ImageListWrapper>
-              <TopButton />
+            <ImageListWrapper>
+              {data.length === 0 ? (
+                <EmptySearch />
+              ) : (
+                data.map((list, idx) => (
+                  <div key={idx}>
+                    <Link to={"/post/" + list.content_id}>
+                      <IconContainer>
+                        <IconList
+                          src={
+                            "https://webservicegraduationproject.s3.amazonaws.com/img/" +
+                            list.filename
+                          }
+                          width="260"
+                          alt="no_img"
+                        />
+                        <ShowTitle>
+                          <Text>Show Detail</Text>
+                        </ShowTitle>
+                      </IconContainer>
+                    </Link>
+                  </div>
+                ))
+              )}
+            </ImageListWrapper>
+            <TopButton />
           </ResultSection>
         </ListContentBox>
       </Container>
-    </section>
+      <Footer />
+    </>
   );
 }
 
@@ -90,18 +92,17 @@ const ResultSection = styled.section`
     margin: 0 0 20px;
 
     a {
-        transition: none;
+      transition: none;
 
-        &:hover {
-            
+      &:hover {
         color: #03060d;
-        }
+      }
     }
   }
 `;
 
 const SearchHeading = styled.h3`
-margin: 20px 0;
+  margin: 20px 0;
   font-size: 36px;
   line-height: 1.25;
 

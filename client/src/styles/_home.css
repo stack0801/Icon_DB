@@ -1,0 +1,25 @@
+.fullwidth {
+    width: 100%;
+}
+
+.avatar.avatar-60 {
+    width: 54px;
+    height: 54px;
+}
+
+.avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+    background-size: 100%;
+}
+
+.avatar, .block {
+    display: block;
+}
+
+.avatar img {
+    border-radius: 100%;
+    width: 100%;
+    height: auto;
+}

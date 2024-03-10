@@ -1,7 +1,48 @@
-.checkbox, .group, .groups__item, .notification--alert .notification__content, .notify-wrapper .button--icon, .radio, .row--vertical-center, .switch {
+.checkbox,
+.group,
+.groups__item,
+.notification--alert .notification__content,
+.notify-wrapper .button--icon,
+.radio,
+.row--vertical-center,
+.switch {
     align-items: center;
 }
 
 .col {
+    flex: 1;
+}
+
+@media screen and (min-width: 480px) {
+    html .font-h6 {
+        font-size: calc(20px + (600vw - 2880px)/920);
+    }
+
+    h1 {
+        font-size: calc(40px + (600vw - 2880px)/920);
+    }
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+
+@media screen and (min-width: 1400px) {
+    h1 {
+        font-size: 46px;
+    }
+
+    h2 {
+        font-size: 42px;
+    }
+}
+
+.detail__content .detail__icon__inner {
+    touch-action: auto !important;
     flex: 1;
 }

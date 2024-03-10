@@ -113,10 +113,12 @@ export default function ImageSectionComponent() {
   };
 
   return (
-    <ImageSection>
-      <ImageContainer>
-        <ImageWrapper>
-          <ImageBox>
+    <section className="detail__content col mg-none col--stretch pd-none ">
+      <div className="detail__content__inner row row--horizontal-center mg-none">
+        <div className="fullwidth detail__icon__holder">
+          <div className="row row--vertical-center mg-none full-height detail__icon__inner">
+            <div className="col mg-none">
+              <div className="main-icon-without-slide pd-lv4 icon-png-container" datatype="img">
             <img
               // src={
               //   "https://webservicegraduationproject.s3.amazonaws.com/img/" +
@@ -127,10 +129,12 @@ export default function ImageSectionComponent() {
               width="256"
               height="256"
             />
-          </ImageBox>
-        </ImageWrapper>
-      </ImageContainer>
-    </ImageSection>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

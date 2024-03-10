@@ -36,14 +36,14 @@ router.post('/update_profile_img', profile_upload.single('img'), (req, res) => {
     })
 })
 
-router.post('/update_profile_nickname', (req, res) => {
-    const nickname = req.body.nickname
+router.post('/update_profile_username', (req, res) => {
+    const username = req.body.username
     const id = req.session.sign
     //클라이언트에서 전달된 값들을 받아옴
 
-    const sql = 'UPDATE user SET nickname = ? WHERE id = ?'
+    const sql = 'UPDATE user SET username = ? WHERE id = ?'
     //로그인되어 있는 아이디의 닉네임 정보를 변경
-    sql_pool.query(sql, [nickname, id], (err, result) => {
+    sql_pool.query(sql, [username, id], (err, result) => {
         if (err)
             throw err
         else
@@ -54,13 +54,13 @@ router.post('/update_profile_nickname', (req, res) => {
 router.post('/sign_up', (req, res) => {
     const id = req.body.id
     const password = req.body.pw
-    const name = req.body.name
+    const username = req.body.username
     //클라이언트에서 전달된 값들을 받아옴
 
-    if (id && password && name) {
-        const sql = 'INSERT INTO user(id, password, nickname) VALUES(?, ?, ?)'
+    if (id && password && username) {
+        const sql = 'INSERT INTO user(id, password, username) VALUES(?, ?, ?)'
         //id, 비밀번호, 닉네임을 다음과 같이 회원정보를 DB에 저장
-        sql_pool.query(sql, [id, password, name], (err, result) => {
+        sql_pool.query(sql, [id, password, username], (err, result) => {
             if (err)
                 res.send("fail")
             else
@@ -108,10 +108,10 @@ router.post('/sign_out', (req, res) => {
 router.post('/google_sign_in', (req, res) => {
     const id = req.body.id
     const password = req.body.pw
-    const name = req.body.name
+    const username = req.body.username
     //클라이언트에서 입력된 값들을 받아옴
 
-    if (id && password && name) {
+    if (id && password && username) {
         let sql = 'SELECT * FROM user WHERE id = ? AND password = ?'
         //다음과 같은 정보의 계정이 있는지 확인
         sql_pool.query(sql, [id, password], (err, result) => {
@@ -124,7 +124,7 @@ router.post('/google_sign_in', (req, res) => {
             else {
                 let sql = 'INSERT INTO user VALUES(?, ?, ?)'
                 //없다면 회원가입 후 로그인
-                sql_pool.query(sql, [id, password, name], (err, result) => {
+                sql_pool.query(sql, [id, password, username], (err, result) => {
                     if (err)
                         res.send("fail")
                     else {
