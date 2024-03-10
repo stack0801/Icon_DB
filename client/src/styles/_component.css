@@ -39,3 +39,11 @@
     font-size: 13px;
     line-height: 34px;
 }
+
+.bj-button span {
+    float: left;
+}
+
+.bj-button i~span, .bj-button span~i {
+    margin-left: 10px;
+}

@@ -11,3 +11,7 @@
 .bj-button {
     border-radius: 6px;
 }
+
+.bj-button--primary, .bj-button--primary:active, .bj-button--primary:focus, .bj-button--primary:hover, .bj-button--primary:visited, .bj-button--yellow, .bj-button--yellow:active, .bj-button--yellow:focus, .bj-button--yellow:hover, .bj-button--yellow:visited, .btn-warning, .btn-warning:active, .btn-warning:focus, .btn-warning:hover, .btn-warning:visited {
+    color: #121212;
+}

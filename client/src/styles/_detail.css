@@ -10,3 +10,8 @@
     border-top: 1px solid #e5e5e5;
     padding: 10px 0;
 }
+
+.detail .detail-footer .tags li {
+    display: block;
+    margin: 0 2px 4px;
+}

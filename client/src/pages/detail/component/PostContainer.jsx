@@ -5,15 +5,17 @@ import axios from "axios";
 
 import ImageSectionComponent from "./ImageSection";
 
-import noimg from '@_assets/images/noimage.png';
+import noimg from "@_assets/images/noimage.png";
 
 export default function App() {
   let { url_id } = useParams();
+  let { user } = useParams();
   const [sign, setSign] = useState(null);
   const [data, setData] = useState({ filename: "NoImage.png" });
   const [isMobile, setisMobile] = useState(); //Mobile버전 나타내기
   const [liked, setLiked] = useState(); //좋아요 여부 나타내기
   const [likes, setLikes] = useState(0); //좋아요의 갯수 확인
+  const [followed, setFollowed] = useState(); //팔로우 여부 나타내기
   const [tags, setTags] = useState([]); //HashTag 확인
   const [tagInsert, setTagInsert] = useState(""); //HashTag 입력
 
@@ -77,6 +79,21 @@ export default function App() {
       window.removeEventListener("resize", resizingHandler);
     };
   }, []);
+
+  useEffect(() => {
+    axios.post("/get_auth").then((res) => {
+      setSign(res.data);
+      if (res.data) {
+        axios.post("/check_followed", { id: user }).then((res) => {
+          setFollowed(res.data === "followed");
+        });
+        window.addEventListener("resize", resizingHandler);
+        return () => {
+          window.removeEventListener("resize", resizingHandler);
+        };
+      }
+    });
+  }, [user]);
 
   //좋아요 기능
   const onLikedHandler = () => {
@@ -171,41 +188,39 @@ export default function App() {
   };
 
   return (
-    <section id='detail' className="detail bobjoll new-detail loaded">
+    <section id="detail" className="detail bobjoll new-detail loaded">
       <div className="detail__inner detail--v2 gallery">
         <div className="row detail__top mg-none">
-         <ImageSectionComponent />
+          <ImageSectionComponent />
           <aside className="detail__sidebar col--stretch">
             <div className="pd-top-lv3 pd-bottom-lv2">
               <h1 className="mg-none font-xl">No Image</h1>
             </div>
-            <DownloadContainer>
-              <DownloadBox>
-                <ButtonBox>
-                  <div>
-                  <ButtonLink href="#" onClick={downloadUrl}>
+            <div className="detail__mobile-holder">
+              <div className="fi-premium-icon modal-download--target">
+                <div className="download download-action copy-svg-png">
+                  <a href="#" className="btn-svg btn bj-button btn-warning" onClick={downloadUrl}>
                     <span>다운로드</span>
-                  </ButtonLink>
-                  </div>
-                </ButtonBox>
-                <IsLikeBox>
-                {liked ? (
-                  <IsLikeButtonBox onClick={onLikedHandler}>
-                    LIKED!
-                  </IsLikeButtonBox>
-                ) : (
-                  <IsLikeButtonBox onClick={onLikedHandler}>
-                  LIKE
-                </IsLikeButtonBox>
-                )}
-                </IsLikeBox>
-                <IsLikeBox>
-                  <IsLikeButtonBox>
-                    <span>{likes} Likes</span>
-                  </IsLikeButtonBox>
-                </IsLikeBox>
-              </DownloadBox>
-            </DownloadContainer>
+                  </a>
+                  <IsLikeBox>
+                    {liked ? (
+                      <IsLikeButtonBox onClick={onLikedHandler}>
+                        LIKED!
+                      </IsLikeButtonBox>
+                    ) : (
+                      <IsLikeButtonBox onClick={onLikedHandler}>
+                        LIKE
+                      </IsLikeButtonBox>
+                    )}
+                  </IsLikeBox>
+                  <IsLikeBox>
+                    <IsLikeButtonBox>
+                      <span>{likes} Likes</span>
+                    </IsLikeButtonBox>
+                  </IsLikeBox>
+                </div>
+              </div>
+            </div>
             <div className="author__holder">
               <div className="author">
                 <div className="row row--vertical-center mg-none">
@@ -221,8 +236,19 @@ export default function App() {
                     </a>
                   </div>
                   <div>
-                    <button className="bj-button bj-button--sm bj-button--outline btn--follow js_follow mg-left-lv2" datatype="author">
-                      
+                    <button
+                      className="bj-button bj-button--sm bj-button--outline btn--follow js_follow mg-left-lv2"
+                      datatype="author"
+                    >
+                      {followed ? (
+                        <div className="state--active">
+                          <span className="normal">팔로잉</span>
+                        </div>
+                      ) : (
+                        <div className="state--inactive">
+                          <span>팔로우</span>
+                        </div>
+                      )}
                     </button>
                   </div>
                 </div>
@@ -306,6 +332,16 @@ export default function App() {
               </UserWrapper>
             )} */}
           </aside>
+        </div>
+        <div className="detail-footer pd-top-lv3 align-left mg-bottom-lv3">
+          <h2 className="font-h6 mg-bottom-lv2 hide">연관된 태그</h2>
+          <ul className="tags">
+            <li>
+              <a className="tag--related" href="#" title="">
+                admin
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

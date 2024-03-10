@@ -8,10 +8,28 @@ button.btn--follow {
     background: none;
 }
 
+button.btn--follow .state--active {
+    display: none;
+}
+
 .btn, button, input[type=button], input[type=reset], input[type=submit] {
     appearance: none;
     background-color: #44b678;
     border: none;
     border-radius: 6px;
     color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.75em 1em;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    outline: none; 
+}
+
+.btn.btn-warning, button.btn-warning, input[type=button].btn-warning, input[type=reset].btn-warning, input[type=submit].btn-warning {
+    background-color: #f7d5a3;
 }

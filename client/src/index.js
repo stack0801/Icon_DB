@@ -4,6 +4,8 @@ import { createGlobalStyle } from "styled-components";
 
 import App from "./App";
 
+import './styles/_download.css';
+import './styles/_transition.css';
 import './styles/_bookmarks.css';
 import './styles/_home.css';
 import './styles/_detail.css';
@@ -46,15 +48,18 @@ const GlobalStyle = createGlobalStyle`
   html .inline-block { display: inline-block; }
   
   html .mg-none { margin: 0; }
+  html .mg-bottom-lv2 { margin-bottom: 10px; }
   html .mg-bottom-lv4 { margin-bottom: 30px; }
   html .mg-bottom-lv4-i { margin-bottom: 30px !important; }
   html .mg-left-lv2 { margin-left: 10px; }
   html .mg-left-lv2-i { margin-left: 10px !important; }
+  html .mg-right-lv3 { margin-right: 20px; }
 
   html .pd-none { padding: 0; }
   html .pd-top-lv5 { padding-top: 50px; }
   html .pd-top-lv3 { padding-top: 20px; }
   html .pd-bottom-lv2 { padding-bottom: 10px; }
+  html .mg-bottom-lv3 { padding-bottom: 20px; }
   html .pd-right-lv2-i { padding-right: 10px !important; }
   html .pd-lv4 { padding: 30px; }
 
@@ -70,9 +75,7 @@ const GlobalStyle = createGlobalStyle`
   html .font-lg { font-size: 17px; }
   html .font-xl { font-size: 20px; }
 
-  html .mg-right-lv3 {
-    margin-right: 20px;
-  }
+
 
   html .font-h6 {
     font-size: 20px;
@@ -93,14 +96,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  html .semibold {
-    font-weight: 600;
-  }
+  html .semibold { font-weight: 600; }
+  html .bold { font-weight: 700; }
 
-  html .bold {
-    font-weight: 700;
-  }
-
+  html .hide { display: none; }
   body>* {
     width: 100%;
   }
@@ -118,10 +117,13 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.75em;
   }
 
-  ul, li {
+  ul, ol, dl {
     margin: 0;
     padding: 0;
-    list-style-type: none;
+  }
+
+  li {
+    list-style: none;
   }
 
   label {
@@ -142,7 +144,6 @@ const GlobalStyle = createGlobalStyle`
       line-height: 1.25;
     }
   }
-
 `;
 
 const viewport = ReactDOM.createRoot(document.getElementById("viewport"));

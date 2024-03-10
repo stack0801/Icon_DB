@@ -1,0 +1,12 @@
+.btn i:before,
+.btn span,
+button i:before,
+button span,
+input[type=button] i:before,
+input[type=button] span,
+input[type=reset] i:before,
+input[type=reset] span,
+input[type=submit] i:before,
+input[type=submit] span {
+    vertical-align: middle;
+}

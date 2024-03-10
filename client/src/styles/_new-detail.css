@@ -48,3 +48,19 @@
 .profile-login .detail.new-detail .detail__inner .detail__top .detail__sidebar .author__holder .author>.group {
     margin: 0;
 }
+
+.detail.new-detail .detail__inner .detail-footer .tags {
+    justify-content: start;
+}
+
+.detail.new-detail .detail__inner .detail-footer .tags {
+    margin-top: 12px;
+}
+
+.detail.new-detail .detail__inner .detail-footer .tags li {
+    margin: 0 4px 4px 0;
+}
+
+.detail.new-detail .detail__inner .detail__top .detail__sidebar .detail__mobile-holder {
+    padding: 10px 0 20px;
+}

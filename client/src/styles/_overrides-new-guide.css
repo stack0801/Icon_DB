@@ -4,3 +4,14 @@
     justify-content: center;
     font-weight: 600; 
 }
+
+.tag--related {
+    height: 27px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 3px;
+    padding: 0 10px;
+    color: #5b5b5b;
+    font-size: 13px;
+    border: 1px solid #c8c8c8;
+}

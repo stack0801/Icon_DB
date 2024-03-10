@@ -1,0 +1,21 @@
+.detail__mobile-holder {
+    padding: 10px 0 20px;
+}
+
+.detail__mobile-holder .download-action.copy-svg-png {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.detail__mobile-holder .download-action.copy-svg-png .btn-png, .detail__mobile-holder .download-action.copy-svg-png .btn-svg {
+    flex: unset;
+    width: 100%;
+}
+
+.download .btn-svg span {
+    height: 44px;
+    line-height: 44px;
+    display: inline-block;
+    vertical-align: bottom;
+}
