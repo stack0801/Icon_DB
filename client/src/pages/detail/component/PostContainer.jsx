@@ -20,136 +20,55 @@ export default function App() {
   const [tagInsert, setTagInsert] = useState(""); //HashTag 입력
 
   useEffect(() => {
-    axios.post("/get_auth").then((res) => {
-      let data = res.data;
-      setSign(data);
-      if (data) {
-        axios
-          .post("/check_liked", {
-            content_id: url_id,
-          })
-          .then((res) => {
-            setLiked(res.data === "liked");
-          });
+    const getAuthCheckLiked = async () => {
+      const response = await axios.post('get_auth');
+      setSign(response.data);
+      if(response.data) {
+        const likedResponse = await axios.post('/check_liked', { content_id: url_id });
+        setLiked(likedResponse.data === 'liked');
       }
-    });
+    };
 
-    resizingHandler();
-    window.addEventListener("resize", resizingHandler);
-    return () => {
-      window.removeEventListener("resize", resizingHandler);
+    getAuthCheckLiked();
+
+    const resizingHandler = () => {
+      setisMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', resizingHandler);
+    return() => {
+      window.removeEventListener('resize', resizingHandler);
     };
   }, [url_id]);
 
   useEffect(() => {
-    axios({
-      method: "post",
-      url: "/get_content",
-      data: {
-        content_id: url_id,
-      },
-    }).then((res) => {
-      setData(res.data[0]);
-      setLikes(res.data[0].like);
-    });
-    getTags(url_id);
+    const getContentAndTags = async () => {
+      const contentResponse = await axios.post('get_content', { content_id: url_id });
+      setData(contentResponse.data[0]);
+      setLikes(contentResponse.data[0].like);
+      getTags(url_id);
+    };
+
+    getContentAndTags();
   }, [url_id]);
 
-  const getTags = (url_id) => {
-    axios({
-      method: "post",
-      url: "/get_tags",
-      data: {
-        content_id: url_id,
-      },
-    }).then((res) => {
-      setTags(res.data);
-    });
-  };
-
-  //Mobile 버전
-  const resizingHandler = () => {
-    setisMobile(window.innerWidth <= 768);
-  };
-
   useEffect(() => {
-    resizingHandler();
-    window.addEventListener("resize", resizingHandler);
-    return () => {
-      window.removeEventListener("resize", resizingHandler);
-    };
-  }, []);
-
-  useEffect(() => {
-    axios.post("/get_auth").then((res) => {
-      setSign(res.data);
-      if (res.data) {
-        axios.post("/check_followed", { id: user }).then((res) => {
-          setFollowed(res.data === "followed");
-        });
-        window.addEventListener("resize", resizingHandler);
-        return () => {
-          window.removeEventListener("resize", resizingHandler);
-        };
+    const getAuthAndCheckFollowed = async () => {
+      const authResponse = await axios.post('/get_auth');
+      setSign(authResponse.data);
+      if(authResponse.data) {
+        const followedResponse = await axios.post('check_followed', { id: user });
+        setFollowed(followedResponse.data === 'followed');
       }
-    });
+    };
+
+    getAuthAndCheckFollowed();
   }, [user]);
 
-  //좋아요 기능
-  const onLikedHandler = () => {
-    if (sign === null) {
-      alert("로그인 후 사용 가능한 서비스 입니다.");
-      window.location.href = "/sign_in";
-    } else {
-      axios({
-        method: "post",
-        url: "/setLike",
-        data: {
-          content_id: url_id,
-        },
-      }).then((res) => {
-        setLiked(res.data);
-        axios({
-          method: "post",
-          url: "/get_content",
-          data: {
-            content_id: url_id,
-          },
-        }).then((res) => {
-          setLikes(res.data[0].like);
-        });
-      });
-    }
-  };
-
-  const [message, setMessage] = useState("");
-  const onMassageHandler = (event) => {
-    setMessage(event.currentTarget.value);
-  };
-
-  const content_delete = () => {
-    axios
-      .post("/content_delete", {
-        content_id: url_id,
-      })
-      .then((res) => {
-        console.log(res);
-        window.location.href = "/";
-      });
-  };
-
-  const content_update = () => {
-    axios
-      .post("/content_update", {
-        content_id: url_id,
-        content_message: message,
-        image: null,
-      })
-      .then((res) => {
-        console.log(res);
-        window.location.href = "/";
-      });
-  };
+  const getTags = async (url_id) => {
+    const response = await axios.post('get_tags', { content_id: url_id });
+    setTags(response.data);
+  }
 
   //Download URL
   const downloadUrl = () => {
@@ -158,34 +77,185 @@ export default function App() {
     );
   };
 
-  //HashTag 기능
-  const TagInsertHandler = (event) => {
-    setTagInsert(event.currentTarget.value);
-  };
-  const TagInsert = () => {
-    if (tagInsert.length > 1) {
-      axios
-        .post("/tag_insert", {
-          content_id: url_id,
-          tag_context: tagInsert,
-        })
-        .then((res) => {
-          console.log(res);
-          getTags(url_id);
-        });
+  const onLikedHandler = async () => {
+    if(sign === null) {
+      alert("로그인 후 사용 가능합니다.");
+      window.location.href = '/sign_in';
     } else {
-      alert("태그는 2글자 이상입니다");
+      const likeResponse = await axios.post('/setLike', { content_id: url_id });
+      setLiked(likeResponse.data);
+      const contentResponse = await axios.post('/get_content', { content_id: url_id });
+      setLikes(contentResponse.data[0].like);
     }
   };
 
-  //Editor 기능
-  const OpenEditor = () => {
-    window.open(
-      process.env.REACT_APP_URL +
-        ":8000/src/editor/" +
-        data.filename.split(".")[0]
-    );
-  };
+  // useEffect(() => {
+  //   axios.post("/get_auth").then((res) => {
+  //     let data = res.data;
+  //     setSign(data);
+  //     if (data) {
+  //       axios
+  //         .post("/check_liked", {
+  //           content_id: url_id,
+  //         })
+  //         .then((res) => {
+  //           setLiked(res.data === "liked");
+  //         });
+  //     }
+  //   });
+
+  //   resizingHandler();
+  //   window.addEventListener("resize", resizingHandler);
+  //   return () => {
+  //     window.removeEventListener("resize", resizingHandler);
+  //   };
+  // }, [url_id]);
+
+  // useEffect(() => {
+  //   axios({
+  //     method: "post",
+  //     url: "/get_content",
+  //     data: {
+  //       content_id: url_id,
+  //     },
+  //   }).then((res) => {
+  //     setData(res.data[0]);
+  //     setLikes(res.data[0].like);
+  //   });
+  //   getTags(url_id);
+  // }, [url_id]);
+
+  // const getTags = (url_id) => {
+  //   axios({
+  //     method: "post",
+  //     url: "/get_tags",
+  //     data: {
+  //       content_id: url_id,
+  //     },
+  //   }).then((res) => {
+  //     setTags(res.data);
+  //   });
+  // };
+
+  // //Mobile 버전
+  // const resizingHandler = () => {
+  //   setisMobile(window.innerWidth <= 768);
+  // };
+
+  // useEffect(() => {
+  //   resizingHandler();
+  //   window.addEventListener("resize", resizingHandler);
+  //   return () => {
+  //     window.removeEventListener("resize", resizingHandler);
+  //   };
+  // }, []);
+
+  // useEffect(() => {
+  //   axios.post("/get_auth").then((res) => {
+  //     setSign(res.data);
+  //     if (res.data) {
+  //       axios.post("/check_followed", { id: user }).then((res) => {
+  //         setFollowed(res.data === "followed");
+  //       });
+  //       window.addEventListener("resize", resizingHandler);
+  //       return () => {
+  //         window.removeEventListener("resize", resizingHandler);
+  //       };
+  //     }
+  //   });
+  // }, [user]);
+
+  // //좋아요 기능
+  // const onLikedHandler = () => {
+  //   if (sign === null) {
+  //     alert("로그인 후 사용 가능한 서비스 입니다.");
+  //     window.location.href = "/sign_in";
+  //   } else {
+  //     axios({
+  //       method: "post",
+  //       url: "/setLike",
+  //       data: {
+  //         content_id: url_id,
+  //       },
+  //     }).then((res) => {
+  //       setLiked(res.data);
+  //       axios({
+  //         method: "post",
+  //         url: "/get_content",
+  //         data: {
+  //           content_id: url_id,
+  //         },
+  //       }).then((res) => {
+  //         setLikes(res.data[0].like);
+  //       });
+  //     });
+  //   }
+  // };
+
+  // const [message, setMessage] = useState("");
+  // const onMassageHandler = (event) => {
+  //   setMessage(event.currentTarget.value);
+  // };
+
+  // const content_delete = () => {
+  //   axios
+  //     .post("/content_delete", {
+  //       content_id: url_id,
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       window.location.href = "/";
+  //     });
+  // };
+
+  // const content_update = () => {
+  //   axios
+  //     .post("/content_update", {
+  //       content_id: url_id,
+  //       content_message: message,
+  //       image: null,
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       window.location.href = "/";
+  //     });
+  // };
+
+  // //Download URL
+  // const downloadUrl = () => {
+  //   window.open(
+  //     process.env.REACT_APP_URL_s + ":5000/download/" + data.filename
+  //   );
+  // };
+
+  // //HashTag 기능
+  // const TagInsertHandler = (event) => {
+  //   setTagInsert(event.currentTarget.value);
+  // };
+  // const TagInsert = () => {
+  //   if (tagInsert.length > 1) {
+  //     axios
+  //       .post("/tag_insert", {
+  //         content_id: url_id,
+  //         tag_context: tagInsert,
+  //       })
+  //       .then((res) => {
+  //         console.log(res);
+  //         getTags(url_id);
+  //       });
+  //   } else {
+  //     alert("태그는 2글자 이상입니다");
+  //   }
+  // };
+
+  // //Editor 기능
+  // const OpenEditor = () => {
+  //   window.open(
+  //     process.env.REACT_APP_URL +
+  //       ":8000/src/editor/" +
+  //       data.filename.split(".")[0]
+  //   );
+  // };
 
   return (
     <section id="detail" className="detail bobjoll new-detail loaded">
