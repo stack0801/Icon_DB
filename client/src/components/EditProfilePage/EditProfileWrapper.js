@@ -17,20 +17,35 @@ function App({ classes }) {
     const [profiledata, setProfileData] = useState({});
 
     useEffect(() => {
-        axios.post('/get_auth')
-            .then((res) => {
-                setSign(res.data)
-                console.log(res.data)
-            })
-        axios({
-            method: 'post',
-            url: '/get_user'
-        })
-            .then((res) => {
-                setProfileData(res.data[0]);
-                console.log(res.data[0]);
-            })
+        const fetchData = async () => {
+            try {
+                const [authResponse, userResponse] = await Promise.all([
+                    axios.post('/get_auth'),
+                    axios.post('/get_user')
+                ]);
+                setSign(authResponse.data);
+                setProfileData(userResponse.data[0]);
+            } catch(error) {
+                console.error('Error fetching data: ', error);
+            }
+        };
     }, []);
+
+    // useEffect(() => {
+    //     axios.post('/get_auth')
+    //         .then((res) => {
+    //             setSign(res.data)
+    //             console.log(res.data)
+    //         })
+    //     axios({
+    //         method: 'post',
+    //         url: '/get_user'
+    //     })
+    //         .then((res) => {
+    //             setProfileData(res.data[0]);
+    //             console.log(res.data[0]);
+    //         })
+    // }, []);
 
     //Image Upload
     const [images, setImages] = useState([]);
