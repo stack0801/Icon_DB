@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 
-import Banner from "./component/Banner";
-import Popular from "./component/PopularSection";
-import LogoSection from "./component/LogoSection";
-import TopIconSearch from "./component/TopIconSearch";
+import Banner from "./components/Banner";
+import Popular from "./components/PopularSection";
+import LogoSection from "./components/LogoSection";
+import TopIconSearch from "./components/TopIconSearch";
 import Desktop from "@_components/common/Header/Desktop";
 import TopButton from "@_components/TopButton";
 import Footer from "@_components/common/Footer/Footer";

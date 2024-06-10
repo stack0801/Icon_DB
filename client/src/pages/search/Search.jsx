@@ -72,7 +72,7 @@ const Container = styled.div`
   padding: 0 20px;
   max-width: unset;
   display: flex;
-
+  height: 67vh;
   .text__state-9ed1d9 {
     color: #9ed1d9;
   }

@@ -1,22 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
 import wallpaper from '@_assets/images/main-wallpaper.png';
 
 export default function Banner() {
-  const [isMobile, setisMobile] = useState();
-
-  useEffect(() => {
-    const resizingHandler = () => {
-      setisMobile(window.innerWidth <= 768);
-    };
-    resizingHandler();
-    window.addEventListener('resize', resizingHandler);
-    return () => {
-      window.removeEventListener('resize', resizingHandler);
-    };
-  }, [isMobile]);
-
   return (
     <BannerSection>
       <InnerContainer>

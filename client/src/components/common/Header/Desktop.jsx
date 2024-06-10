@@ -124,7 +124,7 @@ export default function DesktopHeader() {
             </li>
           )}
         </MenuList> */}
-          {sign === null ? (
+          {sign !== null ? (
             <div className="push-right font-sm header--menu__login">
               <div id="gr_user_menu" className="row mg-none">
                 {screenWidth > 1400 ? (
