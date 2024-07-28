@@ -3,8 +3,11 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
+import { useAuth } from '@_hooks/useAuth';
 import { useScroll } from '@_hooks/useScroll';
 import { useWindowSize } from '@_hooks/useWindowSize';
+import { signOutUser } from '@/utils/signOutUser';
+
 import SearchSectionComponent from '../components/SearchSection';
 import ModalBoxComponent from '../components/ModalBoxComponent';
 
@@ -19,35 +22,42 @@ import { FaRegUser } from 'react-icons/fa6';
 import { MdMenu } from 'react-icons/md';
 
 export default function DesktopHeader() {
-  const [sign, setSign] = useState(null);
-  const [profiledata, setProfileData] = useState({
-    profilename: 'admin.png',
-    nickname: 'admin',
-  });
-  const scroll = useScroll();
+  // const [sign, setSign] = useState(null);
+  // const [profiledata, setProfileData] = useState({
+  //   profilename: 'admin.png',
+  //   nickname: 'admin',
+  // });
+  // const scroll = useScroll();
+  // const { width: screenWidth } = useWindowSize();
+
+  // useEffect(() => {
+  //   console.log(sign);
+  //   axios.post('/get_auth').then((res) => {
+  //     let data = res.data;
+  //     setSign(data);
+  //     axios
+  //       .post('/get_profile', {
+  //         user: data,
+  //       })
+  //       .then((res) => {
+  //         setProfileData(res.data[0]);
+  //       });
+  //   });
+  // }, []);
+  const {authData: sign, profileData} =useAuth();
+  const scroll  = useScroll();
   const { width: screenWidth } = useWindowSize();
 
-  useEffect(() => {
-    console.log(sign);
-    axios.post('/get_auth').then((res) => {
-      let data = res.data;
-      setSign(data);
-      axios
-        .post('/get_profile', {
-          user: data,
-        })
-        .then((res) => {
-          setProfileData(res.data[0]);
-        });
-    });
-  }, []);
-
-  const signOut = () => {
-    axios.post('/sign_out').then((res) => {
-      console.log(res.data);
-      if (res.data === 'success') window.location.href = '/';
-    });
+  const handleSignOut = async () => {
+    await signOutUser();
   };
+  // const signOut = () => {
+  //   axios.post('/sign_out').then((res) => {
+  //     console.log(res.data);
+  //     if (res.data === 'success') window.location.href = '/';
+  //   });
+  // };
+  
 
   //Editor Open
   const openEditor = () => {
