@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
 
-import DesktopHeader from "./DesktopHeader/DesktopHeader";
-import MobileHeader from "./MobileHeader";
+import DesktopHeader from './DesktopHeader/DesktopHeader';
+import MobileHeader from './MobileHeader';
+import { useWindowSize } from '@_hooks/useWindowSize';
 
 export default function App() {
+  const { width: screenWidth } = useWindowSize();
 
-    const [screenWidth, setScreenWidth] = useState(0);
-
-    useEffect(() => {
-        window.addEventListener('resize', () => {setScreenWidth(window.innerWidth)});
-    });
-    
-    useEffect(() => {
-        setScreenWidth(window.innerWidth);
-    }, []);
-
-    return (screenWidth <= 768 ? <MobileHeader /> : <DesktopHeader />); // screenWidth를 900 기준으로 PC버전과 Mobile버전의 Header 구분
+  return screenWidth <= 768 ? <MobileHeader /> : <DesktopHeader />;
 }
