@@ -1,35 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import styled from "styled-components";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+import axios from 'axios';
 
-import SearchSectionComponent from "../components/SearchSection";
-import ModalBoxComponent from "../components/ModalBoxComponent";
+import { useScroll } from '@/hooks/useScroll';
+import SearchSectionComponent from '../components/SearchSection';
+import ModalBoxComponent from '../components/ModalBoxComponent';
 
-import SearchBox from "@_components/SearchBox";
-import ImageContainer from "../../../ImageContainer";
-import LinkButton from "../../../LinkButton";
-import logo from "@_assets/brand/logo.svg";
+import SearchBox from '@_components/SearchBox';
+import ImageContainer from '../../../ImageContainer';
+import LinkButton from '../../../LinkButton';
+import logo from '@_assets/brand/logo.svg';
 
-import Avatar from "@_assets/images/noimage.png";
+import Avatar from '@_assets/images/noimage.png';
 
-import { FaRegUser } from "react-icons/fa6";
-import { MdMenu } from "react-icons/md";
+import { FaRegUser } from 'react-icons/fa6';
+import { MdMenu } from 'react-icons/md';
 
 export default function DesktopHeader() {
   const [sign, setSign] = useState(null);
   const [profiledata, setProfileData] = useState({
-    profilename: "admin.png",
-    nickname: "admin",
+    profilename: 'admin.png',
+    nickname: 'admin',
   });
 
   useEffect(() => {
     console.log(sign);
-    axios.post("/get_auth").then((res) => {
+    axios.post('/get_auth').then((res) => {
       let data = res.data;
       setSign(data);
       axios
-        .post("/get_profile", {
+        .post('/get_profile', {
           user: data,
         })
         .then((res) => {
@@ -39,34 +40,21 @@ export default function DesktopHeader() {
   }, []);
 
   const signOut = () => {
-    axios.post("/sign_out").then((res) => {
+    axios.post('/sign_out').then((res) => {
       console.log(res.data);
-      if (res.data === "success") window.location.href = "/";
+      if (res.data === 'success') window.location.href = '/';
     });
-  };
-
-  const [scroll, setScroll] = useState(false);
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll); //clean up
-    };
-  }, []);
-
-  const handleScroll = () => {
-    if (window.scrollY >= 500) setScroll(true);
-    else setScroll(false);
   };
 
   //Editor Open
   const openEditor = () => {
-    window.open(process.env.REACT_APP_URL + ":8000/src/editor/");
+    window.open(process.env.REACT_APP_URL + ':8000/src/editor/');
   };
 
   const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       setScreenWidth(window.innerWidth);
     });
   });
@@ -76,8 +64,8 @@ export default function DesktopHeader() {
   }, []);
 
   const location = useLocation();
-  const isHome = location.pathname === "/";
-  const isDetail = location.pathname === "/post";
+  const isHome = location.pathname === '/';
+  const isDetail = location.pathname === '/post';
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleAvatarButtonClick = () => {
@@ -85,11 +73,22 @@ export default function DesktopHeader() {
   };
 
   return (
-    <header id="header" className="header body-header" sign={sign} isHome={isHome} isDetail>
+    <header
+      id="header"
+      className="header body-header"
+      sign={sign}
+      isHome={isHome}
+      isDetail
+    >
       <section className="header--menu" id="header-menu">
         <div className="row row--vertical-center mg-none full-height">
           <a href="/" className="logo track" id="logo">
-            <img src={logo} title="ICONDB 로고" className="block" alt="ICONDB logo" />
+            <img
+              src={logo}
+              title="ICONDB 로고"
+              className="block"
+              alt="ICONDB logo"
+            />
           </a>
           <Nav>
             <MenuToggle>
@@ -128,10 +127,23 @@ export default function DesktopHeader() {
             <div className="push-right font-sm header--menu__login">
               <div id="gr_user_menu" className="row mg-none">
                 {screenWidth > 1400 ? (
-                  <div id="gr_not-connected" className="gr_not-connected col--center">
+                  <div
+                    id="gr_not-connected"
+                    className="gr_not-connected col--center"
+                  >
                     <div className="row row--vertical-center mg-none login-register-buttons-container">
-                    <a href="/sign_in" className="btn-login track semibold link-inverted mg-right-lv3">로그인</a>
-                    <a href="/sign_up" className="btn-register bj-button bj-button--sm bj-button--outline bj-button--inverted track">가입하기</a>
+                      <a
+                        href="/sign_in"
+                        className="btn-login track semibold link-inverted mg-right-lv3"
+                      >
+                        로그인
+                      </a>
+                      <a
+                        href="/sign_up"
+                        className="btn-register bj-button bj-button--sm bj-button--outline bj-button--inverted track"
+                      >
+                        가입하기
+                      </a>
                     </div>
                   </div>
                 ) : (
@@ -149,7 +161,12 @@ export default function DesktopHeader() {
                 <AvatarButton>
                   <img src={Avatar} alt="noimage" />
                 </AvatarButton>
-                {isModalOpen && <ModalBoxComponent isModalOpen={isModalOpen} isDetail={isDetail} />}
+                {isModalOpen && (
+                  <ModalBoxComponent
+                    isModalOpen={isModalOpen}
+                    isDetail={isDetail}
+                  />
+                )}
               </AvatarBox>
             </UserBox>
           )}
@@ -209,7 +226,7 @@ const UserBox = styled.div`
   ::after {
     transition: opacity 1ms cubic-bezier(1, 0, 0, 1);
     opacity: 0;
-    content: "";
+    content: '';
   }
 `;
 
@@ -229,7 +246,7 @@ const AvatarBox = styled.div`
     border-right: 4px solid rgba(0, 0, 0, 0);
     border-top: 4px solid #fff;
     transform: translateY(-50%);
-    content: "";
+    content: '';
   }
 `;
 
