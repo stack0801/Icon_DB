@@ -54,18 +54,6 @@ export default function DesktopHeader() {
     window.open(process.env.REACT_APP_URL + ':8000/src/editor/');
   };
 
-  // const [screenWidth, setScreenWidth] = useState(0);
-
-  // useEffect(() => {
-  //   window.addEventListener('resize', () => {
-  //     setScreenWidth(window.innerWidth);
-  //   });
-  // });
-
-  // useEffect(() => {
-  //   setScreenWidth(window.innerWidth);
-  // }, []);
-
   const location = useLocation();
   const isHome = location.pathname === '/';
   const isDetail = location.pathname === '/post';
