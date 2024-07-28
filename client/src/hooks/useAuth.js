@@ -1,29 +1,34 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const GET_AUTH_URL = '/get_auth';
+const GET_PROFILE_URL = '/get_profile';
+
+const INITIAL_PROFILE_DATA = {
+  profileName: 'admin.png',
+  nickName: 'admin',
+};
+
 export function useAuth() {
-  const [sign, setSign] = useState(null);
-  const [profiledata, setProfileData] = useState({
-    profilename: 'admin.png',
-    nickname: 'admin',
-  });
+  const [authData, setAuthData] = useState(null);
+  const [profiledata, setProfileData] = useState(INITIAL_PROFILE_DATA);
 
   useEffect(() => {
     const initializeAuth = async () => {
-      const userData = await fetchAuth();
+      const userData = await fetchAuthData();
       if (userData) {
-        await fetchProfile(userData);
+        await fetchUserProfile(userData);
       }
     };
 
     initializeAuth();
   }, []);
 
-  const fetchAuth = async () => {
+  const fetchAuthData = async () => {
     try {
-      const response = await axios.post('/get_auth');
-      const userData = response.data;
-      setSign(userData);
+      const authResponse = await axios.post(GET_AUTH_URL);
+      const userData = authResponse.data;
+      setAuthData(userData);
       return userData;
     } catch (error) {
       console.error('Error fetching auth data:', error);
@@ -31,14 +36,14 @@ export function useAuth() {
     }
   };
 
-  const fetchProfile = async (user) => {
+  const fetchUserProfile = async (user) => {
     try {
-      const response = await axios.post('/get_profile', { user });
-      setProfileData(response.data[0]);
+      const profileResponse = await axios.post(GET_PROFILE_URL, { user });
+      setProfileData(profileResponse.data[0]);
     } catch (error) {
       console.error('Error fetching profile data:', error);
     }
   };
 
-  return { sign, profiledata };
+  return { authData, profiledata };
 }
