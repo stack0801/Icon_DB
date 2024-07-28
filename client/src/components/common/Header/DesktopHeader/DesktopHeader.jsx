@@ -3,7 +3,8 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import { useScroll } from '@/hooks/useScroll';
+import { useScroll } from '@_hooks/useScroll';
+import { useWindowSize } from '@_hooks/useWindowSize';
 import SearchSectionComponent from '../components/SearchSection';
 import ModalBoxComponent from '../components/ModalBoxComponent';
 
@@ -23,6 +24,8 @@ export default function DesktopHeader() {
     profilename: 'admin.png',
     nickname: 'admin',
   });
+  const scroll = useScroll();
+  const { width: screenWidth } = useWindowSize();
 
   useEffect(() => {
     console.log(sign);
@@ -51,17 +54,17 @@ export default function DesktopHeader() {
     window.open(process.env.REACT_APP_URL + ':8000/src/editor/');
   };
 
-  const [screenWidth, setScreenWidth] = useState(0);
+  // const [screenWidth, setScreenWidth] = useState(0);
 
-  useEffect(() => {
-    window.addEventListener('resize', () => {
-      setScreenWidth(window.innerWidth);
-    });
-  });
+  // useEffect(() => {
+  //   window.addEventListener('resize', () => {
+  //     setScreenWidth(window.innerWidth);
+  //   });
+  // });
 
-  useEffect(() => {
-    setScreenWidth(window.innerWidth);
-  }, []);
+  // useEffect(() => {
+  //   setScreenWidth(window.innerWidth);
+  // }, []);
 
   const location = useLocation();
   const isHome = location.pathname === '/';
