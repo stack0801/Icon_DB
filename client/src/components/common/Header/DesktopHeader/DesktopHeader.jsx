@@ -9,7 +9,7 @@ import { useScroll } from '@_hooks/useScroll';
 import { useWindowSize } from '@_hooks/useWindowSize';
 import { signOutUser } from '@_utils/signOutUser';
 
-import SearchSectionComponent from '../components/SearchSection';
+import SearchSection from './components/SearchSection';
 
 import SearchBox from '@_components/SearchBox';
 import ImageContainer from '../../../ImageContainer';
@@ -18,10 +18,12 @@ import logo from '@_assets/brand/logo.svg';
 
 import noImage from '@_assets/images/noimage.png';
 
+import LogoSection from './components/LogoSection';
+import MenuSection from './components/MenuSection';
 import UserSection from './components/UserSection';
 import AuthSection from './components/AuthSection';
 
-export default function DesktopHeader() {
+export default function Desktop() {
   // const [sign, setSign] = useState(null);
   // const [profiledata, setProfileData] = useState({
   //   profilename: 'admin.png',
@@ -74,21 +76,8 @@ export default function DesktopHeader() {
     >
       <section className="header--menu" id="header-menu">
         <div className="row row--vertical-center mg-none full-height">
-          <a href="/" className="logo track" id="logo">
-            <img
-              src={logo}
-              title="ICONDB 로고"
-              className="block"
-              alt="ICONDB logo"
-            />
-          </a>
-          <Nav>
-            <MenuToggle>
-              <div>
-                <MdMenu size="20" />
-              </div>
-            </MenuToggle>
-          </Nav>
+          <LogoSection />
+          <MenuSection />
           {/* <MenuList>
           <li>
             <a href="/posting">
@@ -139,7 +128,7 @@ export default function DesktopHeader() {
           )}
         </div>
       </section>
-      <SearchSectionComponent />
+      <SearchSection />
     </header>
   );
 }

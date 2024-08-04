@@ -26,18 +26,13 @@
 
 .header--menu__login {
     min-width: 50px;
-}
 
-.header--menu__login #gr_not-connected .login-register-buttons-container {
-    display: none;
+    @media screen and (max-width: 992px) {
+        margin-left: 0 !important;
+        order: 2;
+    }
 }
 
 .header--search__inner {
     padding: 10px 20px;
-}
-
-@media screen and (min-width: 1400px) {
-    .header--menu__login #gr_not-connected .login-register-buttons-container {
-        display: flex;
-    }
 }

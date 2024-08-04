@@ -1,13 +1,29 @@
 import React from 'react';
+import { FaRegUser } from 'react-icons/fa6';
 import styled from 'styled-components';
 
+import { useWindowSize } from '@_hooks/useWindowSize';
+
+const LINKS = {
+  LOGIN: '/sign_in',
+  RESISTER: '/sign_up',
+};
+
 export default function AuthSection() {
+  const { width: screenWidth } = useWindowSize();
+
   return (
     <StyledContainer>
-      <StyledWrapper>
-        <LoginLink href="/sign_in">로그인</LoginLink>
-        <ResisterLink href="/sign_up">가입하기</ResisterLink>
-      </StyledWrapper>
+      {screenWidth > 1400 ? (
+        <StyledWrapper>
+          <LoginLink href={LINKS.LOGIN}>로그인</LoginLink>
+          <ResisterLink href={LINKS.RESISTER}>가입하기</ResisterLink>
+        </StyledWrapper>
+      ) : (
+          <UserLink href={LINKS.LOGIN}>
+            <FaRegUser fill="#fff" size="20" />
+          </UserLink>
+      )}
     </StyledContainer>
   );
 }
@@ -24,6 +40,16 @@ const StyledWrapper = styled.div`
 
   @media screen and (min-width: 1400px) {
     display: flex;
+  }
+`;
+
+const MobileWrapper = styled.div`
+  margin-left: auto;
+  display: flex;
+  align-items: flex-start;
+
+  @media screen and (min-width: 992px) {
+    height: 36px;
   }
 `;
 
@@ -45,4 +71,12 @@ const ResisterLink = styled.a`
   color: #fff;
   border-radius: 6px;
   transition: none;
+`;
+
+const UserLink = styled.a`
+  display: flex;
+
+  @media screen and (min-width: 1400px) {
+    display: none;
+  }
 `;
