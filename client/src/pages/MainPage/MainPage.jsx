@@ -4,7 +4,7 @@ import Banner from "./components/Banner";
 import Popular from "./components/PopularSection";
 import LogoSection from "./components/LogoSection";
 import TopIconSearch from "./components/TopIconSearch";
-import Desktop from "@_components/common/Header/DesktopHeader/DesktopHeader";
+import Header from "@_components/common/Header/Header";
 import TopButton from "@_components/TopButton";
 import Footer from "@_components/common/Footer/Footer";
 
@@ -19,7 +19,7 @@ export default function MainPage() {
 
   return (
     <>
-      <Desktop />
+      <Header />
       <TopButton />
       <main className="home-icons">
         <Banner />

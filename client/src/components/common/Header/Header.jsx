@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { useAuth } from '@_hooks/useAuth';
 import { useScroll } from '@_hooks/useScroll';
 
-import LogoSection from './DesktopHeader/components/LogoSection';
-import MenuSection from './DesktopHeader/components/MenuSection';
-import UserSection from './DesktopHeader/components/UserSection';
-import AuthSection from './DesktopHeader/components/AuthSection';
-import SearchSection from './DesktopHeader/components/SearchSection';
+import LogoSection from './components/LogoSection';
+import MenuSection from './components/MenuSection';
+import UserSection from './components/UserSection';
+import AuthSection from './components/AuthSection';
+import SearchSection from './components/SearchSection';
 
 import noImage from '@_assets/images/noimage.png';
 
-export default function DesktopHeader() {
+export default function Header() {
   // const [sign, setSign] = useState(null);
   // const [profiledata, setProfileData] = useState({
   //   profilename: 'admin.png',
@@ -44,11 +44,6 @@ export default function DesktopHeader() {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const isDetail = location.pathname === '/post';
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleAvatarButtonClick = () => {
-    setIsModalOpen(!isModalOpen);
-  };
 
   return (
     <header
@@ -88,7 +83,7 @@ export default function DesktopHeader() {
             </li>
           )}
         </MenuList> */}
-          {sign === null ? (
+          {sign !== null ? (
             <div className="push-right font-sm header--menu__login">
               <div id="gr_user_menu" className="row mg-none">
                 <AuthSection />
@@ -97,8 +92,6 @@ export default function DesktopHeader() {
           ) : (
             <UserSection
               avatar={noImage}
-              handleAvatarButtonClick={handleAvatarButtonClick}
-              isModalOpen={isModalOpen}
               isDetail={isDetail}
             />
           )}

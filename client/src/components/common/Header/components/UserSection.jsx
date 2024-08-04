@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import UserModal from './UserModal';
 
-function UserSection({ avatar, handleAvatarButtonClick, isModalOpen, isDetail }) {
+function UserSection({ avatar, isDetail }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAvatarButtonClick = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <UserBox>
       <AvatarBox onClick={handleAvatarButtonClick}>
