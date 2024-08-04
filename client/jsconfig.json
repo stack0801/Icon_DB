@@ -5,6 +5,7 @@
       "@_assets/*": ["assets/*"],
       "@_pages/*": ["pages/*"],
       "@_hooks/*": ["hooks/*"],
+      "@_utils/*": ["utils/*"],
       "@_components/*": ["components/*"],
       "@_styles/*": ["styles/*"],
       "@/*": ["*"]

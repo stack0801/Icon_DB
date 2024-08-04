@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 
 import { useAuth } from '@_hooks/useAuth';
 import { useScroll } from '@_hooks/useScroll';
@@ -27,8 +26,6 @@ export default function DesktopHeader() {
   //   profilename: 'admin.png',
   //   nickname: 'admin',
   // });
-  // const scroll = useScroll();
-  // const { width: screenWidth } = useWindowSize();
 
   // useEffect(() => {
   //   console.log(sign);
@@ -51,13 +48,6 @@ export default function DesktopHeader() {
   const handleSignOut = async () => {
     await signOutUser();
   };
-  // const signOut = () => {
-  //   axios.post('/sign_out').then((res) => {
-  //     console.log(res.data);
-  //     if (res.data === 'success') window.location.href = '/';
-  //   });
-  // };
-  
 
   //Editor Open
   const openEditor = () => {
