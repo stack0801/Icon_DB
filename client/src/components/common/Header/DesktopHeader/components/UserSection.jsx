@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ModalBoxComponent from '../../components/ModalBoxComponent';
+import UserModal from './UserModal';
 
 function UserSection({ avatar, handleAvatarButtonClick, isModalOpen, isDetail }) {
   return (
@@ -11,7 +11,7 @@ function UserSection({ avatar, handleAvatarButtonClick, isModalOpen, isDetail })
           <img src={avatar} alt="user avatar" />
         </AvatarButton>
         {isModalOpen && (
-          <ModalBoxComponent isModalOpen={isModalOpen} isDetail={isDetail} />
+          <UserModal isModalOpen={isModalOpen} isDetail={isDetail} />
         )}
       </AvatarBox>
     </UserBox>

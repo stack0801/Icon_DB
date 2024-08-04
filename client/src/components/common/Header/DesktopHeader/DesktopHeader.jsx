@@ -5,18 +5,18 @@ import styled from 'styled-components';
 import { useAuth } from '@_hooks/useAuth';
 import { useScroll } from '@_hooks/useScroll';
 import { useWindowSize } from '@_hooks/useWindowSize';
-import { signOutUser } from '@/utils/signOutUser';
+import { signOutUser } from '@_utils/signOutUser';
 
 import SearchSectionComponent from '../components/SearchSection';
-import ModalBoxComponent from '../components/ModalBoxComponent';
 
 import SearchBox from '@_components/SearchBox';
 import ImageContainer from '../../../ImageContainer';
 import LinkButton from '../../../LinkButton';
 import logo from '@_assets/brand/logo.svg';
 
-import Avatar from '@_assets/images/noimage.png';
+import noImage from '@_assets/images/noimage.png';
 
+import UserSection from './components/UserSection';
 import { FaRegUser } from 'react-icons/fa6';
 import { MdMenu } from 'react-icons/md';
 
@@ -114,7 +114,7 @@ export default function DesktopHeader() {
             </li>
           )}
         </MenuList> */}
-          {sign === null ? (
+          {sign !== null ? (
             <div className="push-right font-sm header--menu__login">
               <div id="gr_user_menu" className="row mg-none">
                 {screenWidth > 1400 ? (
@@ -147,19 +147,12 @@ export default function DesktopHeader() {
               </div>
             </div>
           ) : (
-            <UserBox>
-              <AvatarBox onClick={handleAvatarButtonClick}>
-                <AvatarButton>
-                  <img src={Avatar} alt="noimage" />
-                </AvatarButton>
-                {isModalOpen && (
-                  <ModalBoxComponent
-                    isModalOpen={isModalOpen}
-                    isDetail={isDetail}
-                  />
-                )}
-              </AvatarBox>
-            </UserBox>
+            <UserSection
+            avatar={noImage}
+            handleAvatarButtonClick={handleAvatarButtonClick}
+            isModalOpen={isModalOpen}
+            isDetail={isDetail}
+            />
           )}
         </div>
       </section>
