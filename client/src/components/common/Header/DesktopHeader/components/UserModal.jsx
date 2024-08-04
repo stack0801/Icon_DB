@@ -9,7 +9,6 @@ import { useAuth } from '@_hooks/useAuth';
 import { signOutUser } from '@_utils/signOutUser';
 
 import UserModalItem from './UserModalItem';
-
 const LINKS = {
   DOWNLOADS: '/profile/my_downloads',
   LIKES: '/profile/my_likes',

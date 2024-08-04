@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { FaRegUser } from 'react-icons/fa6';
+import { MdMenu } from 'react-icons/md';
 
 import { useAuth } from '@_hooks/useAuth';
 import { useScroll } from '@_hooks/useScroll';
@@ -17,8 +19,7 @@ import logo from '@_assets/brand/logo.svg';
 import noImage from '@_assets/images/noimage.png';
 
 import UserSection from './components/UserSection';
-import { FaRegUser } from 'react-icons/fa6';
-import { MdMenu } from 'react-icons/md';
+import AuthSection from './components/AuthSection';
 
 export default function DesktopHeader() {
   // const [sign, setSign] = useState(null);
@@ -41,8 +42,8 @@ export default function DesktopHeader() {
   //       });
   //   });
   // }, []);
-  const {authData: sign, profileData} =useAuth();
-  const scroll  = useScroll();
+  const { authData: sign, profileData } = useAuth();
+  const scroll = useScroll();
   const { width: screenWidth } = useWindowSize();
 
   const handleSignOut = async () => {
@@ -114,29 +115,11 @@ export default function DesktopHeader() {
             </li>
           )}
         </MenuList> */}
-          {sign !== null ? (
+          {sign === null ? (
             <div className="push-right font-sm header--menu__login">
               <div id="gr_user_menu" className="row mg-none">
                 {screenWidth > 1400 ? (
-                  <div
-                    id="gr_not-connected"
-                    className="gr_not-connected col--center"
-                  >
-                    <div className="row row--vertical-center mg-none login-register-buttons-container">
-                      <a
-                        href="/sign_in"
-                        className="btn-login track semibold link-inverted mg-right-lv3"
-                      >
-                        로그인
-                      </a>
-                      <a
-                        href="/sign_up"
-                        className="btn-register bj-button bj-button--sm bj-button--outline bj-button--inverted track"
-                      >
-                        가입하기
-                      </a>
-                    </div>
-                  </div>
+                  <AuthSection />
                 ) : (
                   <NotConnectedUserBox>
                     <UserLink href="/sign_in">
@@ -148,10 +131,10 @@ export default function DesktopHeader() {
             </div>
           ) : (
             <UserSection
-            avatar={noImage}
-            handleAvatarButtonClick={handleAvatarButtonClick}
-            isModalOpen={isModalOpen}
-            isDetail={isDetail}
+              avatar={noImage}
+              handleAvatarButtonClick={handleAvatarButtonClick}
+              isModalOpen={isModalOpen}
+              isDetail={isDetail}
             />
           )}
         </div>
