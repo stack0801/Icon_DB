@@ -5,7 +5,7 @@ import Popular from "./components/PopularSection";
 import LogoSection from "./components/LogoSection";
 import TopIconSearch from "./components/TopIconSearch";
 import Header from "@_components/common/Header/Header";
-import TopButton from "@_components/TopButton";
+import TopButton from "@_components/ToTopButton";
 import Footer from "@_components/common/Footer/Footer";
 
 export default function MainPage() {

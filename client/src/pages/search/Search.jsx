@@ -6,7 +6,7 @@ import EmptySearch from "./components/EmptySearch";
 import Header from "@_components/common/Header/Header";
 import Footer from "@_components/common/Footer/Footer";
 import SearchBox from "@_components/SearchBox";
-import TopButton from "@_components/TopButton";
+import TopButton from "@_components/ToTopButton";
 
 import axios from "axios";
 
