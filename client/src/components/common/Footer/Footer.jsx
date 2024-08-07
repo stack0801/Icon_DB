@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import '../../../styles/_footer.css';
-
+import { colors } from '@_components/theme';
 import LogoSection from './components/LogoSection';
 import UploadButton from './components/UploadButton';
 import CopyrightSection from './components/CopyrightSection';
@@ -13,16 +11,37 @@ const UPLOAD_BUTTON_TEXT = '당신의 아이콘을 업로드하세요';
 
 export default function Footer() {
   return (
-    <footer id="footer" className="body-footer">
-      <div className="container">
-        <div className="row mg-none mg-bottom-lv4-i row--vertical-center footer__top">
+    <StyledFooter>
+      <StyledContainer>
+        <StyledWrapper>
           <LogoSection />
-          <div className="push-right footer__buttons">
-            <UploadButton text={UPLOAD_BUTTON_TEXT} />
-          </div>
-        </div>
+          <UploadButton text={UPLOAD_BUTTON_TEXT} />
+        </StyledWrapper>
         <CopyrightSection text={COPYRIGHT_TEXT} />
-      </div>
-    </footer>
+      </StyledContainer>
+    </StyledFooter>
   );
 }
+
+const StyledFooter = styled.footer`
+  margin: 0;
+  padding: 50px 0 0;
+  font-size: 13px;
+  border: none;
+  background-color: ${colors.primary};
+  color: ${colors.text};
+`;
+
+const StyledContainer = styled.div`
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1520px;
+`;
+
+const StyledWrapper = styled.div`
+  margin: 0;
+  margin-bottom: 30px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
