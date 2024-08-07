@@ -1,20 +1,29 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import '../../../styles/_footer.css';
-import logo from '../../../assets/brand/logo.svg';
+import LogoSection from './components/LogoSection';
+
+const COPYRIGHT_TEXT = 'Copyright © 2022 ICONDB';
+const UPLOAD_BUTTON_TEXT = '당신의 아이콘을 업로드하세요';
+
+
 export default function Footer() {
   return (
-    <footer id='footer' className="body-footer">
+    <footer id="footer" className="body-footer">
       <div className="container">
         <div className="row mg-none mg-bottom-lv4-i row--vertical-center footer__top">
-          <a href="/" className="logo-icondb">
-            <img className="hide-tablet push-center lzy lazyload--done" src={logo} alt='icondb logo'/>
-          </a>
+          <LogoSection />
           <div className="push-right footer__buttons">
             <div className="row mg-none">
-              <a href="#" target="_blank" rel="noreferrer noopener" className="bj-button bj-button--green">
-                당신의 아이콘을 업로드하세요
+              <a
+                href="#"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="bj-button bj-button--green"
+              >
+                {UPLOAD_BUTTON_TEXT}
               </a>
             </div>
           </div>
@@ -23,9 +32,7 @@ export default function Footer() {
           <div className="row mg-none row--vertical-center">
             <div className="col mg-none pd-none alignl pd-right-lv2-i">
               <div className="row row--vertical-center mg-none">
-                <p className="mg-none">
-                Copyright © 2022 ICONDB
-                </p>
+                <p className="mg-none">{COPYRIGHT_TEXT}</p>
               </div>
             </div>
           </div>
@@ -34,3 +41,10 @@ export default function Footer() {
     </footer>
   );
 }
+
+const LogoLink = styled(Link)``;
+
+const LogoImage = styled.img`
+  margin-left: auto;
+  margin-right: auto;
+`;
