@@ -4,10 +4,10 @@ import styled from 'styled-components';
 
 import '../../../styles/_footer.css';
 import LogoSection from './components/LogoSection';
+import UploadButton from './components/UploadButton';
 
 const COPYRIGHT_TEXT = 'Copyright © 2022 ICONDB';
 const UPLOAD_BUTTON_TEXT = '당신의 아이콘을 업로드하세요';
-
 
 export default function Footer() {
   return (
@@ -16,16 +16,7 @@ export default function Footer() {
         <div className="row mg-none mg-bottom-lv4-i row--vertical-center footer__top">
           <LogoSection />
           <div className="push-right footer__buttons">
-            <div className="row mg-none">
-              <a
-                href="#"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="bj-button bj-button--green"
-              >
-                {UPLOAD_BUTTON_TEXT}
-              </a>
-            </div>
+            <UploadButton text={UPLOAD_BUTTON_TEXT} />
           </div>
         </div>
         <div className="copyright">
@@ -41,10 +32,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-const LogoLink = styled(Link)``;
-
-const LogoImage = styled.img`
-  margin-left: auto;
-  margin-right: auto;
-`;
