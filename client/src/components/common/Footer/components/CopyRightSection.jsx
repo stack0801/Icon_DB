@@ -1,16 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Footer({text}) {
+export default function CopyrightSection({ text }) {
   return (
-    <div className="copyright">
-      <div className="row mg-none row--vertical-center">
-        <div className="col mg-none pd-none alignl pd-right-lv2-i">
-          <div className="row row--vertical-center mg-none">
-            <p className="mg-none">{text}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <CopyrightContainer>
+      <CopyrightWrapper>{text}</CopyrightWrapper>
+    </CopyrightContainer>
   );
 }
+
+const CopyrightContainer = styled.div`
+  padding: 20px 0;
+  border-top: 1px solid #424242;
+  text-align: center;
+  margin: 0;
+  margin-top: 20px;
+`;
+
+const CopyrightWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
