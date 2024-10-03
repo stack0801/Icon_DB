@@ -1,60 +1,67 @@
-# ICON_DB
+# ICONDB 🖼️
 
-<div align="center">
-  <br/><br/>
-  
-![logo](https://github.com/stack0801/Icon_DB/assets/89950902/b5c6de0a-1b87-4dd2-a64d-05be5a86c48f)
+## 아이콘 제작과 공유를 위한 무료 플랫폼
 
-  
-  <br/><br/>
-</div>
+<h2 align="center">
+  <img src="https://github.com/stack0801/Icon_DB/assets/89950902/b5c6de0a-1b87-4dd2-a64d-05be5a86c48f" alt="Drinkable" width="600px" />
+  <br>
+</h2>
 
-## 프로젝트 정보
+## Features
 
-### 개발 기간
-<p>
-  2022.03 ~ 2022.07 약 4개월동안 진행<br/><br/>
-</p>
+🌟 소셜 로그인\
+🌟 무료 아이콘 업로드 및 다운로드\
+🌟 사용자들 간 팔로우\
+🌟 해쉬태그 및 아이콘 좋아요 기능\
+🌟 사이트 내에서 아이콘 자체 편집
 
-### 프로젝트 소개
-<p>
-  IconDB는 무료로 아이콘을 배포하고 제작할 수 있는 웹사이트입니다. 사용자는 원하는 아이콘을 선택하고 해당 아이콘을 사용 목적에 맞게 수정할 수 있습니다. 이렇게 제작한 아이콘은 무료로 사용할 수 있습니다.
+## Getting Start 🚀
 
-  또한, IconDB는 팔로우 기능을 제공하여 마음에 드는 사용자를 팔로우할 수 있습니다. 이를 통해 해당 사용자가 제작한 아이콘을 쉽게 확인하고 사용할 수 있습니다. 또한, 해시태그를 이용하여 원하는 아이콘을 검색할 수도 있습니다. 이 기능을 활용하면 사용자의 목적에 부합하는 아이콘을 빠르게 찾아 제작할 수 있습니다.
-
-  IconDB를 이용하면 다양한 아이콘을 찾고, 필요에 맞게 수정하여 사용할 수 있습니다.<br/><br/>
-</p>
-
-## 시작 가이드
-
-### Installation
 ```bash
+# Clone the repository
 $ git clone https://github.com/stack0801/Icon_DB.git
 ```
 
-### Frontend
-```
-cd client
-npm install
-npm run start
+Install Frontend dependencies
+
+```bash
+# Move into the client
+$ cd client
+
+# Install dependencies
+$ npm install
+
+# Start the client
+$ npm run start
 ```
 
-### Backend
-```
-cd server
-npm install
-npm run dev
+Install Backend dependencies
+```bash
+# Move into the server
+$ cd server
+
+# Install dependencies
+$ npm install
+
+# Start the server
+$ npm run dev
 ```
 
 ### svgedit
-```
-cd svgedit
-npm install
-npm run start
-```
-<br/><br/>
+```bash
+# Move into the svgedit
+$ cd svgedit
 
-## Stacks
+# Install dependencies
+$ npm install
+
+# Start the svgedit
+$ npm run start
+```
+
+---
+
+## Skills used 🔧
 
 ### Environment
 <p>
@@ -89,57 +96,28 @@ npm run start
   <img src="https://img.shields.io/badge/Microsoft Teams-6264A7?style=flat-square&logo=Microsoft Teams&logoColor=white"/><br/><br/>
 </p>
 
+## Page composition 🎨
 
-## 중요 기능
+### (1) MainPage
 
-### ⭐️소셜 로그인
-<p>
-  소셜 로그인을 통해 로그인 및 회원가입의 불편함을 줄였습니다.
-</p>
+![main](https://github.com/stack0801/Icon_DB/assets/89950902/6ea496c6-f532-4a30-8ed6-edd4fe4d91c9)
 
-### ⭐️아이콘 업로드 및 다운로드
-<p>
-  마음에 드는 아이콘을 업로드 및 다운로드하여 이용자들에게 공유할 수 있습니다.
-</p>
+### (2) SignUpPage
 
-### ⭐️사용자들 간의 팔로우
-<p>
-  사용자들 간 팔로우 및 팔로잉이 가능하여 마음에 드는 사용자의 아이콘을 한눈에 볼 수 있도록 제작하였습니다.
-</p>
+![signup](https://github.com/stack0801/Icon_DB/assets/89950902/695943d5-110e-4c4c-a950-c71cccd83a84)
 
-### ⭐️해쉬태그 및 좋아요
-<p>
-  해쉬태그 기능을 추가하여 더욱 정밀한 검색이 가능하도록 개발하였습니다. 또한, 좋아요 기능을 통해 마음에 드는 아이콘을 한눈에 볼 수 있도록 개발하였습니다.
-</p>
+### (3) UploadPage
+![upload](https://github.com/stack0801/Icon_DB/assets/89950902/16079b45-a22e-4d54-8c16-47fa38d1cfa3)
 
-### ⭐️사이트 내에서 아이콘 자체 편집
-<p>
-  svg 형식의 파일인 경우, 웹사이트 내에서 자체적인 편집을 가능하도록 개발하여 아이콘의 모양 및 색을 사용자가 원하는 대로 변경할 수 있도록 하였습니다.<br/><br/>
-</p>
+### (4) ProfilePage
 
-## 페이지 구성
+![profile](https://github.com/stack0801/Icon_DB/assets/89950902/7fe6fb67-2057-4e14-8b04-3e54fd9973fb)
 
-|![main](https://github.com/stack0801/Icon_DB/assets/89950902/6ea496c6-f532-4a30-8ed6-edd4fe4d91c9)|
-|:---:|
-|메인 페이지|
+### (5) DownloadPage
 
-|![login](https://github.com/stack0801/Icon_DB/assets/89950902/0ea41e6f-a561-44b1-a08b-6ac90b842eb1.PNG)|![signup](https://github.com/stack0801/Icon_DB/assets/89950902/695943d5-110e-4c4c-a950-c71cccd83a84)|
-|:---:|:---:|
-|로그인 페이지|회원가입 페이지|
+![downloads](https://github.com/stack0801/Icon_DB/assets/89950902/08bd0896-817f-4c4c-87ac-0625ced99cad)
 
-|![upload](https://github.com/stack0801/Icon_DB/assets/89950902/16079b45-a22e-4d54-8c16-47fa38d1cfa3)|
-|:---:|
-|업로드 페이지|
-
-|![profile](https://github.com/stack0801/Icon_DB/assets/89950902/7fe6fb67-2057-4e14-8b04-3e54fd9973fb)|![downloads](https://github.com/stack0801/Icon_DB/assets/89950902/08bd0896-817f-4c4c-87ac-0625ced99cad)|
-|:---:|:---:|
-|프로필 페이지|다운로드 페이지|
-
-<br/><br/>
-
-## 아키텍처
-
-### 디렉토리 구조
+## Project Architecture 📂
 
 ```bash
 ├── README.md
@@ -213,5 +191,4 @@ npm run start
 │       ├── manifext.json
 │       └── index.html
 └── svgedit : svg 형식의 파일의 아이콘을 사용자의 필요성에 맞도록 색 및 모양을 바꿀 수 있는 폴더
-
 ```
