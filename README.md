@@ -3,7 +3,7 @@
 ## 아이콘 제작과 공유를 위한 무료 플랫폼
 
 <h2 align="center">
-  <img src="https://github.com/stack0801/Icon_DB/assets/89950902/b5c6de0a-1b87-4dd2-a64d-05be5a86c48f" alt="Icondb" width="600px" />
+  <img src="https://github.com/stack0801/Icon_DB/assets/89950902/b5c6de0a-1b87-4dd2-a64d-05be5a86c48f" alt="Icondb" width="400px" />
   <br>
 </h2>
 
@@ -14,6 +14,12 @@
 🌟 사용자들 간 팔로우\
 🌟 해쉬태그 및 아이콘 좋아요 기능\
 🌟 사이트 내에서 아이콘 자체 편집
+
+<h2 align="center">
+  <img src="https://github.com/user-attachments/assets/36f37523-ecbf-4e0a-a110-8040863f49bb" alt="Icondb" width="100%" />
+</h2>
+
+---
 
 ## Getting Start 🚀
 
@@ -194,5 +200,5 @@ $ npm run start
 ```
 
 <h2 align="center">
-  <img src="https://github.com/user-attachments/assets/a081a5fb-d08c-4841-94ce-f98a43f7ebfe" alt="Icondb" width="100%" />
+  <img src="https://github.com/user-attachments/assets/a081a5fb-d08c-4841-94ce-f98a43f7ebfe" alt="Icondb" width="600px" />
 </h2>
