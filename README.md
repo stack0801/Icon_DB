@@ -61,7 +61,7 @@ $ npm run start
 
 ---
 
-## Skills used 🔧
+## Technologies used 🔧
 
 ### Environment
 <p>
