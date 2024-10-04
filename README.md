@@ -3,7 +3,7 @@
 ## 아이콘 제작과 공유를 위한 무료 플랫폼
 
 <h2 align="center">
-  <img src="https://github.com/stack0801/Icon_DB/assets/89950902/b5c6de0a-1b87-4dd2-a64d-05be5a86c48f" alt="Drinkable" width="600px" />
+  <img src="https://github.com/stack0801/Icon_DB/assets/89950902/b5c6de0a-1b87-4dd2-a64d-05be5a86c48f" alt="Icondb" width="600px" />
   <br>
 </h2>
 
@@ -192,3 +192,7 @@ $ npm run start
 │       └── index.html
 └── svgedit : svg 형식의 파일의 아이콘을 사용자의 필요성에 맞도록 색 및 모양을 바꿀 수 있는 폴더
 ```
+
+<h2 align="center">
+  <img src="https://github.com/user-attachments/assets/a081a5fb-d08c-4841-94ce-f98a43f7ebfe" alt="Icondb" width="100%" />
+</h2>
